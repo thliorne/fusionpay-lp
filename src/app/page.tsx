@@ -1,7 +1,7 @@
 import { Footer } from '@/components/layout/footer';
 import { BenefitsSection } from '@/components/sections/benefits';
 import { IntegrationsSection } from '@/components/sections/integrations';
-import { ComparisonSection } from '@/components/sections/comparison';
+import { Pricing } from '@/components/sections/pricing';
 import { FinalCTASection } from '@/components/sections/final-cta';
 import { TestimonialsSection } from '@/components/sections/testimonials';
 import { FusionPayHero } from '@/components/sections/fusion-pay-hero';
@@ -13,10 +13,11 @@ export default function Home() {
         <FusionPayHero />
         <BenefitsSection />
         <IntegrationsSection />
-        <ComparisonSection />
+        <Pricing />
         <TestimonialsSection />
         <FinalCTASection />
       </main>
       <Footer />
     </div>
   );
+}
