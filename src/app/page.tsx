@@ -2,9 +2,9 @@ import { Footer } from '@/components/layout/footer';
 import { HeroGeometric } from '@/components/ui/shape-landing-hero';
 import { BenefitsSection } from '@/components/sections/benefits';
 import { IntegrationsSection } from '@/components/sections/integrations';
-import { SocialProofSection } from '@/components/sections/social-proof';
 import { ComparisonSection } from '@/components/sections/comparison';
 import { FinalCTASection } from '@/components/sections/final-cta';
+import { TestimonialsSection } from '@/components/sections/testimonials';
 
 export default function Home() {
   return (
@@ -17,8 +17,8 @@ export default function Home() {
         />
         <BenefitsSection />
         <IntegrationsSection />
-        <SocialProofSection />
         <ComparisonSection />
+        <TestimonialsSection />
         <FinalCTASection />
       </main>
       <Footer />
