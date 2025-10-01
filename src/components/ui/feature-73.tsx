@@ -45,7 +45,7 @@ export const Feature73 = ({
   ],
 }: Feature73Props) => {
   return (
-    <section className="py-32">
+    <section className="py-32 bg-transparent">
       <div className="container flex flex-col gap-16 lg:px-16">
         <div className="lg:max-w-sm">
           <h2 className="mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
@@ -62,7 +62,7 @@ export const Feature73 = ({
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
           {features[0] && (
-            <div className="flex flex-col overflow-clip rounded-xl border border-border md:col-span-2 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
+            <div className="flex flex-col overflow-clip rounded-xl border border-border md:col-span-2 md:grid md:grid-cols-2 md:gap-6 lg:gap-8 bg-background/80 backdrop-blur-sm">
               <div className="md:min-h-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]">
                 <img
                   src={features[0].image}
@@ -83,13 +83,13 @@ export const Feature73 = ({
           {features.slice(1).map((feature) => (
             <div
               key={feature.id}
-              className="flex flex-col overflow-clip rounded-xl border border-border"
+              className="flex flex-col overflow-clip rounded-xl border border-border bg-background/80 backdrop-blur-sm"
             >
               <div>
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="aspect-[16/9] h-full w-full object-contain object-center"
+                  className="aspect-[16/9] h-full w-full object-contain object-center p-4"
                 />
               </div>
               <div className="px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">

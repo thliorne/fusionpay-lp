@@ -1,4 +1,6 @@
+"use client";
 import { Feature73 } from "@/components/ui/feature-73";
+import { Squares } from "@/components/ui/squares-background";
 
 const features = [
   {
@@ -26,12 +28,25 @@ const features = [
 
 export function BenefitsSection() {
   return (
-    <Feature73
-      heading="Recursos Poderosos"
-      description="Descubra os recursos poderosos que destacam nossa plataforma. Construída com a mais recente tecnologia e projetada para máxima produtividade."
-      linkText="Abrir conta agora"
-      linkUrl="#"
-      features={features}
-    />
+    <section className="relative">
+      <div className="absolute inset-0 z-0">
+        <Squares 
+          direction="diagonal"
+          speed={0.3}
+          squareSize={30}
+          borderColor="hsl(var(--border))"
+          hoverFillColor="hsl(var(--muted))"
+        />
+      </div>
+      <div className="relative z-10 bg-transparent">
+        <Feature73
+          heading="Recursos Poderosos"
+          description="Descubra os recursos poderosos que destacam nossa plataforma. Construída com a mais recente tecnologia e projetada para máxima produtividade."
+          linkText="Abrir conta agora"
+          linkUrl="#"
+          features={features}
+        />
+      </div>
+    </section>
   );
 }
