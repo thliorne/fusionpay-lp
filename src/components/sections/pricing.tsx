@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { BorderTrail } from '@/components/ui/border-trail';
+import { LiquidButton } from '@/components/ui/liquid-button';
 
 export function Pricing() {
 	return (
@@ -95,7 +96,7 @@ export function Pricing() {
 								<div className="space-y-1">
 									<div className="flex items-center justify-between">
 										<h3 className="leading-none font-semibold">Fusion Pay</h3>
-										<Badge>O melhor</Badge>
+                    <LiquidButton>O melhor</LiquidButton>
 									</div>
 									<p className="text-muted-foreground text-sm">Taxas baixas, agilidade e suporte.</p>
 								</div>
