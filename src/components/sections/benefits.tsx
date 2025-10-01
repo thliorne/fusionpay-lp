@@ -40,7 +40,7 @@ export function BenefitsSection() {
       </div>
       <div className="relative z-10 bg-transparent">
         <Feature73
-          heading="Recursos Poderosos"
+          heading="Entenda porque os maiores players do mercado estão migrando para a Fusion Pay:"
           description="Descubra os recursos poderosos que destacam nossa plataforma. Construída com a mais recente tecnologia e projetada para máxima produtividade."
           linkText="Abrir conta agora"
           linkUrl="#"
