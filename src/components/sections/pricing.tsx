@@ -62,7 +62,7 @@ export function Pricing() {
 								<div className="mt-10 space-y-4">
 									<div className="text-muted-foreground flex items-end gap-0.5 text-xl">
 										<span className="text-foreground -mb-0.5 text-4xl font-extrabold tracking-tighter md:text-5xl">
-											D+30
+											D+3
 										</span>
 									</div>
                   <ul className="space-y-2 text-muted-foreground">
