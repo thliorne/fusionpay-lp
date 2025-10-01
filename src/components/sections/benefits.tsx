@@ -31,7 +31,7 @@ export function BenefitsSection() {
       <div className="container">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit) => (
-            <GlowCard key={benefit.title} className="items-center text-center" customSize>
+            <GlowCard key={benefit.title} className="flex flex-col items-center justify-center text-center" customSize>
               <div className="flex flex-col items-center text-center gap-4 text-white">
                 <div className="bg-primary/10 p-4 rounded-full border-2 border-primary/20">
                   <benefit.icon className="w-8 h-8 text-primary" />
