@@ -89,7 +89,7 @@ export const Feature73 = ({
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="aspect-[16/9] h-full w-full object-cover object-center"
+                  className="aspect-[16/9] h-full w-full object-contain object-center"
                 />
               </div>
               <div className="px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">
