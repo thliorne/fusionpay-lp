@@ -47,7 +47,7 @@ export const Feature73 = ({
   return (
     <section className="py-32 bg-transparent">
       <div className="container flex flex-col gap-16 lg:px-16">
-        <div className="lg:max-w-sm">
+        <div className="lg:max-w-3xl">
           <h2 className="mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
             {heading}
           </h2>
