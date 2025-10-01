@@ -36,7 +36,7 @@ export function Squares({
     if (!ctx) return
 
     // Set canvas background
-    canvas.style.background = "hsl(var(--background))"
+    canvas.style.background = "black"
 
     const resizeCanvas = () => {
       if(!canvas) return;
@@ -85,10 +85,9 @@ export function Squares({
         canvas.height / 2,
         Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)) / 2,
       )
-      const backgroundHsl = getComputedStyle(document.documentElement).getPropertyValue('--background').trim().split(' ').join(', ');
 
-      gradient.addColorStop(0, `hsla(${backgroundHsl}, 0)`)
-      gradient.addColorStop(1, `hsla(${backgroundHsl}, 1)`)
+      gradient.addColorStop(0, `rgba(0, 0, 0, 0)`)
+      gradient.addColorStop(1, `rgba(0, 0, 0, 1)`)
 
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, canvas.width, canvas.height)
