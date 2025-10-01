@@ -9,7 +9,7 @@ import { BorderTrail } from '@/components/ui/border-trail';
 
 export function Pricing() {
 	return (
-		<section className="relative min-h-screen overflow-hidden py-24">
+		<section className="relative min-h-screen overflow-hidden py-24 bg-black">
 			<div id="pricing" className="mx-auto w-full max-w-6xl space-y-5 px-4">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
