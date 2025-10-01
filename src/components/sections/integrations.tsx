@@ -1,10 +1,11 @@
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import Image from "next/image";
 
 const integrations = [
-  { name: 'Stelar Checkout', logo: <p className="text-2xl font-bold tracking-wider">STELAR</p> },
-  { name: 'Zedy Checkout', logo: <p className="text-2xl font-bold text-cyan-400">Zedy</p> },
-  { name: 'Luna Checkout', logo: <p className="text-2xl font-bold text-purple-400 italic">Luna</p> },
-  { name: 'Vega Checkout', logo: <p className="text-2xl font-bold text-amber-400">VEGA</p> },
+  { name: 'StelarPay', logoUrl: 'https://i.imgur.com/bYGzQ0V.png' },
+  { name: 'Luna', logoUrl: 'https://i.imgur.com/81nB2iR.png' },
+  { name: 'Zedy', logoUrl: 'https://i.imgur.com/SYwiJ0Y.jpeg' },
+  { name: 'Vega', logoUrl: 'https://i.imgur.com/mFVZZqs.png' },
 ];
 
 export function IntegrationsSection() {
@@ -26,7 +27,7 @@ export function IntegrationsSection() {
           >
             {integrations.map((integration) => (
               <div key={integration.name} className="flex items-center justify-center h-20 w-48 bg-secondary rounded-lg p-4 grayscale hover:grayscale-0 transition-all duration-300">
-                {integration.logo}
+                <Image src={integration.logoUrl} alt={integration.name} width={120} height={40} className="object-contain" />
               </div>
             ))}
           </InfiniteSlider>
