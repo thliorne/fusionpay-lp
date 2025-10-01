@@ -26,7 +26,7 @@ export function IntegrationsSection() {
             className="[--duration:40s] [--gap:2.5rem]"
           >
             {integrations.map((integration) => (
-              <div key={integration.name} className="flex items-center justify-center h-20 w-48 bg-secondary rounded-lg p-4 grayscale hover:grayscale-0 transition-all duration-300">
+              <div key={integration.name} className="flex items-center justify-center h-20 w-48 bg-secondary rounded-lg p-4 transition-all duration-300">
                 <Image src={integration.logoUrl} alt={integration.name} width={120} height={40} className="object-contain" />
               </div>
             ))}
