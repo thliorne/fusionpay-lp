@@ -5,19 +5,26 @@ import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
 import { useWindowSize } from "@/hooks/use-window-size";
 
 const AnimatedParticles = () => {
+  const [particles, setParticles] = useState<React.CSSProperties[]>([]);
+
+  useEffect(() => {
+    const newParticles = Array.from({ length: 30 }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      animationDelay: `${Math.random() * 3}s`,
+      animationDuration: `${2 + Math.random() * 3}s`,
+      opacity: Math.random() * 0.5 + 0.2,
+    }));
+    setParticles(newParticles);
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {[...Array(30)].map((_, i) => (
+      {particles.map((style, i) => (
         <div
           key={i}
           className="absolute w-1 h-1 bg-[#FF6A00] rounded-full animate-pulse"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 3}s`,
-            animationDuration: `${2 + Math.random() * 3}s`,
-            opacity: Math.random() * 0.5 + 0.2,
-          }}
+          style={style}
         />
       ))}
     </div>
@@ -76,6 +83,13 @@ const AnimatedCTAButton = ({ children }: { children: React.ReactNode }) => {
 };
 
 const DashboardMockup = () => {
+    const [barHeights, setBarHeights] = useState<string[]>([]);
+
+    useEffect(() => {
+        const newBarHeights = Array.from({ length: 12 }).map(() => `${Math.random() * 40 + 20}px`);
+        setBarHeights(newBarHeights);
+    }, []);
+
   return (
     <div className="relative w-full h-full flex items-center justify-center perspective-1000">
       <div className="relative transform-gpu transition-transform duration-500 hover:scale-105">
@@ -135,13 +149,11 @@ const DashboardMockup = () => {
             </div>
           </div>
            <div className="mt-4 flex gap-2">
-            {[...Array(12)].map((_, i) => (
+            {barHeights.map((height, i) => (
               <div
                 key={i}
                 className="flex-1 bg-[#FF6A00]/30 rounded-sm"
-                style={{
-                  height: `${Math.random() * 40 + 20}px`,
-                }}
+                style={{ height }}
               />
             ))}
           </div>
@@ -248,3 +260,5 @@ export const FusionPayHero = () => {
     </div>
   );
 };
+
+    
