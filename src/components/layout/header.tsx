@@ -7,7 +7,6 @@ import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 
 export function Header({ className }: { className?: string }) {
   const navLinks = [
-    { href: '#negotiate', label: 'Negocie suas taxas' },
     { href: '#open-account', label: 'Abrir conta agora', isPrimary: true },
   ];
 
@@ -19,9 +18,6 @@ export function Header({ className }: { className?: string }) {
         </Link>
         
         <nav className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost" asChild>
-            <Link href="#negotiate">Negocie suas taxas</Link>
-          </Button>
           <Button asChild>
             <Link href="#open-account">Abrir conta agora</Link>
           </Button>

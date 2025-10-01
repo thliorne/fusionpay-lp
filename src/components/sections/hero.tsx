@@ -23,7 +23,7 @@ export function HeroSection() {
                 <Link href="#open-account">Abrir conta agora</Link>
             </Button>
             <Button size="lg" variant="secondary" asChild>
-                <Link href="#negotiate">Entre em contato e negocie suas taxas</Link>
+                <Link href="#">Entre em contato</Link>
             </Button>
             </div>
         </div>

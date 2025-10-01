@@ -13,7 +13,7 @@ export function FinalCTASection() {
             <Link href="#">Abrir conta agora</Link>
           </Button>
           <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/10">
-            <Link href="#negotiate">Entre em contato</Link>
+            <Link href="#">Entre em contato</Link>
           </Button>
         </div>
       </div>

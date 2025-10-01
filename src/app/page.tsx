@@ -6,7 +6,6 @@ import { IntegrationsSection } from '@/components/sections/integrations';
 import { SocialProofSection } from '@/components/sections/social-proof';
 import { ComparisonSection } from '@/components/sections/comparison';
 import { FinalCTASection } from '@/components/sections/final-cta';
-import { RateNegotiatorSection } from '@/components/sections/rate-negotiator';
 
 export default function Home() {
   return (
@@ -18,7 +17,6 @@ export default function Home() {
         <IntegrationsSection />
         <SocialProofSection />
         <ComparisonSection />
-        <RateNegotiatorSection />
         <FinalCTASection />
       </main>
       <Footer />
