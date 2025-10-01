@@ -5,9 +5,6 @@ const integrations = [
   { name: 'Zedy Checkout', logo: <p className="text-2xl font-bold text-cyan-400">Zedy</p> },
   { name: 'Luna Checkout', logo: <p className="text-2xl font-bold text-purple-400 italic">Luna</p> },
   { name: 'Vega Checkout', logo: <p className="text-2xl font-bold text-amber-400">VEGA</p> },
-  { name: 'Orion Pay', logo: <p className="text-2xl font-bold tracking-tighter text-blue-300">ORION</p> },
-  { name: 'Nova Link', logo: <p className="text-2xl font-bold text-green-400">Nova</p> },
-  { name: 'Nexus Core', logo: <p className="text-2xl font-bold text-red-400">NEXUS</p> },
 ];
 
 export function IntegrationsSection() {
