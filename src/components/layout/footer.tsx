@@ -1,13 +1,14 @@
-import { RetroGrid } from "@/components/ui/retro-grid";
-import { cn } from "@/lib/utils";
+import { Logo } from "@/components/icons/logo";
 
-export function Footer({ className }: { className?: string }) {
+export function Footer() {
   return (
-    <footer className={cn("relative flex h-96 w-full flex-col items-center justify-center overflow-hidden border-t border-border/40", className)}>
-       <span className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-primary via-accent to-primary bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
-         Fusion Pay
-       </span>
-       <RetroGrid />
+    <footer className="bg-secondary border-t border-border/40">
+      <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
+        <Logo />
+        <div className="text-center text-sm text-muted-foreground md:text-left">
+          © 2025 Fusion Pay. Todos os direitos reservados.
+        </div>
+      </div>
     </footer>
   );
 }
