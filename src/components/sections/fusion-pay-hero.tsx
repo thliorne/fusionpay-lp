@@ -174,6 +174,16 @@ const DashboardMockup = () => {
 
 export const FusionPayHero = () => {
   const { width } = useWindowSize();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; // or a loading skeleton
+  }
+
   const isMobile = width < 768;
 
   return (
@@ -260,5 +270,3 @@ export const FusionPayHero = () => {
     </div>
   );
 };
-
-    
