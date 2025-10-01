@@ -14,8 +14,8 @@ export default function Home() {
       <main className="flex-1">
         <HeroGeometric 
           badge="Fusion Pay"
-          title1="Instant. Secure."
-          title2="Your Money, Your Way."
+          title1="Instantâneo. Seguro."
+          title2="Seu Dinheiro, Seu Jeito."
         />
         <BenefitsSection />
         <IntegrationsSection />
