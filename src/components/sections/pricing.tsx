@@ -19,7 +19,7 @@ export function Pricing() {
 					className="mx-auto max-w-xl space-y-5"
 				>
 					<div className="flex justify-center">
-						<div className="rounded-lg border px-4 py-1 font-mono">Chega de perder dinheiro.</div>
+						<div className="rounded-lg border px-4 py-1 font-mono text-primary border-primary">Chega de perder dinheiro.</div>
 					</div>
 					<h2 className="mt-5 text-center text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl">
 						Compare e veja a diferença
