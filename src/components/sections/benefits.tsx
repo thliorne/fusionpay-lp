@@ -6,7 +6,7 @@ const features = [
     title: "Saque instantâneo (D+0 Pix)",
     description:
       "Receba seus pagamentos diretamente na sua conta via Pix, sem espera.",
-    image: "https://images.unsplash.com/photo-1580173954522-2b6d13264104?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://i.imgur.com/PYdMXs7.png",
   },
   {
     id: "feature-2",
