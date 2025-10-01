@@ -13,7 +13,7 @@ const features = [
     title: "Taxas Baixas e Negociáveis",
     description:
       "Nossas taxas são flexíveis e se adaptam ao seu volume de vendas. Quanto mais você vende, menos você paga.",
-    image: "https://i.imgur.com/ZmwtWfz.png",
+    image: "https://i.imgur.com/du7itQP.png",
   },
   {
     id: "feature-3",
