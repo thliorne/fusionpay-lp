@@ -2,11 +2,10 @@
 import React from 'react';
 import { PlusIcon, ShieldCheckIcon, XCircle, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Badge } from '@/components/ui/badge';
+import { AwardBadge } from '@/components/ui/award-badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { BorderTrail } from '@/components/ui/border-trail';
-import { LiquidButton } from '@/components/ui/liquid-button';
 
 export function Pricing() {
 	return (
@@ -96,7 +95,7 @@ export function Pricing() {
 								<div className="space-y-1">
 									<div className="flex items-center justify-between">
 										<h3 className="leading-none font-semibold">Fusion Pay</h3>
-                    <LiquidButton>O melhor</LiquidButton>
+                    <AwardBadge type="product-of-the-day" place={1} />
 									</div>
 									<p className="text-muted-foreground text-sm">Taxas baixas, agilidade e suporte.</p>
 								</div>
