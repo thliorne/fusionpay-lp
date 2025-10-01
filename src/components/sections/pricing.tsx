@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { PlusIcon, ShieldCheckIcon } from 'lucide-react';
+import { PlusIcon, ShieldCheckIcon, XCircle, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -65,6 +65,20 @@ export function Pricing() {
 											D+30
 										</span>
 									</div>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <XCircle className="w-4 h-4 text-destructive" />
+                      <span>Retenção de saldo</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <XCircle className="w-4 h-4 text-destructive" />
+                      <span>Taxas altas e fixas</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <XCircle className="w-4 h-4 text-destructive" />
+                      <span>Suporte lento e ineficaz</span>
+                    </li>
+                  </ul>
 									<Button className="w-full" variant="outline" asChild>
 										<a href="#">Sem Vantagens</a>
 									</Button>
@@ -91,6 +105,20 @@ export function Pricing() {
 											D+0
 										</span>
 									</div>
+                  <ul className="space-y-2 text-foreground">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span>Saque instantâneo via Pix</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span>Taxas flexíveis e negociáveis</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span>Suporte premium 24/7</span>
+                    </li>
+                  </ul>
 									<Button className="w-full" asChild>
 										<a href="#">Começar Agora</a>
 									</Button>
