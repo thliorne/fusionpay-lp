@@ -1,5 +1,6 @@
 "use client";
 import { CheckCircle, XCircle } from "lucide-react";
+import { CardSpotlight } from "../ui/card-spotlight";
 
 export function ComparisonSection() {
   return (
@@ -14,9 +15,9 @@ export function ComparisonSection() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="border border-destructive/50 rounded-xl p-8 bg-destructive/5">
-            <h3 className="text-2xl font-bold text-center mb-6">Gateways tradicionais</h3>
-            <ul className="space-y-4">
+          <CardSpotlight className="border border-destructive/50 rounded-xl p-8 bg-destructive/5">
+            <h3 className="text-2xl font-bold text-center mb-6 text-white relative z-10">Gateways tradicionais</h3>
+            <ul className="space-y-4 relative z-10">
               <li className="flex items-start gap-3">
                 <XCircle className="w-6 h-6 text-destructive flex-shrink-0 mt-1" />
                 <span className="text-muted-foreground">Retêm seu dinheiro</span>
@@ -34,7 +35,7 @@ export function ComparisonSection() {
                 <span className="text-muted-foreground">Suporte lento e ineficaz</span>
               </li>
             </ul>
-          </div>
+          </CardSpotlight>
           <div className="border-2 border-primary rounded-xl p-8 bg-primary/5 shadow-2xl shadow-primary/20">
             <h3 className="text-2xl font-bold text-center mb-6 text-primary">Fusion Pay</h3>
             <ul className="space-y-4">
