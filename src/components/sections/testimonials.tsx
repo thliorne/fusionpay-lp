@@ -89,7 +89,7 @@ const testimonials = [
 export function TestimonialsSection() {
   return (
     <TestimonialsContainer
-      title="Amado por criadores de todo o mundo"
+      title="O gateway preferido do mercado digital"
       description="Junte-se a milhares de empreendedores que já estão construindo o futuro com a Fusion Pay"
       testimonials={testimonials}
     />
