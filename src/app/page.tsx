@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { HeroSection } from '@/components/sections/hero';
+import { HeroGeometric } from '@/components/ui/shape-landing-hero';
 import { BenefitsSection } from '@/components/sections/benefits';
 import { IntegrationsSection } from '@/components/sections/integrations';
 import { SocialProofSection } from '@/components/sections/social-proof';
@@ -12,7 +12,11 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header />
       <main className="flex-1">
-        <HeroSection />
+        <HeroGeometric 
+          badge="Fusion Pay"
+          title1="Instant. Secure."
+          title2="Your Money, Your Way."
+        />
         <BenefitsSection />
         <IntegrationsSection />
         <SocialProofSection />
