@@ -95,9 +95,9 @@ export function Pricing() {
 								<div className="space-y-1">
 									<div className="flex items-center justify-between">
 										<h3 className="leading-none font-semibold">Fusion Pay</h3>
-                    <AwardBadge type="product-of-the-day" place={1} />
+                    <AwardBadge type="product-of-the-month" />
 									</div>
-									<p className="text-muted-foreground text-sm">Taxas baixas, agilidade e suporte.</p>
+									<p className="text-muted-foreground text-sm">A Melhor Opção</p>
 								</div>
 								<div className="mt-10 space-y-4">
 									<div className="text-muted-foreground flex items-end text-xl">

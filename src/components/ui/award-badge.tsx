@@ -21,10 +21,10 @@ const minScale = 0.97;
 
 const backgroundColor = ["#f3e3ac", "#ddd", "#f1cfa6"];
 
-const title = {
+const title: Record<AwardBadgeType, string> = {
   "golden-kitty": "Golden Kitty Awards",
   "product-of-the-day": "Product of the Day",
-  "product-of-the-month": "Product of the Month",
+  "product-of-the-month": "A Melhor Opção",
   "product-of-the-week": "Product of the Week",
 };
 
@@ -115,6 +115,7 @@ export const AwardBadge = ({ type, place, link }: AwardBadgeProps) => {
     const yCenter = (top + bottom) / 2;
 
     setDisableInOutOverlayAnimation(false);
+    if(enterTimeout.current) clearTimeout(enterTimeout.current);
     enterTimeout.current = setTimeout(() => setDisableInOutOverlayAnimation(true), 350);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -157,8 +158,11 @@ export const AwardBadge = ({ type, place, link }: AwardBadgeProps) => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setDisableInOutOverlayAnimation(false);
+        if (leaveTimeout1.current) clearTimeout(leaveTimeout1.current);
         leaveTimeout1.current = setTimeout(() => setFirstOverlayPosition(-firstOverlayPosition / 4), 150);
+        if (leaveTimeout2.current) clearTimeout(leaveTimeout2.current);
         leaveTimeout2.current = setTimeout(() => setFirstOverlayPosition(0), 300);
+        if (leaveTimeout3.current) clearTimeout(leaveTimeout3.current);
         leaveTimeout3.current = setTimeout(() => {
           setDisableOverlayAnimation(false);
           setDisableInOutOverlayAnimation(true);
