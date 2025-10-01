@@ -198,7 +198,7 @@ export const AwardBadge = ({ type, place, link }: AwardBadgeProps) => {
       ref={ref}
       href={link}
       target="_blank"
-      className="block w-[180px] sm:w-[260px] h-auto cursor-pointer"
+      className="block w-[140px] sm:w-[140px] h-auto cursor-pointer"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
@@ -213,7 +213,7 @@ export const AwardBadge = ({ type, place, link }: AwardBadgeProps) => {
           transition: "transform 200ms ease-out"
         }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 54" className="w-180px sm:w-260px h-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 54" className="w-[140px] sm:w-[140px] h-auto">
           <defs>
             <filter id="blur1">
               <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
