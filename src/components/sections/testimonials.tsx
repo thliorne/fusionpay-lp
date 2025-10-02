@@ -20,7 +20,7 @@ function TestimonialsContainer({
 }: TestimonialsSectionProps) {
   return (
     <section className={cn(
-      "bg-black text-foreground",
+      "bg-primary text-primary-foreground",
       "py-12 sm:py-24 md:py-32 px-0",
       className
     )}>
@@ -29,7 +29,7 @@ function TestimonialsContainer({
           <h2 className="max-w-[720px] text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
             {title}
           </h2>
-          <p className="text-md max-w-[600px] font-medium text-muted-foreground sm:text-xl">
+          <p className="text-md max-w-[600px] font-medium text-white/80 sm:text-xl">
             {description}
           </p>
         </div>
@@ -42,14 +42,15 @@ function TestimonialsContainer({
                   <TestimonialCard 
                     key={`${setIndex}-${i}`}
                     {...testimonial}
+                    className="bg-white/10 text-white border-white/20"
                   />
                 ))
               ))}
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-black sm:block" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-black sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-primary sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-primary sm:block" />
         </div>
       </div>
     </section>

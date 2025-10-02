@@ -43,12 +43,12 @@ export function TestimonialCard({
           <h3 className="text-md font-semibold leading-none">
             {author.name}
           </h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-white/70">
             {author.handle}
           </p>
         </div>
       </div>
-      <p className="sm:text-md mt-4 text-sm text-muted-foreground">
+      <p className="sm:text-md mt-4 text-sm text-white/70">
         {text}
       </p>
     </Card>
