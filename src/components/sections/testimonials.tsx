@@ -35,9 +35,9 @@ function TestimonialsContainer({
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:40s]">
+          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:80s]">
             <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row group-hover:[animation-play-state:paused]">
-              {[...Array(4)].map((_, setIndex) => (
+              {[...Array(2)].map((_, setIndex) => (
                 testimonials.map((testimonial, i) => (
                   <TestimonialCard 
                     key={`${setIndex}-${i}`}
@@ -84,6 +84,32 @@ const testimonials = [
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face"
     },
     text: "Com a Fusion Pay, nosso fluxo de caixa melhorou muito. Receber no mesmo dia faz toda a diferença para escalar."
+  },
+  {
+    author: {
+      name: "Ana Costa",
+      handle: "@anacostadev",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
+    },
+    text: "A plataforma é robusta e confiável. Nunca tivemos problemas com a Fusion Pay.",
+    href: "#"
+  },
+  {
+    author: {
+      name: "Lucas Martins",
+      handle: "@lucas_martins",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+    },
+    text: "A melhoria na conversão foi notável desde que mudamos para a Fusion Pay. Recomendo!",
+    href: "#"
+  },
+  {
+    author: {
+      name: "Beatriz Lima",
+      handle: "@bealima",
+      avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face"
+    },
+    text: "O processo de onboarding foi super rápido e o suporte sempre esteve à disposição para ajudar."
   }
 ]
 
