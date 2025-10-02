@@ -200,7 +200,7 @@ export const FusionPayHero = () => {
           <div className={cn("space-y-8", isMobile ? "order-1" : "")}>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-full text-sm">
               <Zap className="w-4 h-4 text-[#FF6A00]" />
-              <span className="text-zinc-300">Gateway Premium</span>
+              <span className="text-zinc-300">Fusion Pay</span>
             </div>
              <h1 className={cn(
               "font-bold leading-tight",
