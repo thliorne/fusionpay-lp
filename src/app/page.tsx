@@ -11,6 +11,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background">
       <main className="flex-1">
         <FusionPayHero />
+        <section className="py-20 md:py-32" />
         <BenefitsSection />
         <IntegrationsSection />
         <Pricing />
