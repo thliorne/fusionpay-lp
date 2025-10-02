@@ -20,7 +20,7 @@ function TestimonialsContainer({
 }: TestimonialsSectionProps) {
   return (
     <section className={cn(
-      "bg-background text-foreground",
+      "bg-black text-foreground",
       "py-12 sm:py-24 md:py-32 px-0",
       className
     )}>
@@ -48,8 +48,8 @@ function TestimonialsContainer({
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-background sm:block" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-background sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-black sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-black sm:block" />
         </div>
       </div>
     </section>
