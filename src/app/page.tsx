@@ -12,9 +12,10 @@ import Image from 'next/image';
 export default function Home() {
   const dashboardImage = PlaceHolderImages.find(p => p.id === "hero-dashboard");
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-black">
       <main className="flex-1">
         <FusionPayHero />
+        <div className="bg-black">
         <ContainerScroll
           titleComponent={
             <>
@@ -39,6 +40,7 @@ export default function Home() {
             />
           )}
         </ContainerScroll>
+        </div>
         <BenefitsSection />
         <IntegrationsSection />
         <Pricing />
