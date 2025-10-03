@@ -58,9 +58,9 @@ export function BenefitsSection() {
                 <div className="flex-shrink-0 mb-4 h-40 flex items-center justify-center">
                   {feature.icon}
                 </div>
-                <div className="flex-grow flex flex-col">
-                  <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                <div className="flex-grow flex flex-col justify-center">
+                  <h3 className="text-xl font-bold text-white mb-2 break-words">{feature.title}</h3>
+                  <p className="text-muted-foreground break-words">{feature.description}</p>
                 </div>
               </div>
             </GlowCard>
