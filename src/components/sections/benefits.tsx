@@ -34,6 +34,7 @@ export function BenefitsSection() {
   return (
     <section className="relative bg-black py-20 md:py-32">
       <div className="absolute top-1/2 left-1/2 w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary to-accent rounded-full opacity-10 blur-3xl animate-pulse-gradient" />
+      <div className="absolute top-1/4 right-0 w-1/2 h-1/2 bg-gradient-to-l from-accent to-primary rounded-full opacity-10 blur-3xl animate-pulse-gradient [animation-delay:-4s]" />
       <BGPattern variant="grid" fill="hsl(var(--border))" size={40} mask="fade-edges" />
       <div className="relative z-10 container mx-auto px-4">
         <div className="lg:max-w-3xl mb-12">
