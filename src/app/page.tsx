@@ -15,31 +15,32 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-black">
       <main className="flex-1">
         <FusionPayHero />
-        <div className="bg-black">
-        <ContainerScroll
-          titleComponent={
-            <>
-              <h2 className="text-4xl font-semibold text-foreground">
-                Um dashboard completo <br />
-                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none text-primary">
-                  para o seu negócio.
-                </span>
-              </h2>
-            </>
-          }
-        >
-          {dashboardImage && (
-            <Image
-              src={dashboardImage.imageUrl}
-              alt="hero"
-              height={720}
-              width={1400}
-              className="mx-auto rounded-2xl object-cover h-full object-left-top"
-              draggable={false}
-              data-ai-hint={dashboardImage.imageHint}
-            />
-          )}
-        </ContainerScroll>
+        <div className="relative bg-black">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-20 blur-3xl" />
+          <ContainerScroll
+            titleComponent={
+              <>
+                <h2 className="text-4xl font-semibold text-foreground">
+                  Um dashboard completo <br />
+                  <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none text-primary">
+                    para o seu negócio.
+                  </span>
+                </h2>
+              </>
+            }
+          >
+            {dashboardImage && (
+              <Image
+                src={dashboardImage.imageUrl}
+                alt="hero"
+                height={720}
+                width={1400}
+                className="mx-auto rounded-2xl object-cover h-full object-left-top"
+                draggable={false}
+                data-ai-hint={dashboardImage.imageHint}
+              />
+            )}
+          </ContainerScroll>
         </div>
         <BenefitsSection />
         <IntegrationsSection />
