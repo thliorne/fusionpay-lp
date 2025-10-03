@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { GradientButton } from '@/components/ui/gradient-button';
 
 export function FinalCTASection() {
   return (
@@ -9,12 +9,12 @@ export function FinalCTASection() {
           Pare de perder dinheiro com gateways ruins. Receba com a Fusion Pay.
         </h2>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="default" asChild>
+          <GradientButton asChild>
             <Link href="#">Abrir conta agora</Link>
-          </Button>
-          <Button size="lg" variant="outline" asChild className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
+          </GradientButton>
+          <GradientButton variant="variant" asChild>
             <Link href="#">Entre em contato</Link>
-          </Button>
+          </GradientButton>
         </div>
       </div>
     </section>
