@@ -29,6 +29,7 @@ const features = [
 export function BenefitsSection() {
   return (
     <section className="relative bg-black">
+      <div className="absolute top-1/2 left-1/2 w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary to-accent rounded-full opacity-10 blur-3xl animate-pulse-gradient" />
       <BGPattern variant="grid" fill="hsl(var(--border))" size={40} mask="fade-edges" />
       <div className="relative z-10 bg-transparent">
         <Feature73
