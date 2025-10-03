@@ -21,7 +21,7 @@ export default function Home() {
             titleComponent={
               <>
                 <h2 className="text-4xl font-semibold text-foreground">
-                  Um dashboard completo <br />
+                  Um gateway rápido e seguro <br />
                   <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none text-primary">
                     para o seu negócio.
                   </span>
