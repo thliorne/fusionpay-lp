@@ -95,6 +95,10 @@ export default {
         marquee: {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(calc(-100% - var(--gap)))' }
+        },
+        'pulse-gradient': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.2' },
+          '50%': { transform: 'scale(1.2)', opacity: '0.3' },
         }
       },
       animation: {
@@ -102,6 +106,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         grid: "grid 15s linear infinite",
         marquee: 'marquee var(--duration) linear infinite',
+        'pulse-gradient': 'pulse-gradient 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       maxWidth: {
         container: "1280px",

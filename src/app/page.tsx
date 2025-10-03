@@ -16,7 +16,7 @@ export default function Home() {
       <main className="flex-1">
         <FusionPayHero />
         <div className="relative bg-black">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-20 blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-gradient-to-r from-primary to-accent rounded-full opacity-20 blur-3xl animate-pulse-gradient" />
           <ContainerScroll
             titleComponent={
               <>
