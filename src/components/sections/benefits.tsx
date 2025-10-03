@@ -53,7 +53,7 @@ export function BenefitsSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
-            <GlowCard key={feature.id} glowColor={feature.glowColor as any} className="p-6">
+            <GlowCard key={feature.id} glowColor={feature.glowColor as any} className="p-6 min-h-[420px]">
               <div className="flex flex-col h-full items-center text-center">
                 <div className="flex-shrink-0 mb-4 flex items-center justify-center" style={{ height: '10rem' }}>
                   {feature.icon}
