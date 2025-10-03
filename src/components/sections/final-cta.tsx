@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import { GradientButton } from '@/components/ui/gradient-button';
+import { BlurText } from '@/components/ui/animated-blur-text';
 
 export function FinalCTASection() {
   return (
     <section id="open-account" className="py-20 md:py-32 bg-black text-white">
       <div className="container text-center">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary">
-          Pare de perder dinheiro com gateways ruins. Receba com a Fusion Pay.
-        </h2>
+        <BlurText
+          text="Pare de perder dinheiro com gateways ruins. Receba com a Fusion Pay."
+          delay={150}
+          animateBy="words"
+          direction="top"
+          className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary"
+        />
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <GradientButton asChild>
             <Link href="#">Abrir conta agora</Link>
