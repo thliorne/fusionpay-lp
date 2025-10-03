@@ -1,7 +1,7 @@
 "use client";
 import { BGPattern } from "@/components/ui/bg-pattern";
 import { GlowCard } from "@/components/ui/spotlight-card";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, TrendingDown, Zap } from "lucide-react";
 
 const features = [
   {
@@ -9,7 +9,7 @@ const features = [
     title: "Saque instantâneo (D+0 Pix)",
     description:
       "Receba seus pagamentos diretamente na sua conta via Pix, sem espera.",
-    image: "https://i.imgur.com/PYdMXs7.png",
+    icon: <Zap className="w-16 h-16 text-primary" />,
     glowColor: "orange",
   },
   {
@@ -17,7 +17,7 @@ const features = [
     title: "Taxas Baixas e Negociáveis",
     description:
       "Nossas taxas são flexíveis e se adaptam ao seu volume de vendas. Quanto mais você vende, menos você paga.",
-    image: "https://i.imgur.com/du7itQP.png",
+    icon: <TrendingDown className="w-16 h-16 text-primary" />,
     glowColor: "blue",
   },
   {
@@ -25,7 +25,7 @@ const features = [
     title: "Segurança de Ponta",
     description:
       "Utilizamos as tecnologias mais avançadas de segurança para garantir que suas transações estejam sempre protegidas.",
-    image: "https://i.imgur.com/qWM6tBy.png",
+    icon: <ShieldCheck className="w-16 h-16 text-primary" />,
     glowColor: "green",
   },
 ];
@@ -54,13 +54,9 @@ export function BenefitsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
             <GlowCard key={feature.id} glowColor={feature.glowColor as any} className="p-6">
-              <div className="flex flex-col h-full">
-                <div className="flex-shrink-0 mb-4">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-40 object-contain"
-                  />
+              <div className="flex flex-col h-full items-center text-center">
+                <div className="flex-shrink-0 mb-4 h-40 flex items-center justify-center">
+                  {feature.icon}
                 </div>
                 <div className="flex-grow flex flex-col">
                   <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
