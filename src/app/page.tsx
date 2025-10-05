@@ -35,7 +35,7 @@ export default function Home() {
                 alt="hero"
                 height={720}
                 width={1400}
-                className="mx-auto rounded-2xl object-cover h-full object-left-top"
+                className="mx-auto rounded-2xl object-contain h-full w-full"
                 draggable={false}
                 data-ai-hint={dashboardImage.imageHint}
               />
