@@ -43,8 +43,8 @@ export default function Home() {
               <Image
                 src={dashboardImage.imageUrl}
                 alt="hero"
-                height={720}
-                width={1400}
+                height={485}
+                width={956}
                 className="mx-auto rounded-2xl object-contain h-full w-full"
                 draggable={false}
                 data-ai-hint={dashboardImage.imageHint}
