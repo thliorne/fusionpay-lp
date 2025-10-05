@@ -4,17 +4,27 @@ import { IntegrationsSection } from '@/components/sections/integrations';
 import { Pricing } from '@/components/sections/pricing';
 import { FinalCTASection } from '@/components/sections/final-cta';
 import { TestimonialsSection } from '@/components/sections/testimonials';
-import { FusionPayHero } from '@/components/sections/fusion-pay-hero';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
+import { HeroSection } from '@/components/ui/hero-section-dark';
 
 export default function Home() {
   const dashboardImage = PlaceHolderImages.find(p => p.id === "hero-dashboard");
   return (
     <div className="flex min-h-screen flex-col bg-black">
       <main className="flex-1">
-        <FusionPayHero />
+        <HeroSection 
+          title="Fusion Pay"
+          subtitle={{
+            regular: "Seu dinheiro direto na conta, ",
+            gradient: "sem retenções.",
+          }}
+          description="A Fusion Pay é o gateway que conecta sua loja aos principais meios de pagamento com segurança, velocidade e transparência."
+          ctaText="Quero começar agora"
+          ctaHref="#"
+          bottomImage={undefined}
+        />
         <div className="relative bg-black">
           <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-gradient-to-r from-primary to-accent rounded-full opacity-20 blur-3xl animate-pulse-gradient" />
           <ContainerScroll
