@@ -23,35 +23,11 @@ export default function Home() {
           description="A Fusion Pay é o gateway que conecta sua loja aos principais meios de pagamento com segurança, velocidade e transparência."
           ctaText="Quero começar agora"
           ctaHref="#"
-          bottomImage={undefined}
+          bottomImage={dashboardImage ? {
+            light: dashboardImage.imageUrl,
+            dark: dashboardImage.imageUrl,
+          } : undefined}
         />
-        <div className="relative bg-black">
-          <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-gradient-to-r from-primary to-accent rounded-full opacity-20 blur-3xl animate-pulse-gradient" />
-          <ContainerScroll
-            titleComponent={
-              <>
-                <h2 className="text-4xl font-semibold text-foreground">
-                  Um gateway rápido e seguro <br />
-                  <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none text-primary">
-                    para o seu negócio.
-                  </span>
-                </h2>
-              </>
-            }
-          >
-            {dashboardImage && (
-              <Image
-                src={dashboardImage.imageUrl}
-                alt="hero"
-                height={485}
-                width={956}
-                className="mx-auto rounded-2xl object-contain h-full w-full"
-                draggable={false}
-                data-ai-hint={dashboardImage.imageHint}
-              />
-            )}
-          </ContainerScroll>
-        </div>
         <BenefitsSection />
         <IntegrationsSection />
         <Pricing />
