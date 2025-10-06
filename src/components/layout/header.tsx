@@ -1,5 +1,6 @@
 import { Logo } from '@/components/icons/logo';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export function Header() {
   return (
@@ -13,8 +14,8 @@ export function Header() {
           <a href="#" className="text-white hover:text-primary transition-colors">Suporte</a>
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <Button>
-            Criar conta
+          <Button asChild>
+            <Link href="https://app.fusionpaybr.com.br/auth/register">Criar conta</Link>
           </Button>
           <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
             Login
