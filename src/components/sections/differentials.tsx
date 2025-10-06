@@ -87,18 +87,10 @@ export function DifferentialsSection() {
               viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
               className={cn(
-                "group relative bg-[#141414] border border-[#1E1E1E] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10",
-                index === featuredIndex
-                  ? "ring-2 ring-primary/50 shadow-2xl shadow-primary/20"
-                  : "hover:ring-2 hover:ring-primary/50"
+                "group relative bg-[#141414] border border-[#1E1E1E] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:ring-2 hover:ring-primary/50"
               )}
             >
-              {index === featuredIndex && (
-                <div className="absolute -inset-px rounded-2xl border-primary/30 blur-lg animate-pulse" style={{ animationDuration: '3s' }}></div>
-              )}
-               {index !== featuredIndex && (
-                <div className="absolute -inset-px rounded-2xl border-primary/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ animationDuration: '3s' }}></div>
-              )}
+              <div className="absolute -inset-px rounded-2xl border-primary/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ animationDuration: '3s' }}></div>
               <div className="flex flex-col h-full relative">
                 <div className="mb-6">
                   <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
