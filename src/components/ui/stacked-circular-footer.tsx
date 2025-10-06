@@ -2,7 +2,7 @@ import { Icons } from "@/components/ui/icons"
 
 function StackedCircularFooter() {
   return (
-    <footer className="bg-background py-12">
+    <footer className="bg-black py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center">
           <div className="mb-8 rounded-full bg-primary/10 p-8">
