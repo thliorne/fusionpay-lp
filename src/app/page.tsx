@@ -5,12 +5,13 @@ import { Pricing } from '@/components/sections/pricing';
 import { FinalCTASection } from '@/components/sections/final-cta';
 import { TestimonialsSection } from '@/components/sections/testimonials';
 import { HeroSection } from '@/components/ui/hero-section-dark';
+import { CostComparison } from '@/components/sections/cost-comparison';
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-black">
       <main className="flex-1">
-        <HeroSection 
+        <HeroSection
           title="Fusion Pay"
           subtitle={{
             regular: "Seu dinheiro direto na conta, ",
@@ -22,6 +23,7 @@ export default function Home() {
         />
         <BenefitsSection />
         <IntegrationsSection />
+        <CostComparison />
         <Pricing />
         <TestimonialsSection />
         <FinalCTASection />
