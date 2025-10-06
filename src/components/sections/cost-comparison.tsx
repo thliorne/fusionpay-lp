@@ -103,7 +103,7 @@ export function CostComparison() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#0B0B0B] text-white py-20 md:py-32 relative overflow-hidden"
+      className="bg-black text-white py-20 md:py-32 relative overflow-hidden"
       data-faturamento-inicial="110000"
       data-faturamento-min="5000"
       data-faturamento-max="1000000"
