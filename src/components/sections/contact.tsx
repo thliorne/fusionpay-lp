@@ -11,7 +11,7 @@ import {
   HelpCircle,
   Mail,
   MessageSquare,
-  Phone,
+  Rocket,
   User,
   Zap,
   Clock,
@@ -200,10 +200,11 @@ export function ContactSection() {
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 0.4 }}
              className="bg-[#141414] border border-[#1E1E1E] rounded-xl p-8 text-center hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
-              <Phone className="w-8 h-8 mx-auto text-primary mb-4" />
-              <h4 className="font-semibold text-lg">Prefere ligar?</h4>
-              <p className="text-2xl font-bold text-primary my-2">0800 123 4567</p>
-              <p className="text-sm text-muted-foreground">Atendimento de segunda a sexta, das 8h às 20h.</p>
+              <Rocket className="w-8 h-8 mx-auto text-primary mb-4" />
+              <h4 className="font-semibold text-lg">Setup Rápido e Simples</h4>
+              <p className="text-muted-foreground mt-2">
+                Nossa documentação clara e equipe de suporte garantem uma integração tranquila em poucos minutos.
+              </p>
             </motion.div>
           </div>
 
