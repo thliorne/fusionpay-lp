@@ -1,71 +1,7 @@
 "use client";
 import React, { useRef, useEffect } from 'react';
-import { motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Canvas, useFrame } from "@react-three/fiber";
-import { PerspectiveCamera, Sphere } from "@react-three/drei";
-import * as THREE from "three";
-
-const Globe = () => {
-  const groupRef = useRef<THREE.Group>(null!);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const handleMouseMove = (event: MouseEvent) => {
-    const { clientX, clientY, currentTarget } = event;
-    if (currentTarget) {
-        const { left, top, width, height } = (currentTarget as HTMLElement).getBoundingClientRect();
-        const x = (clientX - (left + width / 2)) / (width/2);
-        const y = (clientY - (top + height / 2)) / (height/2);
-        mouseX.set(x);
-        mouseY.set(y);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  const rotationY = useTransform(mouseX, [-1, 1], [-0.2, 0.2]);
-  const rotationX = useTransform(mouseY, [-1, 1], [-0.2, 0.2]);
-
-  useFrame(() => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.001;
-      groupRef.current.rotation.x = rotationX.get();
-      groupRef.current.rotation.y += rotationY.get() * 0.01;
-    }
-  });
-
-  return (
-    <group ref={groupRef}>
-      <Sphere args={[1.5, 64, 64]}>
-        <meshStandardMaterial 
-          color="hsl(var(--primary))" 
-          wireframe 
-          transparent 
-          opacity={0.15}
-          emissive="hsl(var(--primary))"
-          emissiveIntensity={2}
-        />
-      </Sphere>
-      <Sphere args={[1.51, 64, 64]}>
-        <meshStandardMaterial 
-          transparent 
-          opacity={0.05}
-          color="hsl(250, 100%, 70%)"
-          emissive="hsl(250, 100%, 70%)"
-          emissiveIntensity={1}
-        />
-      </Sphere>
-    </group>
-  );
-};
-
 
 export function HeroSection() {
   const controls = useAnimation();
@@ -205,14 +141,7 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
       
-      <div className="absolute bottom-0 left-0 w-full h-[30vh] sm:h-[40vh] z-0 opacity-80">
-        <Canvas>
-          <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
-          <ambientLight intensity={0.8} color="hsl(var(--primary))" />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} color="hsl(250, 100%, 70%)" />
-          <Globe />
-        </Canvas>
+      <div className="absolute bottom-0 left-0 w-full h-[30vh] sm:h-[40vh] z-0 opacity-80 bg-gradient-to-t from-black via-black/80 to-transparent">
       </div>
     </section>
   );
