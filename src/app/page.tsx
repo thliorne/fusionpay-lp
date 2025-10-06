@@ -1,5 +1,5 @@
 import { Footer } from '@/components/layout/footer';
-import { BenefitsSection } from '@/components/sections/benefits';
+import { HeroSection } from '@/components/sections/hero';
 import { IntegrationsSection } from '@/components/sections/integrations';
 import { Pricing } from '@/components/sections/pricing';
 import { ContactSection } from '@/components/sections/contact';
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-black">
       <main className="flex-1">
-        <BenefitsSection />
+        <HeroSection />
         <IntegrationsSection />
         <CostComparison />
         <Pricing />
