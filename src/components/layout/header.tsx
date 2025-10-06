@@ -17,8 +17,8 @@ export function Header() {
           <Button asChild>
             <Link href="https://app.fusionpaybr.com.br/auth/register">Criar conta</Link>
           </Button>
-          <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-            Login
+          <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20" asChild>
+            <Link href="https://app.fusionpaybr.com.br/auth/login">Login</Link>
           </Button>
         </div>
       </div>
