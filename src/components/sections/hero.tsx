@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/header';
+import Link from 'next/link';
 
 const Particles = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -102,12 +103,14 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <Button 
+            asChild
             size="lg"
-            onClick={handleScrollTo('contact')}
             className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-primary text-white font-semibold rounded-lg shadow-lg shadow-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/60 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black animate-pulse-orange"
           >
-            Negocie suas taxas agora
-            <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            <Link href="https://www.instagram.com/fusionpaybr/" target="_blank">
+              Negocie suas taxas agora
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </Button>
         </motion.div>
       </div>
