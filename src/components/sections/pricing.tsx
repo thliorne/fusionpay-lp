@@ -120,7 +120,7 @@ export function Pricing() {
                     </li>
                   </ul>
 									<Button className="w-full" asChild>
-										<a href="#">Começar Agora</a>
+										<a href="https://app.fusionpaybr.com.br/auth/register">Começar Agora</a>
 									</Button>
 								</div>
 							</div>
