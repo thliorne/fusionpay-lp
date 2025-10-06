@@ -1,6 +1,7 @@
 import { Footer } from '@/components/layout/footer';
 import { HeroSection } from '@/components/sections/hero';
 import { IntegrationsSection } from '@/components/sections/integrations';
+import { DifferentialsSection } from '@/components/sections/differentials';
 import { Pricing } from '@/components/sections/pricing';
 import { ContactSection } from '@/components/sections/contact';
 import { TestimonialsSection } from '@/components/sections/testimonials';
@@ -12,6 +13,7 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <IntegrationsSection />
+        <DifferentialsSection />
         <CostComparison />
         <Pricing />
         <TestimonialsSection />
