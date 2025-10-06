@@ -40,7 +40,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { toast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const phoneMask = (value: string) => {
   if (!value) return "";
@@ -89,6 +89,7 @@ const benefits = [
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -126,30 +127,6 @@ export function ContactSection() {
     }
   };
   
-  if (isSubmitted) {
-    return (
-      <section className="bg-black text-white py-20 md:py-32">
-        <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="bg-[#141414] border border-[#1E1E1E] rounded-xl p-8 md:p-12 max-w-2xl mx-auto"
-            >
-              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold mb-4">Recebemos seus dados!</h2>
-              <p className="text-muted-foreground mb-8">
-                Em até 2 horas úteis nossa equipe entra em contato para negociar suas taxas.
-              </p>
-              <Button onClick={() => setIsSubmitted(false)}>
-                Voltar ao site
-              </Button>
-            </motion.div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="contact" className="bg-black text-white py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]">
@@ -174,7 +151,34 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <AnimatePresence mode="wait">
+        {isSubmitted ? (
+            <motion.div
+              key="success"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="bg-[#141414] border border-[#1E1E1E] rounded-xl p-8 md:p-12 max-w-2xl mx-auto text-center"
+            >
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
+              <h2 className="text-3xl font-bold mb-4">Recebemos seus dados!</h2>
+              <p className="text-muted-foreground mb-8">
+                Em até 2 horas úteis nossa equipe entra em contato para negociar suas taxas.
+              </p>
+              <Button onClick={() => setIsSubmitted(false)}>
+                Enviar novamente
+              </Button>
+            </motion.div>
+        ) : (
+        <motion.div 
+            key="form"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="grid lg:grid-cols-2 gap-12 items-start"
+        >
           {/* Left Column */}
           <div className="space-y-8">
             <motion.div 
@@ -324,7 +328,9 @@ export function ContactSection() {
               </form>
             </Form>
           </motion.div>
-        </div>
+        </motion.div>
+        )}
+        </AnimatePresence>
          <div className="text-center mt-16">
             <div className="inline-flex items-center gap-2 text-sm text-green-400">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -335,5 +341,3 @@ export function ContactSection() {
     </section>
   );
 }
-
-    
