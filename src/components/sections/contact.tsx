@@ -128,7 +128,7 @@ export function ContactSection() {
   
   if (isSubmitted) {
     return (
-      <section className="bg-[#0B0B0B] text-white py-20 md:py-32">
+      <section className="bg-black text-white py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -151,7 +151,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-[#0B0B0B] text-white py-20 md:py-32 relative overflow-hidden">
+    <section id="contact" className="bg-black text-white py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M20%200v20H0v-2h18V0h2zm20%2020v20h-2V22h18v-2H20zM0%200h2v2H0V0zm40%2040h-2v-2h2v2z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
         </div>
@@ -334,3 +334,5 @@ export function ContactSection() {
     </section>
   );
 }
+
+    
