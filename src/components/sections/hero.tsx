@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Header } from '@/components/layout/header';
 
 const Particles = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -68,6 +69,7 @@ export function HeroSection() {
   
   return (
     <section className="relative bg-gradient-to-b from-black to-[#111111] text-white overflow-hidden min-h-screen flex flex-col justify-center items-center py-24 sm:py-32">
+      <Header />
       <Particles />
       <div className="absolute inset-0 bg-black/50 z-10"></div>
       

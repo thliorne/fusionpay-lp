@@ -1,5 +1,4 @@
 import { Footer } from '@/components/layout/footer';
-import { Header } from '@/components/layout/header';
 import { HeroSection } from '@/components/sections/hero';
 import { IntegrationsSection } from '@/components/sections/integrations';
 import { DifferentialsSection } from '@/components/sections/differentials';
@@ -11,7 +10,6 @@ import { CostComparison } from '@/components/sections/cost-comparison';
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-black">
-      <Header />
       <main className="flex-1">
         <HeroSection />
         <DifferentialsSection />
