@@ -12,9 +12,14 @@ export function Header() {
           <a href="#" className="text-white hover:text-primary transition-colors">Integrações</a>
           <a href="#" className="text-white hover:text-primary transition-colors">Suporte</a>
         </nav>
-        <Button variant="outline" className="hidden md:flex bg-white/10 text-white border-white/20 hover:bg-white/20">
-          Login
-        </Button>
+        <div className="hidden md:flex items-center gap-4">
+          <Button>
+            Criar conta
+          </Button>
+          <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+            Login
+          </Button>
+        </div>
       </div>
     </header>
   );
