@@ -53,7 +53,7 @@ export function DifferentialsSection() {
   const featuredIndex = 2; // "Integração completa" is the 3rd item (index 2)
 
   return (
-    <section className="relative bg-[#0B0B0B] text-white py-20 md:py-32" aria-labelledby="diferenciais-title">
+    <section className="relative bg-black text-white py-20 md:py-32" aria-labelledby="diferenciais-title">
       <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_60%)]">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M20%200v20H0v-2h18V0h2zm20%2020v20h-2V22h18v-2H20zM0%200h2v2H0V0zm40%2040h-2v-2h2v2z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
       </div>
