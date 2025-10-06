@@ -1,28 +1,71 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { ArrowRight, Zap, Clock, Shield } from 'lucide-react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { ArrowRight, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Canvas, useFrame } from "@react-three/fiber";
+import { PerspectiveCamera, Sphere } from "@react-three/drei";
+import * as THREE from "three";
 
-const FusionPayLogoMark = ({ className }: { className?: string }) => (
-  <svg
-    className={cn("w-10 h-10", className)}
-    viewBox="0 0 40 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M20 0L25 5V15L35 20L25 25V35L20 40L15 35V25L5 20L15 15V5L20 0Z"
-      fill="url(#logo-gradient)"
-    />
-    <defs>
-      <linearGradient id="logo-gradient" x1="5" y1="0" x2="35" y2="40" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FF6A00" />
-        <stop offset="1" stopColor="#FF7A1A" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
+const Globe = () => {
+  const groupRef = useRef<THREE.Group>(null!);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (event: MouseEvent) => {
+    const { clientX, clientY, currentTarget } = event;
+    if (currentTarget) {
+        const { left, top, width, height } = (currentTarget as HTMLElement).getBoundingClientRect();
+        const x = (clientX - (left + width / 2)) / (width/2);
+        const y = (clientY - (top + height / 2)) / (height/2);
+        mouseX.set(x);
+        mouseY.set(y);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  const rotationY = useTransform(mouseX, [-1, 1], [-0.2, 0.2]);
+  const rotationX = useTransform(mouseY, [-1, 1], [-0.2, 0.2]);
+
+  useFrame(() => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += 0.001;
+      groupRef.current.rotation.x = rotationX.get();
+      groupRef.current.rotation.y += rotationY.get() * 0.01;
+    }
+  });
+
+  return (
+    <group ref={groupRef}>
+      <Sphere args={[1.5, 64, 64]}>
+        <meshStandardMaterial 
+          color="hsl(var(--primary))" 
+          wireframe 
+          transparent 
+          opacity={0.15}
+          emissive="hsl(var(--primary))"
+          emissiveIntensity={2}
+        />
+      </Sphere>
+      <Sphere args={[1.51, 64, 64]}>
+        <meshStandardMaterial 
+          transparent 
+          opacity={0.05}
+          color="hsl(250, 100%, 70%)"
+          emissive="hsl(250, 100%, 70%)"
+          emissiveIntensity={1}
+        />
+      </Sphere>
+    </group>
+  );
+};
+
 
 export function HeroSection() {
   const controls = useAnimation();
@@ -49,9 +92,9 @@ export function HeroSection() {
     };
   }, [controls]);
 
-  const handleScrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleScrollTo = (id: string) => (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({
+    document.getElementById(id)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
@@ -61,7 +104,7 @@ export function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.15
       }
     }
   };
@@ -72,19 +115,19 @@ export function HeroSection() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.6,
         ease: "easeOut"
       }
     }
   };
-
-  const featureVariants = {
+  
+  const microPillsVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.5 + i * 0.1,
+        delay: 0.8 + i * 0.1,
         duration: 0.5,
         ease: "easeOut"
       }
@@ -92,85 +135,85 @@ export function HeroSection() {
   };
 
   return (
-    <section ref={ref} className="relative bg-[#0B0B0B] text-white overflow-hidden py-24 sm:py-32">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03]" style={{
+    <section ref={ref} className="relative bg-[#0B0B0B] text-white overflow-hidden min-h-screen flex flex-col justify-center py-24 sm:py-32">
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0 opacity-[0.04]" style={{
         backgroundImage: `
-          linear-gradient(to right, #FF6A00 1px, transparent 1px),
-          linear-gradient(to bottom, #FF6A00 1px, transparent 1px)
+          radial-gradient(circle at 20% 20%, hsl(var(--primary)) 1px, transparent 1px),
+          radial-gradient(circle at 80% 80%, hsl(250, 100%, 70%) 1px, transparent 1px),
+          linear-gradient(to right, hsla(var(--primary), 0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, hsla(var(--primary), 0.1) 1px, transparent 1px)
         `,
-        backgroundSize: '40px 40px',
-        maskImage: 'radial-gradient(ellipse 80% 50% at 50% 40%, white, transparent 90%)'
+        backgroundSize: '80px 80px, 80px 80px, 40px 40px, 40px 40px',
+        maskImage: 'radial-gradient(ellipse 90% 60% at 50% 50%, white, transparent 100%)'
       }} />
-      
-      {/* Radial Glow */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-primary/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100%] h-[80%] bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse-gradient" />
 
       <motion.div 
-        className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+        className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex-grow flex flex-col justify-center"
         initial="hidden"
         animate={controls}
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6 bg-[#141414] border border-[#1F1F1F] rounded-full px-4 py-1.5 text-xs">
+        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6 bg-black/30 border border-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-xs self-center">
           <Zap className="w-3 h-3 text-primary" />
           <span>Gateway de Pagamentos Premium</span>
         </motion.div>
-
-        <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 mb-6">
-          <FusionPayLogoMark className="w-12 h-12 md:w-16 md:h-16" />
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Fusion Pay
-          </h1>
-        </motion.div>
-
-        <motion.p variants={itemVariants} className="max-w-4xl mx-auto text-lg sm:text-xl md:text-2xl text-[#CFCFCF] mb-4">
-          O gateway de pagamentos{' '}
-          <span className="text-primary font-semibold relative">
-            rápido
-            <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/50 blur-[2px]"></span>
-          </span>,{' '}
-          <span className="text-primary font-semibold relative">
-            seguro
-             <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/50 blur-[2px]"></span>
-          </span> e feito para quem quer{' '}
-          <span className="text-primary font-semibold relative">
-            crescer
-             <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/50 blur-[2px]"></span>
-          </span>.
-        </motion.p>
         
-        <motion.p variants={itemVariants} className="text-base sm:text-lg text-[#CFCFCF]/70 mb-10">
-          Saque instantâneo, taxas negociáveis e tecnologia de ponta.
+        <motion.h1 
+            id="hero-title"
+            variants={itemVariants} 
+            className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-tight max-w-4xl mx-auto"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          Receba mais com um gateway <span className="relative">inteligente<span className="absolute -bottom-2 left-0 w-full h-1.5 bg-primary/70 rounded-full blur-lg"></span></span>.
+        </motion.h1>
+
+        <motion.p variants={itemVariants} className="max-w-3xl mx-auto text-lg sm:text-xl text-white/70 mt-6 mb-10">
+          Saque instantâneo, taxas negociáveis e segurança de nível bancário.
         </motion.p>
 
-        <motion.div variants={itemVariants}>
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <button 
-            onClick={handleScrollToContact}
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#FF6A00] to-[#FF7A1A] text-white font-semibold rounded-lg shadow-lg shadow-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#0B0B0B]"
+            onClick={handleScrollTo('contact')}
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-orange-500 text-white font-semibold rounded-lg shadow-lg shadow-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#0B0B0B]"
           >
-            Entrar em contato e negocie suas taxas
+            Entrar em contato e negociar minhas taxas
             <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
+          <a href="#integrations" onClick={handleScrollTo('integrations')} className="text-sm font-medium text-white/80 hover:text-white transition-colors group flex items-center gap-1">
+            Ver integrações
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </a>
         </motion.div>
 
         <motion.div 
-          className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto"
+          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto"
         >
-          <motion.div custom={0} variants={featureVariants} className="flex flex-col items-center gap-2">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">D+0</div>
-            <div className="text-sm sm:text-base text-white">Saque Instantâneo</div>
-          </motion.div>
-          <motion.div custom={1} variants={featureVariants} className="flex flex-col items-center gap-2">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">24/7</div>
-            <div className="text-sm sm:text-base text-white">Suporte Humano</div>
-          </motion.div>
-          <motion.div custom={2} variants={featureVariants} className="flex flex-col items-center gap-2">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">100%</div>
-            <div className="text-sm sm:text-base text-white">Seguro</div>
-          </motion.div>
+            <motion.div custom={0} variants={microPillsVariants} className="flex items-center justify-center gap-2 text-sm bg-black/30 border border-white/10 rounded-full px-4 py-2">
+                <span className="font-bold text-primary">D+0</span>
+                <span className="text-white/80">Saque instantâneo</span>
+            </motion.div>
+            <motion.div custom={1} variants={microPillsVariants} className="flex items-center justify-center gap-2 text-sm bg-black/30 border border-white/10 rounded-full px-4 py-2">
+                <span className="font-bold text-primary">24/7</span>
+                <span className="text-white/80">Suporte humano</span>
+            </motion.div>
+            <motion.div custom={2} variants={microPillsVariants} className="flex items-center justify-center gap-2 text-sm bg-black/30 border border-white/10 rounded-full px-4 py-2">
+                <span className="font-bold text-primary">100%</span>
+                <span className="text-white/80">Seguro</span>
+            </motion.div>
         </motion.div>
       </motion.div>
+      
+      <div className="absolute bottom-0 left-0 w-full h-[30vh] sm:h-[40vh] z-0 opacity-80">
+        <Canvas>
+          <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
+          <ambientLight intensity={0.8} color="hsl(var(--primary))" />
+          <pointLight position={[10, 10, 10]} intensity={1} />
+          <pointLight position={[-10, -10, -10]} intensity={0.5} color="hsl(250, 100%, 70%)" />
+          <Globe />
+        </Canvas>
+      </div>
     </section>
   );
 }
