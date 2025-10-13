@@ -59,7 +59,7 @@ export function CostComparison() {
   const [maxRevenue, setMaxRevenue] = useState(1000000);
   const [step, setStep] = useState(1000);
   const [traditionalRate, setTraditionalRate] = useState(4.5);
-  const [fusionRate, setFusionRate] = useState(2.9);
+  const [fusionRate, setFusionRate] = useState(2.0);
   const [traditionalFixedFee, setTraditionalFixedFee] = useState(0);
   const [fusionFixedFee, setFusionFixedFee] = useState(0);
 
@@ -71,7 +71,7 @@ export function CostComparison() {
       setMaxRevenue(parseFloat(ds.faturamentoMax || '1000000'));
       setStep(parseFloat(ds.passoSlider || '1000'));
       setTraditionalRate(parseFloat(ds.taxaTradicional || '4.5'));
-      setFusionRate(parseFloat(ds.taxaFusion || '2.9'));
+      setFusionRate(parseFloat(ds.taxaFusion || '2.0'));
       setTraditionalFixedFee(parseFloat(ds.tarifaFixaTradicional || '0'));
       setFusionFixedFee(parseFloat(ds.tarifaFixaFusion || '0'));
     }
@@ -113,7 +113,7 @@ export function CostComparison() {
       data-faturamento-max="1000000"
       data-passo-slider="1000"
       data-taxa-tradicional="4.5"
-      data-taxa-fusion="2.9"
+      data-taxa-fusion="2.0"
       data-tarifa-fixa-tradicional="0"
       data-tarifa-fixa-fusion="0"
     >
