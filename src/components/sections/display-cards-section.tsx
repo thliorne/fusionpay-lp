@@ -1,5 +1,6 @@
 "use client";
 import { Check } from "lucide-react";
+import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
 
 export function DisplayCardsSection() {
   return (
@@ -24,16 +25,12 @@ export function DisplayCardsSection() {
             </p>
           </div>
 
-          {/* Right: Stacked Cards */}
+          {/* Right: Globe */}
           <div
             className="lg:col-span-6 relative group h-[320px] md:h-[380px] xl:h-[420px]"
-            aria-label="Cards com benefícios da Fusion Pay"
+            aria-label="Globo terrestre interativo"
           >
-            {/* Background Glow */}
-            <div className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute right-10 top-10 w-72 h-72 rounded-full bg-[#FF5722] opacity-[0.08] blur-3xl"></div>
-            </div>
-
+            <RotatingEarth className="h-full w-full" />
           </div>
         </div>
       </div>
