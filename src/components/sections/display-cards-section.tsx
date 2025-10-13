@@ -1,66 +1,65 @@
 "use client";
-import { CheckCircle, XCircle } from "lucide-react";
-import DisplayCards from "@/components/ui/display-cards";
-import { motion } from "framer-motion";
-
-const cards = [
-  {
-    icon: <XCircle className="size-4" />,
-    title: "Taxas abusivas e sem transparência",
-    description: "Gateways Tradicionais",
-    date: "Problema",
-    iconClassName: "bg-destructive/20 text-destructive",
-    titleClassName: "text-destructive-foreground",
-    className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-  },
-  {
-    icon: <XCircle className="size-4" />,
-    title: "Dinheiro preso por dias (D+14, D+30)",
-    description: "Gateways Tradicionais",
-    date: "Problema",
-    iconClassName: "bg-destructive/20 text-destructive",
-    titleClassName: "text-destructive-foreground",
-    className: "[grid-area:stack] translate-x-12 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-  },
-  {
-    icon: <CheckCircle className="size-4" />,
-    title: "Taxas justas e recebimento D+0",
-    description: "Com a Fusion Pay",
-    date: "Solução",
-    iconClassName: "bg-primary/20 text-primary",
-    titleClassName: "text-primary-foreground",
-    className: "[grid-area:stack] translate-x-24 translate-y-20 hover:translate-y-10",
-  },
-];
+import { Check } from "lucide-react";
 
 export function DisplayCardsSection() {
   return (
-    <section className="bg-background text-foreground py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8 }}
-            className="text-left md:max-w-md"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Diga Adeus aos <span className="text-primary">Problemas de Pagamento</span>
-            </h2>
-            <p className="max-w-3xl mx-auto text-lg text-muted-foreground">
-              Deixe para trás as dores de cabeça dos gateways tradicionais e abrace a eficiência da Fusion Pay.
+    <section className="relative bg-[#0B0B0B] text-white">
+      <div className="container mx-auto px-4 md:px-6 xl:px-8 pt-12 md:pt-20 xl:pt-28 pb-14 md:pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-10 items-center">
+          {/* Left: Giant Title */}
+          <div className="lg:col-span-6">
+            <h1 className="font-extrabold tracking-tight leading-[.9]">
+              <span className="block text-5xl md:text-7xl xl:text-8xl">
+                DIGA ADEUS AOS
+              </span>
+              <span className="block text-5xl md:text-7xl xl:text-8xl">
+                PROBLEMAS DE
+              </span>
+              <span className="block text-5xl md:text-7xl xl:text-8xl text-[#FF5722]">
+                PAGAMENTO
+              </span>
+            </h1>
+            <p className="mt-6 text-base md:text-lg text-neutral-400 max-w-xl">
+              Deixe para trás as dores dos gateways tradicionais e abrace a eficiência real da Fusion Pay.
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex items-center justify-center md:justify-end"
+          </div>
+
+          {/* Right: Stacked Cards */}
+          <div
+            className="lg:col-span-6 relative group h-[320px] md:h-[380px] xl:h-[420px]"
+            aria-label="Cards com benefícios da Fusion Pay"
           >
-              <DisplayCards cards={cards} />
-          </motion.div>
+            {/* Background Glow */}
+            <div className="pointer-events-none absolute inset-0 -z-10">
+              <div className="absolute right-10 top-10 w-72 h-72 rounded-full bg-[#FF5722] opacity-[0.08] blur-3xl"></div>
+            </div>
+
+            {/* Back Card */}
+            <div className="hidden md:block absolute right-6 top-10 -rotate-2 translate-y-6 scale-[0.98] opacity-70 rounded-2xl bg-white/95 text-neutral-900 shadow-2xl ring-1 ring-black/5 backdrop-blur-sm p-5 w-[85%] max-w-[520px] transition-transform duration-500 group-hover:translate-y-0">
+              <div className="text-sm text-neutral-600">Suporte 24/7 • Antifraude ativo • Integrações</div>
+            </div>
+
+            {/* Middle Card */}
+            <div className="hidden md:block absolute right-3 top-6 translate-y-3 scale-[0.99] opacity-85 rounded-2xl bg-white/95 text-neutral-900 shadow-2xl ring-1 ring-black/5 backdrop-blur-sm p-5 w-[88%] max-w-[540px] transition-transform duration-500 group-hover:-translate-y-0.5">
+              <div className="text-sm text-neutral-600">Taxas negociáveis • Pix instantâneo • Estabilidade</div>
+            </div>
+
+            {/* Top Card (Main) */}
+            <div className="absolute right-0 top-0 w-full max-w-[560px]">
+              <div className="h-2 rounded-t-2xl bg-gradient-to-r from-[#FF5722] via-[#FF8A50] to-[#FF5722]"></div>
+              <div className="rounded-b-2xl rounded-tr-2xl bg-white text-neutral-900 shadow-2xl ring-1 ring-black/5 p-6 md:p-7 transition-transform duration-500 group-hover:-translate-y-1">
+                <div className="flex items-start gap-4">
+                  <div className="size-10 shrink-0 rounded-full bg-[#FF5722]/10 flex items-center justify-center group-hover:animate-pulse">
+                    <Check className="w-5 h-5 text-[#FF5722]" strokeWidth={3} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg md:text-xl font-semibold">Taxas justas e recebimento D+0</h3>
+                    <p className="mt-1 text-sm text-neutral-600">Com a Fusion Pay você recebe no Pix instantaneamente, com antifraude ativo.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
