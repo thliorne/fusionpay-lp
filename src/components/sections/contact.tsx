@@ -97,7 +97,7 @@ export function ContactSection() {
           </div>
           
           <div className="mt-16 text-center">
-            <p className="text-sm text-muted-foreground mb-6">Escolhido por negócios digitais em todo o Brasil</p>
+            <p className="text-sm text-muted-foreground mb-6">Confiança de mais de 10.000+ empresas</p>
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-muted-foreground/70">
               {businessTypes.map(type => (
                 <div key={type.name} className="flex items-center gap-2">
