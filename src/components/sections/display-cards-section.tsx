@@ -34,11 +34,6 @@ export function DisplayCardsSection() {
               <div className="absolute right-10 top-10 w-72 h-72 rounded-full bg-[#FF5722] opacity-[0.08] blur-3xl"></div>
             </div>
 
-            {/* Back Card */}
-            <div className="hidden md:block absolute right-6 top-10 -rotate-2 translate-y-6 scale-[0.98] opacity-70 rounded-2xl bg-white/95 text-neutral-900 shadow-2xl ring-1 ring-black/5 backdrop-blur-sm p-5 w-[85%] max-w-[520px] transition-transform duration-500 group-hover:translate-y-0">
-              <div className="text-sm text-neutral-600">Suporte 24/7 • Antifraude ativo • Integrações</div>
-            </div>
-
             {/* Middle Card */}
             <div className="hidden md:block absolute right-3 top-6 translate-y-3 scale-[0.99] opacity-85 rounded-2xl bg-white/95 text-neutral-900 shadow-2xl ring-1 ring-black/5 backdrop-blur-sm p-5 w-[88%] max-w-[540px] transition-transform duration-500 group-hover:-translate-y-0.5">
               <div className="text-sm text-neutral-600">Taxas negociáveis • Pix instantâneo • Estabilidade</div>
