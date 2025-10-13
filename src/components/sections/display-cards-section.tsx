@@ -98,7 +98,7 @@ export function DisplayCardsSection() {
             <div className="relative w-full aspect-[4/5] max-w-sm mx-auto">
               {/* <!-- Trocar por imagem real do mockup da Fusion Pay --> */}
               <Image 
-                src="https://i.imgur.com/gYf2mO9.png" 
+                src="https://i.imgur.com/FjoMLwJ.png" 
                 alt="Mockup do aplicativo Fusion Pay mostrando notificações de pagamento e selo de saque mais rápido"
                 fill
                 className="object-cover rounded-2xl shadow-2xl shadow-primary/20 border border-border"
