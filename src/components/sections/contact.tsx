@@ -65,7 +65,7 @@ export function ContactSection() {
             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
               Fale com um especialista e tenha a melhor condição para PIX, cartão e boleto — com antifraude inteligente.
             </p>
-            <ul className="grid sm:grid-cols-3 gap-6 text-left mb-10 max-w-3xl mx-auto">
+            <ul className="flex flex-wrap justify-center items-center gap-6 text-left mb-10 max-w-3xl mx-auto">
               {benefits.map((item, index) => (
                 <li key={index} className="flex items-center gap-3 bg-background/50 p-4 rounded-lg">
                   <div className="flex-shrink-0">{item.icon}</div>
