@@ -201,15 +201,6 @@ export function ContactSection() {
                           Falar no WhatsApp
                       </a>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="h-12 text-base px-6 rounded-full border-border hover:bg-accent/10">
-                      <a 
-                        href="mailto:comercial@fusionpay.com.br?subject=Negociar%20taxas"
-                        data-analytics="cta_email_cta"
-                      >
-                          <Mail className="w-5 h-5 mr-2" />
-                          Enviar e-mail
-                      </a>
-                  </Button>
               </div>
             </div>
 
