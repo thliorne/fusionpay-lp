@@ -44,9 +44,9 @@ const fadeInAnimation = {
 
 export function DisplayCardsSection() {
   return (
-    <section className="relative bg-[#0B0B0F] text-white py-20 md:py-32">
+    <section className="relative bg-background text-foreground py-20 md:py-32">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute right-0 top-1/4 w-1/2 h-1/2 rounded-full bg-[#FF5722]/10 blur-3xl" />
+        <div className="absolute right-0 top-1/4 w-1/2 h-1/2 rounded-full bg-primary/10 blur-3xl" />
       </div>
       <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -54,13 +54,13 @@ export function DisplayCardsSection() {
           {/* Coluna Esquerda: Texto */}
           <div className="lg:col-span-7">
             <motion.div {...fadeInAnimation} transition={{ duration: 0.5 }}>
-              <div className="inline-block bg-white/10 text-white text-xs font-bold rounded-full px-3 py-1 mb-4">
+              <div className="inline-block bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
                 Por que Fusion Pay?
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
                 Diga adeus aos problemas de pagamento
               </h2>
-              <p className="text-lg text-neutral-400 mb-12">
+              <p className="text-lg text-muted-foreground mb-12">
                 Velocidade, estabilidade e segurança para você vender sem travar.
               </p>
             </motion.div>
@@ -75,12 +75,12 @@ export function DisplayCardsSection() {
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   className="flex gap-4 items-start group"
                 >
-                  <div className="flex-shrink-0 size-8 rounded-full bg-[#FF5722] text-black flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <div className="flex-shrink-0 size-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                     <Check className="size-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white">{benefit.title}</h3>
-                    <p className="text-neutral-400 text-sm">{benefit.description}</p>
+                    <h3 className="font-bold text-foreground">{benefit.title}</h3>
+                    <p className="text-muted-foreground text-sm">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -101,7 +101,7 @@ export function DisplayCardsSection() {
                 src="https://i.imgur.com/gYf2mO9.png" 
                 alt="Mockup do aplicativo Fusion Pay mostrando notificações de pagamento e selo de saque mais rápido"
                 fill
-                className="object-cover rounded-2xl shadow-2xl shadow-[#FF5722]/20 border border-white/10"
+                className="object-cover rounded-2xl shadow-2xl shadow-primary/20 border border-border"
                 data-ai-hint="fintech app notification"
               />
             </div>
