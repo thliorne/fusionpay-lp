@@ -69,20 +69,19 @@ export function HeroSection() {
   };
   
   return (
-    <section className="relative bg-gradient-to-b from-black to-[#111111] text-white overflow-hidden min-h-screen flex flex-col justify-center items-center py-24 sm:py-32">
+    <section className="relative bg-gradient-to-b from-background to-background/90 text-foreground overflow-hidden min-h-screen flex flex-col justify-center items-center py-24 sm:py-32">
       <Header />
       <Particles />
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-background/50 z-10"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20">
         <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-tight"
+            className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-tight text-primary"
             style={{ 
               textShadow: '0 0 20px rgba(255,122,0,0.5), 0 0 30px rgba(255,122,0,0.3)',
-              color: '#FF7A00'
             }}
         >
           Fusion Pay
@@ -92,7 +91,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="max-w-2xl mx-auto text-lg sm:text-xl text-white/80 mt-6 mb-10">
+            className="max-w-2xl mx-auto text-lg sm:text-xl text-foreground/80 mt-6 mb-10">
           O gateway rápido, seguro e feito para o seu negócio escalar.
         </motion.p>
 
@@ -105,7 +104,7 @@ export function HeroSection() {
           <Button 
             asChild
             size="lg"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-primary text-white font-semibold rounded-lg shadow-lg shadow-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/60 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black animate-pulse-orange"
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-primary text-primary-foreground font-semibold rounded-lg shadow-lg shadow-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/60 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background animate-pulse-orange"
           >
             <Link href="https://www.instagram.com/fusionpaybr/" target="_blank">
               Negocie suas taxas agora

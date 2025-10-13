@@ -128,7 +128,7 @@ export function ContactSection() {
   };
   
   return (
-    <section id="contact" className="bg-black text-white py-20 md:py-32 relative overflow-hidden">
+    <section id="contact" className="bg-background text-foreground py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M20%200v20H0v-2h18V0h2zm20%2020v20h-2V22h18v-2H20zM0%200h2v2H0V0zm40%2040h-2v-2h2v2z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
         </div>
@@ -140,7 +140,7 @@ export function ContactSection() {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">
             Vamos{" "}
-            <span className="relative inline-block">
+            <span className="relative inline-block text-primary">
               negociar
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
             </span>{" "}
@@ -159,7 +159,7 @@ export function ContactSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="bg-[#141414] border border-[#1E1E1E] rounded-xl p-8 md:p-12 max-w-2xl mx-auto text-center"
+              className="bg-card border border-border rounded-xl p-8 md:p-12 max-w-2xl mx-auto text-center"
             >
               <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
               <h2 className="text-3xl font-bold mb-4">Recebemos seus dados!</h2>
@@ -185,7 +185,7 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-[#141414] border border-[#1E1E1E] rounded-xl p-8 hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
+              className="bg-card border border-border rounded-xl p-8 hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
               <h3 className="text-2xl font-bold mb-6">Por que escolher a Fusion Pay?</h3>
               <ul className="space-y-6">
                 {benefits.map((item, index) => (
@@ -203,7 +203,7 @@ export function ContactSection() {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 0.4 }}
-             className="bg-[#141414] border border-[#1E1E1E] rounded-xl p-8 text-center hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
+             className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
               <Rocket className="w-8 h-8 mx-auto text-primary mb-4" />
               <h4 className="font-semibold text-lg">Setup Rápido e Simples</h4>
               <p className="text-muted-foreground mt-2">
@@ -217,7 +217,7 @@ export function ContactSection() {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-[#141414] border border-[#1E1E1E] rounded-xl p-8 md:p-10 relative">
+            className="bg-card border border-border rounded-xl p-8 md:p-10 relative">
              <div className="absolute -inset-px rounded-xl border-primary/20 blur-lg opacity-0 animate-pulse" style={{ animationDuration: '4s' }}></div>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -228,7 +228,7 @@ export function ContactSection() {
                     <FormItem>
                       <FormLabel>Nome completo</FormLabel>
                       <FormControl>
-                        <Input placeholder="Seu nome" {...field} className="bg-black/20 focus-visible:ring-primary"/>
+                        <Input placeholder="Seu nome" {...field} className="bg-background/20 focus-visible:ring-primary"/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -241,7 +241,7 @@ export function ContactSection() {
                     <FormItem>
                       <FormLabel>E-mail</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="seu@email.com" {...field} className="bg-black/20 focus-visible:ring-primary"/>
+                        <Input type="email" placeholder="seu@email.com" {...field} className="bg-background/20 focus-visible:ring-primary"/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -259,7 +259,7 @@ export function ContactSection() {
                           {...field}
                           onChange={(e) => field.onChange(phoneMask(e.target.value))}
                           maxLength={15}
-                          className="bg-black/20 focus-visible:ring-primary"
+                          className="bg-background/20 focus-visible:ring-primary"
                         />
                       </FormControl>
                       <FormMessage />
@@ -274,7 +274,7 @@ export function ContactSection() {
                       <FormLabel>Faturamento mensal estimado</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-black/20 focus:ring-primary">
+                          <SelectTrigger className="bg-background/20 focus:ring-primary">
                             <SelectValue placeholder="Selecione uma faixa" />
                           </SelectTrigger>
                         </FormControl>
@@ -296,7 +296,7 @@ export function ContactSection() {
                     <FormItem>
                       <FormLabel>Mensagem (opcional)</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Conte-nos mais sobre seu negócio..." {...field} className="bg-black/20 focus-visible:ring-primary"/>
+                        <Textarea placeholder="Conte-nos mais sobre seu negócio..." {...field} className="bg-background/20 focus-visible:ring-primary"/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

@@ -19,7 +19,7 @@ export function IntegrationsSection() {
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4 font-headline">
           Integrado com as melhores plataformas do mercado digital
         </h2>
-        <p className="max-w-[600px] mx-auto text-white/80 md:text-xl mb-12">
+        <p className="max-w-[600px] mx-auto text-primary-foreground/80 md:text-xl mb-12">
           Integre a Fusion Pay com um clique e comece a vender mais com as ferramentas que você já usa.
         </p>
         <div className="relative">
@@ -30,9 +30,9 @@ export function IntegrationsSection() {
             className="[--duration:40s] [--gap:2.5rem]"
           >
             {integrations.map((integration) => (
-              <div key={integration.name} className="flex items-center justify-center gap-4 h-20 w-auto bg-white/10 rounded-lg px-6 py-4 transition-all duration-300">
+              <div key={integration.name} className="flex items-center justify-center gap-4 h-20 w-auto bg-primary-foreground/10 rounded-lg px-6 py-4 transition-all duration-300">
                 <Image src={integration.logoUrl} alt={integration.name} width={32} height={32} className="object-contain h-8 w-8" />
-                <span className="text-lg font-semibold text-white">{integration.name}</span>
+                <span className="text-lg font-semibold text-primary-foreground">{integration.name}</span>
               </div>
             ))}
           </InfiniteSlider>

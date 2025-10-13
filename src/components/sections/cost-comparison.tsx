@@ -44,7 +44,7 @@ const AnimatedCounter = ({ value }: { value: number }) => {
     startAnimation(displayValue, value);
 
     return () => controls.stop();
-  }, [value]);
+  }, [value, displayValue]);
 
   return <span ref={ref}>{displayValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>;
 };
@@ -99,11 +99,15 @@ export function CostComparison() {
   const handleSliderChange = (value: number[]) => {
     setRevenue(value[0]);
   };
+  
+  const handleContactClick = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section
       ref={sectionRef}
-      className="bg-black text-white py-20 md:py-32 relative overflow-hidden"
+      className="bg-background text-foreground py-20 md:py-32 relative overflow-hidden"
       data-faturamento-inicial="110000"
       data-faturamento-min="5000"
       data-faturamento-max="1000000"
@@ -130,7 +134,7 @@ export function CostComparison() {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">
             Quanto você pode{" "}
-            <span className="relative inline-block">
+            <span className="relative inline-block text-primary">
               economizar
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
             </span>
@@ -144,11 +148,11 @@ export function CostComparison() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-[#121212]/80 backdrop-blur-md rounded-2xl border border-white/10 p-6 md:p-10 shadow-[0_0_40px_rgba(255,106,0,0.1)]"
+          className="bg-card/80 backdrop-blur-md rounded-2xl border border-border p-6 md:p-10 shadow-[0_0_40px_rgba(255,106,0,0.1)]"
         >
           <div className="text-center mb-8">
             <label className="text-sm text-muted-foreground mb-2 block">Seu faturamento mensal estimado</label>
-            <div className="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-tighter">
+            <div className="text-4xl md:text-5xl font-bold text-foreground tabular-nums tracking-tighter">
               {formatCurrency(revenue)}
             </div>
             <span className="text-xs text-muted-foreground">por mês</span>
@@ -165,21 +169,21 @@ export function CostComparison() {
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {/* Gateway Tradicional */}
-            <div className="bg-black/20 border border-white/10 rounded-xl p-6">
-              <h3 className="font-semibold text-white">Gateway Tradicional</h3>
+            <div className="bg-background/20 border border-border rounded-xl p-6">
+              <h3 className="font-semibold text-foreground">Gateway Tradicional</h3>
               <p className="text-sm text-muted-foreground mb-4">Taxa média: {traditionalRate.toFixed(1)}%</p>
-              <div className="text-3xl md:text-4xl font-bold text-white tabular-nums">
+              <div className="text-3xl md:text-4xl font-bold text-foreground tabular-nums">
                 <AnimatedCounter value={custoTrad} />
               </div>
               <p className="text-xs text-muted-foreground mt-1">em taxas mensais</p>
             </div>
 
             {/* Fusion Pay */}
-            <div className="bg-black/20 border border-primary/50 rounded-xl p-6 relative overflow-hidden ring-2 ring-primary/20">
+            <div className="bg-background/20 border border-primary/50 rounded-xl p-6 relative overflow-hidden ring-2 ring-primary/20">
                <div className="absolute top-0 right-0 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-bl-lg">
                 ECONOMIA
               </div>
-              <h3 className="font-semibold text-white">Fusion Pay</h3>
+              <h3 className="font-semibold text-foreground">Fusion Pay</h3>
               <p className="text-sm text-muted-foreground mb-4">Taxa negociável: {fusionRate.toFixed(1)}%</p>
               <div className="text-3xl md:text-4xl font-bold text-primary tabular-nums">
                  <AnimatedCounter value={custoFusion} />
@@ -191,7 +195,7 @@ export function CostComparison() {
           <div className="bg-gradient-to-r from-green-500/10 to-green-500/0 border border-green-500/20 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <p className="text-sm text-green-300">Sua economia mensal</p>
-              <div className="text-3xl font-bold text-white tabular-nums">
+              <div className="text-3xl font-bold text-foreground tabular-nums">
                 <AnimatedCounter value={economiaMensal} />
               </div>
             </div>
@@ -205,7 +209,7 @@ export function CostComparison() {
           </div>
           
           <p className="text-center text-xs text-muted-foreground mt-6">
-            Economia anual projetada: <span className="font-semibold text-white">{formatCurrency(economiaAnual)}</span>
+            Economia anual projetada: <span className="font-semibold text-foreground">{formatCurrency(economiaAnual)}</span>
           </p>
         </motion.div>
       </div>

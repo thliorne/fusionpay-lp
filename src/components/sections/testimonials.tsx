@@ -29,7 +29,7 @@ function TestimonialsContainer({
           <h2 className="max-w-[720px] text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
             {title}
           </h2>
-          <p className="text-md max-w-[600px] font-medium text-white/80 sm:text-xl">
+          <p className="text-md max-w-[600px] font-medium text-primary-foreground/80 sm:text-xl">
             {description}
           </p>
         </div>
@@ -42,7 +42,7 @@ function TestimonialsContainer({
                   <TestimonialCard 
                     key={`${setIndex}-${i}`}
                     {...testimonial}
-                    className="bg-white/10 text-white border-white/20"
+                    className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20"
                   />
                 ))
               ))}

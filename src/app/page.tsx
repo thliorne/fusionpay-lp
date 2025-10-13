@@ -8,7 +8,7 @@ import { CostComparison } from '@/components/sections/cost-comparison';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-black">
+    <div className="flex min-h-screen flex-col bg-background">
       <main className="flex-1">
         <HeroSection />
         <DifferentialsSection />

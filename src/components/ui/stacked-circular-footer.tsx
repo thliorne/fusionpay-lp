@@ -1,8 +1,9 @@
 import { Icons } from "@/components/ui/icons"
+import { cn } from "@/lib/utils"
 
-function StackedCircularFooter() {
+function StackedCircularFooter({ className }: { className?: string }) {
   return (
-    <footer className="bg-black py-12">
+    <footer className={cn("bg-background py-12", className)}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center">
           <div className="mb-8 rounded-full bg-primary/10 p-8">
