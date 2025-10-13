@@ -8,18 +8,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle,
-  HelpCircle,
   Mail,
   MessageSquare,
-  Rocket,
   User,
+  Building,
+  DollarSign,
+  TrendingUp,
+  ShieldCheck,
   Zap,
-  Clock,
-  BarChart,
-  Headset,
-  Send,
   Loader,
-  CircleDot,
+  Send
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -53,13 +51,7 @@ const phoneMask = (value: string) => {
 const formSchema = z.object({
   nome: z.string().min(2, "O nome completo é obrigatório."),
   email: z.string().email("Por favor, insira um e-mail válido."),
-  telefone: z
-    .string()
-    .min(14, "O telefone é obrigatório.")
-    .refine(
-      (value) => /^\(\d{2}\) \d{5}-\d{4}$/.test(value),
-      "Formato de telefone inválido."
-    ),
+  empresa: z.string().optional(),
   faturamento: z
     .string()
     .min(1, "Selecione uma faixa de faturamento."),
@@ -70,21 +62,58 @@ type FormData = z.infer<typeof formSchema>;
 
 const benefits = [
   {
-    icon: <Clock className="w-6 h-6 text-primary" />,
-    title: "Aprovação em 24h",
-    description: "Análise rápida e onboarding simplificado.",
+    icon: <Zap className="w-5 h-5 text-primary" />,
+    text: "D+0 no PIX e cartão*",
   },
   {
-    icon: <BarChart className="w-6 h-6 text-primary" />,
-    title: "Taxas personalizadas",
-    description: "Negociamos de acordo com seu volume.",
+    icon: <ShieldCheck className="w-5 h-5 text-primary" />,
+    text: "Antifraude ativo e configurável",
   },
   {
-    icon: <Headset className="w-6 h-6 text-primary" />,
-    title: "Suporte dedicado",
-    description: "Time exclusivo para sua conta.",
+    icon: <TrendingUp className="w-5 h-5 text-primary" />,
+    text: "Taxas competitivas e negociáveis",
   },
 ];
+
+const socialProofLogos = [
+  { name: 'Company A', logo: 'https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg' },
+  { name: 'Company B', logo: 'https://tailwindui.com/img/logos/158x48/reform-logo-white.svg' },
+  { name: 'Company C', logo: 'https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg' },
+  { name: 'Company D', logo: 'https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg' },
+];
+
+const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24" {...props}><path fillRule="evenodd" d="M12.04 2.75c-5.14 0-9.29 4.15-9.29 9.29s4.15 9.29 9.29 9.29c1.55 0 3.03-.38 4.34-1.09l3.14.82c.23.06.46-.17.4-.4l-.82-3.14c.7-1.3.1-2.79 1.09-4.34 0-5.14-4.15-9.29-9.29-9.29zm-2.07 12.03c-.22.42-.87.8-1.18.85-.31.05-.65.05-1-.06-.35-.1-.83-.34-1.58-1.08-.94-.94-1.55-2.1-1.6-2.2-.05-.1-.44-.6.06-1.1.49-.5.81-.6 1.1-.6.28 0 .49.05.65.34.16.29.56.9.61 1 .05.1.08.16 0 .27-.08.1-.18.2-.31.32-.13.12-.24.2-.35.34-.1.13-.2.24-.1.38.12.18.56.76 1.2 1.41.87.87 1.6 1.12 1.8.18.2-.95.04-1.78.04-1.78.25-.04.5-.06.75-.06.25 0 .5.02.75.06s.2.75.2 1.78c0 .26.1.48.26.65.17.17.38.26.6.26h.02c.26 0 .5-.1.68-.28.2-.2.3-.44.34-.7.04-.25.04-.5.04-.75s-.02-.5-.06-.75c-.04-.25-.04-.5-.04-.75l.02 1.77z" clipRule="evenodd" /></svg>
+);
+
+
+// Extending Input and SelectTrigger to accept an icon prop
+const InputWithIcon = React.forwardRef<
+  HTMLInputElement,
+  React.ComponentProps<typeof Input> & { icon?: React.ReactNode }
+>(({ icon, className, ...props }, ref) => {
+  return (
+    <div className="relative">
+      {icon && <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">{React.cloneElement(icon as React.ReactElement, { className: 'w-4 h-4' })}</div>}
+      <Input ref={ref} className={cn(icon ? 'pl-9' : 'pl-3', className)} {...props} />
+    </div>
+  );
+});
+InputWithIcon.displayName = "InputWithIcon";
+
+const SelectTriggerWithIcon = React.forwardRef<
+  React.ElementRef<typeof SelectTrigger>,
+  React.ComponentProps<typeof SelectTrigger> & { icon?: React.ReactNode }
+>(({ icon, className, children, ...props }, ref) => {
+  return (
+    <SelectTrigger ref={ref} className={cn(icon ? 'pl-9' : 'pl-3', className)} {...props}>
+      {icon && <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">{React.cloneElement(icon as React.ReactElement, { className: 'w-4 h-4' })}</div>}
+      {children}
+    </SelectTrigger>
+  );
+});
+SelectTriggerWithIcon.displayName = "SelectTriggerWithIcon";
+
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -96,7 +125,7 @@ export function ContactSection() {
     defaultValues: {
       nome: "",
       email: "",
-      telefone: "",
+      empresa: "",
       faturamento: "",
       mensagem: "",
     },
@@ -105,15 +134,15 @@ export function ContactSection() {
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setIsSubmitting(true);
     try {
-      // TODO: Implement Firestore submission
-      // e.g., await addDoc(collection(db, "leads_contato"), { ...data, createdAt: serverTimestamp() });
-      // TODO: Call cloud function to send email
-      console.log("Form data:", data);
-
-      // Simulate API delay
+      // TODO: Implementar envio para /api/lead com fetch
+      console.log("Form data submitted:", data);
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       setIsSubmitted(true);
+      toast({
+        title: "Proposta solicitada!",
+        description: "Recebemos seus dados! Um especialista entrará em contato em breve.",
+      });
       form.reset();
     } catch (error) {
       console.error("Submission error:", error);
@@ -126,217 +155,152 @@ export function ContactSection() {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <section id="contact" className="bg-background text-foreground py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M20%200v20H0v-2h18V0h2zm20%2020v20h-2V22h18v-2H20zM0%200h2v2H0V0zm40%2040h-2v-2h2v2z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
         </div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest uppercase text-primary">
-            <CircleDot className="w-4 h-4" />
-            ENTRE EM CONTATO
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">
-            Vamos{" "}
-            <span className="relative inline-block text-primary">
-              negociar
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
-            </span>{" "}
-            suas taxas?
-          </h2>
-          <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
-            Preencha o formulário e tenha saques instantâneos no mesmo dia.<br/>Nossa equipe entrará em contato em até 2 horas úteis para personalizar sua proposta.
-          </p>
-        </div>
-
-        <AnimatePresence mode="wait">
-        {isSubmitted ? (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="bg-card border border-border rounded-xl p-8 md:p-12 max-w-2xl mx-auto text-center"
-            >
-              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold mb-4">Recebemos seus dados!</h2>
-              <p className="text-muted-foreground mb-8">
-                Em até 2 horas úteis nossa equipe entra em contato para negociar suas taxas.
-              </p>
-              <Button onClick={() => setIsSubmitted(false)}>
-                Enviar novamente
-              </Button>
-            </motion.div>
-        ) : (
+      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
         <motion.div 
-            key="form"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="grid lg:grid-cols-2 gap-12 items-start"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="bg-card/50 backdrop-blur-lg border border-border/50 rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl shadow-black/20"
         >
-          {/* Left Column */}
-          <div className="space-y-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-card border border-border rounded-xl p-8 hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
-              <h3 className="text-2xl font-bold mb-6">Por que escolher a Fusion Pay?</h3>
-              <ul className="space-y-6">
+          <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
+            {/* Left Column: Text Content */}
+            <div className="text-center lg:text-left">
+              <div className="inline-block bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
+                Gateway premium • Suporte humano
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+                Negocie suas taxas e receba no <span className="text-primary">D+0</span>
+              </h2>
+              <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto lg:mx-0">
+                Fale com um especialista e tenha a melhor condição para PIX, cartão e boleto — com antifraude inteligente.
+              </p>
+              <ul className="space-y-4 text-left mb-10 max-w-md mx-auto lg:mx-0">
                 {benefits.map((item, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-lg">{item.icon}</div>
-                    <div>
-                      <h4 className="font-semibold text-lg">{item.title}</h4>
-                      <p className="text-muted-foreground">{item.description}</p>
-                    </div>
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="flex-shrink-0">{item.icon}</div>
+                    <span className="text-foreground">{item.text}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div 
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.6, delay: 0.4 }}
-             className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
-              <Rocket className="w-8 h-8 mx-auto text-primary mb-4" />
-              <h4 className="font-semibold text-lg">Setup Rápido e Simples</h4>
-              <p className="text-muted-foreground mt-2">
-                Nossa documentação clara e equipe de suporte garantem uma integração tranquila em poucos minutos.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Right Column (Form) */}
-          <motion.div 
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-card border border-border rounded-xl p-8 md:p-10 relative">
-             <div className="absolute -inset-px rounded-xl border-primary/20 blur-lg opacity-0 animate-pulse" style={{ animationDuration: '4s' }}></div>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="nome"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nome completo</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Seu nome" {...field} className="bg-background/20 focus-visible:ring-primary"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>E-mail</FormLabel>
-                      <FormControl>
-                        <Input type="email" placeholder="seu@email.com" {...field} className="bg-background/20 focus-visible:ring-primary"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="telefone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Telefone</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="(00) 00000-0000"
-                          {...field}
-                          onChange={(e) => field.onChange(phoneMask(e.target.value))}
-                          maxLength={15}
-                          className="bg-background/20 focus-visible:ring-primary"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="faturamento"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Faturamento mensal estimado</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="bg-background/20 focus:ring-primary">
-                            <SelectValue placeholder="Selecione uma faixa" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="ate_50k">Até R$ 50 mil</SelectItem>
-                          <SelectItem value="50k_200k">R$ 50 mil – R$ 200 mil</SelectItem>
-                          <SelectItem value="200k_1M">R$ 200 mil – R$ 1 milhão</SelectItem>
-                          <SelectItem value="acima_1M">Acima de R$ 1 milhão</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="mensagem"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Mensagem (opcional)</FormLabel>
-                      <FormControl>
-                        <Textarea placeholder="Conte-nos mais sobre seu negócio..." {...field} className="bg-background/20 focus-visible:ring-primary"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <Loader className="mr-2 h-4 w-4 animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      Entrar em contato agora <Send className="ml-2 h-4 w-4" />
-                    </>
-                  )}
-                </Button>
-                 <p className="text-xs text-center text-muted-foreground pt-4">
-                  Ao enviar, você concorda com nossa{' '}
-                  <a href="#" className="underline hover:text-primary">
-                    política de privacidade
-                  </a>{' '}
-                  e{' '}
-                  <a href="#" className="underline hover:text-primary">
-                    termos de uso
-                  </a>
-                  .
-                </p>
-              </form>
-            </Form>
-          </motion.div>
-        </motion.div>
-        )}
-        </AnimatePresence>
-         <div className="text-center mt-16">
-            <div className="inline-flex items-center gap-2 text-sm text-green-400">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span>12.500+ empresas já confiam na Fusion Pay</span>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Button asChild size="lg" className="h-12 text-base px-6 rounded-full group bg-green-500 hover:bg-green-600 text-white">
+                      <a 
+                        href="https://wa.me/5511999999999?text=Quero%20negociar%20minhas%20taxas%20na%20Fusion%20Pay" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        data-analytics="cta_whatsapp_cta"
+                      >
+                          <WhatsAppIcon className="w-5 h-5 mr-2"/>
+                          Falar no WhatsApp
+                      </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="h-12 text-base px-6 rounded-full border-border hover:bg-accent/10">
+                      <a 
+                        href="mailto:comercial@fusionpay.com.br?subject=Negociar%20taxas"
+                        data-analytics="cta_email_cta"
+                      >
+                          <Mail className="w-5 h-5 mr-2" />
+                          Enviar e-mail
+                      </a>
+                  </Button>
+              </div>
             </div>
-        </div>
+
+            {/* Right Column: Form */}
+            <div className="mt-12 lg:mt-0">
+              <div className="bg-card/70 border border-border/50 rounded-2xl p-8">
+                <AnimatePresence mode="wait">
+                  {isSubmitted ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      className="text-center py-8"
+                    >
+                      <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold mb-2">Recebemos seus dados!</h3>
+                      <p className="text-muted-foreground">Um especialista entrará em contato em breve.</p>
+                      <Button onClick={() => setIsSubmitted(false)} className="mt-6">Solicitar novamente</Button>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="form"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <h3 className="text-2xl font-bold mb-1 text-center">Ou solicite uma proposta</h3>
+                      <p className="text-muted-foreground text-center mb-6">Preencha os campos abaixo.</p>
+                      <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                          <FormField control={form.control} name="nome" render={({ field }) => (
+                            <FormItem><FormControl><InputWithIcon placeholder="Nome completo" {...field} icon={<User />} /></FormControl><FormMessage /></FormItem>
+                          )} />
+                          <FormField control={form.control} name="email" render={({ field }) => (
+                            <FormItem><FormControl><InputWithIcon type="email" placeholder="seuemail@empresa.com" {...field} icon={<Mail />} /></FormControl><FormMessage /></FormItem>
+                          )} />
+                          <FormField control={form.control} name="empresa" render={({ field }) => (
+                            <FormItem><FormControl><InputWithIcon placeholder="Nome da empresa (opcional)" {...field} icon={<Building />} /></FormControl><FormMessage /></FormItem>
+                          )} />
+                          <FormField control={form.control} name="faturamento" render={({ field }) => (
+                              <FormItem>
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                      <FormControl>
+                                          <SelectTriggerWithIcon icon={<DollarSign />}>
+                                              <SelectValue placeholder="Volume mensal estimado" />
+                                          </SelectTriggerWithIcon>
+                                      </FormControl>
+                                      <SelectContent>
+                                          <SelectItem value="ate_50k">Até R$ 50 mil</SelectItem>
+                                          <SelectItem value="50k_200k">R$ 50 mil – R$ 200 mil</SelectItem>
+                                          <SelectItem value="200k_1M">R$ 200 mil – R$ 1 milhão</SelectItem>
+                                          <SelectItem value="acima_1M">Acima de R$ 1 milhão</SelectItem>
+                                      </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                              </FormItem>
+                          )} />
+                          <FormField control={form.control} name="mensagem" render={({ field }) => (
+                            <FormItem><FormControl><Textarea placeholder="Conte rapidamente o seu cenário..." {...field} /></FormControl><FormMessage /></FormItem>
+                          )} />
+
+                          <Button type="submit" className="w-full h-12 text-base" disabled={isSubmitting}>
+                            {isSubmitting ? (
+                              <><Loader className="mr-2 h-4 w-4 animate-spin" /> Enviando...</>
+                            ) : (
+                              <><Send className="mr-2 h-4 w-4" /> Solicitar proposta</>
+                            )}
+                          </Button>
+                        </form>
+                      </Form>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-16 text-center">
+            <p className="text-sm text-muted-foreground mb-4">Escolhido por negócios digitais em todo o Brasil</p>
+            <div className="flex justify-center items-center gap-8 opacity-50">
+              {socialProofLogos.map(logo => (
+                <img key={logo.name} src={logo.logo} alt={logo.name} className="h-6 object-contain" />
+              ))}
+            </div>
+          </div>
+          
+           <p className="text-xs text-center text-muted-foreground mt-12">
+             *Liquidação D+0 sujeita à análise e política de risco.
+           </p>
+        </motion.div>
       </div>
     </section>
   );
