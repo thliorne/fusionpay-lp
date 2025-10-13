@@ -2,7 +2,7 @@ import { Footer } from '@/components/layout/footer';
 import { HeroSection } from '@/components/sections/hero';
 import { IntegrationsSection } from '@/components/sections/integrations';
 import { DifferentialsSection } from '@/components/sections/differentials';
-import { ProblemsSection } from '@/components/sections/problems-section';
+import { DisplayCardsSection } from '@/components/sections/display-cards-section';
 import { ContactSection } from '@/components/sections/contact';
 import { TestimonialsSection } from '@/components/sections/testimonials';
 import { CostComparison } from '@/components/sections/cost-comparison';
@@ -13,7 +13,7 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <DifferentialsSection />
-        <ProblemsSection />
+        <DisplayCardsSection />
         <IntegrationsSection />
         <CostComparison />
         <TestimonialsSection />
