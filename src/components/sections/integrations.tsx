@@ -6,6 +6,10 @@ const integrations = [
   { name: 'Luna', logoUrl: 'https://i.imgur.com/81nB2iR.png' },
   { name: 'Zedy', logoUrl: 'https://i.imgur.com/SYwiJ0Y.jpeg' },
   { name: 'Vega', logoUrl: 'https://i.imgur.com/mFVZZqs.png' },
+  { name: 'Utmify', logoUrl: 'https://i.imgur.com/9GQpNRt.jpeg' },
+  { name: 'Shopify', logoUrl: 'https://i.imgur.com/r0omMHj.png' },
+  { name: 'Wordpress', logoUrl: 'https://i.imgur.com/zKHXUQ7.png' },
+  { name: 'WooCommerce', logoUrl: 'https://i.imgur.com/TSi6QTG.png' },
 ];
 
 export function IntegrationsSection() {
