@@ -43,22 +43,6 @@ export function DisplayCardsSection() {
             <div className="hidden md:block absolute right-3 top-6 translate-y-3 scale-[0.99] opacity-85 rounded-2xl bg-white/95 text-neutral-900 shadow-2xl ring-1 ring-black/5 backdrop-blur-sm p-5 w-[88%] max-w-[540px] transition-transform duration-500 group-hover:-translate-y-0.5">
               <div className="text-sm text-neutral-600">Taxas negociáveis • Pix instantâneo • Estabilidade</div>
             </div>
-
-            {/* Top Card (Main) */}
-            <div className="absolute right-0 top-0 w-full max-w-[560px]">
-              <div className="h-2 rounded-t-2xl bg-gradient-to-r from-[#FF5722] via-[#FF8A50] to-[#FF5722]"></div>
-              <div className="rounded-b-2xl rounded-tr-2xl bg-white text-neutral-900 shadow-2xl ring-1 ring-black/5 p-6 md:p-7 transition-transform duration-500 group-hover:-translate-y-1">
-                <div className="flex items-start gap-4">
-                  <div className="size-10 shrink-0 rounded-full bg-[#FF5722]/10 flex items-center justify-center group-hover:animate-pulse">
-                    <Check className="w-5 h-5 text-[#FF5722]" strokeWidth={3} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg md:text-xl font-semibold">Taxas justas e recebimento D+0</h3>
-                    <p className="mt-1 text-sm text-neutral-600">Com a Fusion Pay você recebe no Pix instantaneamente, com antifraude ativo.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
