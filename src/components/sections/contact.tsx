@@ -63,7 +63,7 @@ type FormData = z.infer<typeof formSchema>;
 const benefits = [
   {
     icon: <Zap className="w-5 h-5 text-primary" />,
-    text: "D+0 no PIX e cartão*",
+    text: "D+0 no PIX",
   },
   {
     icon: <ShieldCheck className="w-5 h-5 text-primary" />,
