@@ -1,6 +1,7 @@
 "use client";
 import { CheckCircle, XCircle } from "lucide-react";
 import DisplayCards from "@/components/ui/display-cards";
+import { motion } from "framer-motion";
 
 const cards = [
   {
@@ -36,16 +37,30 @@ export function DisplayCardsSection() {
   return (
     <section className="bg-background text-foreground py-20 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-            Diga Adeus aos <span className="text-primary">Problemas de Pagamento</span>
-          </h2>
-          <p className="max-w-3xl mx-auto text-lg text-muted-foreground">
-            Deixe para trás as dores de cabeça dos gateways tradicionais e abrace a eficiência da Fusion Pay.
-          </p>
-        </div>
-        <div className="flex items-center justify-center">
-            <DisplayCards cards={cards} />
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8 }}
+            className="text-left md:max-w-md"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+              Diga Adeus aos <span className="text-primary">Problemas de Pagamento</span>
+            </h2>
+            <p className="max-w-3xl mx-auto text-lg text-muted-foreground">
+              Deixe para trás as dores de cabeça dos gateways tradicionais e abrace a eficiência da Fusion Pay.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex items-center justify-center md:justify-end"
+          >
+              <DisplayCards cards={cards} />
+          </motion.div>
         </div>
       </div>
     </section>
