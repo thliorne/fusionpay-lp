@@ -6,6 +6,11 @@ import {
   Zap,
   ShieldCheck,
   TrendingUp,
+  ShoppingCart,
+  Boxes,
+  Store,
+  Truck,
+  BookCopy,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -24,11 +29,12 @@ const benefits = [
   },
 ];
 
-const socialProofLogos = [
-  { name: 'Company A', logo: 'https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg' },
-  { name: 'Company B', logo: 'https://tailwindui.com/img/logos/158x48/reform-logo-white.svg' },
-  { name: 'Company C', logo: 'https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg' },
-  { name: 'Company D', logo: 'https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg' },
+const businessTypes = [
+  { name: 'E-commerce', icon: <ShoppingCart className="w-5 h-5" /> },
+  { name: 'SaaS', icon: <Boxes className="w-5 h-5" /> },
+  { name: 'Marketplaces', icon: <Store className="w-5 h-5" /> },
+  { name: 'Dropshipping', icon: <Truck className="w-5 h-5" /> },
+  { name: 'Infoprodutos', icon: <BookCopy className="w-5 h-5" /> },
 ];
 
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -91,10 +97,13 @@ export function ContactSection() {
           </div>
           
           <div className="mt-16 text-center">
-            <p className="text-sm text-muted-foreground mb-4">Escolhido por negócios digitais em todo o Brasil</p>
-            <div className="flex justify-center items-center gap-8 opacity-50">
-              {socialProofLogos.map(logo => (
-                <img key={logo.name} src={logo.logo} alt={logo.name} className="h-6 object-contain" />
+            <p className="text-sm text-muted-foreground mb-6">Escolhido por negócios digitais em todo o Brasil</p>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-muted-foreground/70">
+              {businessTypes.map(type => (
+                <div key={type.name} className="flex items-center gap-2">
+                  {type.icon}
+                  <span className="text-sm">{type.name}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -107,3 +116,4 @@ export function ContactSection() {
     </section>
   );
 }
+    
