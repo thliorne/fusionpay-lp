@@ -204,78 +204,15 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Right Column: Form */}
-            <div className="mt-12 lg:mt-0">
-              <div className="bg-card/70 border border-border/50 rounded-2xl p-8">
-                <AnimatePresence mode="wait">
-                  {isSubmitted ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      className="text-center py-8"
-                    >
-                      <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                      <h3 className="text-2xl font-bold mb-2">Recebemos seus dados!</h3>
-                      <p className="text-muted-foreground">Um especialista entrará em contato em breve.</p>
-                      <Button onClick={() => setIsSubmitted(false)} className="mt-6">Solicitar novamente</Button>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <h3 className="text-2xl font-bold mb-1 text-center">Ou solicite uma proposta</h3>
-                      <p className="text-muted-foreground text-center mb-6">Preencha os campos abaixo.</p>
-                      <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                          <FormField control={form.control} name="nome" render={({ field }) => (
-                            <FormItem><FormControl><InputWithIcon placeholder="Nome completo" {...field} icon={<User />} /></FormControl><FormMessage /></FormItem>
-                          )} />
-                          <FormField control={form.control} name="email" render={({ field }) => (
-                            <FormItem><FormControl><InputWithIcon type="email" placeholder="seuemail@empresa.com" {...field} icon={<Mail />} /></FormControl><FormMessage /></FormItem>
-                          )} />
-                          <FormField control={form.control} name="empresa" render={({ field }) => (
-                            <FormItem><FormControl><InputWithIcon placeholder="Nome da empresa (opcional)" {...field} icon={<Building />} /></FormControl><FormMessage /></FormItem>
-                          )} />
-                          <FormField control={form.control} name="faturamento" render={({ field }) => (
-                              <FormItem>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                      <FormControl>
-                                          <SelectTriggerWithIcon icon={<DollarSign />}>
-                                              <SelectValue placeholder="Volume mensal estimado" />
-                                          </SelectTriggerWithIcon>
-                                      </FormControl>
-                                      <SelectContent>
-                                          <SelectItem value="ate_50k">Até R$ 50 mil</SelectItem>
-                                          <SelectItem value="50k_200k">R$ 50 mil – R$ 200 mil</SelectItem>
-                                          <SelectItem value="200k_1M">R$ 200 mil – R$ 1 milhão</SelectItem>
-                                          <SelectItem value="acima_1M">Acima de R$ 1 milhão</SelectItem>
-                                      </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                              </FormItem>
-                          )} />
-                          <FormField control={form.control} name="mensagem" render={({ field }) => (
-                            <FormItem><FormControl><Textarea placeholder="Conte rapidamente o seu cenário..." {...field} /></FormControl><FormMessage /></FormItem>
-                          )} />
-
-                          <Button type="submit" className="w-full h-12 text-base" disabled={isSubmitting}>
-                            {isSubmitting ? (
-                              <><Loader className="mr-2 h-4 w-4 animate-spin" /> Enviando...</>
-                            ) : (
-                              <><Send className="mr-2 h-4 w-4" /> Solicitar proposta</>
-                            )}
-                          </Button>
-                        </form>
-                      </Form>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+            {/* Right Column: CTA Button */}
+            <div className="mt-12 lg:mt-0 flex items-center justify-center">
+                <Button 
+                  size="lg" 
+                  className="h-14 text-lg px-8 rounded-full"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Negocie suas taxas
+                </Button>
             </div>
           </div>
           
