@@ -1,132 +1,252 @@
 "use client";
-import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
+import { useEffect, useState } from "react";
 import { Header } from '@/components/layout/header';
-import Link from 'next/link';
 
-const Particles = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    const particles: { x: number; y: number; size: number; speedX: number; speedY: number }[] = [];
-    const particleCount = 100;
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        size: Math.random() * 2 + 1,
-        speedX: Math.random() * 0.5 - 0.25,
-        speedY: Math.random() * 0.5 - 0.25,
-      });
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x > width || p.x < 0) p.speedX *= -1;
-        if (p.y > height || p.y < 0) p.speedY *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 122, 0, 0.5)';
-        ctx.fill();
-      }
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-  }, []);
-
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-30" />;
-};
-
+// Hero section inspirado na referência enviada, adaptado para o branding Fusion Pay.
+// - Cores: preto (#0b0b0f), branco, laranja neon (#FF5722)
+// - Totalmente responsivo
+// - Cards flutuantes simulando dashboard/atividade
+// - Acessível (aria-labels e foco visível)
+// - Botões/CTAs claros
 
 export function HeroSection() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  const handleScrollTo = (id: string) => (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-    e.preventDefault();
-    document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  };
-  
   return (
-    <section className="relative bg-gradient-to-b from-background to-background/90 text-foreground overflow-hidden min-h-screen flex flex-col justify-center items-center py-24 sm:py-32">
+    <section className="relative overflow-hidden bg-[#0b0b0f] text-white">
       <Header />
-      <Particles />
-      <div className="absolute inset-0 bg-background/50 z-10"></div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20">
-        <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-tight text-primary"
-            style={{ 
-              textShadow: '0 0 20px rgba(255,122,0,0.5), 0 0 30px rgba(255,122,0,0.3)',
-            }}
-        >
-          Fusion Pay
-        </motion.h1>
-
-        <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="max-w-2xl mx-auto text-lg sm:text-xl text-foreground/80 mt-6 mb-10">
-          O gateway rápido, seguro e feito para o seu negócio escalar.
-        </motion.p>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
-        >
-          <Button 
-            asChild
-            size="lg"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-primary text-primary-foreground font-semibold rounded-lg shadow-lg shadow-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/60 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background animate-pulse-orange"
-          >
-            <Link href="https://www.instagram.com/fusionpaybr/" target="_blank">
-              Negocie suas taxas agora
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </motion.div>
+      {/* Glow/accents de fundo */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-32 -top-24 h-72 w-72 rounded-full blur-3xl opacity-30" style={{
+          background:
+            "radial-gradient(closest-side, rgba(255,87,34,0.25), rgba(255,87,34,0) 70%)",
+        }} />
+        <div className="absolute right-[-120px] top-1/3 h-80 w-80 rounded-full blur-3xl opacity-30" style={{
+          background:
+            "radial-gradient(closest-side, rgba(255,87,34,0.18), rgba(255,87,34,0) 70%)",
+        }} />
+        <div className="absolute bottom-[-120px] left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl opacity-25" style={{
+          background:
+            "radial-gradient(closest-side, rgba(255,255,255,0.08), rgba(255,255,255,0) 70%)",
+        }} />
       </div>
 
-       <style jsx>{`
-        @keyframes pulse-orange {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(255, 122, 0, 0.4);
-          }
-          50% {
-            box-shadow: 0 0 35px rgba(255, 122, 0, 0.7);
-          }
-        }
-        .animate-pulse-orange {
-          animation: pulse-orange 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
-        }
-      `}</style>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 sm:py-24 md:grid-cols-2 lg:gap-16 pt-32 md:pt-48">
+        {/* Coluna Esquerda: Copy + CTAs */}
+        <div>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 backdrop-blur">
+            <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#00ff95]"></span>
+            Uptime 99,9% • Saque D+0 direto na conta
+          </div>
+
+           <h1 className="text-balance text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
+             Construa um <span className="text-white">gateway</span> que
+             <br className="hidden sm:block" />
+             <span className="text-[#FF5722]">acelera</span> seu crescimento
+           </h1>
+
+           <p className="mt-5 max-w-xl text-lg text-white/70">
+             A Fusion Pay reúne velocidade, antifraude inteligente e liquidez instantânea.
+             Mova seus recebíveis no ritmo do seu negócio e venda com previsibilidade.
+           </p>
+
+           <div className="mt-7 flex flex-wrap items-center gap-3">
+             <a
+               href="#contato"
+               className="group inline-flex items-center justify-center rounded-xl bg-[#FF5722] px-5 py-3 font-semibold text-black transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5722]/80"
+               aria-label="Abrir conta agora"
+             >
+               Abrir conta agora
+               <svg className="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+             </a>
+             <a
+               href="#contact"
+               className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white/90 backdrop-blur transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+               aria-label="Negociar taxas"
+             >
+               Negociar taxas
+             </a>
+           </div>
+
+           {/* Trust bar */}
+           <div className="mt-10 space-y-3">
+             <p className="text-xs uppercase tracking-wide text-white/50">Empresas que confiam</p>
+             <div className="flex flex-wrap items-center gap-x-8 gap-y-4 opacity-70">
+               <LogoPlaceholder label="Zedy"/>
+               <LogoPlaceholder label="Stelar"/>
+               <LogoPlaceholder label="Luna"/>
+               <LogoPlaceholder label="Vega"/>
+             </div>
+           </div>
+        </div>
+
+        {/* Coluna Direita: Mockup/Cartões */}
+        <div className="relative">
+          <div className="relative mx-auto w-full max-w-[560px]">
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.02] p-4 shadow-2xl backdrop-blur">
+              {/* Top bar */}
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="h-3 w-3 rounded-full bg-[#FF5722]"/>
+                  <div className="h-3 w-3 rounded-full bg-white/25"/>
+                  <div className="h-3 w-3 rounded-full bg-white/10"/>
+                </div>
+                <span className="rounded-md bg-white/5 px-2 py-1 text-[10px] text-white/70">Dashboard • Live</span>
+              </div>
+
+              {/* Cards internos */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <StatCard title="Transferência Recebida" value="R$ 15.297,00" positive />
+                <StatCard title="Aprovação" value="98,7%" />
+                <MiniChart />
+                <Tasks />
+              </div>
+            </div>
+
+            {/* Cards flutuantes */}
+            <FloatingCard className="-left-6 -top-6 rotate-[-4deg]" label="Joana Watson" role="UI designer" time="24:15:05" />
+            <FloatingBadge className="right-6 -top-8" text="Antifraude Ativo" />
+            <FloatingBadge className="-right-4 bottom-10" text="PIX Instantâneo" />
+          </div>
+        </div>
+      </div>
+
+       {/* Separador sutil */}
+       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
+  );
+}
+
+function LogoPlaceholder({ label }: { label: string }) {
+  return (
+    <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/70">
+      <div className="h-4 w-4 rounded-sm bg-white/20" />
+      {label} Checkout
+    </div>
+  );
+}
+
+function StatCard({ title, value, positive }: { title: string; value: string; positive?: boolean }) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
+      <p className="text-xs text-white/60">{title}</p>
+      <div className="mt-1 flex items-baseline gap-2">
+        <p className="text-lg font-semibold text-white">{value}</p>
+        {positive !== undefined && (
+          <span className={`text-[10px] ${positive ? "text-[#00ff95]" : "text-red-400"}`}>
+            {positive ? "▲" : "▼"} {positive ? "+3.2%" : "-1.1%"}
+          </span>
+        )}
+      </div>
+      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+        <div className="h-full w-2/3 bg-[#FF5722]" />
+      </div>
+    </div>
+  );
+}
+
+function MiniChart() {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
+      <p className="text-xs text-white/60">Análise</p>
+      <div className="mt-3 h-28 w-full">
+        <svg viewBox="0 0 200 100" className="h-full w-full">
+          <polyline
+            fill="none"
+            stroke="currentColor"
+            className="text-white/25"
+            strokeWidth="2"
+            points="0,80 50,60 90,70 120,40 160,50 200,30"
+          />
+          <polyline
+            fill="none"
+            stroke="currentColor"
+            className="text-[#FF5722]"
+            strokeWidth="3"
+            points="0,90 40,70 80,72 120,36 160,44 200,22"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Tasks() {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
+      <p className="text-xs text-white/60">To do</p>
+      <div className="mt-3 space-y-3">
+        {[
+          { label: "Revisar webhooks", done: true },
+          { label: "Testar antifraude", done: false },
+          { label: "Configurar Pix", done: false },
+        ].map((t, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <span
+              className={`grid h-4 w-4 place-items-center rounded border ${
+                t.done
+                  ? "border-[#00ff95]/40 bg-[#00ff95]/20"
+                  : "border-white/20 bg-transparent"
+              }`}
+              aria-hidden
+            >
+              {t.done && (
+                <svg viewBox="0 0 24 24" className="h-3 w-3 text-[#00ff95]" fill="currentColor">
+                  <path d="M9 16.17l-3.88-3.88-1.42 1.41L9 19 21.3 6.7l-1.41-1.41z" />
+                </svg>
+              )}
+            </span>
+            <span className={t.done ? "text-white/50 line-through" : "text-white/80"}>{t.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FloatingCard({ className = "", label, role, time }: { className?: string; label: string; role: string; time: string }) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  
+  return (
+    <div
+      className={`absolute ${className} hidden select-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80 shadow-xl backdrop-blur sm:flex items-center gap-3 ${
+        isMounted ? "animate-[float_6s_ease-in-out_infinite]" : ""
+      }`}
+      style={{
+        transformOrigin: "center",
+      }}
+    >
+      <div className="h-9 w-9 rounded-xl bg-white/10" />
+      <div className="leading-tight">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-white">{label}</span>
+          <span className="rounded-md bg-[#00ff95]/15 px-2 py-0.5 text-[10px] text-[#00ff95]">online</span>
+        </div>
+        <p className="text-[12px] text-white/60">{role}</p>
+        <p className="text-[11px] text-white/40">Tempo: {time}</p>
+      </div>
+    </div>
+  );
+}
+
+function FloatingBadge({ className = "", text }: { className?: string; text: string }) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  return (
+    <div
+      className={`absolute ${className} hidden select-none rounded-xl border border-white/10 bg-black/60 px-3 py-2 text-xs text-white/80 shadow-xl backdrop-blur sm:block ${
+        isMounted ? "animate-[float_7s_ease-in-out_infinite]" : ""
+      }`}
+    >
+      {text}
+    </div>
   );
 }

@@ -138,6 +138,13 @@
   -webkit-background-clip: text;
 }
 
+@layer utilities {
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+}
+
 @layer base {
   @property --pos-x {
     syntax: '<percentage>';
