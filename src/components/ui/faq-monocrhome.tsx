@@ -4,28 +4,28 @@
  
  const faqs = [
    {
-     question: "How do you decide which problems to solve first?",
+     question: "Quais são as taxas da Fusion Pay?",
      answer:
-       "We map opportunities across impact, feasibility, and effort, then prototype the riskiest assumption within 72 hours to make sure we are shipping momentum, not guesswork.",
-     meta: "Discovery",
+       "Oferecemos taxas competitivas e negociáveis, que se adaptam ao seu volume de transações. Entre em contato com um de nossos especialistas para obter uma proposta personalizada.",
+     meta: "Taxas",
    },
    {
-     question: "What does collaboration look like once we start?",
+     question: "Como funciona o saque D+0?",
      answer:
-       "A dedicated trio of design, engineering, and strategy meets daily in a shared async dashboard. Decisions are recorded in-line, so the team, stakeholders, and audit trail stay perfectly aligned.",
-     meta: "Collaboration",
+       "Com a Fusion Pay, você recebe o valor de suas vendas no mesmo dia (D+0), diretamente em sua conta. Isso garante liquidez imediata para o seu negócio e mais agilidade no fluxo de caixa.",
+     meta: "Recebimentos",
    },
    {
-     question: "Can you adapt to an existing design system or stack?",
+     question: "A plataforma é compatível com meu checkout?",
      answer:
-       "Yes. We map tokens, components, and build steps into our pipeline on day one. If a gap appears, we patch the system with regression tests so velocity never compromises fidelity.",
-     meta: "Systems",
+       "Sim. Temos integração com os principais checkouts do mercado, como Stelar, Zedy, Luna e Vega, além de plataformas como Shopify e WooCommerce. A integração é rápida e fácil.",
+     meta: "Integrações",
    },
    {
-     question: "How is quality validated before release?",
+     question: "Como funciona o sistema antifraude?",
      answer:
-       "Accessibility sweeps, automated visual diffs, and performance budgets run on every merge. We ship only after the experience hits the expected thresholds on real devices.",
-     meta: "Quality",
+       "Nosso sistema antifraude utiliza inteligência artificial para analisar cada transação em tempo real, identificando e bloqueando atividades suspeitas para proteger seu negócio e garantir a segurança de suas vendas.",
+     meta: "Segurança",
    },
  ];
  
@@ -67,8 +67,9 @@
  function FAQ1() {
    const getRootTheme = () => {
      if (typeof document === "undefined") return "dark";
+     const themeAttr = document.documentElement.getAttribute("data-theme");
+     if (themeAttr === 'dark' || themeAttr === 'light') return themeAttr;
      if (document.documentElement.classList.contains("dark")) return "dark";
-     if (document.documentElement.classList.contains("light")) return "light";
      if (typeof window !== "undefined" && window.matchMedia) {
        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
      }
@@ -236,7 +237,7 @@
      });
  
       const handleStorage = (event: any) => {
-       if (event.key === "bento-theme") applyThemeFromRoot();
+       if (event.key === "theme") applyThemeFromRoot();
      };
  
       window.addEventListener("storage", handleStorage);
@@ -247,20 +248,8 @@
      };
    }, []);
  
-   const palette = useMemo(() => palettes[theme], [theme]);
+   const palette = useMemo(() => palettes[theme] || palettes.dark, [theme]);
  
-   const toggleTheme = () => {
-     if (typeof document === "undefined") return;
-     const root = document.documentElement;
-     const next = root.classList.contains("dark") ? "light" : "dark";
-     root.classList.toggle("dark", next === "dark");
-     setTheme(next);
-     try {
-       window.localStorage?.setItem("bento-theme", next);
-     } catch (_err) {
-       /* ignore */
-     }
-   };
    const toggleQuestion = (index: number) => setActiveIndex((prev) => (prev === index ? -1 : index));
  
    useEffect(() => {
@@ -300,7 +289,7 @@
    };
  
    return (
-     <div className={`relative min-h-screen w-full overflow-hidden transition-colors duration-700 ${palette.surface}`}>
+     <div className={`relative w-full overflow-hidden transition-colors duration-700 ${palette.surface}`}>
        <div className="absolute inset-0 z-0" style={{ background: palette.aurora }} />
        <div
          className="pointer-events-none absolute inset-0 z-0 opacity-80"
@@ -319,42 +308,21 @@
          >
            <span className="faq1-intro__beam" aria-hidden="true" />
            <span className="faq1-intro__pulse" aria-hidden="true" />
-           <span className="faq1-intro__label">Signal FAQ</span>
+           <span className="faq1-intro__label">Fusion FAQ</span>
            <span className="faq1-intro__meter" aria-hidden="true" />
            <span className="faq1-intro__tick" aria-hidden="true" />
          </div>
  
-          <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-           <div className="space-y-4">
-             <p className={`text-xs uppercase tracking-[0.35em] ${palette.muted}`}>Questions</p>
+          <header className="flex flex-col gap-8">
+           <div className="space-y-4 text-center">
+             <p className={`text-xs uppercase tracking-[0.35em] ${palette.muted}`}>Perguntas Frequentes</p>
              <h1 className={`text-4xl font-semibold leading-tight md:text-5xl ${palette.heading}`}>
-               Focus on the signal, not the noise.
+                Tudo que você precisa saber
              </h1>
-             <p className={`max-w-xl text-base ${palette.muted}`}>
-               Everything you need to know about partnering with our team, condensed into calm monochrome clarity.
+             <p className={`max-w-2xl mx-auto text-base ${palette.muted}`}>
+                Encontre respostas para as dúvidas mais comuns sobre a Fusion Pay e nossos serviços.
              </p>
            </div>
- 
-            <button
-             type="button"
-             onClick={toggleTheme}
-             className={`relative inline-flex h-11 items-center gap-3 rounded-full border px-5 text-sm font-medium transition-colors duration-500 ${palette.toggleSurface} ${palette.toggle}`}
-             aria-pressed={theme === "dark" ? "true" : "false"}
-           >
-             <span className="relative flex h-6 w-6 items-center justify-center">
-               <span
-                 className={`pointer-events-none absolute inset-0 rounded-full border opacity-40 ${
-                   theme === "dark" ? "border-white/30 animate-pulse" : "border-neutral-400/50"
-                 }`}
-               />
-               <span
-                 className={`h-3 w-3 rounded-full transition-all duration-500 ${
-                   theme === "dark" ? "bg-white" : "bg-neutral-900"
-                 }`}
-               />
-             </span>
-             {theme === "dark" ? "Night" : "Day"} mode
-           </button>
          </header>
  
           <ul className="space-y-4">
@@ -447,3 +415,4 @@
  export default FAQ1;
  export { FAQ1 };
  
+    
