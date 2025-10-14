@@ -15,7 +15,7 @@ export function HeroSection() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative overflow-hidden bg-background text-foreground pt-32 pb-16 md:pt-40 md:pb-24">
+    <section className="relative overflow-hidden bg-background text-foreground pt-20 pb-16 md:pt-24 md:pb-24">
       <Header />
       {/* Glow/accents de fundo */}
       <div className="pointer-events-none absolute inset-0">
@@ -33,7 +33,7 @@ export function HeroSection() {
         }} />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
         {/* Coluna Esquerda: Copy + CTAs */}
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs text-foreground/80 backdrop-blur">
@@ -104,7 +104,7 @@ export function HeroSection() {
       </div>
 
        {/* Separador sutil */}
-       <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+       <div className="mt-24 h-px w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
     </section>
   );
 }
