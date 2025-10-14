@@ -28,9 +28,8 @@ export function DashboardSection() {
         <Image
           src={dashboardImage?.imageUrl || "https://i.imgur.com/gzcrZY8.png"}
           alt="Fusion Pay Dashboard"
-          height={720}
-          width={1400}
-          className="mx-auto rounded-2xl object-contain h-full object-center p-8"
+          fill
+          className="mx-auto rounded-2xl object-cover h-full object-center"
           draggable={false}
           data-ai-hint={dashboardImage?.imageHint || "logo"}
         />
