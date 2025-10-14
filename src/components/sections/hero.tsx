@@ -15,7 +15,7 @@ export function HeroSection() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative overflow-hidden bg-background text-foreground pt-32 md:pt-48">
+    <section className="relative overflow-hidden bg-background text-foreground pt-32 pb-16 md:pt-40 md:pb-24">
       <Header />
       {/* Glow/accents de fundo */}
       <div className="pointer-events-none absolute inset-0">
