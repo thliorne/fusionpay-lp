@@ -6,6 +6,7 @@ import { DisplayCardsSection } from '@/components/sections/display-cards-section
 import { ContactSection } from '@/components/sections/contact';
 import { TestimonialsSection } from '@/components/sections/testimonials';
 import { CostComparison } from '@/components/sections/cost-comparison';
+import { DashboardSection } from '@/components/sections/dashboard-section';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <DifferentialsSection />
         <DisplayCardsSection />
         <IntegrationsSection />
+        <DashboardSection />
         <CostComparison />
         <TestimonialsSection />
         <ContactSection />
