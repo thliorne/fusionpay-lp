@@ -72,7 +72,7 @@ function HoverFooter() {
           <div className="flex flex-col space-y-4">
             <Logo />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              O gateway de pagamentos para o futuro do seu negócio.
+              O gateway de pagamentos para escalar o seu negócio.
             </p>
           </div>
 
