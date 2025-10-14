@@ -55,13 +55,8 @@ const SkyToggle = () => {
 }
 
 const StyledWrapper = styled.div`
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 50;
-
   .theme-switch {
-    --toggle-size: 30px;
+    --toggle-size: 24px;
     /* the size is adjusted using font-size,
        this is not transform scale,
        so you can choose any size */
