@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const benefits = [
   {
@@ -87,9 +88,9 @@ export function ContactSection() {
                   size="lg" 
                   variant="outline"
                   className="h-12 text-lg px-8 rounded-full"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  asChild
                 >
-                  Negocie suas taxas
+                  <Link href="https://app.fusionpaybr.com.br/auth/register">Criar conta</Link>
                 </Button>
             </div>
           </div>
