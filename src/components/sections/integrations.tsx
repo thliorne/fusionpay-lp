@@ -2,7 +2,6 @@ import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import Image from "next/image";
 
 const integrations = [
-  { name: 'StelarPay', logoUrl: 'https://i.imgur.com/bYGzQ0V.png' },
   { name: 'Luna', logoUrl: 'https://i.imgur.com/81nB2iR.png' },
   { name: 'Zedy', logoUrl: 'https://i.imgur.com/SYwiJ0Y.jpeg' },
   { name: 'Vega', logoUrl: 'https://i.imgur.com/mFVZZqs.png' },
