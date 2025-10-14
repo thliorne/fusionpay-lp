@@ -33,7 +33,7 @@ export function HeroSection() {
         }} />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
         {/* Coluna Esquerda: Copy + CTAs */}
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs text-foreground/80 backdrop-blur">
