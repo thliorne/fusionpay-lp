@@ -26,13 +26,13 @@ export function DashboardSection() {
         }
       >
         <Image
-          src={dashboardImage?.imageUrl || "https://i.imgur.com/xkAaF4R.png"}
+          src={dashboardImage?.imageUrl || "https://i.imgur.com/gzcrZY8.png"}
           alt="Fusion Pay Dashboard"
           height={720}
           width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          className="mx-auto rounded-2xl object-contain h-full object-center p-8"
           draggable={false}
-          data-ai-hint={dashboardImage?.imageHint || "dashboard fintech"}
+          data-ai-hint={dashboardImage?.imageHint || "logo"}
         />
       </ContainerScroll>
     </div>
