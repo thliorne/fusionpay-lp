@@ -1,4 +1,5 @@
  import React, { useEffect, useMemo, useState } from "react";
+ import { HelpCircle } from "lucide-react";
 
  const INTRO_STYLE_ID = "faq1-animations";
  
@@ -336,7 +337,10 @@
  
           <header className="flex flex-col gap-8">
            <div className="space-y-4 text-center">
-             <p className={`text-xs uppercase tracking-[0.35em] ${palette.muted}`}>Perguntas Frequentes</p>
+             <p className="text-xs uppercase tracking-[0.35em] text-primary font-bold flex items-center justify-center gap-2">
+                <HelpCircle className="w-4 h-4" />
+                Perguntas Frequentes
+              </p>
              <h1 className={`text-4xl font-semibold leading-tight md:text-5xl ${palette.heading}`}>
                 Tudo que você precisa saber
              </h1>
