@@ -13,6 +13,7 @@ import {
   BookCopy,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const benefits = [
   {
@@ -36,10 +37,6 @@ const businessTypes = [
   { name: 'Dropshipping', icon: <Truck className="w-5 h-5" /> },
   { name: 'Infoprodutos', icon: <BookCopy className="w-5 h-5" /> },
 ];
-
-const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24" {...props}><path fillRule="evenodd" d="M12.04 2.75c-5.14 0-9.29 4.15-9.29 9.29s4.15 9.29 9.29 9.29c1.55 0 3.03-.38 4.34-1.09l3.14.82c.23.06.46-.17.4-.4l-.82-3.14c.7-1.3.1-2.79 1.09-4.34 0-5.14-4.15-9.29-9.29-9.29zm-2.07 12.03c-.22.42-.87.8-1.18.85-.31.05-.65.05-1-.06-.35-.1-.83-.34-1.58-1.08-.94-.94-1.55-2.1-1.6-2.2-.05-.1-.44-.6.06-1.1.49-.5.81-.6 1.1-.6.28 0 .49.05.65.34.16.29.56.9.61 1 .05.1.08.16 0 .27-.08.1-.18.2-.31.32-.13.12-.24.2-.35.34-.1.13-.2.24-.1.38.12.18.56.76 1.2 1.41.87.87 1.6 1.12 1.8.18.2-.95.04-1.78.04-1.78.25-.04.5-.06.75-.06.25 0 .5.02.75.06s.2.75.2 1.78c0 .26.1.48.26.65.17.17.38.26.6.26h.02c.26 0 .5-.1.68-.28.2-.2.3-.44.34-.7.04-.25.04-.5.04-.75s-.02-.5-.06-.75c-.04-.25-.04-.5-.04-.75l.02 1.77z" clipRule="evenodd" /></svg>
-);
 
 export function ContactSection() {
   return (
@@ -80,8 +77,9 @@ export function ContactSection() {
                       target="_blank" 
                       rel="noopener noreferrer"
                       data-analytics="cta_whatsapp_cta"
+                      className="flex items-center gap-2"
                     >
-                        <WhatsAppIcon className="w-5 h-5 mr-2"/>
+                        <Image src="https://i.imgur.com/ZOF9KMD.png" alt="WhatsApp Icon" width={20} height={20} />
                         Falar no WhatsApp
                     </a>
                 </Button>
