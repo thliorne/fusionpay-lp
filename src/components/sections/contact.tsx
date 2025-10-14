@@ -74,7 +74,7 @@ export function ContactSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="h-12 text-base px-6 rounded-full group bg-green-500 hover:bg-green-600 text-white">
                     <a 
-                      href="https://wa.me/5511999999999?text=Quero%20negociar%20minhas%20taxas%20na%20Fusion%20Pay" 
+                      href="https://api.whatsapp.com/send/?phone=79644350321&text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20FusionPay&type=phone_number&app_absent=0" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       data-analytics="cta_whatsapp_cta"
