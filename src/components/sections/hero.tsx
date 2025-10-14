@@ -70,16 +70,6 @@ export function HeroSection() {
              </a>
            </div>
 
-           {/* Trust bar */}
-           <div className="mt-10 space-y-3">
-             <p className="text-xs uppercase tracking-wide text-foreground/50">Empresas que confiam</p>
-             <div className="flex flex-wrap items-center gap-x-8 gap-y-4 opacity-70">
-               <LogoPlaceholder label="Zedy"/>
-               <LogoPlaceholder label="Stelar"/>
-               <LogoPlaceholder label="Luna"/>
-               <LogoPlaceholder label="Vega"/>
-             </div>
-           </div>
         </div>
 
         {/* Coluna Direita: Mockup/Cartões */}
