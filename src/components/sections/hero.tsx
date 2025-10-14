@@ -33,7 +33,7 @@ export function HeroSection() {
         }} />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 sm:py-24 md:grid-cols-2 lg:gap-16">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-12 md:grid-cols-2 lg:gap-16">
         {/* Coluna Esquerda: Copy + CTAs */}
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs text-foreground/80 backdrop-blur">
@@ -106,15 +106,6 @@ export function HeroSection() {
        {/* Separador sutil */}
        <div className="h-px w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
     </section>
-  );
-}
-
-function LogoPlaceholder({ label }: { label: string }) {
-  return (
-    <div className="flex items-center gap-2 rounded-lg border border-foreground/10 bg-foreground/5 px-3 py-2 text-xs text-foreground/70">
-      <div className="h-4 w-4 rounded-sm bg-foreground/20" />
-      {label} Checkout
-    </div>
   );
 }
 
