@@ -69,7 +69,7 @@
      overlay: "linear-gradient(130deg, rgba(255,255,255,0.04) 0%, transparent 65%)",
    },
    light: {
-     surface: "bg-slate-100 text-neutral-900",
+     surface: "bg-white text-neutral-900",
      panel: "bg-white/70",
      border: "border-neutral-200",
      heading: "text-neutral-900",
