@@ -4,29 +4,50 @@
  
  const faqs = [
    {
-     question: "Quais são as taxas da Fusion Pay?",
+     question: "Como funciona o FusionPay?",
      answer:
-       "Oferecemos taxas competitivas e negociáveis, que se adaptam ao seu volume de transações. Entre em contato com um de nossos especialistas para obter uma proposta personalizada.",
+       "O FusionPay é um gateway de pagamentos completo que permite você receber pagamentos online de forma rápida e segura. Integrando nossa API ao seu site ou sistema, você pode aceitar PIX, cartões de crédito/débito, boleto e pagamentos internacionais. Processamos as transações em tempo real com nosso sistema antifraude inteligente e transferimos o dinheiro para sua conta em até 24 horas.",
+     meta: "Geral",
+   },
+   {
+     question: "Quais são as taxas cobradas?",
+     answer:
+       "Nossas taxas são transparentes e competitivas: PIX a partir de 0,99%, cartão de crédito de 2,99% + R$ 0,39 por transação, e boleto bancário R$ 2,49 por boleto. Não cobramos mensalidade, taxa de setup ou custos ocultos. Você paga apenas pelas transações aprovadas. Entre em contato para conhecer planos personalizados para alto volume.",
      meta: "Taxas",
    },
    {
-     question: "Como funciona o saque D+0?",
+     question: "Em quanto tempo recebo meu dinheiro?",
      answer:
-       "Com a Fusion Pay, você recebe o valor de suas vendas no mesmo dia (D+0), diretamente em sua conta. Isso garante liquidez imediata para o seu negócio e mais agilidade no fluxo de caixa.",
+       "Temos o saque mais rápido do mercado! Para transações aprovadas, o valor fica disponível para saque em até 24 horas (D+1). Com nosso plano premium, você pode receber no mesmo dia (D+0) para PIX e em 14 dias para cartão de crédito parcelado. Você pode agendar saques automáticos ou fazer transferências manuais quando desejar.",
      meta: "Recebimentos",
    },
    {
-     question: "A plataforma é compatível com meu checkout?",
+     question: "É seguro usar o FusionPay?",
      answer:
-       "Sim. Temos integração com os principais checkouts do mercado, como Stelar, Zedy, Luna e Vega, além de plataformas como Shopify e WooCommerce. A integração é rápida e fácil.",
-     meta: "Integrações",
-   },
-   {
-     question: "Como funciona o sistema antifraude?",
-     answer:
-       "Nosso sistema antifraude utiliza inteligência artificial para analisar cada transação em tempo real, identificando e bloqueando atividades suspeitas para proteger seu negócio e garantir a segurança de suas vendas.",
+       "Absolutamente! Somos certificados PCI-DSS nível 1, o mais alto padrão de segurança para processamento de pagamentos. Utilizamos criptografia SSL/TLS de 256 bits, tokenização de dados sensíveis e sistema antifraude com inteligência artificial que analisa cada transação em tempo real. Seus dados e os dados dos seus clientes estão 100% protegidos.",
      meta: "Segurança",
    },
+   {
+     question: "Como faço para integrar o FusionPay no meu site?",
+     answer:
+       "A integração é muito simples! Oferecemos três formas: 1) Plugins prontos para WooCommerce, Shopify, Magento e outras plataformas - instalação em poucos cliques; 2) API RESTful com documentação completa e SDKs para PHP, Python, Node.js, Ruby e Java; 3) Checkout transparente customizável para sua marca. Nossa equipe técnica oferece suporte completo durante todo o processo de integração.",
+     meta: "Integração",
+   },
+   {
+      question: "Preciso ter CNPJ para usar o FusionPay?",
+      answer: "Sim, para receber pagamentos você precisa de um CNPJ ativo. Aceitamos MEI, ME, LTDA e demais tipos empresariais. Se você ainda não tem CNPJ, podemos te indicar parceiros que facilitam a abertura de empresa de forma rápida e descomplicada. Para testes e desenvolvimento, você pode criar uma conta sandbox sem necessidade de CNPJ.",
+      meta: "Requisitos"
+   },
+   {
+      question: "O FusionPay aceita pagamentos internacionais?",
+      answer: "Sim! Processamos pagamentos internacionais com cartões de crédito das bandeiras Visa, Mastercard, American Express e Elo. Aceitamos mais de 150 moedas com conversão automática para reais. Ideal para quem vende produtos digitais, cursos online, SaaS ou faz exportações. As taxas de câmbio são competitivas e transparentes.",
+      meta: "Internacional"
+   },
+   {
+      question: "Existe contrato de fidelidade ou taxa de cancelamento?",
+      answer: "Não! No FusionPay você tem total liberdade. Não existe contrato de fidelidade, multa rescisória ou taxa de cancelamento. Pode começar hoje e cancelar quando quiser, sem burocracia. Acreditamos que devemos conquistar você todos os dias com qualidade de serviço, não com contratos que te prendem.",
+      meta: "Contrato"
+   }
  ];
  
  const palettes = {
