@@ -15,47 +15,47 @@ export function HeroSection() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative overflow-hidden bg-[#0b0b0f] text-white">
+    <section className="relative overflow-hidden bg-background text-foreground pt-32 md:pt-48">
       <Header />
       {/* Glow/accents de fundo */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 -top-24 h-72 w-72 rounded-full blur-3xl opacity-30" style={{
           background:
-            "radial-gradient(closest-side, rgba(255,87,34,0.25), rgba(255,87,34,0) 70%)",
+            "radial-gradient(closest-side, hsl(var(--primary) / 0.25), transparent 70%)",
         }} />
         <div className="absolute right-[-120px] top-1/3 h-80 w-80 rounded-full blur-3xl opacity-30" style={{
           background:
-            "radial-gradient(closest-side, rgba(255,87,34,0.18), rgba(255,87,34,0) 70%)",
+            "radial-gradient(closest-side, hsl(var(--primary) / 0.18), transparent 70%)",
         }} />
         <div className="absolute bottom-[-120px] left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl opacity-25" style={{
           background:
-            "radial-gradient(closest-side, rgba(255,255,255,0.08), rgba(255,255,255,0) 70%)",
+            "radial-gradient(closest-side, hsl(var(--foreground) / 0.08), transparent 70%)",
         }} />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 sm:py-24 md:grid-cols-2 lg:gap-16 pt-32 md:pt-48">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 sm:py-24 md:grid-cols-2 lg:gap-16">
         {/* Coluna Esquerda: Copy + CTAs */}
         <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 backdrop-blur">
-            <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#00ff95]"></span>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs text-foreground/80 backdrop-blur">
+            <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-green-400"></span>
             Uptime 99,9% • Saque D+0 direto na conta
           </div>
 
            <h1 className="text-balance text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
-             Construa um <span className="text-white">gateway</span> que
+             Construa um <span className="text-foreground">gateway</span> que
              <br className="hidden sm:block" />
-             <span className="text-[#FF5722]">acelera</span> seu crescimento
+             <span className="text-primary">acelera</span> seu crescimento
            </h1>
 
-           <p className="mt-5 max-w-xl text-lg text-white/70">
+           <p className="mt-5 max-w-xl text-lg text-foreground/70">
              A Fusion Pay reúne velocidade, antifraude inteligente e liquidez instantânea.
              Mova seus recebíveis no ritmo do seu negócio e venda com previsibilidade.
            </p>
 
            <div className="mt-7 flex flex-wrap items-center gap-3">
              <a
-               href="#contato"
-               className="group inline-flex items-center justify-center rounded-xl bg-[#FF5722] px-5 py-3 font-semibold text-black transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5722]/80"
+               href="#contact"
+               className="group inline-flex items-center justify-center rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/80"
                aria-label="Abrir conta agora"
              >
                Abrir conta agora
@@ -63,7 +63,7 @@ export function HeroSection() {
              </a>
              <a
                href="#contact"
-               className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white/90 backdrop-blur transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+               className="inline-flex items-center justify-center rounded-xl border border-foreground/15 bg-foreground/5 px-5 py-3 font-semibold text-foreground/90 backdrop-blur transition hover:bg-foreground/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
                aria-label="Negociar taxas"
              >
                Negociar taxas
@@ -72,7 +72,7 @@ export function HeroSection() {
 
            {/* Trust bar */}
            <div className="mt-10 space-y-3">
-             <p className="text-xs uppercase tracking-wide text-white/50">Empresas que confiam</p>
+             <p className="text-xs uppercase tracking-wide text-foreground/50">Empresas que confiam</p>
              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 opacity-70">
                <LogoPlaceholder label="Zedy"/>
                <LogoPlaceholder label="Stelar"/>
@@ -85,15 +85,15 @@ export function HeroSection() {
         {/* Coluna Direita: Mockup/Cartões */}
         <div className="relative">
           <div className="relative mx-auto w-full max-w-[560px]">
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.02] p-4 shadow-2xl backdrop-blur">
+            <div className="rounded-2xl border border-foreground/10 bg-gradient-to-b from-foreground/[0.04] to-foreground/[0.02] p-4 shadow-2xl backdrop-blur">
               {/* Top bar */}
               <div className="mb-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-[#FF5722]"/>
-                  <div className="h-3 w-3 rounded-full bg-white/25"/>
-                  <div className="h-3 w-3 rounded-full bg-white/10"/>
+                  <div className="h-3 w-3 rounded-full bg-primary"/>
+                  <div className="h-3 w-3 rounded-full bg-foreground/25"/>
+                  <div className="h-3 w-3 rounded-full bg-foreground/10"/>
                 </div>
-                <span className="rounded-md bg-white/5 px-2 py-1 text-[10px] text-white/70">Dashboard • Live</span>
+                <span className="rounded-md bg-foreground/5 px-2 py-1 text-[10px] text-foreground/70">Dashboard • Live</span>
               </div>
 
               {/* Cards internos */}
@@ -114,15 +114,15 @@ export function HeroSection() {
       </div>
 
        {/* Separador sutil */}
-       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+       <div className="h-px w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
     </section>
   );
 }
 
 function LogoPlaceholder({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/70">
-      <div className="h-4 w-4 rounded-sm bg-white/20" />
+    <div className="flex items-center gap-2 rounded-lg border border-foreground/10 bg-foreground/5 px-3 py-2 text-xs text-foreground/70">
+      <div className="h-4 w-4 rounded-sm bg-foreground/20" />
       {label} Checkout
     </div>
   );
@@ -130,18 +130,18 @@ function LogoPlaceholder({ label }: { label: string }) {
 
 function StatCard({ title, value, positive }: { title: string; value: string; positive?: boolean }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-      <p className="text-xs text-white/60">{title}</p>
+    <div className="rounded-xl border border-foreground/10 bg-foreground/[0.04] p-4">
+      <p className="text-xs text-foreground/60">{title}</p>
       <div className="mt-1 flex items-baseline gap-2">
-        <p className="text-lg font-semibold text-white">{value}</p>
+        <p className="text-lg font-semibold text-foreground">{value}</p>
         {positive !== undefined && (
-          <span className={`text-[10px] ${positive ? "text-[#00ff95]" : "text-red-400"}`}>
+          <span className={`text-[10px] ${positive ? "text-green-400" : "text-red-400"}`}>
             {positive ? "▲" : "▼"} {positive ? "+3.2%" : "-1.1%"}
           </span>
         )}
       </div>
-      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-        <div className="h-full w-2/3 bg-[#FF5722]" />
+      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
+        <div className="h-full w-2/3 bg-primary" />
       </div>
     </div>
   );
@@ -149,21 +149,20 @@ function StatCard({ title, value, positive }: { title: string; value: string; po
 
 function MiniChart() {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-      <p className="text-xs text-white/60">Análise</p>
+    <div className="rounded-xl border border-foreground/10 bg-foreground/[0.04] p-4">
+      <p className="text-xs text-foreground/60">Análise</p>
       <div className="mt-3 h-28 w-full">
         <svg viewBox="0 0 200 100" className="h-full w-full">
           <polyline
             fill="none"
             stroke="currentColor"
-            className="text-white/25"
+            className="text-foreground/25"
             strokeWidth="2"
             points="0,80 50,60 90,70 120,40 160,50 200,30"
           />
           <polyline
             fill="none"
-            stroke="currentColor"
-            className="text-[#FF5722]"
+            stroke="hsl(var(--primary))"
             strokeWidth="3"
             points="0,90 40,70 80,72 120,36 160,44 200,22"
           />
@@ -175,8 +174,8 @@ function MiniChart() {
 
 function Tasks() {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-      <p className="text-xs text-white/60">To do</p>
+    <div className="rounded-xl border border-foreground/10 bg-foreground/[0.04] p-4">
+      <p className="text-xs text-foreground/60">To do</p>
       <div className="mt-3 space-y-3">
         {[
           { label: "Revisar webhooks", done: true },
@@ -187,18 +186,18 @@ function Tasks() {
             <span
               className={`grid h-4 w-4 place-items-center rounded border ${
                 t.done
-                  ? "border-[#00ff95]/40 bg-[#00ff95]/20"
-                  : "border-white/20 bg-transparent"
+                  ? "border-green-400/40 bg-green-400/20"
+                  : "border-foreground/20 bg-transparent"
               }`}
               aria-hidden
             >
               {t.done && (
-                <svg viewBox="0 0 24 24" className="h-3 w-3 text-[#00ff95]" fill="currentColor">
+                <svg viewBox="0 0 24 24" className="h-3 w-3 text-green-400" fill="currentColor">
                   <path d="M9 16.17l-3.88-3.88-1.42 1.41L9 19 21.3 6.7l-1.41-1.41z" />
                 </svg>
               )}
             </span>
-            <span className={t.done ? "text-white/50 line-through" : "text-white/80"}>{t.label}</span>
+            <span className={t.done ? "text-foreground/50 line-through" : "text-foreground/80"}>{t.label}</span>
           </div>
         ))}
       </div>
@@ -214,21 +213,21 @@ function FloatingCard({ className = "", label, role, time }: { className?: strin
   
   return (
     <div
-      className={`absolute ${className} hidden select-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80 shadow-xl backdrop-blur sm:flex items-center gap-3 ${
+      className={`absolute ${className} hidden select-none rounded-2xl border border-foreground/10 bg-foreground/5 px-4 py-3 text-sm text-foreground/80 shadow-xl backdrop-blur sm:flex items-center gap-3 ${
         isMounted ? "animate-[float_6s_ease-in-out_infinite]" : ""
       }`}
       style={{
         transformOrigin: "center",
       }}
     >
-      <div className="h-9 w-9 rounded-xl bg-white/10" />
+      <div className="h-9 w-9 rounded-xl bg-foreground/10" />
       <div className="leading-tight">
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-white">{label}</span>
-          <span className="rounded-md bg-[#00ff95]/15 px-2 py-0.5 text-[10px] text-[#00ff95]">online</span>
+          <span className="font-semibold text-foreground">{label}</span>
+          <span className="rounded-md bg-green-400/15 px-2 py-0.5 text-[10px] text-green-300">online</span>
         </div>
-        <p className="text-[12px] text-white/60">{role}</p>
-        <p className="text-[11px] text-white/40">Tempo: {time}</p>
+        <p className="text-[12px] text-foreground/60">{role}</p>
+        <p className="text-[11px] text-foreground/40">Tempo: {time}</p>
       </div>
     </div>
   );
@@ -242,7 +241,7 @@ function FloatingBadge({ className = "", text }: { className?: string; text: str
 
   return (
     <div
-      className={`absolute ${className} hidden select-none rounded-xl border border-white/10 bg-black/60 px-3 py-2 text-xs text-white/80 shadow-xl backdrop-blur sm:block ${
+      className={`absolute ${className} hidden select-none rounded-xl border border-foreground/10 bg-background/60 px-3 py-2 text-xs text-foreground/80 shadow-xl backdrop-blur sm:block ${
         isMounted ? "animate-[float_7s_ease-in-out_infinite]" : ""
       }`}
     >
@@ -250,3 +249,4 @@ function FloatingBadge({ className = "", text }: { className?: string; text: str
     </div>
   );
 }
+      
