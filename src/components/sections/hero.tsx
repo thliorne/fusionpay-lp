@@ -33,7 +33,7 @@ export function HeroSection() {
         }} />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6">
         {/* Coluna Esquerda: Copy + CTAs */}
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-xs text-foreground/80 backdrop-blur">
@@ -104,7 +104,7 @@ export function HeroSection() {
       </div>
 
        {/* Separador sutil */}
-       <div className="h-px w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+       <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
     </section>
   );
 }
