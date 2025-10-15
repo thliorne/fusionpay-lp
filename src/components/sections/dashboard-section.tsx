@@ -30,7 +30,7 @@ export function DashboardSection() {
           alt="Fusion Pay Dashboard"
           width={1280}
           height={832}
-          className="mx-auto rounded-2xl object-contain h-full object-center"
+          className="mx-auto h-full w-full object-cover object-center rounded-none"
           draggable={false}
           data-ai-hint={dashboardImage?.imageHint || "logo"}
         />
