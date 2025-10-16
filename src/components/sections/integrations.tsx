@@ -18,7 +18,7 @@ export function IntegrationsSection() {
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4 font-headline">
           Integrado com as melhores plataformas do mercado digital
         </h2>
-        <p className="max-w-[600px] mx-auto text-primary-foreground/80 md:text-xl mb-12">
+        <p className="max-w-[600px] mx-auto text-white/80 md:text-xl mb-12">
           Integre a Fusion Pay com um clique e comece a vender mais com as ferramentas que você já usa.
         </p>
         <div className="relative">
