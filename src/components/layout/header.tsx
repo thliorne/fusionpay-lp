@@ -17,9 +17,6 @@ export function Header() {
           </nav>
         </div>
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="outline" asChild>
-            <Link href="https://app.fusionpaybr.com.br/auth/login">Login</Link>
-          </Button>
           <ThemeToggle />
         </div>
       </div>
