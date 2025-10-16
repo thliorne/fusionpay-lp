@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/header';
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { GradientButton } from "../ui/gradient-button";
+import { Sparkles } from "lucide-react";
 
 // Hero section inspirado na referência enviada, adaptado para o branding Fusion Pay.
 // - Cores: preto (#0b0b0f), branco, laranja neon (#FF5722)
@@ -34,7 +35,8 @@ export function HeroSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-2 text-sm text-muted-foreground backdrop-blur-sm">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary backdrop-blur-sm">
+                <Sparkles className="h-4 w-4" />
                 Gateway de Pagamentos Inteligente
             </div>
 
