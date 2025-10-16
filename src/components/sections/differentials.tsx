@@ -6,33 +6,33 @@ import { cn } from '@/lib/utils';
 const differentials = [
   {
     icon: <Zap className="w-6 h-6 text-primary-foreground" />,
-    title: "Saque instantâneo D+0",
-    description: "Receba seu dinheiro na hora, sem esperar dias. Liquidez imediata para seu negócio crescer."
+    title: "Nossa Missão",
+    description: "Nascemos para impulsionar o sucesso de negócios digitais, oferecendo uma infraestrutura de pagamentos robusta, rápida e transparente."
   },
   {
     icon: <Percent className="w-6 h-6 text-primary-foreground" />,
-    title: "Taxas baixas e negociáveis",
-    description: "Negocie diretamente conosco e pague apenas pelo que faz sentido para seu volume."
+    title: "Visão de Futuro",
+    description: "Ser a espinha dorsal do ecossistema de pagamentos, permitindo que empreendedores foquem no que fazem de melhor: inovar e crescer."
   },
   {
     icon: <Puzzle className="w-6 h-6 text-primary-foreground" />,
-    title: "Integração completa",
-    description: "Compatível com Stelar, Zedy, Luna e Vega Checkout. Implementação em minutos."
+    title: "Tecnologia de Ponta",
+    description: "Investimos pesado em tecnologia para garantir estabilidade, segurança e as maiores taxas de aprovação do mercado."
   },
   {
     icon: <Headset className="w-6 h-6 text-primary-foreground" />,
-    title: "Suporte humano 24h",
-    description: "Time dedicado pronto para resolver qualquer questão, a qualquer momento."
+    title: "Parceria Real",
+    description: "Acreditamos em relações próximas. Nosso sucesso está diretamente ligado ao sucesso dos nossos clientes."
   },
   {
     icon: <ShieldCheck className="w-6 h-6 text-primary-foreground" />,
-    title: "Segurança nível bancário",
-    description: "Certificações PCI-DSS, criptografia de ponta e proteção contra fraudes."
+    title: "Segurança Inabalável",
+    description: "Protegemos cada transação com o que há de mais moderno em segurança cibernética e análise de risco."
   },
   {
     icon: <LayoutGrid className="w-6 h-6 text-primary-foreground" />,
-    title: "Dashboard intuitivo",
-    description: "Acompanhe todas as métricas em tempo real com interface elegante e clara."
+    title: "Simplicidade e Poder",
+    description: "Criamos ferramentas poderosas que são, ao mesmo tempo, intuitivas e fáceis de usar, simplificando a gestão do seu negócio."
   }
 ];
 
@@ -73,7 +73,7 @@ export function DifferentialsSection() {
             </span>
           </h2>
           <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
-            Entenda por que somos a escolha número um para escalar negócios digitais.
+            Somos mais que um gateway de pagamento. Somos o parceiro estratégico que impulsiona o crescimento do seu negócio digital.
           </p>
         </div>
 
