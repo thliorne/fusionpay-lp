@@ -63,17 +63,17 @@ export function DifferentialsSection() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest uppercase text-primary">
             <Zap className="w-4 h-4" />
-            DIFERENCIAIS
+            QUEM SOMOS
           </div>
           <h2 id="diferenciais-title" className="text-4xl md:text-5xl font-bold tracking-tighter">
-            Por que escolher a{" "}
+            Conheça a{" "}
             <span className="relative inline-block text-primary">
               Fusion Pay
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
             </span>
           </h2>
           <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
-            Tecnologia de ponta combinada com atendimento humanizado para impulsionar seu crescimento.
+            Entenda por que somos a escolha número um para escalar negócios digitais.
           </p>
         </div>
 
