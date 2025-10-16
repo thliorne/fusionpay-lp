@@ -163,6 +163,13 @@ export default function RadialOrbitalTimeline({
     return null;
   }
 
+  const getStatusText = (status: TimelineItem["status"]): string => {
+    if (status === "completed") {
+      return "Completado";
+    }
+    return status.replace('-', ' ');
+  };
+
   return (
     <div
       className="w-full min-h-[600px] md:min-h-[800px] h-screen flex flex-col items-center justify-center bg-background text-foreground overflow-hidden relative"
@@ -296,7 +303,7 @@ export default function RadialOrbitalTimeline({
                             item.status
                           )}`}
                         >
-                          {item.status.replace('-', ' ')}
+                          {getStatusText(item.status)}
                         </Badge>
                         <span className="text-xs font-mono text-muted-foreground">
                           {item.date}
