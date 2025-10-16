@@ -16,13 +16,10 @@ export function HeroSection() {
       <Header />
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 dark:bg-black/95 bg-white"
-          style={{
-            backgroundImage: "radial-gradient(circle at center, rgba(29, 31, 35, 0) 0%, #0B0B0D 90%)"
-          }}
+          className="absolute inset-0 bg-white dark:bg-black/95"
         />
         <div 
-          className="absolute inset-0 bg-grid-pattern"
+          className="absolute inset-0 bg-grid-pattern dark:block hidden"
         />
         <div 
           className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
