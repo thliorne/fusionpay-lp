@@ -32,7 +32,7 @@ const benefits = [
   {
     icon: <Puzzle className="size-5" />,
     title: "Integrações rápidas",
-    description: "Conecte-se a Stelar, Zedy, Luna e Vega em poucos cliques."
+    description: "Conecte-se aos melhores gateways e plataformas em poucos cliques."
   }
 ];
 
