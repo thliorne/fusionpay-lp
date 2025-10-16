@@ -73,6 +73,7 @@ export default {
       },
       backgroundImage: {
         'grid-pattern': "linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)",
+        'grid-pattern-light': "linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)",
       },
       backgroundSize: {
         'grid-pattern': "40px 40px",

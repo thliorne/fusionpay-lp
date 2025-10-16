@@ -19,7 +19,7 @@ export function HeroSection() {
           className="absolute inset-0 bg-white dark:bg-black/95"
         />
         <div 
-          className="absolute inset-0 bg-grid-pattern dark:block hidden"
+          className="absolute inset-0 bg-grid-pattern-light dark:bg-grid-pattern"
         />
         <div 
           className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
