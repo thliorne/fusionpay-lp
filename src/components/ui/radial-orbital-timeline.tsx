@@ -4,6 +4,7 @@ import { ArrowRight, Link, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 interface TimelineItem {
   id: number;
@@ -214,7 +215,7 @@ export default function RadialOrbitalTimeline({
               className="absolute w-40 h-40 rounded-full border border-primary/10 animate-ping opacity-50"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <div className="w-12 h-12 rounded-full bg-primary/80 backdrop-blur-md"></div>
+            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={48} height={48} className="w-12 h-12 rounded-full bg-primary/80 backdrop-blur-md" />
           </div>
 
           <div className="absolute w-[560px] h-[560px] rounded-full border border-border/20"></div>
