@@ -16,7 +16,7 @@ export function HeroSection() {
       <Header />
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-black/95"
+          className="absolute inset-0 dark:bg-black/95 bg-white"
           style={{
             backgroundImage: "radial-gradient(circle at center, rgba(29, 31, 35, 0) 0%, #0B0B0D 90%)"
           }}
