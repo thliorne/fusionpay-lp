@@ -1,5 +1,5 @@
 "use client";
-import { Check, ShieldCheck, Zap, Percent, Puzzle, Headset } from "lucide-react";
+import { Check, ShieldCheck, Zap, Percent, Puzzle, Headset, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -54,8 +54,9 @@ export function DisplayCardsSection() {
           {/* Coluna Esquerda: Texto */}
           <div className="lg:col-span-7">
             <motion.div {...fadeInAnimation} transition={{ duration: 0.5 }}>
-              <div className="inline-block bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
-                Por que Fusion Pay?
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
+                <Sparkles className="size-4" />
+                Diferenciais
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
                 Diga adeus aos problemas de pagamento
