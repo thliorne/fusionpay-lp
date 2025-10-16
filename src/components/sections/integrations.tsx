@@ -15,7 +15,7 @@ export function IntegrationsSection() {
   return (
     <section className="py-12 md:py-24 bg-primary text-primary-foreground">
       <div className="container text-center">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4 font-headline">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4 font-headline text-white">
           Integrado com as melhores plataformas do mercado digital
         </h2>
         <p className="max-w-[600px] mx-auto text-white/80 md:text-xl mb-12">
