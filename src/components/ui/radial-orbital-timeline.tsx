@@ -39,6 +39,11 @@ export default function RadialOrbitalTimeline({
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -153,6 +158,10 @@ export default function RadialOrbitalTimeline({
         return "text-white/80 bg-white/20 border-white/30";
     }
   };
+  
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div
