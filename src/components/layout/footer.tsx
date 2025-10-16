@@ -11,8 +11,8 @@ import {
   Globe,
 } from "lucide-react";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
-import { TextHoverEffect } from "@/components/ui/hover-footer";
 import { Logo } from "../icons/logo";
+import { TextHoverEffect } from "../ui/text-hover-effect";
 
 function HoverFooter() {
   const footerLinks = [
