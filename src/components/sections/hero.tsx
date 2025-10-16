@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { GradientButton } from "../ui/gradient-button";
 import { Sparkles } from "lucide-react";
+import AnimatedShaderBackground from "../ui/animated-shader-background";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -14,21 +15,16 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-background text-foreground pt-32 pb-24 md:pt-40 md:pb-32">
       <Header />
+      <AnimatedShaderBackground />
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-white dark:bg-black/95"
+          className="absolute inset-0 bg-white/0 dark:bg-black/80"
         />
         <div 
-          className="absolute inset-0 bg-grid-pattern-light dark:bg-grid-pattern"
+          className="absolute inset-0 bg-grid-pattern-light dark:bg-grid-pattern opacity-50 dark:opacity-100"
         />
         <div 
           className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
-        />
-        <div 
-          className="animate-move-background absolute inset-0 bg-[radial-gradient(circle_400px_at_50%_300px,hsl(var(--primary)/0.2),transparent)]"
-          style={{
-            backgroundSize: '200% 200%',
-          }}
         />
       </div>
 
@@ -40,7 +36,7 @@ export function HeroSection() {
                 Gateway de Pagamentos Inteligente
             </div>
 
-            <h1 className="text-balance text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl">
+            <h1 className="text-balance text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
                 Acelere seus recebimentos com a <span className="text-primary">Fusion Pay</span>
             </h1>
 
