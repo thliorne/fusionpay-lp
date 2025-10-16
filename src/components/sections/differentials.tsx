@@ -37,7 +37,7 @@ const timelineData = [
     category: "Tecnologia",
     icon: Puzzle,
     relatedIds: [1, 2, 5],
-    status: "in-progress" as const,
+    status: "completed" as const,
     energy: 80,
   },
   {
@@ -49,7 +49,7 @@ const timelineData = [
     category: "Cultura",
     icon: Headset,
     relatedIds: [2, 6],
-    status: "pending" as const,
+    status: "completed" as const,
     energy: 40,
   },
   {
@@ -61,7 +61,7 @@ const timelineData = [
     category: "Segurança",
     icon: ShieldCheck,
     relatedIds: [3, 6],
-    status: "pending" as const,
+    status: "completed" as const,
     energy: 20,
   },
   {
@@ -73,7 +73,7 @@ const timelineData = [
     category: "Produto",
     icon: LayoutGrid,
     relatedIds: [4, 5],
-    status: "pending" as const,
+    status: "completed" as const,
     energy: 10,
   },
 ];
