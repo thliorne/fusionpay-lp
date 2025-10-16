@@ -1,109 +1,84 @@
 "use client";
-import { motion } from 'framer-motion';
-import { Zap, Percent, Puzzle, Headset, ShieldCheck, LayoutGrid } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
-const differentials = [
+import { Calendar, Code, FileText, User, Clock, Zap, Percent, Puzzle, Headset, ShieldCheck, LayoutGrid } from "lucide-react";
+import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
+
+const timelineData = [
   {
-    icon: <Zap className="w-6 h-6 text-primary-foreground" />,
+    id: 1,
     title: "Nossa Missão",
-    description: "Nascemos para impulsionar o sucesso de negócios digitais, oferecendo uma infraestrutura de pagamentos robusta, rápida e transparente."
+    date: "2021",
+    content:
+      "Nascemos para impulsionar o sucesso de negócios digitais, oferecendo uma infraestrutura de pagamentos robusta, rápida e transparente.",
+    category: "Fundação",
+    icon: Zap,
+    relatedIds: [2, 3],
+    status: "completed" as const,
+    energy: 100,
   },
   {
-    icon: <Percent className="w-6 h-6 text-primary-foreground" />,
+    id: 2,
     title: "Visão de Futuro",
-    description: "Ser a espinha dorsal do ecossistema de pagamentos, permitindo que empreendedores foquem no que fazem de melhor: inovar e crescer."
+    date: "2022",
+    content:
+      "Ser a espinha dorsal do ecossistema de pagamentos, permitindo que empreendedores foquem no que fazem de melhor: inovar e crescer.",
+    category: "Estratégia",
+    icon: Percent,
+    relatedIds: [1, 3, 4],
+    status: "completed" as const,
+    energy: 95,
   },
   {
-    icon: <Puzzle className="w-6 h-6 text-primary-foreground" />,
+    id: 3,
     title: "Tecnologia de Ponta",
-    description: "Investimos pesado em tecnologia para garantir estabilidade, segurança e as maiores taxas de aprovação do mercado."
+    date: "2023",
+    content:
+      "Investimos pesado em tecnologia para garantir estabilidade, segurança e as maiores taxas de aprovação do mercado.",
+    category: "Tecnologia",
+    icon: Puzzle,
+    relatedIds: [1, 2, 5],
+    status: "in-progress" as const,
+    energy: 80,
   },
   {
-    icon: <Headset className="w-6 h-6 text-primary-foreground" />,
+    id: 4,
     title: "Parceria Real",
-    description: "Acreditamos em relações próximas. Nosso sucesso está diretamente ligado ao sucesso dos nossos clientes."
+    date: "Q3 2024",
+    content:
+      "Acreditamos em relações próximas. Nosso sucesso está diretamente ligado ao sucesso dos nossos clientes.",
+    category: "Cultura",
+    icon: Headset,
+    relatedIds: [2, 6],
+    status: "pending" as const,
+    energy: 40,
   },
   {
-    icon: <ShieldCheck className="w-6 h-6 text-primary-foreground" />,
+    id: 5,
     title: "Segurança Inabalável",
-    description: "Protegemos cada transação com o que há de mais moderno em segurança cibernética e análise de risco."
+    date: "Q4 2024",
+    content:
+      "Protegemos cada transação com o que há de mais moderno em segurança cibernética e análise de risco.",
+    category: "Segurança",
+    icon: ShieldCheck,
+    relatedIds: [3, 6],
+    status: "pending" as const,
+    energy: 20,
   },
   {
-    icon: <LayoutGrid className="w-6 h-6 text-primary-foreground" />,
+    id: 6,
     title: "Simplicidade e Poder",
-    description: "Criamos ferramentas poderosas que são, ao mesmo tempo, intuitivas e fáceis de usar, simplificando a gestão do seu negócio."
-  }
+    date: "2025",
+    content:
+      "Criamos ferramentas poderosas que são, ao mesmo tempo, intuitivas e fáceis de usar, simplificando a gestão do seu negócio.",
+    category: "Produto",
+    icon: LayoutGrid,
+    relatedIds: [4, 5],
+    status: "pending" as const,
+    energy: 10,
+  },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  })
-};
 
 export function DifferentialsSection() {
-  const featuredIndex = 2; // "Integração completa" is the 3rd item (index 2)
-
-  return (
-    <section className="relative bg-background text-foreground py-20 md:py-32" aria-labelledby="diferenciais-title">
-      <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_60%)]">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M20%200v20H0v-2h18V0h2zm20%2020v20h-2V22h18v-2H20zM0%200h2v2H0V0zm40%2040h-2v-2h2v2z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
-      </div>
-      <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-background/50 to-transparent z-10" />
-
-      <div className="container mx-auto px-4 relative z-20">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest uppercase text-primary">
-            <Zap className="w-4 h-4" />
-            QUEM SOMOS
-          </div>
-          <h2 id="diferenciais-title" className="text-4xl md:text-5xl font-bold tracking-tighter">
-            Conheça a{" "}
-            <span className="relative inline-block text-primary">
-              Fusion Pay
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
-            </span>
-          </h2>
-          <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
-            Somos mais que um gateway de pagamento. Somos o parceiro estratégico que impulsiona o crescimento do seu negócio digital.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {differentials.map((item, index) => (
-            <motion.div
-              key={index}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={cardVariants}
-              className={cn(
-                "group relative bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:ring-2 hover:ring-primary/50"
-              )}
-            >
-              <div className="absolute -inset-px rounded-2xl border-primary/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ animationDuration: '3s' }}></div>
-              <div className="flex flex-col h-full relative">
-                <div className="mb-6">
-                  <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
-                    {item.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground flex-grow">{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <RadialOrbitalTimeline timelineData={timelineData} />;
 }
