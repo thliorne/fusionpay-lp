@@ -1,4 +1,5 @@
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { Puzzle } from "lucide-react";
 import Image from "next/image";
 
 const integrations = [
@@ -15,10 +16,14 @@ export function IntegrationsSection() {
   return (
     <section className="py-12 md:py-24 bg-primary text-primary-foreground">
       <div className="container text-center">
+        <div className="inline-flex items-center justify-center gap-2 mb-4 text-sm font-bold tracking-widest uppercase text-white">
+          <Puzzle className="w-5 h-5" />
+          Integrações
+        </div>
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4 font-headline text-white">
           Integrado com as melhores plataformas do mercado digital
         </h2>
-        <p className="max-w-[600px] mx-auto text-white/80 md:text-xl mb-12">
+        <p className="max-w-[600px] mx-auto text-white md:text-xl mb-12">
           Integre a Fusion Pay com um clique e comece a vender mais com as ferramentas que você já usa.
         </p>
         <div className="relative">
