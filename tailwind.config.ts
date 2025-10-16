@@ -71,6 +71,12 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      backgroundImage: {
+        'grid-pattern': "linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)",
+      },
+      backgroundSize: {
+        'grid-pattern': "40px 40px",
+      },
       keyframes: {
         'accordion-down': {
           from: {
@@ -99,6 +105,17 @@ export default {
         'pulse-gradient': {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.2' },
           '50%': { transform: 'scale(1.2)', opacity: '0.3' },
+        },
+        'move-background': {
+          '0%': {
+            'background-position': '0% 50%',
+          },
+          '50%': {
+            'background-position': '100% 50%',
+          },
+          '100%': {
+            'background-position': '0% 50%',
+          }
         }
       },
       animation: {
@@ -107,6 +124,7 @@ export default {
         grid: "grid 15s linear infinite",
         marquee: 'marquee var(--duration) linear infinite',
         'pulse-gradient': 'pulse-gradient 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'move-background': 'move-background 20s ease-in-out infinite',
       },
       maxWidth: {
         container: "1280px",

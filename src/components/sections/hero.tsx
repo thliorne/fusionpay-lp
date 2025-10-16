@@ -7,13 +7,6 @@ import Link from "next/link";
 import { GradientButton } from "../ui/gradient-button";
 import { Sparkles } from "lucide-react";
 
-// Hero section inspirado na referência enviada, adaptado para o branding Fusion Pay.
-// - Cores: preto (#0b0b0f), branco, laranja neon (#FF5722)
-// - Totalmente responsivo
-// - Cards flutuantes simulando dashboard/atividade
-// - Acessível (aria-labels e foco visível)
-// - Botões/CTAs claros
-
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -21,17 +14,27 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-background text-foreground pt-32 pb-24 md:pt-40 md:pb-32">
       <Header />
-      {/* Glow/accents de fundo */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-48 -top-32 h-96 w-96 rounded-full blur-3xl opacity-20" style={{
-          background:
-            "radial-gradient(closest-side, hsl(var(--primary)), transparent)",
-        }} />
-        <div className="absolute -right-48 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full blur-3xl opacity-15" style={{
-          background:
-            "radial-gradient(closest-side, hsl(var(--primary)), transparent)",
-        }} />
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="absolute inset-0 bg-black/95"
+          style={{
+            backgroundImage: "radial-gradient(circle at center, rgba(29, 31, 35, 0) 0%, #0B0B0D 90%)"
+          }}
+        />
+        <div 
+          className="absolute inset-0 bg-grid-pattern"
+        />
+        <div 
+          className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
+        />
+        <div 
+          className="animate-move-background absolute inset-0 bg-[radial-gradient(circle_400px_at_50%_300px,hsl(var(--primary)/0.2),transparent)]"
+          style={{
+            backgroundSize: '200% 200%',
+          }}
+        />
       </div>
+
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="mx-auto max-w-3xl text-center">
