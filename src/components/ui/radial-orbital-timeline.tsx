@@ -100,7 +100,7 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    const radius = 350; // Increased radius
+    const radius = isClient ? window.innerWidth * 0.6 / 2 * 0.7 : 350;
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian) + centerOffset.x;
@@ -154,7 +154,7 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full min-h-[600px] md:min-h-[800px] h-screen flex flex-col items-center justify-center bg-background text-foreground overflow-hidden relative"
+      className="w-full py-20 md:py-32 flex flex-col items-center justify-center bg-background text-foreground overflow-hidden relative"
       ref={containerRef}
       onClick={handleContainerClick}
     >
@@ -163,7 +163,7 @@ export default function RadialOrbitalTimeline({
       </div>
       <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-background/50 to-transparent z-10" />
 
-        <div className="text-center mb-12 z-20">
+        <div className="text-center mb-16 z-20">
           <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest uppercase text-primary">
             <Zap className="w-4 h-4" />
             QUEM SOMOS
@@ -181,7 +181,7 @@ export default function RadialOrbitalTimeline({
         </div>
 
 
-      <div className="relative w-full max-w-7xl h-full flex items-center justify-center z-10 -mt-24 md:-mt-32">
+      <div className="relative w-full flex items-center justify-center z-10 h-[calc(60vw)] max-h-[800px]" style={{width: '60vw', maxWidth: '1200px'}}>
         <div
           className="absolute w-full h-full flex items-center justify-center"
           ref={orbitRef}
@@ -199,7 +199,7 @@ export default function RadialOrbitalTimeline({
             <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={64} height={64} className="w-16 h-16 rounded-full bg-primary/80 backdrop-blur-md" />
           </div>
 
-          <div className="absolute w-[700px] h-[700px] rounded-full border border-border/20"></div>
+          <div className="absolute w-full h-full rounded-full border border-border/20"></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
@@ -208,17 +208,21 @@ export default function RadialOrbitalTimeline({
             const isPulsing = pulseEffect[item.id];
             const Icon = item.icon;
 
+            const nodeSize = isClient ? window.innerWidth * 0.08 : 120;
+
             const nodeStyle: React.CSSProperties = {
               transform: `translate(${position.x}px, ${position.y}px) scale(${isExpanded ? 1.1 : position.scale})`,
               zIndex: isExpanded ? 200 : position.zIndex,
               opacity: isExpanded ? 1 : position.opacity,
+              width: `${nodeSize}px`,
+              height: `${nodeSize}px`,
             };
 
             return (
               <div
                 key={item.id}
                 ref={(el) => (nodeRefs.current[item.id] = el)}
-                className="absolute transition-all duration-700 cursor-pointer group/node"
+                className="absolute transition-all duration-700 cursor-pointer group/node flex items-center justify-center"
                 style={nodeStyle}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -231,16 +235,14 @@ export default function RadialOrbitalTimeline({
                   }`}
                   style={{
                     background: `radial-gradient(circle, hsl(var(--primary)/0.2) 0%, transparent 70%)`,
-                    width: `${item.energy * 0.7 + 60}px`,
-                    height: `${item.energy * 0.7 + 60}px`,
-                    left: `-${(item.energy * 0.7 + 60 - 112) / 2}px`,
-                    top: `-${(item.energy * 0.7 + 60 - 112) / 2}px`,
+                    width: `${item.energy * 0.7 + nodeSize * 0.6}px`,
+                    height: `${item.energy * 0.7 + nodeSize * 0.6}px`,
                   }}
                 ></div>
 
                 <div
                   className={`
-                   w-28 h-28 rounded-full flex items-center justify-center
+                   w-full h-full rounded-full flex items-center justify-center
                   ${
                     isExpanded
                       ? "bg-primary text-primary-foreground"
@@ -260,12 +262,12 @@ export default function RadialOrbitalTimeline({
                    group-hover/node:scale-110
                  `}
                 >
-                  <Icon size={48} />
+                  <Icon size={nodeSize * 0.4} />
                 </div>
 
                 <div
                   className={`
-                   absolute top-32 left-1/2 -translate-x-1/2 whitespace-nowrap
+                   absolute text-center -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap
                    text-base font-semibold tracking-wider
                    transition-all duration-300
                    ${isExpanded ? "text-foreground scale-110" : "text-muted-foreground"}
@@ -276,7 +278,7 @@ export default function RadialOrbitalTimeline({
                 </div>
 
                 {isExpanded && (
-                  <Card className="absolute top-40 left-1/2 -translate-x-1/2 w-72 bg-card/90 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible">
+                  <Card className="absolute top-[calc(100%+3rem)] left-1/2 -translate-x-1/2 w-72 bg-card/90 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible">
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-border/80"></div>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-center">
