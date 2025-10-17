@@ -21,7 +21,7 @@ export function HeroSection() {
           className="absolute inset-0 bg-white/0 dark:bg-black/80"
         />
         <div 
-          className="absolute inset-0 bg-grid-pattern-light dark:bg-grid-pattern opacity-50 dark:opacity-100"
+          className="absolute inset-0 bg-grid-pattern-light opacity-50 dark:opacity-0"
         />
         <div 
           className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
