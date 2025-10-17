@@ -59,7 +59,7 @@ export function DisplayCardsSection() {
                 Diferenciais
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-                Por que escolher a Fusion Pay?
+                Por que escolher a <span className="text-primary">Fusion Pay?</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-12">
                 Velocidade, estabilidade e segurança para você vender sem travar.
