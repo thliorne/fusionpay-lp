@@ -30,7 +30,7 @@ export default function RadialOrbitalTimeline({
   );
   const [viewMode, setViewMode] = useState<"orbital">("orbital");
   const [rotationAngle, setRotationAngle] = useState<number>(0);
-  const [autoRotate, setAutoRotate] = useState<boolean>(true);
+  const [autoRotate, setAutoRotate] = useState<boolean>(false);
   const [pulseEffect, setPulseEffect] = useState<Record<number, boolean>>({});
   const [centerOffset, setCenterOffset] = useState<{ x: number; y: number }>({
     x: 0,
@@ -51,7 +51,7 @@ export default function RadialOrbitalTimeline({
       setExpandedItems({});
       setActiveNodeId(null);
       setPulseEffect({});
-      setAutoRotate(true);
+      setAutoRotate(false);
     }
   };
 
@@ -80,32 +80,13 @@ export default function RadialOrbitalTimeline({
         centerViewOnNode(id);
       } else {
         setActiveNodeId(null);
-        setAutoRotate(true);
+        setAutoRotate(false);
         setPulseEffect({});
       }
 
       return newState;
     });
   };
-
-  useEffect(() => {
-    let rotationTimer: NodeJS.Timeout;
-
-    if (autoRotate && viewMode === "orbital") {
-      rotationTimer = setInterval(() => {
-        setRotationAngle((prev) => {
-          const newAngle = (prev + 0.3) % 360;
-          return Number(newAngle.toFixed(3));
-        });
-      }, 50);
-    }
-
-    return () => {
-      if (rotationTimer) {
-        clearInterval(rotationTimer);
-      }
-    };
-  }, [autoRotate, viewMode]);
 
   const centerViewOnNode = (nodeId: number) => {
     if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;
@@ -119,7 +100,7 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    const radius = 240;
+    const radius = 200;
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian) + centerOffset.x;
@@ -209,16 +190,16 @@ export default function RadialOrbitalTimeline({
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-28 h-28 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent animate-pulse flex items-center justify-center z-10">
-            <div className="absolute w-36 h-36 rounded-full border border-primary/20 animate-ping opacity-70"></div>
+          <div className="absolute w-36 h-36 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent animate-pulse flex items-center justify-center z-10">
+            <div className="absolute w-44 h-44 rounded-full border border-primary/20 animate-ping opacity-70"></div>
             <div
-              className="absolute w-44 h-44 rounded-full border border-primary/10 animate-ping opacity-50"
+              className="absolute w-52 h-52 rounded-full border border-primary/10 animate-ping opacity-50"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={56} height={56} className="w-14 h-14 rounded-full bg-primary/80 backdrop-blur-md" />
+            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={64} height={64} className="w-16 h-16 rounded-full bg-primary/80 backdrop-blur-md" />
           </div>
 
-          <div className="absolute w-[480px] h-[480px] rounded-full border border-border/20"></div>
+          <div className="absolute w-[400px] h-[400px] rounded-full border border-border/20"></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
@@ -252,14 +233,14 @@ export default function RadialOrbitalTimeline({
                     background: `radial-gradient(circle, hsl(var(--primary)/0.2) 0%, transparent 70%)`,
                     width: `${item.energy * 0.5 + 40}px`,
                     height: `${item.energy * 0.5 + 40}px`,
-                    left: `-${(item.energy * 0.5 + 40 - 50) / 2}px`,
-                    top: `-${(item.energy * 0.5 + 40 - 50) / 2}px`,
+                    left: `-${(item.energy * 0.5 + 40 - 56) / 2}px`,
+                    top: `-${(item.energy * 0.5 + 40 - 56) / 2}px`,
                   }}
                 ></div>
 
                 <div
                   className={`
-                   w-12 h-12 rounded-full flex items-center justify-center
+                   w-14 h-14 rounded-full flex items-center justify-center
                   ${
                     isExpanded
                       ? "bg-primary text-primary-foreground"
@@ -279,13 +260,13 @@ export default function RadialOrbitalTimeline({
                    group-hover/node:scale-110
                  `}
                 >
-                  <Icon size={20} />
+                  <Icon size={24} />
                 </div>
 
                 <div
                   className={`
-                   absolute top-14 left-1/2 -translate-x-1/2 whitespace-nowrap
-                   text-xs font-semibold tracking-wider
+                   absolute top-16 left-1/2 -translate-x-1/2 whitespace-nowrap
+                   text-sm font-semibold tracking-wider
                    transition-all duration-300
                    ${isExpanded ? "text-foreground scale-110" : "text-muted-foreground"}
                    group-hover/node:text-foreground
