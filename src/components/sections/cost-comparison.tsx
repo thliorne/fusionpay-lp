@@ -121,7 +121,7 @@ export function CostComparison() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.4%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] bg-repeat"></div>
       </div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -148,7 +148,8 @@ export function CostComparison() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-card/80 backdrop-blur-md rounded-2xl border border-border p-6 md:p-10 shadow-[0_0_40px_rgba(255,106,0,0.1)]"
+          className="relative bg-card/50 backdrop-blur-lg rounded-2xl border border-transparent p-6 md:p-10 shadow-2xl shadow-black/20
+                     before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:border before:border-primary/20 before:bg-gradient-to-br before:from-primary/10 before:to-transparent before:[mask:linear-gradient(black,black)_content-box,linear-gradient(black,black)] before:[mask-composite:exclude]"
         >
           <div className="text-center mb-8">
             <label className="text-sm text-muted-foreground mb-2 block">Seu faturamento mensal estimado</label>
