@@ -119,7 +119,7 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    const radius = 280;
+    const radius = 240;
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian) + centerOffset.x;
@@ -209,16 +209,16 @@ export default function RadialOrbitalTimeline({
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-24 h-24 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent animate-pulse flex items-center justify-center z-10">
-            <div className="absolute w-32 h-32 rounded-full border border-primary/20 animate-ping opacity-70"></div>
+          <div className="absolute w-28 h-28 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent animate-pulse flex items-center justify-center z-10">
+            <div className="absolute w-36 h-36 rounded-full border border-primary/20 animate-ping opacity-70"></div>
             <div
-              className="absolute w-40 h-40 rounded-full border border-primary/10 animate-ping opacity-50"
+              className="absolute w-44 h-44 rounded-full border border-primary/10 animate-ping opacity-50"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={48} height={48} className="w-12 h-12 rounded-full bg-primary/80 backdrop-blur-md" />
+            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={56} height={56} className="w-14 h-14 rounded-full bg-primary/80 backdrop-blur-md" />
           </div>
 
-          <div className="absolute w-[560px] h-[560px] rounded-full border border-border/20"></div>
+          <div className="absolute w-[480px] h-[480px] rounded-full border border-border/20"></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
