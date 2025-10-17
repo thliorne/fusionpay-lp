@@ -58,7 +58,7 @@ export function ContactSection() {
               Gateway premium • Suporte humano
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Negocie suas taxas e receba no <span className="text-primary">D+0</span>
+              <span className="text-primary">Negocie</span> suas taxas e escale com <span className="text-primary">confiança</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
               Fale com um especialista e tenha a melhor condição para PIX, cartão e boleto — com antifraude inteligente.
