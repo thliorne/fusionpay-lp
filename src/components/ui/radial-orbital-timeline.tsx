@@ -30,7 +30,7 @@ export default function RadialOrbitalTimeline({
   );
   const [viewMode, setViewMode] = useState<"orbital">("orbital");
   const [rotationAngle, setRotationAngle] = useState<number>(0);
-  const [autoRotate, setAutoRotate] = useState<boolean>(false);
+  const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [pulseEffect, setPulseEffect] = useState<Record<number, boolean>>({});
   const [centerOffset, setCenterOffset] = useState<{ x: number; y: number }>({
     x: 0,
@@ -51,22 +51,20 @@ export default function RadialOrbitalTimeline({
       setExpandedItems({});
       setActiveNodeId(null);
       setPulseEffect({});
-      setAutoRotate(false);
+      setAutoRotate(true);
     }
   };
 
   const toggleItem = (id: number) => {
     setExpandedItems((prev) => {
-      const newState = { ...prev };
-      Object.keys(newState).forEach((key) => {
-        if (parseInt(key) !== id) {
-          newState[parseInt(key)] = false;
-        }
-      });
+      const isCurrentlyExpanded = !!prev[id];
+      
+      // Close all items first
+      const newExpandedState: Record<number, boolean> = {};
 
-      newState[id] = !prev[id];
-
-      if (!prev[id]) {
+      if (!isCurrentlyExpanded) {
+        // If we are opening a new one, set it to true
+        newExpandedState[id] = true;
         setActiveNodeId(id);
         setAutoRotate(false);
 
@@ -76,15 +74,16 @@ export default function RadialOrbitalTimeline({
           newPulseEffect[relId] = true;
         });
         setPulseEffect(newPulseEffect);
-
+        
         centerViewOnNode(id);
       } else {
+        // If we are closing the current one, all will be false
         setActiveNodeId(null);
         setAutoRotate(true);
         setPulseEffect({});
       }
 
-      return newState;
+      return newExpandedState;
     });
   };
 
