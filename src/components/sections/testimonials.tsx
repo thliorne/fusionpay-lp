@@ -37,8 +37,17 @@ function TestimonialsContainer({
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:80s]">
-            <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row">
+          <div className="group flex w-max overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:80s]">
+            <div className="flex shrink-0 animate-marquee flex-row items-center justify-around [gap:var(--gap)]">
+              {duplicatedTestimonials.map((testimonial, i) => (
+                <TestimonialCard 
+                  key={i}
+                  {...testimonial}
+                  className="bg-white/10 text-white border-white/20"
+                />
+              ))}
+            </div>
+            <div className="flex shrink-0 animate-marquee flex-row items-center justify-around [gap:var(--gap)]" aria-hidden="true">
               {duplicatedTestimonials.map((testimonial, i) => (
                 <TestimonialCard 
                   key={i}
