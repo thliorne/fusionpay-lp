@@ -42,17 +42,38 @@ export default function RadialOrbitalTimeline({
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const [isClient, setIsClient] = useState(false);
 
+  const isAnyCardOpen = activeNodeId !== null;
+
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === containerRef.current || e.target === orbitRef.current) {
-      setExpandedItems({});
-      setActiveNodeId(null);
-      setPulseEffect({});
-      setAutoRotate(true);
+  const closeAllCards = () => {
+    setExpandedItems({});
+    setActiveNodeId(null);
+    setPulseEffect({});
+    setAutoRotate(true);
+  };
+  
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeAllCards();
+      }
+    };
+  
+    if (isAnyCardOpen) {
+      window.addEventListener("keydown", handleKeyDown);
     }
+  
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isAnyCardOpen]);
+
+
+  const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // This will now be handled by the overlay.
   };
 
   const toggleItem = (id: number) => {
@@ -77,10 +98,7 @@ export default function RadialOrbitalTimeline({
         
         centerViewOnNode(id);
       } else {
-        // If we are closing the current one, all will be false
-        setActiveNodeId(null);
-        setAutoRotate(true);
-        setPulseEffect({});
+        closeAllCards();
       }
 
       return newExpandedState;
@@ -153,10 +171,16 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full py-20 md:py-32 flex flex-col items-center justify-center bg-background text-foreground overflow-hidden relative"
+      className="w-full pt-20 pb-32 flex flex-col items-center justify-center bg-background text-foreground overflow-hidden relative"
       ref={containerRef}
       onClick={handleContainerClick}
     >
+      {isAnyCardOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-transparent"
+          onClick={closeAllCards}
+        />
+      )}
        <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_60%)]">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M20%200v20H0v-2h18V0h2zm20%2020v20h-2V22h18v-2H20zM0%200h2v2H0V0zm40%2040h-2v-2h2v2z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
       </div>
@@ -277,7 +301,10 @@ export default function RadialOrbitalTimeline({
                 </div>
 
                 {isExpanded && (
-                  <Card className="absolute top-[calc(100%+3rem)] left-1/2 -translate-x-1/2 w-72 bg-card/90 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible">
+                  <Card 
+                    className="absolute top-[calc(100%+3rem)] left-1/2 -translate-x-1/2 w-72 bg-card/90 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible z-50"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-border/80"></div>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-center">
