@@ -61,7 +61,7 @@ export function ContactSection() {
               <span className="text-primary">Negocie</span> suas taxas e escale com <span className="text-primary">confiança</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-              Fale com um especialista e tenha a melhor condição para PIX, cartão e boleto — com antifraude inteligente.
+              Fale com um especialista e tenha a melhor condição para PIX, cartão e boleto.
             </p>
             <ul className="flex justify-center items-center gap-6 text-left mb-10 max-w-3xl mx-auto">
               {benefits.map((item, index) => (
