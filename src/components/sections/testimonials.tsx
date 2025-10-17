@@ -18,6 +18,8 @@ function TestimonialsContainer({
   testimonials,
   className 
 }: TestimonialsSectionProps) {
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
+
   return (
     <section className={cn(
       "bg-primary text-white",
@@ -37,14 +39,12 @@ function TestimonialsContainer({
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:80s]">
             <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row">
-              {[...Array(2)].map((_, setIndex) => (
-                testimonials.map((testimonial, i) => (
-                  <TestimonialCard 
-                    key={`${setIndex}-${i}`}
-                    {...testimonial}
-                    className="bg-white/10 text-white border-white/20"
-                  />
-                ))
+              {duplicatedTestimonials.map((testimonial, i) => (
+                <TestimonialCard 
+                  key={i}
+                  {...testimonial}
+                  className="bg-white/10 text-white border-white/20"
+                />
               ))}
             </div>
           </div>
