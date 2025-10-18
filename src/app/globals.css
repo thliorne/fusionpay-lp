@@ -358,5 +358,5 @@
 
 /* Make sections opt-in transparent if needed */
 .section-surface {
-  background: transparent;
+  background: transparent !important;
 }

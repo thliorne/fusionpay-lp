@@ -13,7 +13,7 @@ export default function GlobalBackground() {
   return (
     <div
       aria-hidden
-      className="fixed inset-0 -z-10 bg-black overflow-hidden pointer-events-none"
+      className="fixed inset-0 -z-50 bg-black overflow-hidden pointer-events-none"
     >
       {/* Big orange glows */}
       <div className="absolute top-1/4 -left-1/4 w-[50vw] h-[50vw] bg-fusion-orange/20 rounded-full blur-3xl animate-glowPulse" />
@@ -21,7 +21,6 @@ export default function GlobalBackground() {
         className="absolute bottom-1/4 -right-1/4 w-[50vw] h-[50vw] bg-fusion-orange/20 rounded-full blur-3xl animate-glowPulse"
         style={{ animationDelay: "1.5s" }}
       />
-
       {/* Floating particles */}
       <div className="absolute inset-0">
         {Array.from({ length: 64 }).map((_, i) => (
