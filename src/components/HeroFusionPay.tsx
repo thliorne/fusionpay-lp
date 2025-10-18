@@ -1,79 +1,98 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard } from "lucide-react";
+import { motion } from "framer-motion";
 
 /**
  * Hero section premium/high-luxury para a Fusion Pay.
  * - Fundo preto com glow laranja e partículas
  * - Headline grande com palavras em laranja
  * - CTAs lado a lado
- * - Esfera 3D de energia à direita com ícones orbitais
+ * - Sistema Orbital 3D de energia à direita com ícones orbitais
  * - Selos de confiança com ícones minimalistas
  * - Animações: glow-pulse, float, fade-in e slide-up
  */
 
 const orbitalIcons = [
-  { Icon: DollarSign, style: { animation: "spin 20s linear infinite", transform: "rotateY(40deg) rotateX(60deg) translateZ(160px)" } },
-  { Icon: Shield, style: { animation: "spin 22s linear infinite reverse", transform: "rotateY(100deg) rotateX(80deg) translateZ(180px)" } },
-  { Icon: Zap, style: { animation: "spin 18s linear infinite", transform: "rotateY(160deg) rotateX(100deg) translateZ(150px)" } },
-  { Icon: Globe, style: { animation: "spin 25s linear infinite", transform: "rotateY(220deg) rotateX(70deg) translateZ(170px)" } },
-  { Icon: TrendingUp, style: { animation: "spin 19s linear infinite reverse", transform: "rotateY(280deg) rotateX(90deg) translateZ(160px)" } },
-  { Icon: CreditCard, style: { animation: "spin 23s linear infinite", transform: "rotateY(340deg) rotateX(50deg) translateZ(175px)" } },
+  // Camada NEAR (horário, 24s)
+  { Icon: DollarSign, className: "text-white/90", style: { animation: "orbit-near 24s linear infinite" } },
+  { Icon: CreditCard, className: "text-white/90", style: { animation: "orbit-near 24s linear infinite", animationDelay: "-12s" } },
+  // Camada MID (anti-horário, 34s)
+  { Icon: Zap, className: "text-white/90", style: { animation: "orbit-mid 34s linear infinite reverse" } },
+  { Icon: Shield, className: "text-white/90", style: { animation: "orbit-mid 34s linear infinite reverse", animationDelay: "-17s" } },
+  // Camada FAR (horário, 46s)
+  { Icon: Globe, className: "text-white/90", style: { animation: "orbit-far 46s linear infinite" } },
 ];
 
+const OrbSystem = () => {
+  const [isMounted, setIsMounted] = useState(false);
 
-const Orb = () => {
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <div className="relative w-full h-full" />;
+  }
+
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
-      <div className="absolute w-full h-full animate-float">
-        <div className="relative w-full h-full [transform-style:preserve-3d]">
-          {/* Esfera principal */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-fusion-orange/70 via-amber-400/50 to-white/60 blur-lg" />
-          
-          {/* Núcleo pulsante */}
-          <div className="absolute inset-[15%] rounded-full bg-white/90 shadow-[0_0_80px_20px_#FF5722] animate-pulse" />
+    <div className="relative w-full h-full flex items-center justify-center [transform-style:preserve-3d]">
+      {/* 1) BACKGLOW */}
+      <div className="absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] bg-[radial-gradient(circle_at_center,#7A2A00_0%,transparent_70%)] blur-2xl opacity-30 animate-[pulse_5.5s_ease-in-out_infinite]" />
 
-          {/* Anéis orbitais */}
-          <div className="absolute inset-0 transform-gpu [transform-style:preserve-3d]">
-            {/* Anel 1 */}
-            <div className="absolute inset-[5%] rounded-full border-2 border-fusion-orange/50 animate-[spin_12s_linear_infinite] [transform:rotateY(75deg)_rotateX(50deg)]" />
-            {/* Anel 2 */}
-            <div className="absolute inset-[10%] rounded-full border-2 border-white/40 animate-[spin_10s_linear_infinite_reverse] [transform:rotateY(60deg)_rotateX(30deg)]" />
-            {/* Anel 3 */}
-            <div className="absolute inset-[20%] rounded-full border border-amber-300/50 animate-[spin_8s_linear_infinite] [transform:rotateY(45deg)_rotateX(60deg)]" />
-          </div>
+      {/* 2) CORE-SPHERE */}
+      <motion.div
+        className="relative w-[240px] h-[240px] md:w-[280px] md:h-[280px] rounded-full [transform-style:preserve-3d]
+                   bg-[radial-gradient(circle_at_50%_40%,#D5CDBD_15%,#FF7A3C_85%)]
+                   shadow-[0_0_80px_-10px_#FF5722,inset_0_0_30px_rgba(0,0,0,0.3)]"
+      >
+        {/* Reflexos vítreos */}
+        <div className="absolute top-[15%] left-[20%] w-[60%] h-[20%] bg-white/20 rounded-[100%] blur-md -rotate-[20deg]" />
+        <div className="absolute bottom-[20%] right-[15%] w-[50%] h-[15%] bg-white/10 rounded-[100%] blur-lg rotate-[30deg]" />
+      </motion.div>
 
-          {/* Ícones Orbitais */}
-          <div className="absolute inset-0 [transform-style:preserve-3d]">
-            {orbitalIcons.map(({ Icon, style }, index) => (
-              <div
-                key={index}
-                className="absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full flex items-center justify-center bg-fusion-orange/20 border border-fusion-orange/50 backdrop-blur-sm"
-                style={style}
-              >
-                <Icon className="w-5 h-5 text-white/90" />
-              </div>
-            ))}
-          </div>
+      {/* 3) RINGS */}
+      <div className="absolute inset-0 [transform-style:preserve-3d]">
+        <div className="absolute inset-[-10%] rounded-full border-t-2 border-b-2 border-primary/60 animate-[spin_32s_linear_infinite] [transform:rotateY(70deg)_rotateX(40deg)]" />
+        <div className="absolute inset-[15%] rounded-full border-r border-l border-dashed border-white/30 animate-[spin_28s_linear_infinite_reverse] [transform:rotateY(60deg)_rotateX(25deg)]" />
+        <div className="absolute inset-[38%] rounded-full border-2 border-[#FFE1B3]/50 animate-[spin_22s_linear_infinite] [transform:rotateY(50deg)_rotateX(60deg)]" />
+      </div>
 
-          {/* Partículas orbitais */}
-          {Array.from({ length: 10 }).map((_, i) => (
-            <div 
-              key={i} 
-              className="absolute w-1 h-1 bg-white rounded-full animate-[spin_15s_linear_infinite]"
-              style={{
-                top: '50%',
-                left: '50%',
-                transformOrigin: `${Math.cos(i * 36) * 150}px ${Math.sin(i * 36) * 150}px`,
-                animationDelay: `${i * 1.5}s`
-              }} 
-            />
-          ))}
-        </div>
+      {/* 4) PARTICLES */}
+      <div className="absolute inset-0 [transform-style:preserve-3d]">
+        {Array.from({ length: 25 }).map((_, i) => (
+          <div
+            key={`p-${i}`}
+            className="absolute top-1/2 left-1/2 w-0.5 h-0.5 rounded-full"
+            style={{
+              background: i % 4 === 0 ? "#FF5722" : "#F5F5F5",
+              opacity: 0.2 + Math.random() * 0.4,
+              animation: `orbit-particle-${i % 3 + 1} ${20 + Math.random() * 20}s linear infinite`,
+              animationDelay: `${Math.random() * -20}s`,
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* 5) ICON-ORBITS */}
+      <div className="absolute inset-0 [transform-style:preserve-3d]">
+        {orbitalIcons.map(({ Icon, style, className }, index) => (
+          <motion.div
+            key={index}
+            className="group/icon absolute top-1/2 left-1/2 -mt-4 -ml-4 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center 
+                       border border-primary/30 bg-black/30 backdrop-blur-sm"
+            style={style}
+            whileHover={{ scale: 1.15, z: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 10 }}
+          >
+            <Icon className={`w-5 h-5 md:w-6 md:h-6 transition-all duration-300 group-hover/icon:text-white ${className}`} />
+            <div className="absolute -inset-1 rounded-full border border-primary/50 opacity-0 transition-opacity duration-300 group-hover/icon:opacity-100 group-hover/icon:animate-pulse" />
+          </motion.div>
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 
 export default function HeroFusionPay() {
@@ -82,6 +101,48 @@ export default function HeroFusionPay() {
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
+      {/* Estilos CSS para as animações orbitais */}
+      <style>{`
+        @keyframes orbit-near {
+          from { transform: rotate(0deg) translateX(140px) rotate(-0deg) scale(0.9); }
+          to   { transform: rotate(360deg) translateX(140px) rotate(-360deg) scale(0.9); }
+        }
+        @keyframes orbit-mid {
+          from { transform: rotate(0deg) translateX(180px) rotate(-0deg) scale(1); }
+          to   { transform: rotate(360deg) translateX(180px) rotate(-360deg) scale(1); }
+        }
+        @keyframes orbit-far {
+          from { transform: rotate(0deg) translateX(220px) rotate(-0deg) scale(1.1); }
+          to   { transform: rotate(360deg) translateX(220px) rotate(-360deg) scale(1.1); }
+        }
+        @keyframes orbit-particle-1 {
+          from { transform: rotateZ(0deg) rotateY(20deg) translateX(160px); }
+          to   { transform: rotateZ(360deg) rotateY(20deg) translateX(160px); }
+        }
+        @keyframes orbit-particle-2 {
+          from { transform: rotateZ(0deg) rotateY(50deg) translateX(200px); }
+          to   { transform: rotateZ(360deg) rotateY(50deg) translateX(200px); }
+        }
+        @keyframes orbit-particle-3 {
+          from { transform: rotateZ(0deg) rotateY(75deg) translateX(240px); }
+          to   { transform: rotateZ(360deg) rotateY(75deg) translateX(240px); }
+        }
+        @media (max-width: 768px) {
+          @keyframes orbit-near {
+            from { transform: rotate(0deg) translateX(110px) rotate(-0deg); }
+            to   { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+          }
+          @keyframes orbit-mid {
+            from { transform: rotate(0deg) translateX(140px) rotate(-0deg); }
+            to   { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+          }
+          @keyframes orbit-far {
+            from { transform: rotate(0deg) translateX(170px) rotate(-0deg); }
+            to   { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+          }
+        }
+      `}</style>
+
       {/* Container */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Texto */}
@@ -162,9 +223,9 @@ export default function HeroFusionPay() {
           </div>
         </div>
 
-        {/* Ícone 3D */}
+        {/* Sistema Orbital 3D */}
         <div className="relative h-64 w-64 lg:h-96 lg:w-96 perspective-1000">
-          <Orb />
+          <OrbSystem />
         </div>
       </div>
     </section>
