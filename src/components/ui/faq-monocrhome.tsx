@@ -53,7 +53,7 @@
  
  const palettes = {
    dark: {
-     surface: "bg-neutral-950 text-neutral-100",
+     surface: "text-neutral-100",
      panel: "bg-neutral-900/50",
      border: "border-white/10",
      heading: "text-white",
@@ -69,7 +69,7 @@
      overlay: "linear-gradient(130deg, rgba(255,255,255,0.04) 0%, transparent 65%)",
    },
    light: {
-     surface: "bg-white text-neutral-900",
+     surface: "text-neutral-900",
      panel: "bg-white/70",
      border: "border-neutral-200",
      heading: "text-neutral-900",
@@ -312,10 +312,10 @@
  
    return (
      <div className={`relative w-full overflow-hidden transition-colors duration-700 ${palette.surface}`}>
-       <div className="absolute inset-0 z-0" style={{ background: palette.aurora }} />
+       <div className="absolute inset-0 z-0" style={{ background: palette.aurora, opacity: theme === 'dark' ? 1 : 0 }} />
        <div
          className="pointer-events-none absolute inset-0 z-0 opacity-80"
-         style={{ background: palette.overlay, mixBlendMode: theme === "dark" ? "screen" : "multiply" }}
+         style={{ background: palette.overlay, mixBlendMode: theme === "dark" ? "screen" : "multiply", opacity: theme === 'dark' ? 1 : 0 }}
        />
  
         <section
