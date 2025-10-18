@@ -135,6 +135,10 @@ export default {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        spin: {
+          '0%': { transform: 'rotateY(0deg) rotateX(0deg)' },
+          '100%': { transform: 'rotateY(360deg) rotateX(360deg)' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -147,6 +151,7 @@ export default {
         float: "float 8s ease-in-out infinite",
         fadeIn: "fadeIn .8s ease forwards",
         slideUp: "slideUp .9s cubic-bezier(.16,1,.3,1) .05s both",
+        spin: 'spin var(--speed, 10s) linear infinite',
       },
       maxWidth: {
         container: "1280px",

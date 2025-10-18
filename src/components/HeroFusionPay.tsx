@@ -6,10 +6,52 @@ import React, { useEffect, useState } from "react";
  * - Fundo preto com glow laranja e partículas
  * - Headline grande com palavras em laranja
  * - CTAs lado a lado
- * - Cards de transação (glassmorphism) à direita
+ * - Esfera 3D de energia à direita
  * - Selos de confiança com ícones minimalistas
  * - Animações: glow-pulse, float, fade-in e slide-up
  */
+
+const Orb = () => {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      <div className="absolute w-full h-full animate-float">
+        <div className="relative w-full h-full">
+          {/* Esfera principal */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-fusion-orange/70 via-amber-400/50 to-white/60 blur-lg" />
+          
+          {/* Núcleo pulsante */}
+          <div className="absolute inset-[15%] rounded-full bg-white/90 shadow-[0_0_80px_20px_#FF5722] animate-pulse" />
+
+          {/* Anéis orbitais */}
+          <div className="absolute inset-0 transform-gpu [transform-style:preserve-3d]">
+            {/* Anel 1 */}
+            <div className="absolute inset-[5%] rounded-full border-2 border-fusion-orange/50 animate-[spin_12s_linear_infinite] [transform:rotateY(75deg)_rotateX(50deg)]" />
+            {/* Anel 2 */}
+            <div className="absolute inset-[10%] rounded-full border-2 border-white/40 animate-[spin_10s_linear_infinite_reverse] [transform:rotateY(60deg)_rotateX(30deg)]" />
+            {/* Anel 3 */}
+            <div className="absolute inset-[20%] rounded-full border border-amber-300/50 animate-[spin_8s_linear_infinite] [transform:rotateY(45deg)_rotateX(60deg)]" />
+          </div>
+
+          {/* Partículas orbitais */}
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div 
+              key={i} 
+              className="absolute w-1 h-1 bg-white rounded-full animate-[spin_15s_linear_infinite]"
+              style={{
+                top: '50%',
+                left: '50%',
+                transformOrigin: `${Math.cos(i * 36) * 150}px ${Math.sin(i * 36) * 150}px`,
+                animationDelay: `${i * 1.5}s`
+              }} 
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
 export default function HeroFusionPay() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -96,48 +138,9 @@ export default function HeroFusionPay() {
           </div>
         </div>
 
-        {/* Mockups à direita */}
-        <div className="relative">
-          {/* Card grande */}
-          <div className={`glass-card p-6 rounded-2xl border border-white/10 shadow-2xl ${mounted ? "animate-slideUp" : "opacity-0"}`}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-white/90">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-fusion-orange/90">
-                  <svg className="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                  </svg>
-                </span>
-                <span className="text-sm">Transação Pix</span>
-              </div>
-              <span className="text-emerald-400 text-sm font-semibold">Aprovada</span>
-            </div>
-
-            <div className="mt-5 space-y-4 text-sm">
-              <div className="flex justify-between text-white/70"><span>Valor</span><span>R$ 2.547,90</span></div>
-              <div className="flex justify-between text-fusion-orange"><span>Tempo de Processamento</span><span>0.3s</span></div>
-              <div className="flex justify-between text-white/70"><span>Taxa Aplicada</span><span>1.99%</span></div>
-              <div className="flex justify-between items-center text-white/70">
-                <span>Score Antifraude</span>
-                <div className="w-24 h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-[95%] bg-emerald-400 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 flex items-center gap-2 text-white/60">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
-              Protegido por Fusion Shield
-            </div>
-          </div>
-
-          {/* Mini card sobreposto */}
-          <div className={`absolute -bottom-8 left-8 w-[260px] glass-card p-4 rounded-xl border border-white/10 shadow-xl ${mounted ? "animate-fadeIn" : "opacity-0"}`}>
-            <div className="text-white/80 text-sm">Taxa de Aprovação</div>
-            <div className="mt-2 flex items-end gap-2">
-              <div className="text-3xl font-extrabold text-white">98.7%</div>
-              <div className="text-emerald-400 text-xs font-semibold">+2.3% vs mês anterior</div>
-            </div>
-          </div>
+        {/* Ícone 3D */}
+        <div className="relative h-64 w-64 lg:h-96 lg:w-96 perspective-1000">
+          <Orb />
         </div>
       </div>
     </section>
