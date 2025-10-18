@@ -15,7 +15,7 @@ export default function HeroFusionPay() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center pt-20 section-surface">
+    <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
       {/* Container */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Texto */}
