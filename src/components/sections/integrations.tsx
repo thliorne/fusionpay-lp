@@ -15,7 +15,7 @@ const integrations = [
 export function IntegrationsSection() {
   return (
     <section className="py-12 md:py-24 bg-background text-foreground">
-      <div className="container text-center">
+      <div className="container mx-auto text-center">
         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
           <Puzzle className="size-4" />
           Integrações
