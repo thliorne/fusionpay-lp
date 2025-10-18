@@ -22,6 +22,7 @@ const orbitalIcons = [
   { Icon: Shield, className: "text-white/90", style: { animation: "orbit-mid 34s linear infinite reverse", animationDelay: "-17s" } },
   // Camada FAR (horário, 46s)
   { Icon: Globe, className: "text-white/90", style: { animation: "orbit-far 46s linear infinite" } },
+  { Icon: TrendingUp, className: "text-white/90", style: { animation: "orbit-far 46s linear infinite", animationDelay: "-23s" } },
 ];
 
 const OrbSystem = () => {
@@ -231,3 +232,5 @@ export default function HeroFusionPay() {
     </section>
   );
 }
+
+    
