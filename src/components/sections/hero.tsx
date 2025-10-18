@@ -40,7 +40,6 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-black text-white pt-32 pb-24 md:pt-40 md:pb-32">
-      <Header />
       <div className="absolute inset-0 z-0">
         <div className="absolute -right-[20%] top-0 h-[80%] w-[80%] rounded-full bg-gradient-radial from-[#FF5722]/15 via-transparent to-transparent" />
         <div className="absolute -left-[20%] bottom-0 h-[60%] w-[60%] rounded-full bg-gradient-radial from-[#FF5722]/10 via-transparent to-transparent" />

@@ -15,6 +15,7 @@ export default {
         code: ['monospace'],
       },
       colors: {
+        'fusion-orange': '#FF5722',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -121,7 +122,19 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' }
-        }
+        },
+        glowPulse: {
+          "0%,100%": { opacity: "0.20" },
+          "50%": { opacity: "0.35" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideUp: {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -130,10 +143,17 @@ export default {
         marquee: 'marquee var(--duration) linear infinite',
         'pulse-gradient': 'pulse-gradient 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'move-background': 'move-background 20s ease-in-out infinite',
+        glowPulse: "glowPulse 6s ease-in-out infinite",
+        float: "float 8s ease-in-out infinite",
+        fadeIn: "fadeIn .8s ease forwards",
+        slideUp: "slideUp .9s cubic-bezier(.16,1,.3,1) .05s both",
       },
       maxWidth: {
         container: "1280px",
       },
+      boxShadow: {
+        "fusion": "0 0 24px rgba(255,87,34,0.45)",
+      }
     },
   },
   plugins: [require('tailwindcss-animate')],
