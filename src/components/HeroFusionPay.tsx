@@ -15,31 +15,7 @@ export default function HeroFusionPay() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden flex items-center pt-20">
-      {/* Fundo com glows e partículas */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Glows grandes */}
-        <div className="absolute top-1/4 -left-1/4 w-[50vw] h-[50vw] bg-fusion-orange/20 rounded-full blur-3xl animate-glowPulse" />
-        <div
-          className="absolute bottom-1/4 -right-1/4 w-[50vw] h-[50vw] bg-fusion-orange/20 rounded-full blur-3xl animate-glowPulse"
-          style={{ animationDelay: "1.5s" }}
-        />
-        {/* Partículas */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 48 }).map((_, i) => (
-            <span
-              key={i}
-              className="absolute block w-1 h-1 bg-fusion-orange/30 rounded-full"
-              style={{
-                left: `${(i * 197) % 100}%`,
-                top: `${(i * 131) % 100}%`,
-                animation: `float ${(8 + (i % 5))}s ease-in-out infinite`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
+    <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
       {/* Container */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Texto */}

@@ -119,13 +119,13 @@ export default {
             'background-position': '0% 50%',
           }
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' }
-        },
         glowPulse: {
           "0%,100%": { opacity: "0.20" },
           "50%": { opacity: "0.35" },
+        },
+        float: {
+          "0%,100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },

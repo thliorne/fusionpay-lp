@@ -350,3 +350,13 @@
 /* Cor de marca (fallback caso tailwind não recarregue) */
 .text-fusion-orange { color: #FF5722; }
 .bg-fusion-orange { background-color: #FF5722; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-glowPulse, .animate-float { animation: none !important; }
+}
+
+/* Make sections opt-in transparent if needed */
+.section-surface {
+  background: transparent;
+}
