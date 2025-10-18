@@ -224,7 +224,7 @@ export default function HeroFusionPay() {
         </div>
 
         {/* Sistema Orbital 3D */}
-        <div className="relative h-64 w-64 lg:h-96 lg:w-96 perspective-1000">
+        <div className="relative h-96 w-96 lg:h-[32rem] lg:w-[32rem] perspective-1000 mx-auto">
           <OrbSystem />
         </div>
       </div>
