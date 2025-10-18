@@ -203,7 +203,6 @@ export default function RadialOrbitalTimeline({
           onClick={closeAllCards}
         />
       )}
-      <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-background/50 to-transparent z-10" />
 
         <div className="text-center mb-16 z-20">
           <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest uppercase text-primary">
@@ -232,13 +231,13 @@ export default function RadialOrbitalTimeline({
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent animate-pulse flex items-center justify-center z-10">
-            <div className="absolute w-40 h-40 rounded-full border border-primary/20 animate-ping opacity-70"></div>
+          <div className="absolute w-40 h-40 rounded-full bg-gradient-to-br from-primary/50 via-primary/20 to-transparent animate-pulse flex items-center justify-center z-10">
+            <div className="absolute w-48 h-48 rounded-full border border-primary/30 animate-ping opacity-80"></div>
             <div
-              className="absolute w-48 h-48 rounded-full border border-primary/10 animate-ping opacity-50"
+              className="absolute w-56 h-56 rounded-full border border-primary/20 animate-ping opacity-60"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={64} height={64} className="w-16 h-16 rounded-full bg-primary/80 backdrop-blur-md" />
+            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={80} height={80} className="w-20 h-20 rounded-full bg-primary/90 backdrop-blur-md" />
           </div>
 
           <div className="absolute w-full h-full rounded-full border border-border/20"></div>
