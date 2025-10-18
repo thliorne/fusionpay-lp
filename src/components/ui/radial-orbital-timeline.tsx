@@ -73,37 +73,59 @@ export default function RadialOrbitalTimeline({
 
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // This will now be handled by the overlay.
+    if (isAnyCardOpen) {
+      const target = e.target as HTMLElement;
+      if (
+        !target.closest('.card-container') &&
+        !target.closest('.node-container')
+      ) {
+        closeAllCards();
+      }
+    }
   };
 
   const toggleItem = (id: number) => {
-    setExpandedItems((prev) => {
-      const isCurrentlyExpanded = !!prev[id];
+    const isCurrentlyExpanded = !!expandedItems[id];
+
+    if (activeNodeId !== null && activeNodeId !== id) {
+      // If another card is open, close it and open the new one
+      const newExpandedState: Record<number, boolean> = { [id]: true };
+      setExpandedItems(newExpandedState);
+      setActiveNodeId(id);
+      setAutoRotate(false);
+
+      const relatedItems = getRelatedItems(id);
+      const newPulseEffect: Record<number, boolean> = {};
+      relatedItems.forEach((relId) => {
+        newPulseEffect[relId] = true;
+      });
+      setPulseEffect(newPulseEffect);
       
-      // Close all items first
-      const newExpandedState: Record<number, boolean> = {};
+      centerViewOnNode(id);
+    } else {
+      // Toggle the current card
+      setExpandedItems((prev) => {
+        const newExpandedState = { ...prev, [id]: !isCurrentlyExpanded };
 
-      if (!isCurrentlyExpanded) {
-        // If we are opening a new one, set it to true
-        newExpandedState[id] = true;
-        setActiveNodeId(id);
-        setAutoRotate(false);
-
-        const relatedItems = getRelatedItems(id);
-        const newPulseEffect: Record<number, boolean> = {};
-        relatedItems.forEach((relId) => {
-          newPulseEffect[relId] = true;
-        });
-        setPulseEffect(newPulseEffect);
+        if (!isCurrentlyExpanded) {
+          setActiveNodeId(id);
+          setAutoRotate(false);
+          const relatedItems = getRelatedItems(id);
+          const newPulseEffect: Record<number, boolean> = {};
+          relatedItems.forEach((relId) => {
+            newPulseEffect[relId] = true;
+          });
+          setPulseEffect(newPulseEffect);
+          centerViewOnNode(id);
+        } else {
+          closeAllCards();
+        }
         
-        centerViewOnNode(id);
-      } else {
-        closeAllCards();
-      }
-
-      return newExpandedState;
-    });
+        return newExpandedState;
+      });
+    }
   };
+
 
   const centerViewOnNode = (nodeId: number) => {
     if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;
@@ -253,15 +275,18 @@ export default function RadialOrbitalTimeline({
                 }}
               >
                  <div
-                  className={`absolute rounded-full -inset-1 ${
-                    isPulsing ? "animate-pulse duration-1000" : ""
-                  }`}
+                  className={`absolute rounded-full -inset-1 animate-pulse duration-1000`}
                   style={{
                     background: `radial-gradient(circle, hsl(var(--primary)/0.2) 0%, transparent 70%)`,
                     width: `${item.energy * 0.7 + nodeSize * 0.6}px`,
                     height: `${item.energy * 0.7 + nodeSize * 0.6}px`,
+                    animationPlayState: isPulsing ? 'running' : 'paused',
+                    opacity: isPulsing ? 1 : 0,
+                    transition: 'opacity 0.5s',
                   }}
                 ></div>
+                <div className="absolute w-full h-full rounded-full border border-primary/20 animate-ping opacity-70"></div>
+
 
                 <div
                   className={`
