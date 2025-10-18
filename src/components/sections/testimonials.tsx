@@ -17,13 +17,13 @@ const testimonials = [
   },
   {
     text: "O suporte ao cliente é excepcional. Sempre que precisamos, eles estão lá para ajudar, garantindo que nossa operação nunca pare. Recomendo fortemente.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
     name: "Carlos Pereira",
     role: "Diretor de TI",
   },
   {
     text: "A integração perfeita da Fusion Pay melhorou drasticamente a eficiência de nossas operações. A interface intuitiva é um grande bônus.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
     name: "Lucas Martins",
     role: "CEO, DigitalGrowth",
   },
