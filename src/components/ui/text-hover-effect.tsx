@@ -14,21 +14,24 @@ export const TextHoverEffect = ({
   className?: string;
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const cursorX = useRef(0);
+  const cursorY = useRef(0);
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
 
-   useEffect(() => {
-    if (svgRef.current && cursor.x !== null && cursor.y !== null) {
+  const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
+    cursorX.current = e.clientX;
+    cursorY.current = e.clientY;
+    if (svgRef.current) {
       const svgRect = svgRef.current.getBoundingClientRect();
-      const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
-      const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
+      const cxPercentage = ((cursorX.current - svgRect.left) / svgRect.width) * 100;
+      const cyPercentage = ((cursorY.current - svgRect.top) / svgRect.height) * 100;
       setMaskPosition({
         cx: `${cxPercentage}%`,
         cy: `${cyPercentage}%`,
       });
     }
-  }, [cursor]);
+  };
 
    return (
     <svg
@@ -39,7 +42,7 @@ export const TextHoverEffect = ({
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
+      onMouseMove={handleMouseMove}
       className={cn("select-none uppercase cursor-pointer", className)}
     >
       <defs>
