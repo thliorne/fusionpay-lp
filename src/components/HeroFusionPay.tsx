@@ -1,21 +1,32 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard } from "lucide-react";
 
 /**
  * Hero section premium/high-luxury para a Fusion Pay.
  * - Fundo preto com glow laranja e partículas
  * - Headline grande com palavras em laranja
  * - CTAs lado a lado
- * - Esfera 3D de energia à direita
+ * - Esfera 3D de energia à direita com ícones orbitais
  * - Selos de confiança com ícones minimalistas
  * - Animações: glow-pulse, float, fade-in e slide-up
  */
+
+const orbitalIcons = [
+  { Icon: DollarSign, style: { animation: "spin 20s linear infinite", transform: "rotateY(40deg) rotateX(60deg) translateZ(160px)" } },
+  { Icon: Shield, style: { animation: "spin 22s linear infinite reverse", transform: "rotateY(100deg) rotateX(80deg) translateZ(180px)" } },
+  { Icon: Zap, style: { animation: "spin 18s linear infinite", transform: "rotateY(160deg) rotateX(100deg) translateZ(150px)" } },
+  { Icon: Globe, style: { animation: "spin 25s linear infinite", transform: "rotateY(220deg) rotateX(70deg) translateZ(170px)" } },
+  { Icon: TrendingUp, style: { animation: "spin 19s linear infinite reverse", transform: "rotateY(280deg) rotateX(90deg) translateZ(160px)" } },
+  { Icon: CreditCard, style: { animation: "spin 23s linear infinite", transform: "rotateY(340deg) rotateX(50deg) translateZ(175px)" } },
+];
+
 
 const Orb = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <div className="absolute w-full h-full animate-float">
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full [transform-style:preserve-3d]">
           {/* Esfera principal */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-fusion-orange/70 via-amber-400/50 to-white/60 blur-lg" />
           
@@ -30,6 +41,19 @@ const Orb = () => {
             <div className="absolute inset-[10%] rounded-full border-2 border-white/40 animate-[spin_10s_linear_infinite_reverse] [transform:rotateY(60deg)_rotateX(30deg)]" />
             {/* Anel 3 */}
             <div className="absolute inset-[20%] rounded-full border border-amber-300/50 animate-[spin_8s_linear_infinite] [transform:rotateY(45deg)_rotateX(60deg)]" />
+          </div>
+
+          {/* Ícones Orbitais */}
+          <div className="absolute inset-0 [transform-style:preserve-3d]">
+            {orbitalIcons.map(({ Icon, style }, index) => (
+              <div
+                key={index}
+                className="absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full flex items-center justify-center bg-fusion-orange/20 border border-fusion-orange/50 backdrop-blur-sm"
+                style={style}
+              >
+                <Icon className="w-5 h-5 text-white/90" />
+              </div>
+            ))}
           </div>
 
           {/* Partículas orbitais */}
