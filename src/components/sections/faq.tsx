@@ -3,5 +3,9 @@
 import { FAQ1 } from "@/components/ui/faq-monocrhome";
 
 export function FaqSection() {
-  return <FAQ1 />;
+  return (
+    <div className="section-surface">
+      <FAQ1 />
+    </div>
+  );
 }
