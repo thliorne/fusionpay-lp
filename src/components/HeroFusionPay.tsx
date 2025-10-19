@@ -126,8 +126,8 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
       animate={{ opacity: 1, y: 0, z: 0, scale: 1, filter: "blur(0px)" }}
       exit={{ opacity: 0, y: -12, scale: 0.98, filter: "blur(3px)" }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute right-[-10%] top-[40%] md:right-[-20%] md:top-[35%] lg:right-[-30%] lg:top-[30%] z-20 w-[320px] 
-                 md:w-[340px] p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/10
+      className="absolute right-[5%] top-[30%] md:right-[0%] md:top-[25%] lg:right-[-5%] lg:top-[20%] z-20 w-[280px] 
+                 md:w-[320px] p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/10
                  shadow-[0_10px_30px_-10px_rgba(255,87,34,0.3),_0_0_0_1px_rgba(255,87,34,0.2)]
                  will-change-[transform,opacity]"
     >
