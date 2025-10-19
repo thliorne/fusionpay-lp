@@ -12,14 +12,14 @@ export function DashboardSection() {
       <ContainerScroll
         titleComponent={
           <>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
               Tudo em um só{" "}
               <span className="relative inline-block text-primary">
                 dashboard
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
+            <p className="max-w-2xl mx-auto mt-4 text-lg text-white">
               Gerencie suas vendas, acompanhe seus recebimentos e tenha total controle sobre seu negócio em tempo real.
             </p>
           </>

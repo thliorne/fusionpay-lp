@@ -71,7 +71,7 @@ function HoverFooter() {
           {/* Brand section */}
           <div className="flex flex-col space-y-4">
             <Logo />
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <p className="text-sm leading-relaxed text-white">
               O gateway de pagamentos para escalar o seu negócio.
             </p>
           </div>
@@ -79,7 +79,7 @@ function HoverFooter() {
           {/* Footer link sections */}
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h4 className="text-foreground text-lg font-semibold mb-6">
+              <h4 className="text-white text-lg font-semibold mb-6">
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -87,7 +87,7 @@ function HoverFooter() {
                   <li key={link.label} className="relative">
                     <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-white hover:text-primary transition-colors"
                     >
                       {link.label}
                     </a>
@@ -102,7 +102,7 @@ function HoverFooter() {
 
           {/* Contact section */}
           <div>
-            <h4 className="text-foreground text-lg font-semibold mb-6">
+            <h4 className="text-white text-lg font-semibold mb-6">
               Fale Conosco
             </h4>
             <ul className="space-y-4">
@@ -112,12 +112,12 @@ function HoverFooter() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-white hover:text-primary transition-colors"
                     >
                       {item.text}
                     </a>
                   ) : (
-                    <span className="text-muted-foreground hover:text-primary transition-colors">
+                    <span className="text-white hover:text-primary transition-colors">
                       {item.text}
                     </span>
                   )}
@@ -132,7 +132,7 @@ function HoverFooter() {
         {/* Footer bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
           {/* Social icons */}
-          <div className="flex space-x-6 text-muted-foreground">
+          <div className="flex space-x-6 text-white">
             {socialLinks.map(({ icon, label, href }) => (
               <a
                 key={label}
@@ -146,7 +146,7 @@ function HoverFooter() {
           </div>
 
           {/* Copyright */}
-          <p className="text-center md:text-left text-muted-foreground">
+          <p className="text-center md:text-left text-white">
             &copy; {new Date().getFullYear()} Fusion Pay. Todos os direitos reservados.
           </p>
         </div>

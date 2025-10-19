@@ -81,7 +81,7 @@ const OrbSystem = () => {
           <motion.div
             key={index}
             className="group/icon absolute top-1/2 left-1/2 -mt-4 -ml-4 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center 
-                       border border-primary/30 bg-primary/80 backdrop-blur-sm"
+                       border border-primary/30 bg-primary backdrop-blur-sm"
             style={style}
             whileHover={{ scale: 1.15, z: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
@@ -149,7 +149,7 @@ export default function HeroFusionPay() {
         {/* Texto */}
         <div className="text-white">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm text-white/80 animate-fadeIn">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm text-white animate-fadeIn">
             <span className="inline-block w-4 h-4 rounded-full bg-fusion-orange/90 shadow-[0_0_12px_rgba(255,87,34,0.8)]" />
             Gateway de Pagamentos Digital
           </div>
@@ -164,7 +164,7 @@ export default function HeroFusionPay() {
           </h1>
 
           {/* Subheadline */}
-          <p className="mt-6 max-w-2xl text-base md:text-lg text-white/70 animate-fadeIn">
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-white animate-fadeIn">
             O gateway de pagamentos digital com o motor de processamento mais
             rápido e o antifraude mais inteligente do mercado.
           </p>
@@ -197,10 +197,10 @@ export default function HeroFusionPay() {
 
           {/* Confiança + ícones */}
           <div className="mt-10 space-y-3 animate-fadeIn">
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-white">
               Confiança de mais de <strong>10.000+ empresas</strong>
             </p>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-white/80">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-white">
               <div className="badge-soft">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
@@ -232,5 +232,3 @@ export default function HeroFusionPay() {
     </section>
   );
 }
-
-    

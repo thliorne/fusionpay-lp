@@ -14,16 +14,16 @@ const integrations = [
 
 export function IntegrationsSection() {
   return (
-    <section className="py-12 md:py-24 bg-background text-foreground text-center" style={{background: "transparent"}}>
+    <section className="py-12 md:py-24 bg-background text-white text-center" style={{background: "transparent"}}>
       <div className="container mx-auto text-center">
         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
           <Puzzle className="size-4" />
           Integrações
         </div>
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4 font-headline text-foreground">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4 font-headline text-white">
           Integrado com as melhores plataformas do mercado digital
         </h2>
-        <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl mb-12">
+        <p className="max-w-[600px] mx-auto text-white md:text-xl mb-12">
           Integre a Fusion Pay com um clique e comece a vender mais com as ferramentas que você já usa.
         </p>
         <div className="relative">
@@ -36,7 +36,7 @@ export function IntegrationsSection() {
             {integrations.map((integration) => (
               <div key={integration.name} className="flex items-center justify-center gap-4 h-24 w-auto bg-muted/50 rounded-lg px-6 py-4 transition-all duration-300">
                 <Image src={integration.logoUrl} alt={integration.name} width={32} height={32} className="object-contain h-8 w-8" />
-                <span className="text-lg font-semibold text-foreground">{integration.name}</span>
+                <span className="text-lg font-semibold text-white">{integration.name}</span>
               </div>
             ))}
           </InfiniteSlider>

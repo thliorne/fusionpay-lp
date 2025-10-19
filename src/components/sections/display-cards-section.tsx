@@ -44,7 +44,7 @@ const fadeInAnimation = {
 
 export function DisplayCardsSection() {
   return (
-    <section className="relative bg-background text-foreground py-20 md:py-32">
+    <section className="relative bg-background text-white py-20 md:py-32">
       <div className="absolute inset-0 -z-10">
         <div className="absolute right-0 top-1/4 w-1/2 h-1/2 rounded-full bg-primary/10 blur-3xl" />
       </div>
@@ -61,7 +61,7 @@ export function DisplayCardsSection() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
                 Por que escolher a <span className="text-primary">Fusion Pay?</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-12">
+              <p className="text-lg text-white mb-12">
                 Velocidade, estabilidade e segurança para você vender sem travar.
               </p>
             </motion.div>
@@ -80,8 +80,8 @@ export function DisplayCardsSection() {
                     <Check className="size-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-foreground">{benefit.title}</h3>
-                    <p className="text-muted-foreground text-sm">{benefit.description}</p>
+                    <h3 className="font-bold text-white">{benefit.title}</h3>
+                    <p className="text-white text-sm">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}

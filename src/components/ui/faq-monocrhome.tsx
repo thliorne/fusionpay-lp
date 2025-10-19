@@ -53,7 +53,7 @@
  
  const palettes = {
    dark: {
-     surface: "text-neutral-100",
+     surface: "text-white",
      panel: "bg-neutral-900/50",
      border: "border-white/10",
      heading: "text-white",
@@ -69,15 +69,15 @@
      overlay: "linear-gradient(130deg, rgba(255,255,255,0.04) 0%, transparent 65%)",
    },
    light: {
-     surface: "text-neutral-900",
+     surface: "text-white",
      panel: "bg-white/70",
      border: "border-neutral-200",
-     heading: "text-neutral-900",
+     heading: "text-white",
      muted: "text-neutral-600",
      iconRing: "border-neutral-300",
      iconSurface: "bg-neutral-900/5",
-     icon: "text-neutral-900",
-     toggle: "border-neutral-200 text-neutral-900",
+     icon: "text-white",
+     toggle: "border-neutral-200 text-white",
      toggleSurface: "bg-white",
      glow: "rgba(15, 15, 15, 0.08)",
      aurora: "transparent",
@@ -338,7 +338,7 @@
              <h1 className={`text-4xl font-semibold leading-tight md:text-5xl ${palette.heading}`}>
                 Tudo que você precisa saber
              </h1>
-             <p className={`max-w-2xl mx-auto text-base ${palette.muted}`}>
+             <p className={`max-w-2xl mx-auto text-base text-white`}>
                 Encontre respostas para as dúvidas mais comuns sobre a Fusion Pay e nossos serviços.
              </p>
            </div>
@@ -401,7 +401,7 @@
                        </h2>
                        {item.meta && (
                          <span
-                           className={`inline-flex w-fit items-center rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.35em] transition-opacity duration-300 sm:ml-auto ${palette.border} ${palette.muted}`}
+                           className={`inline-flex w-fit items-center rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.35em] transition-opacity duration-300 sm:ml-auto ${palette.border} text-white`}
                          >
                            {item.meta}
                          </span>
@@ -414,7 +414,7 @@
                        aria-labelledby={buttonId}
                        className={`overflow-hidden text-sm leading-relaxed transition-[max-height] duration-500 ease-out ${
                          open ? "max-h-64" : "max-h-0"
-                       } ${palette.muted}`}
+                       } text-white`}
                      >
                        <p className="pr-2">
                          {item.answer}

@@ -41,7 +41,7 @@ const businessTypes = [
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-background text-foreground py-20 md:py-32 relative overflow-hidden">
+    <section id="contact" className="bg-background text-white py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23FF6A00%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M20%200v20H0v-2h18V0h2zm20%2020v20h-2V22h18v-2H20zM0%200h2v2H0V0zm40%2040h-2v-2h2v2z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
         </div>
@@ -60,14 +60,14 @@ export function ContactSection() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               <span className="text-primary">Negocie</span> suas taxas e escale com <span className="text-primary">confiança</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
               Fale com um especialista e tenha a melhor condição para PIX, cartão e boleto.
             </p>
             <ul className="flex justify-center items-center gap-6 text-left mb-10 max-w-3xl mx-auto">
               {benefits.map((item, index) => (
                 <li key={index} className="flex items-center gap-3 bg-background/50 p-4 rounded-lg">
                   <div className="flex-shrink-0">{item.icon}</div>
-                  <span className="text-foreground whitespace-nowrap">{item.text}</span>
+                  <span className="text-white whitespace-nowrap">{item.text}</span>
                 </li>
               ))}
             </ul>
@@ -96,8 +96,8 @@ export function ContactSection() {
           </div>
           
           <div className="mt-16 text-center">
-            <p className="text-sm text-muted-foreground mb-6">Confiança de mais de 10.000+ empresas</p>
-            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-muted-foreground/70">
+            <p className="text-sm text-white mb-6">Confiança de mais de 10.000+ empresas</p>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-white/70">
               {businessTypes.map(type => (
                 <div key={type.name} className="flex items-center gap-2">
                   {type.icon}
@@ -107,7 +107,7 @@ export function ContactSection() {
             </div>
           </div>
           
-           <p className="text-xs text-center text-muted-foreground mt-12">
+           <p className="text-xs text-center text-white mt-12">
              *Liquidação D+0 sujeita à análise e política de risco.
            </p>
         </motion.div>

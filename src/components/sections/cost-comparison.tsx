@@ -107,7 +107,7 @@ export function CostComparison() {
   return (
     <section
       ref={sectionRef}
-      className="bg-background text-foreground py-20 md:py-32 relative overflow-hidden"
+      className="bg-background text-white py-20 md:py-32 relative overflow-hidden"
       data-faturamento-inicial="110000"
       data-faturamento-min="5000"
       data-faturamento-max="1000000"
@@ -139,7 +139,7 @@ export function CostComparison() {
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
             </span>
           </h2>
-          <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
+          <p className="max-w-2xl mx-auto mt-4 text-lg text-white">
             Compare os custos e veja o impacto direto no seu lucro com taxas negociáveis.
           </p>
         </motion.div>
@@ -152,11 +152,11 @@ export function CostComparison() {
                      before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:border before:border-primary/20 before:bg-gradient-to-br before:from-primary/10 before:to-transparent before:[mask:linear-gradient(black,black)_content-box,linear-gradient(black,black)] before:[mask-composite:exclude]"
         >
           <div className="text-center mb-8">
-            <label className="text-sm text-muted-foreground mb-2 block">Seu faturamento mensal estimado</label>
-            <div className="text-4xl md:text-5xl font-bold text-foreground tabular-nums tracking-tighter">
+            <label className="text-sm text-white mb-2 block">Seu faturamento mensal estimado</label>
+            <div className="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-tighter">
               {formatCurrency(revenue)}
             </div>
-            <span className="text-xs text-muted-foreground">por mês</span>
+            <span className="text-xs text-white">por mês</span>
           </div>
           
           <Slider
@@ -171,12 +171,12 @@ export function CostComparison() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {/* Gateway Tradicional */}
             <div className="bg-background/20 border border-border rounded-xl p-6">
-              <h3 className="font-semibold text-foreground">Gateway Tradicional</h3>
-              <p className="text-sm text-muted-foreground mb-4">Taxa média: {traditionalRate.toFixed(1)}%</p>
-              <div className="text-3xl md:text-4xl font-bold text-foreground tabular-nums">
+              <h3 className="font-semibold text-white">Gateway Tradicional</h3>
+              <p className="text-sm text-white mb-4">Taxa média: {traditionalRate.toFixed(1)}%</p>
+              <div className="text-3xl md:text-4xl font-bold text-white tabular-nums">
                 <AnimatedCounter value={custoTrad} />
               </div>
-              <p className="text-xs text-muted-foreground mt-1">em taxas mensais</p>
+              <p className="text-xs text-white mt-1">em taxas mensais</p>
             </div>
 
             {/* Fusion Pay */}
@@ -184,19 +184,19 @@ export function CostComparison() {
                <div className="absolute top-0 right-0 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-bl-lg">
                 ECONOMIA
               </div>
-              <h3 className="font-semibold text-foreground">Fusion Pay</h3>
-              <p className="text-sm text-muted-foreground mb-4">Taxa negociável: {fusionRate.toFixed(1)}%</p>
+              <h3 className="font-semibold text-white">Fusion Pay</h3>
+              <p className="text-sm text-white mb-4">Taxa negociável: {fusionRate.toFixed(1)}%</p>
               <div className="text-3xl md:text-4xl font-bold text-primary tabular-nums">
                  <AnimatedCounter value={custoFusion} />
               </div>
-              <p className="text-xs text-muted-foreground mt-1">em taxas mensais</p>
+              <p className="text-xs text-white mt-1">em taxas mensais</p>
             </div>
           </div>
           
           <div className="bg-gradient-to-r from-green-500/10 to-green-500/0 border border-green-500/20 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <p className="text-sm text-green-300">Sua economia mensal</p>
-              <div className="text-3xl font-bold text-foreground tabular-nums">
+              <div className="text-3xl font-bold text-white tabular-nums">
                 <AnimatedCounter value={economiaMensal} />
               </div>
             </div>
@@ -209,8 +209,8 @@ export function CostComparison() {
             </div>
           </div>
           
-          <p className="text-center text-xs text-muted-foreground mt-6">
-            Economia anual projetada: <span className="font-semibold text-foreground">{formatCurrency(economiaAnual)}</span>
+          <p className="text-center text-xs text-white mt-6">
+            Economia anual projetada: <span className="font-semibold text-white">{formatCurrency(economiaAnual)}</span>
           </p>
         </motion.div>
       </div>

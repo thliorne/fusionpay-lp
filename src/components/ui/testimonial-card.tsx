@@ -40,10 +40,10 @@ export function TestimonialCard({
           <AvatarImage src={author.avatar} alt={author.name} />
         </Avatar>
         <div className="flex flex-col items-start">
-          <h3 className="text-md font-semibold leading-none">
+          <h3 className="text-md font-semibold leading-none text-white">
             {author.name}
           </h3>
-          <p className="text-sm text-white/80">
+          <p className="text-sm text-white">
             {author.handle}
           </p>
         </div>
