@@ -48,14 +48,14 @@ export function Header() {
     >
       <div
         className={cn(
-          'absolute inset-0 rounded-full border border-primary/80 bg-transparent transition-all duration-300',
+          'absolute inset-0 rounded-[24px] border border-primary/40 bg-gradient-to-t from-black to-neutral-900 shadow-[0_0_15px_rgba(255,87,34,0.2),inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-300',
         )}
       />
 
       <nav className="relative z-10 flex h-full items-center justify-between px-6">
         {/* Logo */}
-        <a href="#hero" aria-label="Página inicial da Fusion Pay">
-          <div className="w-auto object-contain h-[26px] md:h-[28px] lg:h-[32px]">
+        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="pl-[14px]">
+          <div className="w-auto object-contain h-[28px] md:h-[30px] lg:h-[32px]">
             <Image
               src="https://i.imgur.com/j0I0NJz.png"
               alt="Fusion Pay — Confiança para Vender"
@@ -86,7 +86,7 @@ export function Header() {
         <div className="hidden lg:block">
           <Button
             size="sm"
-            className="rounded-full bg-white text-black h-10 px-6 font-semibold hover:bg-neutral-200 hover:scale-105 transition-transform"
+            className="rounded-full bg-white text-black h-10 px-6 font-semibold hover:bg-neutral-200 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
           >
             <KeyRound className="mr-2 h-4 w-4" />
             Entrar
