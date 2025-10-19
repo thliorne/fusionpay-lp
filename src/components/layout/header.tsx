@@ -48,16 +48,25 @@ export function Header() {
     >
       <div
         className={cn(
-          'absolute inset-0 rounded-full bg-transparent shadow-[0_8px_32px_rgba(255,87,34,0.3)] transition-all duration-300',
-          'before:absolute before:inset-0 before:rounded-full before:border before:border-primary/80 before:p-px before:content-[""]',
-          'after:absolute after:inset-0 after:rounded-full after:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.25),transparent_60%)] after:content-[""]'
+          'absolute inset-0 rounded-full border border-primary/80 bg-transparent transition-all duration-300',
         )}
       />
 
       <nav className="relative z-10 flex h-full items-center justify-between px-6">
         {/* Logo */}
         <a href="#hero" aria-label="Página inicial da Fusion Pay">
-          <Logo />
+          <div className="w-auto object-contain h-[26px] md:h-[28px] lg:h-[32px]">
+            <Image
+              src="https://i.imgur.com/j0I0NJz.png"
+              alt="Fusion Pay — Confiança para Vender"
+              width={160}
+              height={40}
+              decoding="async"
+              fetchPriority="high"
+              loading="eager"
+              style={{ imageRendering: 'auto' }}
+            />
+          </div>
         </a>
 
         {/* Desktop Navigation */}
