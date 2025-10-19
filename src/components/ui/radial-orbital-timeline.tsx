@@ -210,7 +210,7 @@ export default function RadialOrbitalTimeline({
             QUEM SOMOS
           </div>
           <h2 id="diferenciais-title" className="text-4xl md:text-5xl font-bold tracking-tighter">
-            Conheça a{" "}
+            <span className="text-white">Conheça a</span>{" "}
             <span className="relative inline-block text-primary">
               Fusion Pay
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
