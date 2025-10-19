@@ -11,20 +11,21 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import { Logo } from "./icons/logo";
 
 export default function NavbarDemo() {
   const navItems = [
     {
-      name: "Features",
-      link: "#features",
+      name: "Diferenciais",
+      link: "#diferenciais",
     },
     {
-      name: "Pricing",
-      link: "#pricing",
+      name: "Integrações",
+      link: "#integrations",
     },
     {
-      name: "Contact",
-      link: "#contact",
+      name: "FAQ",
+      link: "#faq",
     },
   ];
 
@@ -35,18 +36,22 @@ export default function NavbarDemo() {
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
-          <NavbarLogo />
+          <div className="flex items-center">
+            <Logo />
+          </div>
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
+            <NavbarButton variant="primary">Criar Conta</NavbarButton>
           </div>
         </NavBody>
 
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
-            <NavbarLogo />
+            <div className="flex items-center">
+             <Logo />
+            </div>
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -61,7 +66,7 @@ export default function NavbarDemo() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative text-white"
               >
                 <span className="block">{item.name}</span>
               </a>
@@ -69,7 +74,7 @@ export default function NavbarDemo() {
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
+                variant="secondary"
                 className="w-full"
               >
                 Login
@@ -79,7 +84,7 @@ export default function NavbarDemo() {
                 variant="primary"
                 className="w-full"
               >
-                Book a call
+                Criar Conta
               </NavbarButton>
             </div>
           </MobileNavMenu>
