@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { KeyRound, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { Logo } from '../icons/logo';
 
 const navLinks = [
   { label: 'Quem Somos', href: '#diferenciais' },
@@ -17,55 +18,27 @@ const navLinks = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 20);
-
-      if (currentScrollY > lastScrollY && currentScrollY > 72) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      setLastScrollY(currentScrollY);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <header
       className={cn(
-        'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl transition-all duration-300 ease-out',
-        scrolled ? 'h-16' : 'h-[72px]',
-        visible ? 'translate-y-0' : '-translate-y-[200%]'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        scrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent border-b border-transparent'
       )}
     >
-      <div
-        className={cn(
-          'absolute inset-0 rounded-[24px] border border-primary/40 bg-gradient-to-t from-black to-neutral-900 shadow-[0_0_15px_rgba(255,87,34,0.2),inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-300',
-        )}
-      />
-
-      <nav className="relative z-10 flex h-full items-center justify-between px-6">
+      <div className="container mx-auto flex h-20 items-center justify-between px-6">
         {/* Logo */}
-        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="flex items-center -translate-y-px">
-          <div className="w-auto object-contain h-[32px] md:h-[34px] lg:h-[36px]">
-            <Image
-              src="https://i.imgur.com/j0I0NJz.png"
-              alt="Fusion Pay — Confiança para Vender"
-              width={160}
-              height={40}
-              decoding="async"
-              fetchPriority="high"
-              loading="eager"
-              style={{ imageRendering: 'auto' }}
-            />
-          </div>
+        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="flex items-center">
+          <Logo />
         </a>
 
         {/* Desktop Navigation */}
@@ -109,18 +82,7 @@ export function Header() {
               <div className="flex h-full flex-col p-6">
                 <div className="mb-8">
                   <a href="#hero" aria-label="Página inicial da Fusion Pay" onClick={() => setMobileMenuOpen(false)}>
-                  <div className="w-auto object-contain h-[32px] md:h-[34px] lg:h-[36px]">
-                    <Image
-                      src="https://i.imgur.com/j0I0NJz.png"
-                      alt="Fusion Pay — Confiança para Vender"
-                      width={160}
-                      height={40}
-                      decoding="async"
-                      fetchPriority="high"
-                      loading="eager"
-                      style={{ imageRendering: 'auto' }}
-                    />
-                  </div>
+                    <Logo />
                   </a>
                 </div>
                 <div className="flex flex-col gap-4 text-lg">
@@ -148,7 +110,7 @@ export function Header() {
             </SheetContent>
           </Sheet>
         </div>
-      </nav>
+      </div>
     </header>
   );
 }
