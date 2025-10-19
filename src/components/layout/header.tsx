@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { KeyRound, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const navLinks = [
   { label: 'Quem Somos', href: '#diferenciais' },
@@ -56,7 +57,7 @@ export function Header() {
       <nav className="relative z-10 flex h-full items-center justify-between px-6">
         {/* Logo */}
         <a href="#hero" aria-label="Página inicial da Fusion Pay">
-          <Logo className="h-8 w-auto text-white" />
+          <Logo />
         </a>
 
         {/* Desktop Navigation */}
@@ -99,7 +100,9 @@ export function Header() {
             <SheetContent side="left" className="bg-[#0A0A0A] border-r-white/10 w-[80%] max-w-sm p-0">
               <div className="flex h-full flex-col p-6">
                 <div className="mb-8">
-                  <Logo className="h-8 w-auto" />
+                  <a href="#hero" aria-label="Página inicial da Fusion Pay" onClick={() => setMobileMenuOpen(false)}>
+                    <Logo />
+                  </a>
                 </div>
                 <div className="flex flex-col gap-4 text-lg">
                   {navLinks.map((link) => (
