@@ -47,8 +47,8 @@ export function Header() {
     >
       <div
         className={cn(
-          'absolute inset-0 rounded-full bg-gradient-to-b from-[#FF6A2E] to-[#FF4B1F] shadow-[0_8px_32px_rgba(255,87,34,0.3)] transition-all duration-300 opacity-90',
-          'before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:p-px before:content-[""]',
+          'absolute inset-0 rounded-full bg-transparent shadow-[0_8px_32px_rgba(255,87,34,0.3)] transition-all duration-300',
+          'before:absolute before:inset-0 before:rounded-full before:border before:border-primary/80 before:p-px before:content-[""]',
           'after:absolute after:inset-0 after:rounded-full after:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.25),transparent_60%)] after:content-[""]'
         )}
       />
