@@ -2,9 +2,9 @@
 
 import { FAQ1 } from "@/components/ui/faq-monocrhome";
 
-export function FaqSection() {
+export function FaqSection({ id }: { id?: string }) {
   return (
-    <div className="section-surface">
+    <div id={id} className="section-surface">
       <FAQ1 />
     </div>
   );

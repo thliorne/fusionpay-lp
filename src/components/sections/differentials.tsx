@@ -79,6 +79,6 @@ const timelineData = [
 ];
 
 
-export function DifferentialsSection() {
-  return <RadialOrbitalTimeline timelineData={timelineData} />;
+export function DifferentialsSection({ id }: { id?: string }) {
+  return <div id={id}><RadialOrbitalTimeline timelineData={timelineData} /></div>;
 }

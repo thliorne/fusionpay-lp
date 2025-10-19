@@ -20,12 +20,12 @@ export default function Home() {
         <HeroFusionPay />
         <DifferentialsSection />
         <DisplayCardsSection />
-        <IntegrationsSection />
+        <IntegrationsSection id="integrations" />
         <DashboardSection />
         <CostComparison />
         <TestimonialsSection />
         <ContactSection />
-        <FaqSection />
+        <FaqSection id="faq" />
       </main>
       <Footer />
     </div>

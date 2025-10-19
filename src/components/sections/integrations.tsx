@@ -12,9 +12,9 @@ const integrations = [
   { name: 'WooCommerce', logoUrl: 'https://i.imgur.com/TSi6QTG.png' },
 ];
 
-export function IntegrationsSection() {
+export function IntegrationsSection({ id }: { id?: string }) {
   return (
-    <section className="py-12 md:py-24 bg-background text-white text-center" style={{background: "transparent"}}>
+    <section id={id} className="py-12 md:py-24 bg-background text-white text-center" style={{background: "transparent"}}>
       <div className="container mx-auto text-center">
         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
           <Puzzle className="size-4" />
