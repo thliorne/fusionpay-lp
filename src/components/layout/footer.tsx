@@ -65,13 +65,13 @@ function HoverFooter() {
   ];
 
   return (
-    <footer className="bg-black relative h-fit rounded-3xl overflow-hidden m-8 border border-border/20">
+    <footer className="bg-gradient-to-b from-[#0A0A0A] to-[#1A1A1A] relative h-fit rounded-3xl overflow-hidden m-8 border border-white/10 shadow-lg">
       <div className="max-w-7xl mx-auto p-14 z-40 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
           {/* Brand section */}
           <div className="flex flex-col space-y-4">
             <Logo />
-            <p className="text-sm leading-relaxed text-white">
+            <p className="text-sm leading-relaxed text-[#B3B3B3]">
               O gateway de pagamentos para escalar o seu negócio.
             </p>
           </div>
@@ -87,7 +87,7 @@ function HoverFooter() {
                   <li key={link.label} className="relative">
                     <a
                       href={link.href}
-                      className="text-white hover:text-primary transition-colors"
+                      className="text-white hover:text-[#FF784E] transition-colors"
                     >
                       {link.label}
                     </a>
@@ -112,12 +112,12 @@ function HoverFooter() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-white hover:text-primary transition-colors"
+                      className="text-white hover:text-[#FF784E] transition-colors"
                     >
                       {item.text}
                     </a>
                   ) : (
-                    <span className="text-white hover:text-primary transition-colors">
+                    <span className="text-white">
                       {item.text}
                     </span>
                   )}
@@ -127,7 +127,7 @@ function HoverFooter() {
           </div>
         </div>
 
-        <hr className="border-t border-border/20 my-8" />
+        <hr className="border-t border-white/10 my-8" />
 
         {/* Footer bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
@@ -146,7 +146,7 @@ function HoverFooter() {
           </div>
 
           {/* Copyright */}
-          <p className="text-center md:text-left text-white">
+          <p className="text-center md:text-left text-[#B3B3B3]">
             &copy; {new Date().getFullYear()} Fusion Pay. Todos os direitos reservados.
           </p>
         </div>
