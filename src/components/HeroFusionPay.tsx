@@ -95,7 +95,7 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
     const randomValue = Math.random() * (8597 - 197) + 197;
     setValue(randomValue);
 
-    const methods = ["PIX instantâneo", "Cartão aprovado", "Boleto liquidado"];
+    const methods = ["PIX recebido", "Transferência TED", "Depósito identificado"];
     setMethod(methods[Math.floor(Math.random() * methods.length)]);
 
     // Set timers for animation lifecycle
@@ -137,7 +137,7 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
             <div className="absolute inset-[-4px] border border-fusion-orange/50 rounded-full animate-pulse"></div>
         </div>
         <div className="flex-grow">
-          <p className="font-semibold text-white">Venda aprovada</p>
+          <p className="font-semibold text-white">Transferência Recebida</p>
           <p className="text-2xl font-bold text-white tracking-tight">{formattedValue}</p>
           <p className="text-xs text-white/70">{method} • agora mesmo</p>
         </div>
@@ -309,3 +309,5 @@ export default function HeroFusionPay() {
     </section>
   );
 }
+
+    
