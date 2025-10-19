@@ -39,8 +39,8 @@ const OrbSystem = () => {
                    shadow-[0_0_80px_-10px_#FF5722,inset_0_0_30px_rgba(0,0,0,0.3)]"
       >
         {/* Reflexos vítreos */}
-        <div className="absolute top-[15%] left-[20%] w-[60%] h-[20%] bg-white/20 rounded-[100%] blur-md -rotate-[20deg]" />
-        <div className="absolute bottom-[20%] right-[15%] w-[50%] h-[15%] bg-white/10 rounded-[100%] blur-lg rotate-[30deg]" />
+        <div className="absolute top-[15%] left-[20%] w-[60%] h-[20%] bg-white/10 rounded-[100%] blur-md -rotate-[20deg]" />
+        <div className="absolute bottom-[20%] right-[15%] w-[50%] h-[15%] bg-white/5 rounded-[100%] blur-lg rotate-[30deg]" />
       </motion.div>
 
       {/* LOGO OVERLAY - FIXED */}
@@ -177,23 +177,23 @@ export default function HeroFusionPay() {
       <style>{`
         .fusion-logo-overlay { mix-blend-mode: screen; }
         .fusion-logo-mark {
-          width: clamp(88px, 12vw, 140px);
-          opacity: 0.92;
-          filter: drop-shadow(0 0 10px rgba(255,87,34,.28)) blur(.0px);
+          width: clamp(140px, 20vw, 224px);
+          opacity: 0.95;
+          filter: drop-shadow(0 0 16px rgba(255,87,34,.45)) blur(0.5px);
           transform: translateZ(1px);
         }
         .fusion-logo-overlay::after {
           content:"";
           position: absolute;
-          width: clamp(120px, 18vw, 200px);
-          height: clamp(120px, 18vw, 200px);
+          width: clamp(192px, 28vw, 320px);
+          height: clamp(192px, 28vw, 320px);
           border-radius: 9999px;
           background: radial-gradient(circle at 50% 50%,
-            rgba(255,120,60,.55) 0%,
-            rgba(255,120,60,.22) 40%,
-            rgba(255,120,60,.06) 68%,
+            rgba(255,120,60,.4) 0%,
+            rgba(255,120,60,.15) 40%,
+            rgba(255,120,60,.05) 68%,
             transparent 80%);
-          filter: blur(6px);
+          filter: blur(8px);
         }
         @keyframes orbit-near {
           from { transform: rotate(0deg) translateX(140px) rotate(-0deg) scale(0.9); }
