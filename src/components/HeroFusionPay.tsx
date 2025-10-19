@@ -134,6 +134,7 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
       <div className="flex items-center gap-4">
         <div className="relative flex-shrink-0 w-10 h-10 flex items-center justify-center">
             <div className="absolute inset-[-4px] border border-fusion-orange/50 rounded-full animate-pulse"></div>
+            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={40} height={40} className="rounded-full" />
         </div>
         <div className="flex-grow">
           <p className="font-semibold text-white">Transferência Recebida</p>
@@ -158,7 +159,7 @@ export default function HeroFusionPay() {
     }, 15000);
 
     // Initial notification
-    setNotifications([Date.now()]);
+    setTimeout(() => setNotifications([Date.now()]), 1000);
 
     return () => clearInterval(interval);
   }, []);
