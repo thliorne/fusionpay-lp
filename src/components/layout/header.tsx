@@ -32,7 +32,7 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/10 -translate-y-full' : 'bg-transparent border-b border-transparent translate-y-0'
+        scrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent border-b border-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
@@ -61,7 +61,7 @@ export function Header() {
             className="rounded-full bg-white text-black h-10 px-6 font-semibold hover:bg-neutral-200 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
           >
             <KeyRound className="mr-2 h-4 w-4" />
-            Entrar
+            Login
           </Button>
         </div>
 
@@ -103,7 +103,7 @@ export function Header() {
                     className="w-full rounded-full bg-white text-black h-12 font-semibold"
                   >
                     <KeyRound className="mr-2 h-4 w-4" />
-                    Entrar
+                    Login
                   </Button>
                 </div>
               </div>
