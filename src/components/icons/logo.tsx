@@ -12,7 +12,7 @@ export function Logo({ className }: { className?: string }) {
       decoding="async"
       fetchPriority="high"
       loading="eager"
-      className={cn("w-auto object-contain h-[22px] md:h-[24px] lg:h-[28px]", className)}
+      className={cn("w-auto object-contain h-[26px] md:h-[28px] lg:h-[32px]", className)}
       style={{ imageRendering: 'auto' }}
     />
   );
