@@ -54,8 +54,8 @@ export function Header() {
 
       <nav className="relative z-10 flex h-full items-center justify-between px-6">
         {/* Logo */}
-        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="pl-[14px]">
-          <div className="w-auto object-contain h-[28px] md:h-[30px] lg:h-[32px]">
+        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="pl-[14px] -translate-y-px">
+          <div className="w-auto object-contain h-[32px] md:h-[34px] lg:h-[36px]">
             <Image
               src="https://i.imgur.com/j0I0NJz.png"
               alt="Fusion Pay — Confiança para Vender"
