@@ -6,14 +6,14 @@ import Image from "next/image";
 
 const orbitalIcons = [
   // Camada NEAR (horário, 24s)
-  { Icon: DollarSign, className: "text-black", style: { animation: "orbit-near 24s linear infinite" } },
-  { Icon: CreditCard, className: "text-black", style: { animation: "orbit-near 24s linear infinite", animationDelay: "-12s" } },
+  { Icon: DollarSign, className: "text-fusion-orange", style: { animation: "orbit-near 24s linear infinite" } },
+  { Icon: CreditCard, className: "text-fusion-orange", style: { animation: "orbit-near 24s linear infinite", animationDelay: "-12s" } },
   // Camada MID (anti-horário, 34s)
-  { Icon: Zap, className: "text-black", style: { animation: "orbit-mid 34s linear infinite reverse" } },
-  { Icon: Shield, className: "text-black", style: { animation: "orbit-mid 34s linear infinite reverse", animationDelay: "-17s" } },
+  { Icon: Zap, className: "text-fusion-orange", style: { animation: "orbit-mid 34s linear infinite reverse" } },
+  { Icon: Shield, className: "text-fusion-orange", style: { animation: "orbit-mid 34s linear infinite reverse", animationDelay: "-17s" } },
   // Camada FAR (horário, 46s)
-  { Icon: Globe, className: "text-black", style: { animation: "orbit-far 46s linear infinite" } },
-  { Icon: TrendingUp, className: "text-black", style: { animation: "orbit-far 46s linear infinite", animationDelay: "-23s" } },
+  { Icon: Globe, className: "text-fusion-orange", style: { animation: "orbit-far 46s linear infinite" } },
+  { Icon: TrendingUp, className: "text-fusion-orange", style: { animation: "orbit-far 46s linear infinite", animationDelay: "-23s" } },
 ];
 
 const OrbSystem = () => {
@@ -72,12 +72,12 @@ const OrbSystem = () => {
           <motion.div
             key={index}
             className="group/icon absolute top-1/2 left-1/2 -mt-4 -ml-4 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center 
-                       border border-primary/30 bg-primary backdrop-blur-sm"
+                       border border-black/30 bg-black/80 backdrop-blur-sm shadow-[0_0_12px_rgba(255,87,34,0.3)]"
             style={style}
             whileHover={{ scale: 1.15, z: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
-            <Icon className={`w-5 h-5 md:w-6 md:h-6 transition-all duration-300 group-hover/icon:text-black ${className}`} />
+            <Icon className={`w-5 h-5 md:w-6 md:h-6 transition-all duration-300 drop-shadow-[0_0_4px_hsl(var(--primary))] group-hover/icon:drop-shadow-[0_0_8px_hsl(var(--primary))] ${className}`} />
             <div className="absolute -inset-1 rounded-full border border-primary/50 opacity-0 transition-opacity duration-300 group-hover/icon:opacity-100 group-hover/icon:animate-pulse" />
           </motion.div>
         ))}
@@ -133,7 +133,6 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
     >
       <div className="flex items-center gap-4">
         <div className="relative flex-shrink-0 w-10 h-10 flex items-center justify-center">
-            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={40} height={40} className="rounded-full" />
             <div className="absolute inset-[-4px] border border-fusion-orange/50 rounded-full animate-pulse"></div>
         </div>
         <div className="flex-grow">
