@@ -312,7 +312,7 @@ export default function RadialOrbitalTimeline({
                    absolute text-center -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap
                    text-base font-semibold tracking-wider
                    transition-all duration-300
-                   ${isExpanded ? "text-white scale-110" : "text-muted-foreground"}
+                   ${isExpanded ? "text-white scale-110" : "text-white"}
                    group-hover/node:text-white
                  `}
                 >
