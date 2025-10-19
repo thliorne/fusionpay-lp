@@ -177,21 +177,21 @@ export default function HeroFusionPay() {
       <style>{`
         .fusion-logo-overlay { mix-blend-mode: screen; }
         .fusion-logo-mark {
-          width: clamp(140px, 20vw, 224px);
-          opacity: 0.95;
-          filter: drop-shadow(0 0 16px rgba(255,87,34,.45)) blur(0.5px);
+          width: clamp(154px, 22vw, 246px); /* Aumentado em ~10% */
+          opacity: 1;
+          filter: drop-shadow(0 0 12px rgba(255,100,50,.35));
           transform: translateZ(1px);
         }
         .fusion-logo-overlay::after {
           content:"";
           position: absolute;
-          width: clamp(192px, 28vw, 320px);
-          height: clamp(192px, 28vw, 320px);
+          width: clamp(211px, 31vw, 352px); /* Aumentado proporcionalmente */
+          height: clamp(211px, 31vw, 352px); /* Aumentado proporcionalmente */
           border-radius: 9999px;
           background: radial-gradient(circle at 50% 50%,
-            rgba(255,120,60,.4) 0%,
-            rgba(255,120,60,.15) 40%,
-            rgba(255,120,60,.05) 68%,
+            rgba(255,120,60,.32) 0%,   /* Intensidade reduzida em ~20% */
+            rgba(255,120,60,.12) 40%,
+            rgba(255,120,60,.03) 68%,
             transparent 80%);
           filter: blur(8px);
         }
@@ -331,5 +331,3 @@ export default function HeroFusionPay() {
     </section>
   );
 }
-
-    
