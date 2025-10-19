@@ -30,26 +30,22 @@ export const TestimonialsColumn = (props: {
           <React.Fragment key={index}>
             {props.testimonials.map(({ text, image, name, role }, i) => (
               <div 
-                className="relative p-6 rounded-2xl bg-black/80 shadow-lg shadow-black/20 max-w-sm w-full backdrop-blur-md overflow-hidden" 
+                className="relative group p-6 rounded-2xl bg-black/70 shadow-lg shadow-black/20 max-w-sm w-full backdrop-blur-md border border-white/10 transition-all duration-300 hover:border-white/20 hover:bg-black/60" 
                 key={i}
               >
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-primary/50 to-accent/50 opacity-0 group-hover:opacity-75 transition-opacity duration-300 blur-lg" />
-                <div 
-                  className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/70 via-accent/70 to-primary/70"
-                />
-                <div className="relative z-10 p-0 rounded-2xl bg-black/80">
+                <div className="relative z-10">
                   <div className="text-white/90">{text}</div>
-                  <div className="flex items-center gap-3 mt-5">
+                  <div className="flex items-center gap-4 mt-5">
                     <img
                       width={40}
                       height={40}
                       src={image}
                       alt={name}
-                      className="h-10 w-10 rounded-full object-cover"
+                      className="h-10 w-10 rounded-full object-cover border-2 border-white/20"
                     />
                     <div className="flex flex-col">
                       <div className="font-semibold tracking-tight leading-5 text-white">{name}</div>
-                      <div className="leading-5 opacity-70 tracking-tight text-white/80">{role}</div>
+                      <div className="leading-5 text-white/70 tracking-tight">{role}</div>
                     </div>
                   </div>
                 </div>
