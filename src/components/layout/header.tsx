@@ -17,25 +17,37 @@ const navLinks = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 20);
+
+      if (currentScrollY > lastScrollY && currentScrollY > 72) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <header
       className={cn(
-        'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-300 ease-out',
-        scrolled ? 'h-16' : 'h-[72px]'
+        'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl transition-all duration-300 ease-out',
+        scrolled ? 'h-16' : 'h-[72px]',
+        visible ? 'translate-y-0' : '-translate-y-[200%]'
       )}
     >
       <div
         className={cn(
-          'absolute inset-0 rounded-full bg-gradient-to-b from-[#FF6A2E] to-[#FF4B1F] shadow-[0_8px_32px_rgba(255,87,34,0.3)] transition-all duration-300 opacity-95',
+          'absolute inset-0 rounded-full bg-gradient-to-b from-[#FF6A2E] to-[#FF4B1F] shadow-[0_8px_32px_rgba(255,87,34,0.3)] transition-all duration-300 opacity-90',
           'before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:p-px before:content-[""]',
           'after:absolute after:inset-0 after:rounded-full after:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.25),transparent_60%)] after:content-[""]'
         )}
