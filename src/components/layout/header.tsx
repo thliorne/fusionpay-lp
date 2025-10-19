@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Logo } from '@/components/icons/logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { KeyRound, Menu } from 'lucide-react';
@@ -54,7 +53,7 @@ export function Header() {
 
       <nav className="relative z-10 flex h-full items-center justify-between px-6">
         {/* Logo */}
-        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="pl-[14px] -translate-y-px">
+        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="flex items-center -translate-y-px">
           <div className="w-auto object-contain h-[32px] md:h-[34px] lg:h-[36px]">
             <Image
               src="https://i.imgur.com/j0I0NJz.png"
@@ -110,7 +109,18 @@ export function Header() {
               <div className="flex h-full flex-col p-6">
                 <div className="mb-8">
                   <a href="#hero" aria-label="Página inicial da Fusion Pay" onClick={() => setMobileMenuOpen(false)}>
-                    <Logo />
+                  <div className="w-auto object-contain h-[32px] md:h-[34px] lg:h-[36px]">
+                    <Image
+                      src="https://i.imgur.com/j0I0NJz.png"
+                      alt="Fusion Pay — Confiança para Vender"
+                      width={160}
+                      height={40}
+                      decoding="async"
+                      fetchPriority="high"
+                      loading="eager"
+                      style={{ imageRendering: 'auto' }}
+                    />
+                  </div>
                   </a>
                 </div>
                 <div className="flex flex-col gap-4 text-lg">
