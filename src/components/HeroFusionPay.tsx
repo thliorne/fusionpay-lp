@@ -43,6 +43,12 @@ const OrbSystem = () => {
         <div className="absolute bottom-[20%] right-[15%] w-[50%] h-[15%] bg-white/10 rounded-[100%] blur-lg rotate-[30deg]" />
       </motion.div>
 
+      {/* LOGO OVERLAY - FIXED */}
+      <div className="fusion-logo-overlay pointer-events-none absolute inset-0 grid place-items-center z-[2]">
+        <img src="https://i.imgur.com/j0I0NJz.png" alt="Fusion Pay"
+              className="fusion-logo-mark select-none" loading="eager" decoding="async" />
+      </div>
+
       {/* 3) RINGS */}
       <div className="absolute inset-0 [transform-style:preserve-3d]">
         <div className="absolute inset-[-10%] rounded-full border-t-2 border-b-2 border-primary/60 animate-[spin_32s_linear_infinite] [transform:rotateY(70deg)_rotateX(40deg)]" />
@@ -173,6 +179,26 @@ export default function HeroFusionPay() {
     <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
       {/* Estilos CSS para as animações orbitais */}
       <style>{`
+        .fusion-logo-overlay { mix-blend-mode: screen; }
+        .fusion-logo-mark {
+          width: clamp(88px, 12vw, 140px);
+          opacity: 0.92;
+          filter: drop-shadow(0 0 10px rgba(255,87,34,.28)) blur(.0px);
+          transform: translateZ(1px);
+        }
+        .fusion-logo-overlay::after {
+          content:"";
+          position: absolute;
+          width: clamp(120px, 18vw, 200px);
+          height: clamp(120px, 18vw, 200px);
+          border-radius: 9999px;
+          background: radial-gradient(circle at 50% 50%,
+            rgba(255,120,60,.55) 0%,
+            rgba(255,120,60,.22) 40%,
+            rgba(255,120,60,.06) 68%,
+            transparent 80%);
+          filter: blur(6px);
+        }
         @keyframes orbit-near {
           from { transform: rotate(0deg) translateX(140px) rotate(-0deg) scale(0.9); }
           to   { transform: rotate(360deg) translateX(140px) rotate(-360deg) scale(0.9); }
