@@ -231,13 +231,13 @@ export default function RadialOrbitalTimeline({
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-40 h-40 rounded-full bg-gradient-to-br from-primary/50 via-primary/20 to-transparent animate-pulse flex items-center justify-center z-10">
-            <div className="absolute w-48 h-48 rounded-full border border-primary/30 animate-ping opacity-80"></div>
+          <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-primary/50 via-primary/20 to-transparent animate-pulse flex items-center justify-center z-10">
+            <div className="absolute w-56 h-56 rounded-full border border-primary/30 animate-ping opacity-80"></div>
             <div
-              className="absolute w-56 h-56 rounded-full border border-primary/20 animate-ping opacity-60"
+              className="absolute w-64 h-64 rounded-full border border-primary/20 animate-ping opacity-60"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={80} height={80} className="w-20 h-20 rounded-full bg-primary/90 backdrop-blur-md" />
+            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={96} height={96} className="w-24 h-24 rounded-full bg-primary/90 backdrop-blur-md" />
           </div>
 
           <div className="absolute w-full h-full rounded-full border border-border/20"></div>
@@ -281,7 +281,7 @@ export default function RadialOrbitalTimeline({
                     transition: 'opacity 0.5s',
                   }}
                 ></div>
-                <div className="absolute w-full h-full rounded-full border border-primary/20 animate-ping opacity-70"></div>
+                <div className="absolute w-full h-full rounded-full border-2 border-transparent group-hover/node:border-primary/50 transition-colors duration-300"></div>
 
 
                 <div
@@ -290,7 +290,7 @@ export default function RadialOrbitalTimeline({
                   ${
                     isExpanded || isRelated
                       ? "bg-primary text-black"
-                      : "bg-primary text-black"
+                      : "bg-black/50 text-primary"
                   }
                    border-2
                   ${
@@ -298,10 +298,10 @@ export default function RadialOrbitalTimeline({
                       ? "border-primary shadow-lg shadow-primary/30"
                       : isRelated
                       ? "border-primary animate-pulse"
-                      : "border-border"
+                      : "border-border/50"
                   }
-                   transition-all duration-300 transform
-                   group-hover/node:scale-110
+                   transition-all duration-300 transform backdrop-blur-sm
+                   group-hover/node:scale-110 group-hover/node:border-primary group-hover/node:bg-primary group-hover/node:text-black
                  `}
                 >
                   <Icon size={nodeSize * 0.4} />
