@@ -77,13 +77,13 @@ const OrbSystem = () => {
         {orbitalIcons.map(({ Icon, style, className }, index) => (
           <motion.div
             key={index}
-            className="group/icon absolute top-1/2 left-1/2 -mt-4 -ml-4 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center 
+            className="group/icon absolute top-1/2 left-1/2 -mt-5 -ml-5 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center 
                        border border-black/30 bg-black/80 backdrop-blur-sm shadow-[0_0_12px_rgba(255,87,34,0.3)]"
             style={style}
             whileHover={{ scale: 1.15, z: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
-            <Icon className={`w-5 h-5 md:w-6 md:h-6 transition-all duration-300 drop-shadow-[0_0_4px_hsl(var(--primary))] group-hover/icon:drop-shadow-[0_0_8px_hsl(var(--primary))] ${className}`} />
+            <Icon className={`w-6 h-6 md:w-7 md:h-7 transition-all duration-300 drop-shadow-[0_0_4px_hsl(var(--primary))] group-hover/icon:drop-shadow-[0_0_8px_hsl(var(--primary))] ${className}`} />
             <div className="absolute -inset-1 rounded-full border border-primary/50 opacity-0 transition-opacity duration-300 group-hover/icon:opacity-100 group-hover/icon:animate-pulse" />
           </motion.div>
         ))}
