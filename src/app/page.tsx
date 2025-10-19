@@ -9,13 +9,11 @@ import { DashboardSection } from '@/components/sections/dashboard-section';
 import { FaqSection } from '@/components/sections/faq';
 import HeroFusionPay from '@/components/HeroFusionPay';
 import AutoSurfaceFix from "@/components/AutoSurfaceFix";
-import NavbarDemo from '@/components/resizable-navbar-demo';
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <AutoSurfaceFix />
-      <NavbarDemo />
       <main className="flex-1">
         <HeroFusionPay />
         <DifferentialsSection />
