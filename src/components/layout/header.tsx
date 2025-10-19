@@ -29,13 +29,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl transition-all duration-300 ease-out',
+        'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-300 ease-out',
         scrolled ? 'h-16' : 'h-[72px]'
       )}
     >
       <div
         className={cn(
-          'absolute inset-0 rounded-full bg-gradient-to-b from-[#FF6A2E] to-[#FF4B1F] shadow-[0_8px_32px_rgba(255,87,34,0.3)] transition-all duration-300',
+          'absolute inset-0 rounded-full bg-gradient-to-b from-[#FF6A2E] to-[#FF4B1F] shadow-[0_8px_32px_rgba(255,87,34,0.3)] transition-all duration-300 opacity-95',
           'before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:p-px before:content-[""]',
           'after:absolute after:inset-0 after:rounded-full after:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.25),transparent_60%)] after:content-[""]'
         )}
