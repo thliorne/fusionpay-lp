@@ -216,7 +216,7 @@ export default function RadialOrbitalTimeline({
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
             </span>
           </h2>
-          <p className="max-w-3xl mx-auto mt-4 text-lg text-muted-foreground">
+          <p className="max-w-3xl mx-auto mt-4 text-lg text-white/80">
             Somos mais que um gateway de pagamento. Somos o parceiro estratégico que impulsiona o crescimento do seu negócio digital.
           </p>
         </div>
