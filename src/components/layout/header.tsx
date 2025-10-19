@@ -8,10 +8,10 @@ export function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Logo />
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-foreground hover:text-primary transition-colors">Quem Somos</a>
-          <a href="#" className="text-foreground hover:text-primary transition-colors">Diferenciais</a>
-          <a href="#" className="text-foreground hover:text-primary transition-colors">Integrações</a>
-          <a href="#" className="text-foreground hover:text-primary transition-colors">Suporte</a>
+          <a href="#" className="text-white hover:text-primary transition-colors">Quem Somos</a>
+          <a href="#" className="text-white hover:text-primary transition-colors">Diferenciais</a>
+          <a href="#" className="text-white hover:text-primary transition-colors">Integrações</a>
+          <a href="#" className="text-white hover:text-primary transition-colors">Suporte</a>
         </nav>
         <div className="hidden md:flex items-center gap-4">
         </div>

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <div className={cn("flex items-center gap-2 text-2xl font-bold text-foreground", className)}>
+    <div className={cn("flex items-center gap-2 text-2xl font-bold", className)}>
       <svg
         width="40"
         height="40"
@@ -20,7 +20,7 @@ export function Logo({ className }: { className?: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="font-headline">Fusion Pay</span>
+      <span className="font-headline text-white">Fusion Pay</span>
     </div>
   )
 }
