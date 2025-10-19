@@ -292,7 +292,7 @@ export default function RadialOrbitalTimeline({
                       ? "bg-primary text-primary-foreground"
                       : isRelated
                       ? "bg-primary/50 text-primary-foreground"
-                      : "bg-card text-card-foreground"
+                      : "bg-black/80 text-card-foreground"
                   }
                    border-2
                   ${
@@ -323,7 +323,7 @@ export default function RadialOrbitalTimeline({
 
                 {isExpanded && (
                   <Card 
-                    className="absolute top-[calc(100%+3rem)] left-1/2 -translate-x-1/2 w-72 bg-card/90 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible z-50"
+                    className="absolute top-[calc(100%+3rem)] left-1/2 -translate-x-1/2 w-72 bg-black/80 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible z-50"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-border/80"></div>

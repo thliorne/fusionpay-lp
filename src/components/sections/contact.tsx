@@ -51,7 +51,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="bg-card/50 backdrop-blur-lg border border-border/50 rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl shadow-black/20"
+            className="bg-black/80 backdrop-blur-lg border border-border/50 rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl shadow-black/20"
         >
           <div className="text-center">
             <div className="inline-block bg-primary/10 text-primary text-xs font-bold rounded-full px-3 py-1 mb-4">
@@ -65,7 +65,7 @@ export function ContactSection() {
             </p>
             <ul className="flex justify-center items-center gap-6 text-left mb-10 max-w-3xl mx-auto">
               {benefits.map((item, index) => (
-                <li key={index} className="flex items-center gap-3 bg-background/50 p-4 rounded-lg">
+                <li key={index} className="flex items-center gap-3 bg-black/50 p-4 rounded-lg">
                   <div className="flex-shrink-0">{item.icon}</div>
                   <span className="text-white whitespace-nowrap">{item.text}</span>
                 </li>

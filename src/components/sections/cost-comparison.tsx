@@ -148,7 +148,7 @@ export function CostComparison() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative bg-card/50 backdrop-blur-lg rounded-2xl border border-transparent p-6 md:p-10 shadow-2xl shadow-black/20
+          className="relative bg-black/80 backdrop-blur-lg rounded-2xl border border-transparent p-6 md:p-10 shadow-2xl shadow-black/20
                      before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:border before:border-primary/20 before:bg-gradient-to-br before:from-primary/10 before:to-transparent before:[mask:linear-gradient(black,black)_content-box,linear-gradient(black,black)] before:[mask-composite:exclude]"
         >
           <div className="text-center mb-8">
@@ -170,7 +170,7 @@ export function CostComparison() {
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {/* Gateway Tradicional */}
-            <div className="bg-background/20 border border-border rounded-xl p-6">
+            <div className="bg-black/50 border border-border rounded-xl p-6">
               <h3 className="font-semibold text-white">Gateway Tradicional</h3>
               <p className="text-sm text-white mb-4">Taxa média: {traditionalRate.toFixed(1)}%</p>
               <div className="text-3xl md:text-4xl font-bold text-white tabular-nums">
@@ -180,7 +180,7 @@ export function CostComparison() {
             </div>
 
             {/* Fusion Pay */}
-            <div className="bg-background/20 border border-primary/50 rounded-xl p-6 relative overflow-hidden ring-2 ring-primary/20">
+            <div className="bg-black/50 border border-primary/50 rounded-xl p-6 relative overflow-hidden ring-2 ring-primary/20">
                <div className="absolute top-0 right-0 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-bl-lg">
                 ECONOMIA
               </div>
