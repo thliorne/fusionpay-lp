@@ -1,17 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard } from "lucide-react";
-import { motion } from "framer-motion";
-
-/**
- * Hero section premium/high-luxury para a Fusion Pay.
- * - Fundo preto com glow laranja e partículas
- * - Headline grande com palavras em laranja
- * - CTAs lado a lado
- * - Sistema Orbital 3D de energia à direita com ícones orbitais
- * - Selos de confiança com ícones minimalistas
- * - Animações: glow-pulse, float, fade-in e slide-up
- */
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const orbitalIcons = [
   // Camada NEAR (horário, 24s)
@@ -95,10 +86,88 @@ const OrbSystem = () => {
   );
 };
 
+const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
+  const [value, setValue] = useState(0);
+  const [method, setMethod] = useState('');
+
+  useEffect(() => {
+    // Generate random values on mount
+    const randomValue = Math.random() * (8597 - 197) + 197;
+    setValue(randomValue);
+
+    const methods = ["PIX instantâneo", "Cartão aprovado", "Boleto liquidado"];
+    setMethod(methods[Math.floor(Math.random() * methods.length)]);
+
+    // Set timers for animation lifecycle
+    const visibilityTimer = setTimeout(() => {
+      // This will trigger the exit animation
+    }, 5000); 
+
+    const removalTimer = setTimeout(() => {
+        onComplete();
+    }, 5450); // 5000ms visible + 450ms exit animation
+
+    return () => {
+      clearTimeout(visibilityTimer);
+      clearTimeout(removalTimer);
+    };
+  }, [onComplete]);
+
+  const formattedValue = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(value);
+
+  return (
+    <motion.div
+      role="status"
+      aria-live="polite"
+      initial={{ opacity: 0, y: 20, z: -40, scale: 0.94, filter: "blur(4px)" }}
+      animate={{ opacity: 1, y: 0, z: 0, scale: 1, filter: "blur(0px)" }}
+      exit={{ opacity: 0, y: -12, scale: 0.98, filter: "blur(3px)" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="absolute right-[-10%] top-[40%] md:right-[-20%] md:top-[35%] lg:right-[-30%] lg:top-[30%] z-20 w-[320px] 
+                 md:w-[340px] p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/10
+                 shadow-[0_10px_30px_-10px_rgba(255,87,34,0.3),_0_0_0_1px_rgba(255,87,34,0.2)]
+                 will-change-[transform,opacity]"
+    >
+      <div className="flex items-center gap-4">
+        <div className="relative flex-shrink-0 w-10 h-10 flex items-center justify-center">
+            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={40} height={40} className="rounded-full" />
+            <div className="absolute inset-[-4px] border border-fusion-orange/50 rounded-full animate-pulse"></div>
+        </div>
+        <div className="flex-grow">
+          <p className="font-semibold text-white">Venda aprovada</p>
+          <p className="text-2xl font-bold text-white tracking-tight">{formattedValue}</p>
+          <p className="text-xs text-white/70">{method} • agora mesmo</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 
 export default function HeroFusionPay() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const [notifications, setNotifications] = useState<number[]>([]);
+
+  useEffect(() => {
+    setMounted(true);
+    
+    const interval = setInterval(() => {
+      setNotifications(prev => [...prev, Date.now()]);
+    }, 15000);
+
+    // Initial notification
+    setNotifications([Date.now()]);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleNotificationComplete = () => {
+    setNotifications(prev => prev.slice(1));
+  };
+
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
@@ -226,7 +295,15 @@ export default function HeroFusionPay() {
 
         {/* Sistema Orbital 3D */}
         <div className="relative h-96 w-96 lg:h-[32rem] lg:w-[32rem] perspective-1000 mx-auto">
-          <OrbSystem />
+            <OrbSystem />
+            <AnimatePresence>
+                {notifications.length > 0 && (
+                <SaleToast
+                    key={notifications[0]}
+                    onComplete={handleNotificationComplete}
+                />
+                )}
+            </AnimatePresence>
         </div>
       </div>
     </section>
