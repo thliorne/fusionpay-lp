@@ -288,11 +288,9 @@ export default function RadialOrbitalTimeline({
                   className={`
                    w-full h-full rounded-full flex items-center justify-center
                   ${
-                    isExpanded
-                      ? "bg-primary text-primary-foreground"
-                      : isRelated
-                      ? "bg-primary/50 text-primary-foreground"
-                      : "bg-black/80 text-card-foreground"
+                    isExpanded || isRelated
+                      ? "bg-primary text-black"
+                      : "bg-primary text-black"
                   }
                    border-2
                   ${
