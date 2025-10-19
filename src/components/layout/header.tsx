@@ -1,7 +1,6 @@
 import { Logo } from '@/components/icons/logo';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ThemeToggle } from './theme-toggle';
 
 export function Header() {
   return (
@@ -15,7 +14,6 @@ export function Header() {
           <a href="#" className="text-foreground hover:text-primary transition-colors">Suporte</a>
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
         </div>
       </div>
     </header>
