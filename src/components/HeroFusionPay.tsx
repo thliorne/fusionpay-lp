@@ -94,15 +94,11 @@ const OrbSystem = () => {
 
 const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
   const [value, setValue] = useState(0);
-  const [method, setMethod] = useState('');
 
   useEffect(() => {
     // Generate random values on mount
     const randomValue = Math.random() * (8597 - 197) + 197;
     setValue(randomValue);
-
-    const methods = ["PIX recebido", "Transferência TED", "Depósito identificado"];
-    setMethod(methods[Math.floor(Math.random() * methods.length)]);
 
     // Set timers for animation lifecycle
     const visibilityTimer = setTimeout(() => {
@@ -145,7 +141,7 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
         <div className="flex-grow">
           <p className="font-semibold text-white">Transferência Recebida</p>
           <p className="text-2xl font-bold text-white tracking-tight">{formattedValue}</p>
-          <p className="text-xs text-white/70">{method} • agora mesmo</p>
+          <p className="text-xs text-white/70">PIX recebido • agora mesmo</p>
         </div>
       </div>
     </motion.div>
