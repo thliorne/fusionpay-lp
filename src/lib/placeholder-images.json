@@ -5,6 +5,12 @@
       "description": "A modern fintech dashboard for Fusion Pay.",
       "imageUrl": "https://i.imgur.com/gzcrZY8.png",
       "imageHint": "logo"
+    },
+    {
+      "id": "header-logo",
+      "description": "The main logo for Fusion Pay.",
+      "imageUrl": "https://i.imgur.com/j0I0NJz.png",
+      "imageHint": "logo"
     }
   ]
 }
