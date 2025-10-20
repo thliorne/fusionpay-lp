@@ -85,9 +85,8 @@ export function ContactSection() {
                     </a>
                 </Button>
                 <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="h-12 text-lg px-8 rounded-full"
+                  size="lg"
+                  className="h-12 text-lg px-8 rounded-full bg-primary text-black"
                   asChild
                 >
                   <Link href="https://app.fusionpaybr.com.br/auth/register">Criar conta</Link>
