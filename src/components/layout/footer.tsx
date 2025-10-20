@@ -48,8 +48,8 @@ function HoverFooter() {
     },
     {
       icon: <Phone size={18} className="text-primary" />,
-      text: "+55 (11) 99999-9999",
-      href: "tel:+5511999999999",
+      text: "+7 964 435-03-21",
+      href: "tel:+79644350321",
     },
     {
       icon: <MapPin size={18} className="text-primary" />,
