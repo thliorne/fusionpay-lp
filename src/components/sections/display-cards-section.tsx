@@ -42,9 +42,9 @@ const fadeInAnimation = {
   viewport: { once: true, amount: 0.3 }
 };
 
-export function DisplayCardsSection() {
+export function DisplayCardsSection({ id }: { id?: string }) {
   return (
-    <section className="relative bg-background text-white py-20 md:py-32">
+    <section id={id} className="relative bg-background text-white py-20 md:py-32">
       <div className="absolute inset-0 -z-10">
         <div className="absolute right-0 top-1/4 w-1/2 h-1/2 rounded-full bg-primary/10 blur-3xl" />
       </div>

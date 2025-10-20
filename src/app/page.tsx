@@ -16,8 +16,8 @@ export default function Home() {
       <AutoSurfaceFix />
       <main className="flex-1">
         <HeroFusionPay />
-        <DifferentialsSection />
-        <DisplayCardsSection />
+        <DifferentialsSection id="quem-somos" />
+        <DisplayCardsSection id="diferenciais" />
         <IntegrationsSection id="integrations" />
         <DashboardSection />
         <CostComparison />
