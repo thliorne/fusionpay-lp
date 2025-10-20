@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Link, Zap } from "lucide-react";
+import { ArrowRight, Link as LinkIcon, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { motion, useReducedMotion } from "framer-motion";
 
 
 interface TimelineItem {
@@ -23,6 +24,39 @@ interface TimelineItem {
 interface RadialOrbitalTimelineProps {
   timelineData: TimelineItem[];
 }
+
+function CircleAction({ label, icon, onClick }: {label:string; icon:React.ReactNode; onClick?:()=>void}) {
+  const reduce = useReducedMotion()
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="group relative isolate grid place-items-center size-28 rounded-full
+                 bg-[#0B0B0B]/80 ring-1 ring-white/15 text-white/90 cursor-pointer
+                 transition-transform duration-200 ease-out outline-none"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: reduce ? 0.12 : 0.18, ease: "easeOut" }}
+    >
+      <div className="relative z-10 flex flex-col items-center gap-2">
+        <span className="text-orange-400">{icon}</span>
+        <span className="text-xs font-semibold tracking-wide text-white/85">{label}</span>
+      </div>
+      
+      {/* Anel fixo (sem animação) */}
+      <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/15" />
+      
+      {/* Glow apenas no hover (sem loop) */}
+      <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
+           style={{ boxShadow: "0 0 24px 4px rgba(255,87,34,0.28)" }} />
+      
+      {/* Profundidade sutil */}
+      <div className="pointer-events-none absolute inset-0 rounded-full [box-shadow:inset_0_10px_30px_rgba(0,0,0,0.45)]" />
+    </motion.button>
+  )
+}
+
 
 export default function RadialOrbitalTimeline({
   timelineData,
@@ -248,8 +282,6 @@ export default function RadialOrbitalTimeline({
             {timelineData.map((item, index) => {
               const position = calculateNodePosition(index, timelineData.length);
               const isExpanded = expandedItems[item.id];
-              const isRelated = isRelatedToActive(item.id);
-              const isPulsing = pulseEffect[item.id];
               const Icon = item.icon;
 
               const nodeSize = isClient ? window.innerWidth * 0.08 : 120;
@@ -258,153 +290,116 @@ export default function RadialOrbitalTimeline({
                 transform: `translate(${position.x}px, ${position.y}px) scale(${isExpanded ? 1.1 : position.scale})`,
                 zIndex: isExpanded ? 200 : position.zIndex,
                 opacity: isExpanded ? 1 : position.opacity,
-                width: `${nodeSize}px`,
-                height: `${nodeSize}px`,
               };
 
               return (
-                <Tooltip key={item.id}>
-                  <TooltipTrigger asChild>
-                    <div
-                      ref={(el) => (nodeRefs.current[item.id] = el)}
-                      className="absolute transition-all duration-700 cursor-pointer group/node flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0B] rounded-full"
-                      style={nodeStyle}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleItem(item.id);
-                      }}
-                      tabIndex={0}
+                <div
+                  key={item.id}
+                  ref={(el) => (nodeRefs.current[item.id] = el)}
+                  className="absolute transition-all duration-700"
+                  style={nodeStyle}
+                >
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div>
+                        <CircleAction 
+                          label={item.title}
+                          icon={<Icon size={32} />}
+                          onClick={(e:any) => {
+                            e.stopPropagation();
+                            toggleItem(item.id);
+                          }}
+                        />
+                      </div>
+                    </TooltipTrigger>
+                    {!isExpanded && (
+                      <TooltipContent>
+                        <p>Clique para ver detalhes</p>
+                      </TooltipContent>
+                    )}
+                  </Tooltip>
+
+                  {isExpanded && (
+                    <Card
+                      className="absolute top-[calc(100%+1rem)] left-1/2 -translate-x-1/2 w-72 bg-black/80 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible z-50"
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      <div
-                        className={`absolute rounded-full -inset-1 animate-pulse duration-1000`}
-                        style={{
-                          background: `radial-gradient(circle, hsl(var(--primary)/0.2) 0%, transparent 70%)`,
-                          width: `${item.energy * 0.7 + nodeSize * 0.6}px`,
-                          height: `${item.energy * 0.7 + nodeSize * 0.6}px`,
-                          animationPlayState: isPulsing ? 'running' : 'paused',
-                          opacity: isPulsing ? 1 : 0,
-                          transition: 'opacity 0.5s',
-                        }}
-                      ></div>
-                      <div className="absolute w-full h-full rounded-full border-2 border-transparent group-hover/node:border-primary/50 transition-colors duration-300"></div>
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-border/80"></div>
+                      <CardHeader className="pb-2">
+                        <div className="flex justify-between items-center">
+                          <Badge
+                            className={`px-2 py-0.5 text-xs ${getStatusStyles(
+                              item.status
+                            )}`}
+                          >
+                            {getStatusText(item.status)}
+                          </Badge>
+                          <span className="text-xs font-mono text-white">
+                            {item.date}
+                          </span>
+                        </div>
+                        <CardTitle className="text-lg mt-2 text-white">
+                          {item.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="text-sm text-white">
+                        <p>{item.content}</p>
 
-                      <div
-                        className={`
-                          w-full h-full rounded-full flex items-center justify-center
-                          ${isExpanded || isRelated ? "bg-primary text-black" : "bg-[#0B0B0B]/80 text-primary"}
-                          border-2
-                          ${isExpanded ? "border-primary shadow-lg shadow-primary/30" : isRelated ? "border-primary animate-pulse" : "border-white/15"}
-                          backdrop-blur
-                          transition-all duration-200 transform
-                          group-hover/node:scale-106 group-hover/node:shadow-[0_0_32px_6px_rgba(255,87,34,0.35)]
-                          active:scale-97 active:bg-[#0B0B0B]/90
-                          animate-[pulse_5s_ease-in-out_infinite]
-                        `}
-                        style={{ animationDelay: `${index * 0.5}s` }}
-                      >
-                        <Icon size={nodeSize * 0.4} />
-                      </div>
+                        <div className="mt-4 pt-3 border-t border-border/50">
+                          <div className="flex justify-between items-center text-xs mb-1">
+                            <span className="flex items-center">
+                              <Zap size={12} className="mr-1 text-primary" />
+                              Energy Level
+                            </span>
+                            <span className="font-mono text-white">{item.energy}%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-gradient-to-r from-primary/50 to-primary"
+                              style={{ width: `${item.energy}%` }}
+                            ></div>
+                          </div>
+                        </div>
 
-                      <div
-                        className={`
-                          absolute text-center -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap
-                          text-base font-semibold tracking-wider
-                          transition-all duration-300
-                          ${isExpanded ? "text-white scale-110" : "text-white/80"}
-                          group-hover/node:text-white
-                        `}
-                      >
-                        {item.title}
-                      </div>
-
-                      {isExpanded && (
-                        <Card
-                          className="absolute top-[calc(100%+3rem)] left-1/2 -translate-x-1/2 w-72 bg-black/80 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible z-50"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-border/80"></div>
-                          <CardHeader className="pb-2">
-                            <div className="flex justify-between items-center">
-                              <Badge
-                                className={`px-2 py-0.5 text-xs ${getStatusStyles(
-                                  item.status
-                                )}`}
-                              >
-                                {getStatusText(item.status)}
-                              </Badge>
-                              <span className="text-xs font-mono text-white">
-                                {item.date}
-                              </span>
+                        {item.relatedIds.length > 0 && (
+                          <div className="mt-4 pt-3 border-t border-border/50">
+                            <div className="flex items-center mb-2">
+                              <LinkIcon size={12} className="text-white mr-1" />
+                              <h4 className="text-sm uppercase tracking-wider font-medium text-white">
+                                Connected Nodes
+                              </h4>
                             </div>
-                            <CardTitle className="text-lg mt-2 text-white">
-                              {item.title}
-                            </CardTitle>
-                          </CardHeader>
-                          <CardContent className="text-sm text-white">
-                            <p>{item.content}</p>
-
-                            <div className="mt-4 pt-3 border-t border-border/50">
-                              <div className="flex justify-between items-center text-xs mb-1">
-                                <span className="flex items-center">
-                                  <Zap size={12} className="mr-1 text-primary" />
-                                  Energy Level
-                                </span>
-                                <span className="font-mono text-white">{item.energy}%</span>
-                              </div>
-                              <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-                                <div
-                                  className="h-full bg-gradient-to-r from-primary/50 to-primary"
-                                  style={{ width: `${item.energy}%` }}
-                                ></div>
-                              </div>
+                            <div className="flex flex-wrap gap-1.5">
+                              {item.relatedIds.map((relatedId) => {
+                                const relatedItem = timelineData.find(
+                                  (i) => i.id === relatedId
+                                );
+                                return (
+                                  <Button
+                                    key={relatedId}
+                                    variant="outline"
+                                    size="sm"
+                                    className="flex items-center h-7 px-2.5 py-1 text-xs rounded-md border-border bg-transparent hover:bg-accent text-white hover:text-accent-foreground transition-all"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      toggleItem(relatedId);
+                                    }}
+                                  >
+                                    {relatedItem?.title}
+                                    <ArrowRight
+                                      size={10}
+                                      className="ml-1.5 text-white"
+                                    />
+                                  </Button>
+                                );
+                              })}
                             </div>
-
-                            {item.relatedIds.length > 0 && (
-                              <div className="mt-4 pt-3 border-t border-border/50">
-                                <div className="flex items-center mb-2">
-                                  <Link size={12} className="text-white mr-1" />
-                                  <h4 className="text-sm uppercase tracking-wider font-medium text-white">
-                                    Connected Nodes
-                                  </h4>
-                                </div>
-                                <div className="flex flex-wrap gap-1.5">
-                                  {item.relatedIds.map((relatedId) => {
-                                    const relatedItem = timelineData.find(
-                                      (i) => i.id === relatedId
-                                    );
-                                    return (
-                                      <Button
-                                        key={relatedId}
-                                        variant="outline"
-                                        size="sm"
-                                        className="flex items-center h-7 px-2.5 py-1 text-xs rounded-md border-border bg-transparent hover:bg-accent text-white hover:text-accent-foreground transition-all"
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          toggleItem(relatedId);
-                                        }}
-                                      >
-                                        {relatedItem?.title}
-                                        <ArrowRight
-                                          size={10}
-                                          className="ml-1.5 text-white"
-                                        />
-                                      </Button>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            )}
-                          </CardContent>
-                        </Card>
-                      )}
-                    </div>
-                  </TooltipTrigger>
-                  {!isExpanded && (
-                    <TooltipContent>
-                      <p>Clique para ver detalhes</p>
-                    </TooltipContent>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
                   )}
-                </Tooltip>
+                </div>
               );
             })}
           </div>
