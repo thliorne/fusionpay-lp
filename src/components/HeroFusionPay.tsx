@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard } from "lucide-react";
+import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Header } from "./layout/header";
@@ -243,8 +243,8 @@ export default function HeroFusionPay() {
         <div className="text-white">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm text-white animate-fadeIn">
-            <span className="inline-block w-4 h-4 rounded-full bg-fusion-orange/90 shadow-[0_0_12px_rgba(255,87,34,0.8)]" />
-            Gateway de Pagamentos Digital
+            <Sparkles className="w-4 h-4 text-fusion-orange" />
+            Gateway de Pagamentos Premium
           </div>
 
           {/* Headline */}
