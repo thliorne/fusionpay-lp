@@ -18,33 +18,25 @@ const navLinks = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        if (window.scrollY > lastScrollY) {
-          // Scrolling down
-          setIsHidden(true);
-        } else {
-          // Scrolling up
-          setIsHidden(false);
-        }
+        setIsHidden(true);
       } else {
         setIsHidden(false);
       }
-      setLastScrollY(window.scrollY);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isHidden ? '-translate-y-full' : 'translate-y-0',
-        lastScrollY > 10 ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+        !isHidden ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
