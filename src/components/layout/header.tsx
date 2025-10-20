@@ -43,11 +43,29 @@ export function Header() {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center flex-1 justify-end">
-            
+            <Button
+              size="sm"
+              className="rounded-full bg-white text-black h-10 px-6 font-semibold hover:bg-neutral-200 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
+              asChild
+            >
+              <a href="#">
+                <KeyRound className="mr-2" />
+                Login
+              </a>
+            </Button>
           </div>
 
           {/* Mobile Navigation Trigger */}
-          <div className="lg:hidden flex items-center">
+          <div className="flex items-center lg:hidden">
+            <Button
+              size="sm"
+              className="rounded-full bg-white/10 text-white mr-4"
+              asChild
+            >
+              <a href="#">
+                Login
+              </a>
+            </Button>
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
