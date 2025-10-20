@@ -265,7 +265,7 @@ export default function HeroFusionPay() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 animate-fadeIn">
             <a
-              href="#criar-conta"
+              href="https://app.fusionpaybr.com.br/auth/register"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-fusion-orange text-black font-semibold shadow-[0_0_24px_rgba(255,87,34,0.45)] hover:shadow-[0_0_36px_rgba(255,87,34,0.6)] transition-shadow"
             >
               Criar Conta Grátis
