@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { KeyRound, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import { Logo } from '../icons/logo';
 
 const navLinks = [
@@ -21,17 +20,17 @@ export function Header() {
   return (
     <header
       className={cn(
-        'absolute top-0 left-0 right-0 z-50 transition-all duration-300'
+        'absolute top-0 left-0 right-0 z-50'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
         {/* Logo */}
-        <a href="#hero" aria-label="Página inicial da Fusion Pay" className="flex items-center">
+        <a href="#hero" aria-label="Página inicial da Fusion Pay">
           <Logo />
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.key}
@@ -41,10 +40,10 @@ export function Header() {
               {link.label}
             </a>
           ))}
-        </div>
+        </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:block">
+        {/* CTA */}
+        <div className="hidden lg:flex items-center">
           <Button
             size="sm"
             className="rounded-full bg-white text-black h-10 px-6 font-semibold hover:bg-neutral-200 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
