@@ -16,23 +16,13 @@ const navLinks = [
 ];
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent border-b border-transparent'
+        'bg-black/50 backdrop-blur-md border-b border-white/10'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
@@ -45,7 +35,7 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.href}
               href={link.href}
               className="text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
@@ -88,7 +78,7 @@ export function Header() {
                 <div className="flex flex-col gap-4 text-lg">
                   {navLinks.map((link) => (
                     <a
-                      key={link.label}
+                      key={link.href}
                       href={link.href}
                       className="text-white/90 transition-colors hover:text-white"
                       onClick={() => setMobileMenuOpen(false)}
