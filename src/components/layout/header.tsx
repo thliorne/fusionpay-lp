@@ -9,29 +9,42 @@ import Image from 'next/image';
 import { Logo } from '../icons/logo';
 
 const navLinks = [
-  { label: 'Quem Somos', href: '#quem-somos' },
-  { label: 'Diferenciais', href: '#diferenciais' },
-  { label: 'Integrações', href: '#integrations' },
-  { label: 'Suporte', href: '#faq' },
+  { label: 'Quem Somos', href: '#quem-somos', key: 'quem-somos' },
+  { label: 'Diferenciais', href: '#diferenciais', key: 'diferenciais' },
+  { label: 'Integrações', href: '#integrations', key: 'integrations' },
+  { label: 'Suporte', href: '#faq', key: 'faq' },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (window.scrollY > 100) {
+        if (window.scrollY > lastScrollY) {
+          // Scrolling down
+          setIsHidden(true);
+        } else {
+          // Scrolling up
+          setIsHidden(false);
+        }
+      } else {
+        setIsHidden(false);
+      }
+      setLastScrollY(window.scrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+        isHidden ? '-translate-y-full' : 'translate-y-0',
+        lastScrollY > 10 ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
@@ -44,7 +57,7 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.key}
               href={link.href}
               className="text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
@@ -87,7 +100,7 @@ export function Header() {
                 <div className="flex flex-col gap-4 text-lg">
                   {navLinks.map((link) => (
                     <a
-                      key={link.label}
+                      key={link.key}
                       href={link.href}
                       className="text-white/90 transition-colors hover:text-white"
                       onClick={() => setMobileMenuOpen(false)}
