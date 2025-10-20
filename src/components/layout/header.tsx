@@ -17,17 +17,15 @@ const navLinks = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
+      const atTop = window.scrollY < 50;
+      setIsAtTop(atTop);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -35,8 +33,7 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isHidden ? '-translate-y-full' : 'translate-y-0',
-        !isHidden ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+        isAtTop ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
