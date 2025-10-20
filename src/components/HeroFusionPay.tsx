@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Header } from "./layout/header";
 
 const orbitalIcons = [
   // Camada NEAR (horário, 24s)
@@ -173,6 +174,7 @@ export default function HeroFusionPay() {
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
+      <Header />
       {/* Estilos CSS para as animações orbitais */}
       <style>{`
         .fusion-logo-overlay { mix-blend-mode: screen; }

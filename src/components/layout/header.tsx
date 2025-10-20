@@ -17,22 +17,11 @@ const navLinks = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const atTop = window.scrollY < 50;
-      setIsAtTop(atTop);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300'
+        'absolute top-0 left-0 right-0 z-50 transition-all duration-300'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
