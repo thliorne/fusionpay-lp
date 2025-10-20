@@ -281,7 +281,7 @@ export default function HeroFusionPay() {
               </svg>
             </a>
             <a
-              href="#contato"
+              href="https://api.whatsapp.com/send/?phone=79644350321&text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20FusionPay&type=phone_number&app_absent=0"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-white/15 bg-white/5 text-white hover:bg-white/10 transition-colors"
             >
               Fale Conosco
