@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Quem Somos', href: '#quem-somos', key: 'quem-somos' },
   { label: 'Diferenciais', href: '#diferenciais', key: 'diferenciais' },
   { label: 'Integrações', href: '#integrations', key: 'integrations' },
-  { label: 'Suporte', href: '#faq', key: 'faq' },
+  { label: 'Dúvidas', href: '#faq', key: 'faq' },
 ];
 
 export function Header() {
