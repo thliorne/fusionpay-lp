@@ -45,7 +45,7 @@ export function Header() {
           <div className="hidden lg:flex items-center flex-1 justify-end">
             <Button
               size="sm"
-              className="rounded-full bg-white text-black h-10 px-6 font-semibold hover:bg-neutral-200 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
+              className="rounded-full bg-primary text-black h-10 px-6 font-semibold hover:bg-primary/90 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
               asChild
             >
               <a href="#">
@@ -59,7 +59,7 @@ export function Header() {
           <div className="flex items-center lg:hidden">
             <Button
               size="sm"
-              className="rounded-full bg-white/10 text-white mr-4"
+              className="rounded-full bg-primary text-black mr-4"
               asChild
             >
               <a href="#">
