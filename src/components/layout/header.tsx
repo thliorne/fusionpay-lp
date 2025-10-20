@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { Logo } from '../icons/logo';
 
 const navLinks = [
-  { label: 'Quem Somos', href: '#diferenciais' },
+  { label: 'Quem Somos', href: '#quem-somos' },
   { label: 'Diferenciais', href: '#diferenciais' },
   { label: 'Integrações', href: '#integrations' },
   { label: 'Suporte', href: '#faq' },
@@ -17,12 +17,21 @@ const navLinks = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        'bg-black/50 backdrop-blur-md border-b border-white/10'
+        isScrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
@@ -35,7 +44,7 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.href}
+              key={link.label}
               href={link.href}
               className="text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
@@ -78,7 +87,7 @@ export function Header() {
                 <div className="flex flex-col gap-4 text-lg">
                   {navLinks.map((link) => (
                     <a
-                      key={link.href}
+                      key={link.label}
                       href={link.href}
                       className="text-white/90 transition-colors hover:text-white"
                       onClick={() => setMobileMenuOpen(false)}
