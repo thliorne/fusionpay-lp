@@ -34,7 +34,7 @@ export function Header() {
               <a
                 key={link.key}
                 href={link.href}
-                className="text-sm font-medium text-white/90 transition-colors hover:text-white"
+                className="text-sm font-medium text-white/90 transition-all hover:text-primary hover:drop-shadow-[0_0_4px_hsl(var(--primary))]"
               >
                 {link.label}
               </a>
@@ -57,15 +57,6 @@ export function Header() {
 
           {/* Mobile Navigation Trigger */}
           <div className="flex items-center lg:hidden">
-            <Button
-              size="sm"
-              className="rounded-full bg-primary text-black mr-4"
-              asChild
-            >
-              <a href="#">
-                Login
-              </a>
-            </Button>
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -97,7 +88,16 @@ export function Header() {
                     ))}
                   </div>
                   <div className="mt-auto">
-                    
+                    <Button
+                      size="sm"
+                      className="w-full rounded-full bg-primary text-black h-10 px-6 font-semibold"
+                      asChild
+                    >
+                      <a href="#">
+                        <KeyRound className="mr-2" />
+                        Login
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </SheetContent>
