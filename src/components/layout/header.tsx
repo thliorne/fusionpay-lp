@@ -48,7 +48,7 @@ export function Header() {
               className="rounded-full bg-primary text-black h-10 px-6 font-semibold hover:bg-primary/90 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
               asChild
             >
-              <a href="#">
+              <a href="https://app.fusionpaybr.com.br/auth/login">
                 <KeyRound className="mr-2" />
                 Login
               </a>
@@ -93,7 +93,7 @@ export function Header() {
                       className="w-full rounded-full bg-primary text-black h-10 px-6 font-semibold"
                       asChild
                     >
-                      <a href="#">
+                      <a href="https://app.fusionpaybr.com.br/auth/login">
                         <KeyRound className="mr-2" />
                         Login
                       </a>
