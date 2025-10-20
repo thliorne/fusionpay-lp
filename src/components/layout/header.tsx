@@ -22,7 +22,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex-1 flex justify-start">
             <a href="#hero" aria-label="Página inicial da Fusion Pay">
               <Logo />
             </a>
@@ -42,18 +42,12 @@ export function Header() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden lg:flex items-center">
-            <Button
-              size="sm"
-              className="rounded-full bg-white text-black h-10 px-6 font-semibold hover:bg-neutral-200 hover:scale-105 transition-transform shadow-sm hover:shadow-md hover:shadow-primary/20"
-            >
-              <KeyRound className="mr-2 h-4 w-4" />
-              Login
-            </Button>
+          <div className="hidden lg:flex items-center flex-1 justify-end">
+            
           </div>
 
           {/* Mobile Navigation Trigger */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex items-center">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -85,13 +79,7 @@ export function Header() {
                     ))}
                   </div>
                   <div className="mt-auto">
-                    <Button
-                      size="lg"
-                      className="w-full rounded-full bg-white text-black h-12 font-semibold"
-                    >
-                      <KeyRound className="mr-2 h-4 w-4" />
-                      Login
-                    </Button>
+                    
                   </div>
                 </div>
               </SheetContent>
