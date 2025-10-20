@@ -34,7 +34,7 @@ export function IntegrationsSection({ id }: { id?: string }) {
             className="[--duration:40s] [--gap:2.5rem]"
           >
             {integrations.map((integration) => (
-              <div key={integration.name} className="flex items-center justify-center gap-4 h-24 w-auto bg-black/80 rounded-lg px-6 py-4 transition-all duration-300">
+              <div key={integration.name} className="flex items-center justify-center gap-4 h-24 w-auto bg-gradient-to-br from-primary/10 to-transparent bg-black/80 rounded-lg px-6 py-4 transition-all duration-300">
                 <Image src={integration.logoUrl} alt={integration.name} width={32} height={32} className="object-contain h-8 w-8" />
                 <span className="text-lg font-semibold text-white">{integration.name}</span>
               </div>
