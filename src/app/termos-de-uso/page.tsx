@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import Link from 'next/link';
 
 export default function TermosDeUsoPage() {
   return (
@@ -174,7 +175,7 @@ export default function TermosDeUsoPage() {
 
           <h2 className="text-2xl font-semibold text-white pt-4 border-t border-white/10">15. Contato</h2>
           <p>Para dúvidas sobre estes Termos de Uso, entre em contato:</p>
-          <ul className="list-none space-y-2">
+          <ul className="list-disc pl-5 space-y-2">
             <li><strong>Email:</strong> contato@fusionpay.com</li>
             <li><strong>WhatsApp:</strong> +55 (79) 64435-0321</li>
             <li><strong>Endereço:</strong> Rod. José Carlos Daux, 5500 - Sala 211, Bloco Campeche A - Saco Grande, Florianópolis/SC - CEP: 88.032-005</li>
@@ -183,6 +184,10 @@ export default function TermosDeUsoPage() {
           <p className="text-center font-bold pt-6 border-t border-white/10">
             Aceite: Ao utilizar a FusionPay, você declara ter lido, compreendido e concordado integralmente com estes Termos de Uso.
           </p>
+
+          <Link href="/" className="text-primary hover:underline">
+            ← Voltar para a página inicial
+          </Link>
         </div>
       </main>
       <Footer />

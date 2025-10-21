@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import Link from 'next/link';
 
 export default function PoliticaDePrivacidadePage() {
   return (
@@ -201,6 +202,10 @@ export default function PoliticaDePrivacidadePage() {
           <p className="border-l-4 border-primary pl-4 italic">
             <strong>Compromisso:</strong> A FusionPay está comprometida com a transparência e proteção dos seus dados. Estamos à disposição para esclarecer qualquer dúvida sobre como tratamos suas informações pessoais.
           </p>
+
+          <Link href="/" className="text-primary hover:underline">
+            ← Voltar para a página inicial
+          </Link>
         </div>
       </main>
       <Footer />
