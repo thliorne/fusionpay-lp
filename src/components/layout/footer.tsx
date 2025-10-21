@@ -13,6 +13,7 @@ import {
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 import { Logo } from "../icons/logo";
 import { TextHoverEffect } from "../ui/text-hover-effect";
+import Link from "next/link";
 
 function HoverFooter() {
   const footerLinks = [
@@ -36,6 +37,15 @@ function HoverFooter() {
         { label: "Carreiras", href: "#" },
         { label: "Blog", href: "#" },
         { label: "Parceiros", href: "#" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Termos de Uso", href: "/termos-de-uso" },
+        { label: "Política de Privacidade", href: "/politica-de-privacidade" },
+        { label: "Política de Cookies", href: "/politica-de-cookies" },
+        { label: "Política de Segurança", href: "/politica-de-seguranca" },
       ],
     },
   ];
@@ -85,12 +95,12 @@ function HoverFooter() {
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.label} className="relative">
-                    <a
+                    <Link
                       href={link.href}
                       className="text-white/90 hover:text-primary transition-colors underline-offset-4 hover:underline"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                     {link.pulse && (
                       <span className="absolute top-1/2 -translate-y-1/2 right-full mr-2 w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                     )}
