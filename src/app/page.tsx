@@ -1,3 +1,4 @@
+import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { IntegrationsSection } from '@/components/sections/integrations';
 import { DifferentialsSection } from '@/components/sections/differentials';
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <AutoSurfaceFix />
+      <Header />
       <main className="flex-1">
         <HeroFusionPay />
         <DifferentialsSection id="quem-somos" />

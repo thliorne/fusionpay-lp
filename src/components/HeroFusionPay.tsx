@@ -179,7 +179,7 @@ export default function HeroFusionPay() {
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
-      <Header />
+      
       {/* Estilos CSS para as animações orbitais */}
       <style>{`
         .fusion-logo-overlay { mix-blend-mode: screen; }
