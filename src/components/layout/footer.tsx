@@ -31,15 +31,6 @@ function HoverFooter() {
       ],
     },
     {
-      title: "Empresa",
-      links: [
-        { label: "Sobre nós", href: "#" },
-        { label: "Carreiras", href: "#" },
-        { label: "Blog", href: "#" },
-        { label: "Parceiros", href: "#" },
-      ],
-    },
-    {
       title: "Legal",
       links: [
         { label: "Termos de Uso", href: "/termos-de-uso" },
