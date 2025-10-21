@@ -4,6 +4,7 @@ import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard, Sparkles } from
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Header } from "./layout/header";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const orbitalIcons = [
   // Camada NEAR (horário, 24s)
@@ -28,6 +29,8 @@ const OrbSystem = () => {
     return <div className="relative w-full h-full" />;
   }
 
+  const logoImage = PlaceHolderImages.find(p => p.id === 'header-logo');
+
   return (
     <div className="relative w-full h-full flex items-center justify-center [transform-style:preserve-3d]">
       {/* 1) BACKGLOW */}
@@ -46,7 +49,7 @@ const OrbSystem = () => {
 
       {/* LOGO OVERLAY - FIXED */}
       <div className="fusion-logo-overlay pointer-events-none absolute inset-0 grid place-items-center z-[2]">
-        <img src="https://i.imgur.com/j0I0NJz.png" alt="Fusion Pay"
+        <img src={logoImage?.imageUrl || "https://i.imgur.com/j0I0NJz.png"} alt="Fusion Pay"
               className="fusion-logo-mark select-none" loading="eager" decoding="async" />
       </div>
 
@@ -121,6 +124,8 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
     currency: 'BRL',
   }).format(value);
 
+  const notificationIcon = PlaceHolderImages.find(p => p.id === 'notification-icon');
+
   return (
     <motion.div
       role="status"
@@ -137,7 +142,7 @@ const SaleToast = ({ onComplete }: { onComplete: () => void }) => {
       <div className="flex items-center gap-4">
         <div className="relative flex-shrink-0 w-10 h-10 flex items-center justify-center">
             <div className="absolute inset-[-4px] border border-fusion-orange/50 rounded-full animate-pulse"></div>
-            <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={40} height={40} className="rounded-full" />
+            {notificationIcon && <Image src={notificationIcon.imageUrl} alt={notificationIcon.description} width={40} height={40} className="rounded-full" data-ai-hint={notificationIcon.imageHint} />}
         </div>
         <div className="flex-grow">
           <p className="font-semibold text-white">Transferência Recebida</p>

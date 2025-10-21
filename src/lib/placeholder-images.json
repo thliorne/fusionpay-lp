@@ -11,6 +11,12 @@
       "description": "The main logo for Fusion Pay.",
       "imageUrl": "https://i.imgur.com/j0I0NJz.png",
       "imageHint": "logo"
+    },
+    {
+      "id": "notification-icon",
+      "description": "The icon for the sale notification toast.",
+      "imageUrl": "https://i.imgur.com/m3UqTHp.png",
+      "imageHint": "icon"
     }
   ]
 }
