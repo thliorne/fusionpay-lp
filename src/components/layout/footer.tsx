@@ -27,7 +27,6 @@ function HoverFooter() {
           href: "#",
           pulse: true,
         },
-        { label: "Documentação", href: "#" },
       ],
     },
     {
