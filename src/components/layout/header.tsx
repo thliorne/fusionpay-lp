@@ -23,7 +23,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-1 flex justify-start">
-            
+            <Logo />
           </div>
 
           {/* Desktop Navigation */}
@@ -76,7 +76,7 @@ export function Header() {
                 <div className="flex h-full flex-col p-6">
                   <div className="mb-8">
                     <a href="#hero" aria-label="Página inicial da Fusion Pay" onClick={() => setMobileMenuOpen(false)}>
-                      
+                      <Logo />
                     </a>
                   </div>
                   <div className="flex flex-col gap-4 text-lg">
