@@ -59,7 +59,7 @@ function HoverFooter() {
 
   const socialLinks = [
     { icon: <Facebook size={20} />, label: "Facebook", href: "#" },
-    { icon: <Instagram size={20} />, label: "Instagram", href: "#" },
+    { icon: <Instagram size={20} />, label: "Instagram", href: "https://www.instagram.com/fusionpaybr?igsh=MTR3cmxscGhjMHB0ZA%3D%3D" },
   ];
 
   return (
