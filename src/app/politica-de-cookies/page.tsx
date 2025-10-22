@@ -268,7 +268,7 @@ export default function PoliticaDeCookiesPage() {
             <strong>Compromisso com Transparência:</strong> A FusionPay está comprometida em usar cookies de forma responsável e transparente. Respeitamos sua privacidade e estamos à disposição para esclarecer qualquer dúvida sobre como utilizamos cookies em nossa plataforma.
           </p>
 
-          <Button asChild variant="outline" className="mt-8">
+          <Button asChild variant="outline" className="mt-8 bg-white text-black hover:bg-neutral-200">
             <Link href="/">
               ← Voltar para a página inicial
             </Link>
@@ -279,5 +279,3 @@ export default function PoliticaDeCookiesPage() {
     </div>
   );
 }
-
-    

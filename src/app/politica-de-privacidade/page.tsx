@@ -205,7 +205,7 @@ export default function PoliticaDePrivacidadePage() {
             <strong>Compromisso:</strong> A FusionPay está comprometida com a transparência e proteção dos seus dados. Estamos à disposição para esclarecer qualquer dúvida sobre como tratamos suas informações pessoais.
           </p>
 
-          <Button asChild variant="outline" className="mt-8">
+          <Button asChild variant="outline" className="mt-8 bg-white text-black hover:bg-neutral-200">
             <Link href="/">
               ← Voltar para a página inicial
             </Link>
@@ -216,5 +216,3 @@ export default function PoliticaDePrivacidadePage() {
     </div>
   );
 }
-
-    

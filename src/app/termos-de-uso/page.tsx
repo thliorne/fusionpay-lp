@@ -187,7 +187,7 @@ export default function TermosDeUsoPage() {
             Aceite: Ao utilizar a FusionPay, você declara ter lido, compreendido e concordado integralmente com estes Termos de Uso.
           </p>
 
-          <Button asChild variant="outline" className="mt-8">
+          <Button asChild variant="outline" className="mt-8 bg-white text-black hover:bg-neutral-200">
             <Link href="/">
               ← Voltar para a página inicial
             </Link>
@@ -198,5 +198,3 @@ export default function TermosDeUsoPage() {
     </div>
   );
 }
-
-    

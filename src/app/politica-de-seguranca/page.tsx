@@ -402,7 +402,7 @@ export default function PoliticaDeSegurancaPage() {
             <strong>Compromisso Contínuo:</strong> A segurança é nossa prioridade máxima. Investimos continuamente em pessoas, processos e tecnologia para proteger seus dados e transações. Estamos disponíveis 24/7 para responder a incidentes e esclarecer dúvidas sobre nossas práticas de segurança.
           </p>
 
-          <Button asChild variant="outline" className="mt-8">
+          <Button asChild variant="outline" className="mt-8 bg-white text-black hover:bg-neutral-200">
             <Link href="/">
               ← Voltar para a página inicial
             </Link>
@@ -413,5 +413,3 @@ export default function PoliticaDeSegurancaPage() {
     </div>
   );
 }
-
-    
