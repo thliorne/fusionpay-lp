@@ -4,7 +4,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Facebook,
   Instagram,
 } from "lucide-react";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
@@ -17,8 +16,6 @@ function HoverFooter() {
     {
       title: "Recursos",
       links: [
-        { label: "Comece aqui", href: "#" },
-        { label: "Preços", href: "#" },
         {
           label: "Suporte 24h",
           href: "https://api.whatsapp.com/send/?phone=79644350321&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20FusionPay&type=phone_number&app_absent=0",
@@ -132,11 +129,12 @@ function HoverFooter() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="hover:text-white transition-colors"
+                className="flex items-center gap-2 hover:text-white transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {icon}
+                <span>Siga-nos no Instagram!</span>
               </a>
             ))}
           </div>
