@@ -143,7 +143,7 @@ export default function TermosDeUsoPage() {
           </ul>
 
           <h2 className="text-2xl font-semibold text-white pt-4 border-t border-white/10">10. Proteção de Dados</h2>
-          <p>A FusionPay está comprometida com a proteção de dados conforme LGPD (Lei 13.709/2018). Consulte nossa Política de Privacidade para informações detalhadas.</p>
+          <p>A FusionPay está comprometida com a proteção de dados conforme LGPD (Lei 13.709/2018). Consulte nossa <Link href="/politica-de-privacidade" className="text-primary hover:underline">Política de Privacidade</Link> para informações detalhadas.</p>
 
           <h2 className="text-2xl font-semibold text-white pt-4 border-t border-white/10">11. Propriedade Intelectual</h2>
           <p>Todos os direitos sobre a plataforma FusionPay, incluindo código-fonte, design, logos e marca são de propriedade exclusiva da FusionPay. É proibido:</p>
