@@ -6,9 +6,6 @@ import {
   MapPin,
   Facebook,
   Instagram,
-  Twitter,
-  Dribbble,
-  Globe,
 } from "lucide-react";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 import { Logo } from "../icons/logo";
@@ -64,7 +61,7 @@ function HoverFooter() {
 
   return (
     <footer className="bg-gradient-to-b from-[#0A0A0A] to-[#1A1A1A] relative h-fit rounded-3xl overflow-hidden m-8 border border-white/10 shadow-lg transition-colors duration-300">
-      <div className="max-w-7xl mx-auto p-14 z-40 relative">
+      <div className="max-w-7xl mx-auto p-14 z-10 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
           {/* Brand section */}
           <div className="flex flex-col space-y-4">
@@ -137,6 +134,8 @@ function HoverFooter() {
                 href={href}
                 aria-label={label}
                 className="hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {icon}
               </a>
@@ -150,9 +149,9 @@ function HoverFooter() {
         </div>
       </div>
 
-      {/* Text hover effect */}
-      <div className="lg:flex hidden h-[30rem] -mt-52 -mb-36">
-        <TextHoverEffect text="Fusion" className="z-50 opacity-30" />
+      {/* Text hover effect - now with z-0 */}
+      <div className="absolute bottom-0 left-0 right-0 lg:flex hidden h-[30rem] -mb-36 z-0">
+        <TextHoverEffect text="Fusion" className="opacity-30 w-full" />
       </div>
 
       <FooterBackgroundGradient />
