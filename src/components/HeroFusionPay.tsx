@@ -33,9 +33,7 @@ const OrbSystem = () => {
 
   return (
     <div className="relative w-full h-full flex items-center justify-center [transform-style:preserve-3d]">
-      {/* 1) BACKGLOW */}
-      <div className="absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] bg-[radial-gradient(circle_at_center,#7A2A00_0%,transparent_70%)] blur-2xl opacity-30 animate-[pulse_5.5s_ease-in-out_infinite]" />
-
+      
       {/* 2) CORE-SPHERE */}
       <motion.div
         className="relative w-[240px] h-[240px] md:w-[280px] md:h-[280px] rounded-full [transform-style:preserve-3d]
