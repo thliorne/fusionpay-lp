@@ -247,7 +247,7 @@ export default function HeroFusionPay() {
         {/* Texto */}
         <div className="text-white">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm text-white animate-fadeIn">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm text-white animate-fadeIn mt-2">
             <Sparkles className="w-4 h-4 text-fusion-orange" />
             Gateway de Pagamentos Premium
           </div>
