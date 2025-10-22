@@ -60,8 +60,6 @@ function HoverFooter() {
   const socialLinks = [
     { icon: <Facebook size={20} />, label: "Facebook", href: "#" },
     { icon: <Instagram size={20} />, label: "Instagram", href: "#" },
-    { icon: <Twitter size={20} />, label: "Twitter", href: "#" },
-    { icon: <Dribbble size={20} />, label: "Dribbble", href: "#" },
   ];
 
   return (
