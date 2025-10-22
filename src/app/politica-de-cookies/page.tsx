@@ -154,17 +154,17 @@ export default function PoliticaDeCookiesPage() {
           <p>Você pode configurar seu navegador para recusar todos os cookies ou indicar quando um cookie está sendo enviado. No entanto, se você não aceitar cookies, pode não conseguir usar alguns recursos da nossa plataforma.</p>
           <p>Como gerenciar cookies nos principais navegadores:</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Google Chrome:</strong> Menu &gt; Configurações &gt; Privacidade e segurança &gt; Cookies e outros dados do site</li>
-            <li><strong>Mozilla Firefox:</strong> Menu &gt; Opções &gt; Privacidade e Segurança &gt; Cookies e dados de sites</li>
-            <li><strong>Safari:</strong> Preferências &gt; Privacidade &gt; Cookies e dados de websites</li>
-            <li><strong>Microsoft Edge:</strong> Menu &gt; Configurações &gt; Cookies e permissões de site &gt; Cookies e dados armazenados</li>
+            <li><strong>Google Chrome:</strong> Menu > Configurações > Privacidade e segurança > Cookies e outros dados do site</li>
+            <li><strong>Mozilla Firefox:</strong> Menu > Opções > Privacidade e Segurança > Cookies e dados de sites</li>
+            <li><strong>Safari:</strong> Preferências > Privacidade > Cookies e dados de websites</li>
+            <li><strong>Microsoft Edge:</strong> Menu > Configurações > Cookies e permissões de site > Cookies e dados armazenados</li>
           </ul>
           
           <h3 className="text-xl font-medium text-white">4.2. Central de Preferências da FusionPay</h3>
           <p>Você pode gerenciar suas preferências de cookies diretamente em nossa plataforma:</p>
           <ul className="list-disc pl-5 space-y-2">
               <li>Acesse sua conta na FusionPay</li>
-              <li>Vá para Configurações &gt; Privacidade</li>
+              <li>Vá para Configurações > Privacidade</li>
               <li>Clique em "Gerenciar Cookies"</li>
               <li>Selecione suas preferências por categoria</li>
               <li>Salve suas alterações</li>

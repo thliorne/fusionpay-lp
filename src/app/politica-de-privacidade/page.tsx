@@ -176,7 +176,7 @@ export default function PoliticaDePrivacidadePage() {
           <p>Nossos serviços não são direcionados a menores de 18 anos. Não coletamos intencionalmente dados de crianças e adolescentes. Se identificarmos tal coleta, eliminaremos os dados imediatamente.</p>
 
           <h2 className="text-2xl font-semibold text-white pt-4 border-t border-white/10">9. Cookies e Tecnologias Similares</h2>
-          <p>Utilizamos cookies para melhorar sua experiência. Para mais informações, consulte nossa Política de Cookies.</p>
+          <p>Utilizamos cookies para melhorar sua experiência. Para mais informações, consulte nossa <Link href="/politica-de-cookies" className="text-primary hover:underline">Política de Cookies</Link>.</p>
 
           <h2 className="text-2xl font-semibold text-white pt-4 border-t border-white/10">10. Alterações nesta Política</h2>
           <p>Podemos atualizar esta Política periodicamente. Alterações significativas serão comunicadas por email e/ou notificação na plataforma com 30 dias de antecedência.</p>
