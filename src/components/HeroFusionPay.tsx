@@ -49,8 +49,10 @@ const OrbSystem = () => {
 
       {/* LOGO OVERLAY - FIXED */}
       <div className="fusion-logo-overlay pointer-events-none absolute inset-0 grid place-items-center z-[2]">
-        <img src={logoImage?.imageUrl || "https://i.imgur.com/j0I0NJz.png"} alt="Fusion Pay"
-              className="fusion-logo-mark select-none" loading="eager" decoding="async" />
+        <div className="fusion-logo-mark select-none rounded-full bg-black p-4">
+          <img src={logoImage?.imageUrl || "https://i.imgur.com/j0I0NJz.png"} alt="Fusion Pay"
+                className="w-full h-auto" loading="eager" decoding="async" />
+        </div>
       </div>
 
       {/* 3) RINGS */}
@@ -184,7 +186,7 @@ export default function HeroFusionPay() {
       <style>{`
         .fusion-logo-overlay { mix-blend-mode: screen; }
         .fusion-logo-mark {
-          width: clamp(154px, 22vw, 246px); /* Aumentado em ~10% */
+          width: clamp(154px, 22vw, 246px);
           opacity: 1;
           filter: drop-shadow(0 0 12px rgba(255,100,50,.35));
           transform: translateZ(1px);
@@ -192,11 +194,11 @@ export default function HeroFusionPay() {
         .fusion-logo-overlay::after {
           content:"";
           position: absolute;
-          width: clamp(211px, 31vw, 352px); /* Aumentado proporcionalmente */
-          height: clamp(211px, 31vw, 352px); /* Aumentado proporcionalmente */
+          width: clamp(211px, 31vw, 352px);
+          height: clamp(211px, 31vw, 352px);
           border-radius: 9999px;
           background: radial-gradient(circle at 50% 50%,
-            rgba(255,120,60,.32) 0%,   /* Intensidade reduzida em ~20% */
+            rgba(255,120,60,.32) 0%,
             rgba(255,120,60,.12) 40%,
             rgba(255,120,60,.03) 68%,
             transparent 80%);
