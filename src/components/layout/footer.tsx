@@ -24,7 +24,7 @@ function HoverFooter() {
         { label: "Preços", href: "#" },
         {
           label: "Suporte 24h",
-          href: "#",
+          href: "https://api.whatsapp.com/send/?phone=79644350321&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20FusionPay&type=phone_number&app_absent=0",
           pulse: true,
         },
       ],
