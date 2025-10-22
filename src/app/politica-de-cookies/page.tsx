@@ -1,6 +1,8 @@
+
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function PoliticaDeCookiesPage() {
   return (
@@ -266,12 +268,16 @@ export default function PoliticaDeCookiesPage() {
             <strong>Compromisso com Transparência:</strong> A FusionPay está comprometida em usar cookies de forma responsável e transparente. Respeitamos sua privacidade e estamos à disposição para esclarecer qualquer dúvida sobre como utilizamos cookies em nossa plataforma.
           </p>
 
-          <Link href="/" className="text-primary hover:underline">
-            ← Voltar para a página inicial
-          </Link>
+          <Button asChild variant="outline" className="mt-8">
+            <Link href="/">
+              ← Voltar para a página inicial
+            </Link>
+          </Button>
         </div>
       </main>
       <Footer />
     </div>
   );
 }
+
+    

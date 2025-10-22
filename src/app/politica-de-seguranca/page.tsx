@@ -1,7 +1,9 @@
+
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ShieldCheck, Clock, GitBranch, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function PoliticaDeSegurancaPage() {
   return (
@@ -400,12 +402,16 @@ export default function PoliticaDeSegurancaPage() {
             <strong>Compromisso Contínuo:</strong> A segurança é nossa prioridade máxima. Investimos continuamente em pessoas, processos e tecnologia para proteger seus dados e transações. Estamos disponíveis 24/7 para responder a incidentes e esclarecer dúvidas sobre nossas práticas de segurança.
           </p>
 
-          <Link href="/" className="text-primary hover:underline">
-            ← Voltar para a página inicial
-          </Link>
+          <Button asChild variant="outline" className="mt-8">
+            <Link href="/">
+              ← Voltar para a página inicial
+            </Link>
+          </Button>
         </div>
       </main>
       <Footer />
     </div>
   );
 }
+
+    

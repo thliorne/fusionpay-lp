@@ -1,6 +1,8 @@
+
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function TermosDeUsoPage() {
   return (
@@ -185,12 +187,16 @@ export default function TermosDeUsoPage() {
             Aceite: Ao utilizar a FusionPay, você declara ter lido, compreendido e concordado integralmente com estes Termos de Uso.
           </p>
 
-          <Link href="/" className="text-primary hover:underline">
-            ← Voltar para a página inicial
-          </Link>
+          <Button asChild variant="outline" className="mt-8">
+            <Link href="/">
+              ← Voltar para a página inicial
+            </Link>
+          </Button>
         </div>
       </main>
       <Footer />
     </div>
   );
 }
+
+    
