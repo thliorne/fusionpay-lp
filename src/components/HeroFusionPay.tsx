@@ -254,11 +254,7 @@ export default function HeroFusionPay() {
 
           {/* Headline */}
           <h1 className="mt-4 text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight animate-slideUp">
-            Transforme{" "}
-            <span className="text-fusion-orange">Complexidade</span>
-            <br className="hidden md:block" />
-            em Crescimento{" "}
-            <span className="text-fusion-orange">Instantâneo</span>
+            O Futuro dos <span className="text-fusion-orange">Pagamentos</span> Começa <span className="text-fusion-orange">Aqui.</span>
           </h1>
 
           {/* Subheadline */}
