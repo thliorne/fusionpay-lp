@@ -10,6 +10,7 @@ const integrations = [
   { name: 'Shopify', logoUrl: 'https://i.imgur.com/r0omMHj.png' },
   { name: 'Wordpress', logoUrl: 'https://i.imgur.com/zKHXUQ7.png' },
   { name: 'WooCommerce', logoUrl: 'https://i.imgur.com/TSi6QTG.png' },
+  { name: 'Adoorei', logoUrl: 'https://i.imgur.com/NZzykbF.jpeg' },
 ];
 
 export function IntegrationsSection({ id }: { id?: string }) {
