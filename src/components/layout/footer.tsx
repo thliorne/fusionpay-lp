@@ -49,7 +49,7 @@ function HoverFooter() {
     },
     {
       icon: <MapPin size={18} className="text-primary" />,
-      text: "São Paulo, Brasil",
+      text: "Rod. José Carlos Daux, 5500 - Saco Grande, Florianópolis/SC",
     },
   ];
 
