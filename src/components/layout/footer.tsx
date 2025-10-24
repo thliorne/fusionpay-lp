@@ -145,9 +145,10 @@ function HoverFooter() {
           </div>
 
           {/* Copyright */}
-          <p className="text-center md:text-left text-neutral-400">
-            &copy; {new Date().getFullYear()} Fusion Pay. Todos os direitos reservados.
-          </p>
+          <div className="text-center md:text-left text-neutral-400">
+            <p>&copy; {new Date().getFullYear()} Fusion Pay. Todos os direitos reservados.</p>
+            <p className="text-xs mt-1">Rod. José Carlos Daux, 5500 - Sala 211, Bloco Campeche A - Saco Grande, Florianópolis/SC - CNPJ: 56.936.053/0001-73</p>
+          </div>
         </div>
       </div>
 
