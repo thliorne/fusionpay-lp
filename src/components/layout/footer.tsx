@@ -50,8 +50,8 @@ function HoverFooter() {
     },
     {
       icon: <Smartphone size={18} className="text-primary" />,
-      text: "+55 51 9967-5759",
-      href: "tel:+555199675759",
+      text: "+55 51 99670-5759",
+      href: "tel:+5551996705759",
     },
     {
       icon: <MapPin size={18} className="text-primary" />,
