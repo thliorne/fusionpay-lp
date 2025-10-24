@@ -55,10 +55,6 @@ function HoverFooter() {
       href: "tel:+5551996705759",
     },
     {
-      icon: <MapPin size={18} className="text-primary" />,
-      text: "Rod. José Carlos Daux, 5500 - Saco Grande, Florianópolis/SC",
-    },
-    {
       icon: <FileText size={18} className="text-primary" />,
       text: "56.936.053/0001-73",
     },
