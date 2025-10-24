@@ -49,10 +49,6 @@ function HoverFooter() {
       text: "+55 51 99670-5759",
       href: "tel:+5551996705759",
     },
-    {
-      icon: <FileText size={18} className="text-primary" />,
-      text: "56.936.053/0001-73",
-    },
   ];
 
   const socialLinks = [
