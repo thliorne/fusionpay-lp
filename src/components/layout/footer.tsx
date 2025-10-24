@@ -5,6 +5,7 @@ import {
   Phone,
   MapPin,
   Instagram,
+  Smartphone,
 } from "lucide-react";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 import { Logo } from "../icons/logo";
@@ -46,6 +47,11 @@ function HoverFooter() {
       icon: <Phone size={18} className="text-primary" />,
       text: "+7 964 435-03-21",
       href: "tel:+79644350321",
+    },
+    {
+      icon: <Smartphone size={18} className="text-primary" />,
+      text: "+55 51 9967-5759",
+      href: "tel:+555199675759",
     },
     {
       icon: <MapPin size={18} className="text-primary" />,
