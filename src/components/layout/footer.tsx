@@ -40,11 +40,6 @@ function HoverFooter() {
 
   const contactInfo = [
     {
-      icon: <Mail size={18} className="text-primary" />,
-      text: "contato@fusionpay.com",
-      href: "mailto:contato@fusionpay.com",
-    },
-    {
       icon: <Phone size={18} className="text-primary" />,
       text: "+7 964 435-03-21",
       href: "tel:+79644350321",
