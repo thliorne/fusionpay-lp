@@ -6,6 +6,7 @@ import {
   MapPin,
   Instagram,
   Smartphone,
+  FileText,
 } from "lucide-react";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 import { Logo } from "../icons/logo";
@@ -56,6 +57,10 @@ function HoverFooter() {
     {
       icon: <MapPin size={18} className="text-primary" />,
       text: "Rod. José Carlos Daux, 5500 - Saco Grande, Florianópolis/SC",
+    },
+    {
+      icon: <FileText size={18} className="text-primary" />,
+      text: "56.936.053/0001-73",
     },
   ];
 
