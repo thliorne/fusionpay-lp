@@ -23,7 +23,7 @@ const benefits = [
   },
   {
     icon: <ShieldCheck className="w-5 h-5 text-primary" />,
-    text: "Antifraude ativo e configurável",
+    text: "Antifraude com IA",
   },
   {
     icon: <TrendingUp className="w-5 h-5 text-primary" />,
