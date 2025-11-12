@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight, Link as LinkIcon, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { motion, useReducedMotion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 
 interface TimelineItem {
@@ -45,9 +46,9 @@ function CircleAction({ label, icon, onClick }: {label:string; icon:React.ReactN
       type="button"
       onClick={onClick}
       aria-label={label}
-      className={`group relative isolate grid place-items-center rounded-full
+      className={cn(`group relative isolate grid place-items-center rounded-full
                  bg-[#0B0B0B]/80 ring-1 ring-white/15 text-white/90 cursor-pointer
-                 transition-transform duration-200 ease-out outline-none ${sizeClasses}`}
+                 transition-transform duration-200 ease-out outline-none`, sizeClasses)}
       whileHover={!reduce ? { scale: 1.04 } : {}}
       whileTap={!reduce ? { scale: 0.98 } : {}}
       transition={{ duration: reduce ? 0 : 0.18, ease: "easeOut" }}
@@ -85,14 +86,21 @@ export default function RadialOrbitalTimeline({
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const [isClient, setIsClient] = useState(false);
   const reduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
 
   const isAnyCardOpen = activeNodeId !== null;
 
   useEffect(() => {
     setIsClient(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     if(reduceMotion) {
       setAutoRotate(false);
     }
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, [reduceMotion]);
 
   const closeAllCards = () => {
@@ -163,20 +171,20 @@ export default function RadialOrbitalTimeline({
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
     
-    // Use clamp for radius calculation for better control across screen sizes
-    const radius = isClient ? Math.min(Math.max(window.innerWidth * 0.35, 140), 420) : 140;
+    const radiusValue = isClient
+      ? isMobile
+        ? Math.min(window.innerWidth * 0.4, 180)
+        : Math.min(Math.max(window.innerWidth * 0.25, 220), 420)
+      : 140;
+
     const radian = (angle * Math.PI) / 180;
 
-    const x = radius * Math.cos(radian);
-    const y = radius * Math.sin(radian);
+    const x = radiusValue * Math.cos(radian);
+    const y = radiusValue * Math.sin(radian);
 
     const zIndex = Math.round(100 + 50 * Math.sin(radian));
-    const opacity = Math.max(
-      0.4,
-      Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2))
-    );
-     const scale = 0.8 + 0.2 * ((1 + Math.sin(radian)) / 2);
-
+    const opacity = reduceMotion ? 1 : Math.max(0.4, Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2)));
+    const scale = reduceMotion ? 1 : 0.8 + 0.2 * ((1 + Math.sin(radian)) / 2);
 
     return { x, y, angle, zIndex, opacity, scale };
   };
@@ -232,7 +240,7 @@ export default function RadialOrbitalTimeline({
         </div>
 
 
-        <div className="relative w-full flex items-center justify-center z-10 h-[80vh] min-h-[400px] max-h-[800px] sm:h-[600px] lg:h-[800px]">
+        <div className="relative w-full flex items-center justify-center z-10 h-[80vh] min-h-[500px] sm:min-h-[600px] max-h-[800px] md:h-[600px] lg:h-[800px]">
           <div
             className="absolute w-full h-full flex items-center justify-center"
             ref={orbitRef}
@@ -240,26 +248,32 @@ export default function RadialOrbitalTimeline({
               perspective: "1000px",
             }}
           >
-            <div className="absolute grid place-items-center z-10">
-              {!isClient ? (
-                  <div className="w-24 h-24 rounded-full bg-primary/90"></div>
-              ) : (
-                <>
-                {!reduceMotion && (
+            <motion.div 
+              className="absolute z-20"
+              animate={{ scale: isAnyCardOpen ? 0.8 : 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="absolute grid place-items-center z-10">
+                {!isClient ? (
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-primary/90"></div>
+                ) : (
                   <>
-                  <div className="absolute w-56 h-56 rounded-full border border-primary/30 animate-ping opacity-80"></div>
-                  <div
-                    className="absolute w-64 h-64 rounded-full border border-primary/20 animate-ping opacity-60"
-                    style={{ animationDelay: "0.5s" }}
-                  ></div>
+                    {!reduceMotion && !isAnyCardOpen && (
+                        <>
+                          <div className="absolute w-56 h-56 rounded-full border border-primary/30 animate-pulse opacity-80" style={{ animationDuration: '4s' }}></div>
+                          <div className="absolute w-64 h-64 rounded-full border border-primary/20 animate-pulse opacity-60" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+                        </>
+                    )}
+                    <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={96} height={96} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-primary/90 backdrop-blur-md" />
                   </>
                 )}
-                <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={96} height={96} className="w-24 h-24 rounded-full bg-primary/90 backdrop-blur-md" />
-                </>
-              )}
-            </div>
-
-            <div className="absolute w-[80vw] h-[80vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px] rounded-full border border-border/20"></div>
+              </div>
+            </motion.div>
+            <motion.div
+              className="absolute w-[80vw] h-[80vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px] rounded-full border border-border/20"
+              animate={{ scale: isAnyCardOpen ? 0.9 : 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            ></motion.div>
 
             {isClient && timelineData.map((item, index) => {
               const position = calculateNodePosition(index, timelineData.length);
