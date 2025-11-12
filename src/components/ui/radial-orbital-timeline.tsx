@@ -75,11 +75,11 @@ function CircleAction({
       whileTap={!reduce ? { scale: 0.98 } : {}}
       transition={{ duration: reduce ? 0 : 0.18, ease: "easeOut" }}
     >
-      <div className="relative z-10 flex flex-col items-center gap-1.5">
+      <div className="relative z-10 flex flex-col items-center gap-2">
         <span className="text-orange-400">
           {React.cloneElement(icon as React.ReactElement, { size: iconSize })}
         </span>
-        <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-white/85 text-center">
+        <span className="text-xs font-semibold tracking-wide text-white/85 text-center px-1">
           {label}
         </span>
       </div>
@@ -150,7 +150,6 @@ export default function RadialOrbitalTimeline({
     };
   }, [autoRotate, isAnyCardOpen, reduceMotion, rotationAngle]);
 
-
   const closeAllCards = () => {
     setExpandedItems({});
     setActiveNodeId(null);
@@ -215,7 +214,11 @@ export default function RadialOrbitalTimeline({
     }
   };
 
-  const calculateNodePosition = (index: number, total: number, angleOffset: number) => {
+  const calculateNodePosition = (
+    index: number,
+    total: number,
+    angleOffset: number
+  ) => {
     const angle = ((index / total) * 360 + angleOffset) % 360;
 
     const radiusValue = isClient
@@ -239,7 +242,6 @@ export default function RadialOrbitalTimeline({
 
     return { x, y, zIndex, opacity, scale };
   };
-
 
   const getStatusStyles = (status: TimelineItem["status"]): string => {
     switch (status) {
@@ -336,14 +338,18 @@ export default function RadialOrbitalTimeline({
             timelineData.map((item, index) => {
               const isExpanded = expandedItems[item.id];
               const Icon = item.icon;
-              
+
               return (
                 <motion.div
                   key={item.id}
                   ref={(el) => (nodeRefs.current[item.id] = el)}
                   className="absolute transition-opacity duration-700 ease-in-out node-container"
-                  style={{ willChange: 'transform, opacity, z-index' }}
-                  animate={calculateNodePosition(index, timelineData.length, rotationAngle.get())}
+                  style={{ willChange: "transform, opacity, z-index" }}
+                  animate={calculateNodePosition(
+                    index,
+                    timelineData.length,
+                    rotationAngle.get()
+                  )}
                   transition={{ type: "spring", stiffness: 100, damping: 20 }}
                   custom={rotationAngle}
                 >
@@ -461,5 +467,3 @@ export default function RadialOrbitalTimeline({
     </TooltipProvider>
   );
 }
-
-    
