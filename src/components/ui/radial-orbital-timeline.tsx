@@ -185,13 +185,20 @@ export default function RadialOrbitalTimeline({
   };
 
   const centerViewOnNode = (nodeId: number) => {
-    if (reduceMotion || !nodeRefs.current[nodeId]) return;
-
+    if (reduceMotion) return;
     const nodeIndex = timelineData.findIndex((item) => item.id === nodeId);
-    const totalNodes = timelineData.length;
-    const targetAngle = (nodeIndex / totalNodes) * 360;
+    if (nodeIndex === -1) return;
 
-    rotationAngle.set(270 - targetAngle);
+    const totalNodes = timelineData.length;
+    // The angle for each segment of the circle
+    const anglePerNode = 360 / totalNodes;
+    // The target angle to bring the node to the top (which is at -90 degrees or 270 degrees in trigonometric space)
+    const targetAngle = 270;
+    // The current angle of the node
+    const nodeAngle = nodeIndex * anglePerNode;
+    
+    // Set the rotation so that the node's angle aligns with the target angle
+    rotationAngle.set(targetAngle - nodeAngle);
   };
 
   const toggleItem = (id: number) => {
@@ -303,7 +310,7 @@ export default function RadialOrbitalTimeline({
             animate={{ scale: isAnyCardOpen ? 0.8 : 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <div className="relative w-24 h-24 sm:w-32 sm:h-32">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24">
               {isClient && !reduceMotion && !isAnyCardOpen && (
                 <>
                   <div
@@ -316,13 +323,13 @@ export default function RadialOrbitalTimeline({
                   ></div>
                 </>
               )}
-              {notificationIcon && (
+               {notificationIcon && (
                 <Image
                   src={notificationIcon.imageUrl}
                   alt={notificationIcon.description}
                   width={isMobile ? 80 : 96}
                   height={isMobile ? 80 : 96}
-                  className="w-full h-full rounded-full bg-primary/90 backdrop-blur-md"
+                  className="w-full h-full rounded-full object-cover bg-black/50 p-2"
                   data-ai-hint={notificationIcon.imageHint}
                 />
               )}
