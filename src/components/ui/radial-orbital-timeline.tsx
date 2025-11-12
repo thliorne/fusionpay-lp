@@ -26,32 +26,46 @@ interface RadialOrbitalTimelineProps {
 }
 
 function CircleAction({ label, icon, onClick }: {label:string; icon:React.ReactNode; onClick?:()=>void}) {
-  const reduce = useReducedMotion()
+  const reduce = useReducedMotion();
+  
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const sizeClasses = "size-24 sm:size-28";
+  const iconSize = 32;
+
+  if (!isClient) {
+    return <div className={`${sizeClasses} rounded-full bg-[#0B0B0B]/80 ring-1 ring-white/15`} />;
+  }
+
   return (
     <motion.button
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="group relative isolate grid place-items-center size-28 rounded-full
+      className={`group relative isolate grid place-items-center rounded-full
                  bg-[#0B0B0B]/80 ring-1 ring-white/15 text-white/90 cursor-pointer
-                 transition-transform duration-200 ease-out outline-none"
-      whileHover={{ scale: 1.04 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ duration: reduce ? 0.12 : 0.18, ease: "easeOut" }}
+                 transition-transform duration-200 ease-out outline-none ${sizeClasses}`}
+      whileHover={!reduce ? { scale: 1.04 } : {}}
+      whileTap={!reduce ? { scale: 0.98 } : {}}
+      transition={{ duration: reduce ? 0 : 0.18, ease: "easeOut" }}
     >
       <div className="relative z-10 flex flex-col items-center gap-2">
-        <span className="text-orange-400">{icon}</span>
+        <span className="text-orange-400">{React.cloneElement(icon as React.ReactElement, { size: iconSize })}</span>
         <span className="text-xs font-semibold tracking-wide text-white/85">{label}</span>
       </div>
       
-      {/* Anel fixo (sem animação) */}
       <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/15" />
       
-      {/* Glow apenas no hover (sem loop) */}
-      <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
-           style={{ boxShadow: "0 0 24px 4px rgba(255,87,34,0.28)" }} />
+      {!reduce && (
+        <>
+          <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
+               style={{ boxShadow: "0 0 24px 4px rgba(255,87,34,0.28)" }} />
+        </>
+      )}
       
-      {/* Profundidade sutil */}
       <div className="pointer-events-none absolute inset-0 rounded-full [box-shadow:inset_0_10px_30px_rgba(0,0,0,0.45)]" />
     </motion.button>
   )
@@ -64,31 +78,27 @@ export default function RadialOrbitalTimeline({
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>(
     {}
   );
-  const [viewMode, setViewMode] = useState<"orbital">("orbital");
   const [rotationAngle, setRotationAngle] = useState<number>(0);
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
-  const [pulseEffect, setPulseEffect] = useState<Record<number, boolean>>({});
-  const [centerOffset, setCenterOffset] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
-  });
   const [activeNodeId, setActiveNodeId] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const [isClient, setIsClient] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const isAnyCardOpen = activeNodeId !== null;
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+    if(reduceMotion) {
+      setAutoRotate(false);
+    }
+  }, [reduceMotion]);
 
   const closeAllCards = () => {
     setExpandedItems({});
     setActiveNodeId(null);
-    setPulseEffect({});
-    setAutoRotate(true);
+    if(!reduceMotion) setAutoRotate(true);
   };
   
   useEffect(() => {
@@ -124,47 +134,24 @@ export default function RadialOrbitalTimeline({
     const isCurrentlyExpanded = !!expandedItems[id];
 
     if (activeNodeId !== null && activeNodeId !== id) {
-      // If another card is open, close it and open the new one
-      const newExpandedState: Record<number, boolean> = { [id]: true };
-      setExpandedItems(newExpandedState);
+      setExpandedItems({ [id]: true });
       setActiveNodeId(id);
       setAutoRotate(false);
-
-      const relatedItems = getRelatedItems(id);
-      const newPulseEffect: Record<number, boolean> = {};
-      relatedItems.forEach((relId) => {
-        newPulseEffect[relId] = true;
-      });
-      setPulseEffect(newPulseEffect);
-      
       centerViewOnNode(id);
     } else {
-      // Toggle the current card
-      setExpandedItems((prev) => {
-        const newExpandedState = { ...prev, [id]: !isCurrentlyExpanded };
-
-        if (!isCurrentlyExpanded) {
-          setActiveNodeId(id);
-          setAutoRotate(false);
-          const relatedItems = getRelatedItems(id);
-          const newPulseEffect: Record<number, boolean> = {};
-          relatedItems.forEach((relId) => {
-            newPulseEffect[relId] = true;
-          });
-          setPulseEffect(newPulseEffect);
-          centerViewOnNode(id);
-        } else {
-          closeAllCards();
-        }
-        
-        return newExpandedState;
-      });
+      setExpandedItems(prev => ({ ...prev, [id]: !isCurrentlyExpanded }));
+      if (!isCurrentlyExpanded) {
+        setActiveNodeId(id);
+        setAutoRotate(false);
+        centerViewOnNode(id);
+      } else {
+        closeAllCards();
+      }
     }
   };
 
-
   const centerViewOnNode = (nodeId: number) => {
-    if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;
+    if (reduceMotion || !nodeRefs.current[nodeId]) return;
 
     const nodeIndex = timelineData.findIndex((item) => item.id === nodeId);
     const totalNodes = timelineData.length;
@@ -175,11 +162,13 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    const radius = isClient ? window.innerWidth * 0.6 / 2 * 0.7 : 350;
+    
+    // Use clamp for radius calculation for better control across screen sizes
+    const radius = isClient ? Math.min(Math.max(window.innerWidth * 0.35, 140), 420) : 140;
     const radian = (angle * Math.PI) / 180;
 
-    const x = radius * Math.cos(radian) + centerOffset.x;
-    const y = radius * Math.sin(radian) + centerOffset.y;
+    const x = radius * Math.cos(radian);
+    const y = radius * Math.sin(radian);
 
     const zIndex = Math.round(100 + 50 * Math.sin(radian));
     const opacity = Math.max(
@@ -190,17 +179,6 @@ export default function RadialOrbitalTimeline({
 
 
     return { x, y, angle, zIndex, opacity, scale };
-  };
-
-  const getRelatedItems = (itemId: number): number[] => {
-    const currentItem = timelineData.find((item) => item.id === itemId);
-    return currentItem ? currentItem.relatedIds : [];
-  };
-
-  const isRelatedToActive = (itemId: number): boolean => {
-    if (!activeNodeId) return false;
-    const relatedItems = getRelatedItems(activeNodeId);
-    return relatedItems.includes(itemId);
   };
 
   const getStatusStyles = (status: TimelineItem["status"]): string => {
@@ -216,10 +194,6 @@ export default function RadialOrbitalTimeline({
     }
   };
   
-  if (!isClient) {
-    return null;
-  }
-
   const getStatusText = (status: TimelineItem["status"]): string => {
     if (status === "completed") {
       return "Completado";
@@ -231,60 +205,66 @@ export default function RadialOrbitalTimeline({
     <TooltipProvider>
       <div
         className="w-full pt-20 pb-32 flex flex-col items-center justify-center text-white overflow-hidden relative"
-        ref={containerRef}
         onClick={handleContainerClick}
       >
         {isAnyCardOpen && (
           <div 
-            className="fixed inset-0 z-40 bg-transparent"
+            className="fixed inset-0 z-30 bg-transparent"
             onClick={closeAllCards}
           />
         )}
 
-        <div className="text-center mb-16 z-20">
+        <div className="text-center mb-16 sm:mb-24 z-20 px-4">
           <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest uppercase text-primary">
             <Zap className="w-4 h-4" />
             QUEM SOMOS
           </div>
-          <h2 id="diferenciais-title" className="text-4xl md:text-5xl font-bold tracking-tighter">
+          <h2 id="diferenciais-title" className="text-[clamp(2rem,6vw,3.125rem)] font-bold tracking-tighter leading-tight">
             <span className="text-white">Conheça a</span>{" "}
             <span className="relative inline-block text-primary">
               Fusion Pay
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 bg-primary/70 rounded-full blur-[6px]"></span>
             </span>
           </h2>
-          <p className="max-w-3xl mx-auto mt-4 text-lg text-white">
+          <p className="max-w-3xl mx-auto mt-4 text-[clamp(1rem,4vw,1.125rem)] leading-relaxed text-white">
             Somos mais que um gateway de pagamento. Somos o parceiro estratégico que impulsiona o crescimento do seu negócio digital.
           </p>
         </div>
 
 
-        <div className="relative w-full flex items-center justify-center z-10 h-[calc(60vw)] max-h-[800px]" style={{width: '60vw', maxWidth: '1200px'}}>
+        <div className="relative w-full flex items-center justify-center z-10 h-[80vh] min-h-[400px] max-h-[800px] sm:h-[600px] lg:h-[800px]">
           <div
             className="absolute w-full h-full flex items-center justify-center"
             ref={orbitRef}
             style={{
               perspective: "1000px",
-              transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
             }}
           >
-            <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-primary/50 via-primary/20 to-transparent animate-pulse flex items-center justify-center z-10">
-              <div className="absolute w-56 h-56 rounded-full border border-primary/30 animate-ping opacity-80"></div>
-              <div
-                className="absolute w-64 h-64 rounded-full border border-primary/20 animate-ping opacity-60"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={96} height={96} className="w-24 h-24 rounded-full bg-primary/90 backdrop-blur-md" />
+            <div className="absolute grid place-items-center z-10">
+              {!isClient ? (
+                  <div className="w-24 h-24 rounded-full bg-primary/90"></div>
+              ) : (
+                <>
+                {!reduceMotion && (
+                  <>
+                  <div className="absolute w-56 h-56 rounded-full border border-primary/30 animate-ping opacity-80"></div>
+                  <div
+                    className="absolute w-64 h-64 rounded-full border border-primary/20 animate-ping opacity-60"
+                    style={{ animationDelay: "0.5s" }}
+                  ></div>
+                  </>
+                )}
+                <Image src="https://i.imgur.com/m3UqTHp.png" alt="Fusion Pay Icon" width={96} height={96} className="w-24 h-24 rounded-full bg-primary/90 backdrop-blur-md" />
+                </>
+              )}
             </div>
 
-            <div className="absolute w-full h-full rounded-full border border-border/20"></div>
+            <div className="absolute w-[80vw] h-[80vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px] rounded-full border border-border/20"></div>
 
-            {timelineData.map((item, index) => {
+            {isClient && timelineData.map((item, index) => {
               const position = calculateNodePosition(index, timelineData.length);
               const isExpanded = expandedItems[item.id];
               const Icon = item.icon;
-
-              const nodeSize = isClient ? window.innerWidth * 0.08 : 120;
 
               const nodeStyle: React.CSSProperties = {
                 transform: `translate(${position.x}px, ${position.y}px) scale(${isExpanded ? 1.1 : position.scale})`,
@@ -296,7 +276,7 @@ export default function RadialOrbitalTimeline({
                 <div
                   key={item.id}
                   ref={(el) => (nodeRefs.current[item.id] = el)}
-                  className="absolute transition-all duration-700"
+                  className="absolute transition-all duration-700 ease-in-out node-container"
                   style={nodeStyle}
                 >
                   <Tooltip>
@@ -304,7 +284,7 @@ export default function RadialOrbitalTimeline({
                       <div>
                         <CircleAction 
                           label={item.title}
-                          icon={<Icon size={32} />}
+                          icon={<Icon />}
                           onClick={(e:any) => {
                             e.stopPropagation();
                             toggleItem(item.id);
@@ -321,7 +301,7 @@ export default function RadialOrbitalTimeline({
 
                   {isExpanded && (
                     <Card
-                      className="absolute top-[calc(100%+1rem)] left-1/2 -translate-x-1/2 w-72 bg-black/80 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible z-50"
+                      className="card-container absolute top-[calc(100%+1rem)] left-1/2 -translate-x-1/2 w-72 bg-black/80 backdrop-blur-lg border-border/80 shadow-xl shadow-black/20 overflow-visible z-50"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-border/80"></div>
