@@ -117,7 +117,7 @@ export default function RadialOrbitalTimeline({
 
   const isAnyCardOpen = activeNodeId !== null;
   
-  const logoImage = PlaceHolderImages.find(p => p.id === 'header-logo');
+  const notificationIcon = PlaceHolderImages.find(p => p.id === 'notification-icon');
 
   useEffect(() => {
     setIsClient(true);
@@ -294,14 +294,14 @@ export default function RadialOrbitalTimeline({
                     ></div>
                   </>
                 )}
-                <Image
-                  src={logoImage?.imageUrl || "https://i.imgur.com/m3UqTHp.png"}
-                  alt="Fusion Pay Icon"
+                {notificationIcon && <Image
+                  src={notificationIcon.imageUrl}
+                  alt={notificationIcon.description}
                   width={isMobile ? 80 : 96}
                   height={isMobile ? 80 : 96}
                   className="w-full h-full rounded-full bg-primary/90 backdrop-blur-md"
-                  data-ai-hint={logoImage?.imageHint || "logo"}
-                />
+                  data-ai-hint={notificationIcon.imageHint}
+                />}
               </div>
           </motion.div>
           <motion.div
