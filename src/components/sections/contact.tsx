@@ -63,11 +63,11 @@ export function ContactSection() {
             <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
               Fale com um especialista e tenha a melhor condição para PIX, cartão e boleto.
             </p>
-            <ul className="flex justify-center items-center gap-6 text-left mb-10 max-w-3xl mx-auto">
+            <ul className="grid grid-cols-1 sm:grid-cols-3 justify-center items-center gap-4 text-left mb-10 max-w-3xl mx-auto">
               {benefits.map((item, index) => (
-                <li key={index} className="flex items-center gap-3 bg-black/50 p-4 rounded-lg">
+                <li key={index} className="flex items-center gap-3 bg-black/50 p-3 sm:p-4 rounded-lg justify-center sm:justify-start">
                   <div className="flex-shrink-0">{item.icon}</div>
-                  <span className="text-white whitespace-nowrap">{item.text}</span>
+                  <span className="text-white text-sm sm:text-base whitespace-nowrap">{item.text}</span>
                 </li>
               ))}
             </ul>
