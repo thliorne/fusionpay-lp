@@ -188,17 +188,13 @@ export default function RadialOrbitalTimeline({
     if (reduceMotion) return;
     const nodeIndex = timelineData.findIndex((item) => item.id === nodeId);
     if (nodeIndex === -1) return;
-
-    const totalNodes = timelineData.length;
-    // The angle for each segment of the circle
-    const anglePerNode = 360 / totalNodes;
-    // The target angle to bring the node to the top (which is at -90 degrees or 270 degrees in trigonometric space)
-    const targetAngle = 270;
-    // The current angle of the node
-    const nodeAngle = nodeIndex * anglePerNode;
     
-    // Set the rotation so that the node's angle aligns with the target angle
-    rotationAngle.set(targetAngle - nodeAngle);
+    const totalNodes = timelineData.length;
+    const targetAngle = (nodeIndex / totalNodes) * 360;
+
+    // The top of the circle is at 270 degrees (or -90).
+    // We calculate the required rotation to bring the node's angle to 270.
+    rotationAngle.set(270 - targetAngle);
   };
 
   const toggleItem = (id: number) => {
