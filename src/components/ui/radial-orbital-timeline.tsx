@@ -11,7 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -106,18 +106,20 @@ export default function RadialOrbitalTimeline({
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>(
     {}
   );
-  const [rotationAngle, setRotationAngle] = useState<number>(0);
+
+  const rotationAngle = useSpring(0, { stiffness: 100, damping: 20 });
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [activeNodeId, setActiveNodeId] = useState<number | null>(null);
-  const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const [isClient, setIsClient] = useState(false);
   const reduceMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(false);
 
   const isAnyCardOpen = activeNodeId !== null;
-  
-  const notificationIcon = PlaceHolderImages.find(p => p.id === 'notification-icon');
+
+  const notificationIcon = PlaceHolderImages.find(
+    (p) => p.id === "notification-icon"
+  );
 
   useEffect(() => {
     setIsClient(true);
@@ -131,6 +133,23 @@ export default function RadialOrbitalTimeline({
 
     return () => window.removeEventListener("resize", checkMobile);
   }, [reduceMotion]);
+
+  useEffect(() => {
+    let animationFrameId: number;
+    if (autoRotate && !isAnyCardOpen && !reduceMotion) {
+      const animate = () => {
+        rotationAngle.set(rotationAngle.get() + 0.1);
+        animationFrameId = requestAnimationFrame(animate);
+      };
+      animationFrameId = requestAnimationFrame(animate);
+    }
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [autoRotate, isAnyCardOpen, reduceMotion, rotationAngle]);
+
 
   const closeAllCards = () => {
     setExpandedItems({});
@@ -166,6 +185,16 @@ export default function RadialOrbitalTimeline({
     }
   };
 
+  const centerViewOnNode = (nodeId: number) => {
+    if (reduceMotion || !nodeRefs.current[nodeId]) return;
+
+    const nodeIndex = timelineData.findIndex((item) => item.id === nodeId);
+    const totalNodes = timelineData.length;
+    const targetAngle = (nodeIndex / totalNodes) * 360;
+
+    rotationAngle.set(270 - targetAngle);
+  };
+
   const toggleItem = (id: number) => {
     const isCurrentlyExpanded = !!expandedItems[id];
 
@@ -186,18 +215,8 @@ export default function RadialOrbitalTimeline({
     }
   };
 
-  const centerViewOnNode = (nodeId: number) => {
-    if (reduceMotion || !nodeRefs.current[nodeId]) return;
-
-    const nodeIndex = timelineData.findIndex((item) => item.id === nodeId);
-    const totalNodes = timelineData.length;
-    const targetAngle = (nodeIndex / totalNodes) * 360;
-
-    setRotationAngle(270 - targetAngle);
-  };
-
-  const calculateNodePosition = (index: number, total: number) => {
-    const angle = ((index / total) * 360 + rotationAngle) % 360;
+  const calculateNodePosition = (index: number, total: number, angleOffset: number) => {
+    const angle = ((index / total) * 360 + angleOffset) % 360;
 
     const radiusValue = isClient
       ? isMobile
@@ -218,8 +237,9 @@ export default function RadialOrbitalTimeline({
       ? 1
       : 0.8 + 0.2 * ((1 + Math.sin(radian)) / 2);
 
-    return { x, y, angle, zIndex, opacity, scale };
+    return { x, y, zIndex, opacity, scale };
   };
+
 
   const getStatusStyles = (status: TimelineItem["status"]): string => {
     switch (status) {
@@ -282,27 +302,29 @@ export default function RadialOrbitalTimeline({
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <div className="relative w-24 h-24 sm:w-32 sm:h-32">
-                {isClient && !reduceMotion && !isAnyCardOpen && (
-                  <>
-                    <div
-                      className="absolute inset-[-40%] border border-primary/30 rounded-full animate-pulse opacity-80"
-                      style={{ animationDuration: "4s" }}
-                    ></div>
-                    <div
-                      className="absolute inset-[-60%] border border-primary/20 rounded-full animate-pulse opacity-60"
-                      style={{ animationDelay: "1s", animationDuration: "4s" }}
-                    ></div>
-                  </>
-                )}
-                {notificationIcon && <Image
+              {isClient && !reduceMotion && !isAnyCardOpen && (
+                <>
+                  <div
+                    className="absolute inset-[-40%] border border-primary/30 rounded-full animate-pulse opacity-80"
+                    style={{ animationDuration: "4s" }}
+                  ></div>
+                  <div
+                    className="absolute inset-[-60%] border border-primary/20 rounded-full animate-pulse opacity-60"
+                    style={{ animationDelay: "1s", animationDuration: "4s" }}
+                  ></div>
+                </>
+              )}
+              {notificationIcon && (
+                <Image
                   src={notificationIcon.imageUrl}
                   alt={notificationIcon.description}
                   width={isMobile ? 80 : 96}
                   height={isMobile ? 80 : 96}
                   className="w-full h-full rounded-full bg-primary/90 backdrop-blur-md"
                   data-ai-hint={notificationIcon.imageHint}
-                />}
-              </div>
+                />
+              )}
+            </div>
           </motion.div>
           <motion.div
             className="absolute w-[80vw] h-[80vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px] rounded-full border border-border/20"
@@ -312,27 +334,18 @@ export default function RadialOrbitalTimeline({
 
           {isClient &&
             timelineData.map((item, index) => {
-              const position = calculateNodePosition(
-                index,
-                timelineData.length
-              );
               const isExpanded = expandedItems[item.id];
               const Icon = item.icon;
-
-              const nodeStyle: React.CSSProperties = {
-                transform: `translate(${position.x}px, ${position.y}px) scale(${
-                  isExpanded ? 1.1 : position.scale
-                })`,
-                zIndex: isExpanded ? 200 : position.zIndex,
-                opacity: isExpanded ? 1 : position.opacity,
-              };
-
+              
               return (
-                <div
+                <motion.div
                   key={item.id}
                   ref={(el) => (nodeRefs.current[item.id] = el)}
-                  className="absolute transition-all duration-700 ease-in-out node-container"
-                  style={nodeStyle}
+                  className="absolute transition-opacity duration-700 ease-in-out node-container"
+                  style={{ willChange: 'transform, opacity, z-index' }}
+                  animate={calculateNodePosition(index, timelineData.length, rotationAngle.get())}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                  custom={rotationAngle}
                 >
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -440,7 +453,7 @@ export default function RadialOrbitalTimeline({
                       </CardContent>
                     </Card>
                   )}
-                </div>
+                </motion.div>
               );
             })}
         </div>
@@ -448,3 +461,5 @@ export default function RadialOrbitalTimeline({
     </TooltipProvider>
   );
 }
+
+    
