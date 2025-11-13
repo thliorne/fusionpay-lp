@@ -23,7 +23,7 @@ export function Features() {
                             </CardContent>
                         </Card>
                         <Card className={cn(cardClassName, "sm:col-span-3 lg:col-span-2 glass-card")}>
-                            <CardContent className="pt-6 text-white">
+                            <CardContent className="pt-6 text-white text-center">
                                 <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                     <Shield className="m-auto size-12 text-primary" strokeWidth={1.5} />
                                 </div>
@@ -89,7 +89,7 @@ export function Features() {
                                     </svg>
                                 </div>
                             </CardContent>
-                        </Card>
+                         </Card>
                     </div>
                 </div>
             </div>
