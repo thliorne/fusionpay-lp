@@ -107,7 +107,7 @@ export default function RadialOrbitalTimeline({
     {}
   );
 
-  const rotationAngle = useSpring(0, { stiffness: 100, damping: 20 });
+  const rotationAngle = useSpring(0, { stiffness: 100, damping: 30 });
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [activeNodeId, setActiveNodeId] = useState<number | null>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
@@ -191,10 +191,17 @@ export default function RadialOrbitalTimeline({
     
     const totalNodes = timelineData.length;
     const targetAngle = (nodeIndex / totalNodes) * 360;
+    
+    // The top of the circle is at 270 degrees.
+    const destinationAngle = 270;
+    const requiredRotation = destinationAngle - targetAngle;
 
-    // The top of the circle is at 270 degrees (or -90).
-    // We calculate the required rotation to bring the node's angle to 270.
-    rotationAngle.set(270 - targetAngle);
+    const currentAngle = (rotationAngle.get() % 360 + 360) % 360;
+
+    // To ensure the rotation takes the shortest path, we adjust the angle
+    let finalAngle = currentAngle + ((requiredRotation - (currentAngle % 360) + 540) % 360 - 180);
+
+    rotationAngle.set(finalAngle);
   };
 
   const toggleItem = (id: number) => {
