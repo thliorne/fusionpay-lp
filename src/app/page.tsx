@@ -26,3 +26,8 @@ export default function Home() {
         <TestimonialsSection />
         <ContactSection />
         <FaqSection id="faq" />
+      </main>
+      <Footer />
+    </div>
+  );
+}
