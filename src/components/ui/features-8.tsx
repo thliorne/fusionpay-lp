@@ -52,7 +52,7 @@ export function Features() {
                                      </div>
                                      <div className="space-y-2">
                                          <h2 className="text-lg font-medium transition">Ecossistema Completo</h2>
-                                         <p className="text-white/70">Integre facilmente com as principais plataformas de e-commerce, marketing e ERPs do mercado.</p>
+                                         <p className="text-white/70">Integra facilmente com os melhores gateways e plataformas de e-commerce.</p>
                                      </div>
                                  </div>
                                  <div className="flex items-center justify-center">
