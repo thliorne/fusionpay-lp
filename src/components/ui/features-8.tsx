@@ -55,8 +55,8 @@ export function Features() {
                                          <p className="text-white/70">Integre facilmente com as principais plataformas de e-commerce, marketing e ERPs do mercado.</p>
                                      </div>
                                  </div>
-                                 <div className="relative mt-6 sm:-my-6 sm:-mr-6">
-                                     <Image src="https://i.imgur.com/odMHCZ9.png" alt="Ecossistema de Integrações" width={300} height={300} className="object-contain" />
+                                 <div className="relative flex items-center justify-center">
+                                     <Image src="https://i.imgur.com/odMHCZ9.png" alt="Ecossistema de Integrações" width={300} height={300} className="object-contain [mask-image:radial-gradient(ellipse_at_center,white_50%,transparent_100%)]" />
                                  </div>
                              </CardContent>
                          </Card>
