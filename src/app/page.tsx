@@ -1,7 +1,7 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { IntegrationsSection } from '@/components/sections/integrations';
-import { DifferentialsSection } from '@/components/sections/differentials';
+import { Features } from '@/components/ui/features-8';
 import { DisplayCardsSection } from '@/components/sections/display-cards-section';
 import { ContactSection } from '@/components/sections/contact';
 import { TestimonialsSection } from '@/components/sections/testimonials';
@@ -18,7 +18,7 @@ export default function Home() {
       <main className="flex-1">
         <AutoSurfaceFix />
         <HeroFusionPay />
-        <DifferentialsSection id="quem-somos" />
+        <Features />
         <DisplayCardsSection id="diferenciais" />
         <IntegrationsSection id="integrations" />
         <DashboardSection />
@@ -26,8 +26,3 @@ export default function Home() {
         <TestimonialsSection />
         <ContactSection />
         <FaqSection id="faq" />
-      </main>
-      <Footer />
-    </div>
-  );
-}
