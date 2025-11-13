@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight, Link as LinkIcon, Zap } from "lucide-react";
@@ -11,7 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { motion, useReducedMotion, useSpring } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -138,7 +139,7 @@ export default function RadialOrbitalTimeline({
     let animationFrameId: number;
     if (autoRotate && !isAnyCardOpen && !reduceMotion) {
       const animate = () => {
-        setRotationAngle(prev => (prev + 0.1) % 360);
+        setRotationAngle((prev) => (prev + 0.1) % 360);
         animationFrameId = requestAnimationFrame(animate);
       };
       animationFrameId = requestAnimationFrame(animate);
@@ -183,21 +184,17 @@ export default function RadialOrbitalTimeline({
       }
     }
   };
-  
+
   const centerViewOnNode = (nodeId: number) => {
-    if (reduceMotion) return;
-  
+    if (reduceMotion || !nodeRefs.current[nodeId]) return;
+
     const nodeIndex = timelineData.findIndex((item) => item.id === nodeId);
     if (nodeIndex === -1) return;
-  
+
     const totalNodes = timelineData.length;
     const targetAngle = (nodeIndex / totalNodes) * 360;
-  
-    // Use a spring for smooth animation
-    const spring = useSpring(rotationAngle, { stiffness: 100, damping: 30 });
-    spring.set(270 - targetAngle);
-  
-    // For direct state update if not using spring for everything
+
+    // Set rotation to bring the selected node to the top (270 degrees)
     setRotationAngle(270 - targetAngle);
   };
 
@@ -205,11 +202,13 @@ export default function RadialOrbitalTimeline({
     const isCurrentlyExpanded = !!expandedItems[id];
 
     if (activeNodeId !== null && activeNodeId !== id) {
+      // An item is open, and we're clicking a different one
       setExpandedItems({ [id]: true });
       setActiveNodeId(id);
       setAutoRotate(false);
       centerViewOnNode(id);
     } else {
+      // Clicking the same item or no item is open
       setExpandedItems((prev) => ({ ...prev, [id]: !isCurrentlyExpanded }));
       if (!isCurrentlyExpanded) {
         setActiveNodeId(id);
@@ -221,10 +220,7 @@ export default function RadialOrbitalTimeline({
     }
   };
 
-  const calculateNodePosition = (
-    index: number,
-    total: number
-  ) => {
+  const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
 
     const radiusValue = isClient
@@ -322,7 +318,7 @@ export default function RadialOrbitalTimeline({
                   ></div>
                 </>
               )}
-               {notificationIcon && (
+              {notificationIcon && (
                 <Image
                   src={notificationIcon.imageUrl}
                   alt={notificationIcon.description}
@@ -335,23 +331,25 @@ export default function RadialOrbitalTimeline({
             </div>
           </motion.div>
           <motion.div
-            className="absolute w-[80vw] h-[80vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px] rounded-full border border-border/20"
-            animate={{ scale: isAnyCardOpen ? 0.9 : 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="absolute w-[80vw] h-[80vw] sm:w-[70vw] sm:h-[70vw] max-w-[800px] max-h-[800px] rounded-full border border-border/20 transition-transform duration-700 ease-in-out"
+            style={{ transform: `rotate(${rotationAngle}deg) scale(${isAnyCardOpen ? 0.9 : 1})` }}
           ></motion.div>
 
           {isClient &&
             timelineData.map((item, index) => {
               const isExpanded = expandedItems[item.id];
               const Icon = item.icon;
-              const { x, y, zIndex, opacity, scale } = calculateNodePosition(index, timelineData.length);
+              const { x, y, zIndex, opacity, scale } = calculateNodePosition(
+                index,
+                timelineData.length
+              );
 
               return (
                 <motion.div
                   key={item.id}
                   ref={(el) => (nodeRefs.current[item.id] = el)}
                   className="absolute transition-opacity duration-700 ease-in-out node-container"
-                  style={{ 
+                  style={{
                     willChange: "transform, opacity, z-index",
                     transform: `translate(${x}px, ${y}px) scale(${scale})`,
                     zIndex: zIndex,
@@ -473,3 +471,5 @@ export default function RadialOrbitalTimeline({
     </TooltipProvider>
   );
 }
+
+    
