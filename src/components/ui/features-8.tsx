@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Shield, Users, Gem, Zap, GitBranch, KeyRound, RefreshCw, Plug } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 export function Features() {
     const cardClassName = "relative col-span-full flex overflow-hidden bg-black/50 backdrop-blur-md border border-white/10"
@@ -55,26 +56,7 @@ export function Features() {
                                      </div>
                                  </div>
                                  <div className="relative mt-6 sm:-my-6 sm:-mr-6">
-                                     <div className="relative flex h-full flex-col justify-center space-y-6 py-6">
-                                         <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
-                                             <span className="block h-fit rounded border border-white/20 bg-black/50 px-2 py-1 text-xs shadow-sm">Shopify</span>
-                                             <div className="ring-background size-7 ring-4">
-                                                 <img className="size-full rounded-full" src="https://i.imgur.com/r0omMHj.png" alt="Shopify" />
-                                             </div>
-                                         </div>
-                                         <div className="relative ml-[calc(50%-1rem)] flex items-center gap-2">
-                                             <div className="ring-background size-8 ring-4">
-                                                 <img className="size-full rounded-full" src="https://i.imgur.com/TSi6QTG.png" alt="WooCommerce" />
-                                             </div>
-                                             <span className="block h-fit rounded border border-white/20 bg-black/50 px-2 py-1 text-xs shadow-sm">WooCommerce</span>
-                                         </div>
-                                         <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
-                                             <span className="block h-fit rounded border border-white/20 bg-black/50 px-2 py-1 text-xs shadow-sm">Yampi</span>
-                                             <div className="ring-background size-7 ring-4">
-                                                 <img className="size-full rounded-full" src="https://i.imgur.com/SYwiJ0Y.jpeg" alt="Yampi" />
-                                             </div>
-                                         </div>
-                                     </div>
+                                     <Image src="https://i.imgur.com/odMHCZ9.png" alt="Ecossistema de Integrações" width={300} height={300} className="object-contain" />
                                  </div>
                              </CardContent>
                          </Card>
