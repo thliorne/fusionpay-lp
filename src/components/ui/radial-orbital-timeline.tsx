@@ -107,7 +107,7 @@ export default function RadialOrbitalTimeline({
     {}
   );
 
-  const rotationAngle = useSpring(0, { stiffness: 100, damping: 30 });
+  const [rotationAngle, setRotationAngle] = useState<number>(0);
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [activeNodeId, setActiveNodeId] = useState<number | null>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
@@ -138,7 +138,7 @@ export default function RadialOrbitalTimeline({
     let animationFrameId: number;
     if (autoRotate && !isAnyCardOpen && !reduceMotion) {
       const animate = () => {
-        rotationAngle.set(rotationAngle.get() + 0.1);
+        setRotationAngle(prev => (prev + 0.1) % 360);
         animationFrameId = requestAnimationFrame(animate);
       };
       animationFrameId = requestAnimationFrame(animate);
@@ -148,7 +148,7 @@ export default function RadialOrbitalTimeline({
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [autoRotate, isAnyCardOpen, reduceMotion, rotationAngle]);
+  }, [autoRotate, isAnyCardOpen, reduceMotion]);
 
   const closeAllCards = () => {
     setExpandedItems({});
@@ -183,25 +183,22 @@ export default function RadialOrbitalTimeline({
       }
     }
   };
-
+  
   const centerViewOnNode = (nodeId: number) => {
     if (reduceMotion) return;
+  
     const nodeIndex = timelineData.findIndex((item) => item.id === nodeId);
     if (nodeIndex === -1) return;
-    
+  
     const totalNodes = timelineData.length;
     const targetAngle = (nodeIndex / totalNodes) * 360;
-    
-    // The top of the circle is at 270 degrees.
-    const destinationAngle = 270;
-    const requiredRotation = destinationAngle - targetAngle;
-
-    const currentAngle = (rotationAngle.get() % 360 + 360) % 360;
-
-    // To ensure the rotation takes the shortest path, we adjust the angle
-    let finalAngle = currentAngle + ((requiredRotation - (currentAngle % 360) + 540) % 360 - 180);
-
-    rotationAngle.set(finalAngle);
+  
+    // Use a spring for smooth animation
+    const spring = useSpring(rotationAngle, { stiffness: 100, damping: 30 });
+    spring.set(270 - targetAngle);
+  
+    // For direct state update if not using spring for everything
+    setRotationAngle(270 - targetAngle);
   };
 
   const toggleItem = (id: number) => {
@@ -226,10 +223,9 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (
     index: number,
-    total: number,
-    angleOffset: number
+    total: number
   ) => {
-    const angle = ((index / total) * 360 + angleOffset) % 360;
+    const angle = ((index / total) * 360 + rotationAngle) % 360;
 
     const radiusValue = isClient
       ? isMobile
@@ -348,20 +344,20 @@ export default function RadialOrbitalTimeline({
             timelineData.map((item, index) => {
               const isExpanded = expandedItems[item.id];
               const Icon = item.icon;
+              const { x, y, zIndex, opacity, scale } = calculateNodePosition(index, timelineData.length);
 
               return (
                 <motion.div
                   key={item.id}
                   ref={(el) => (nodeRefs.current[item.id] = el)}
                   className="absolute transition-opacity duration-700 ease-in-out node-container"
-                  style={{ willChange: "transform, opacity, z-index" }}
-                  animate={calculateNodePosition(
-                    index,
-                    timelineData.length,
-                    rotationAngle.get()
-                  )}
+                  style={{ 
+                    willChange: "transform, opacity, z-index",
+                    transform: `translate(${x}px, ${y}px) scale(${scale})`,
+                    zIndex: zIndex,
+                    opacity: opacity,
+                  }}
                   transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                  custom={rotationAngle}
                 >
                   <Tooltip>
                     <TooltipTrigger asChild>
