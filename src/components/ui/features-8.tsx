@@ -51,7 +51,7 @@ export function Features() {
                                          <GitBranch className="m-auto size-6 text-primary" strokeWidth={1.5} />
                                      </div>
                                      <div className="space-y-2">
-                                         <h2 className="text-lg font-medium transition">Ecossistema Completo</h2>
+                                         <h2 className="text-lg font-medium transition">Integração fácil e rápida</h2>
                                          <p className="text-white/70">Integra facilmente com os melhores gateways e plataformas de e-commerce.</p>
                                      </div>
                                  </div>
