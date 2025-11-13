@@ -12,12 +12,14 @@ export function Features() {
                 <div className="relative">
                     <div className="relative z-10 grid grid-cols-6 gap-3">
                         <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
-                            <CardContent className="relative flex flex-col items-center justify-center p-6 text-white">
-                                <div className="relative flex h-24 w-56 items-center justify-center">
-                                     <Plug className="size-16 text-primary" strokeWidth={1.5} />
+                             <CardContent className="relative flex flex-col items-center justify-center p-6 text-white">
+                                <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                                    <Plug className="m-auto size-12 text-primary" strokeWidth={1.5} />
                                 </div>
-                                <h2 className="mt-6 text-center text-3xl font-semibold">Solução Plug & Play</h2>
-                                <p className="text-center text-white/70 mt-2">Nossa solução “Plug & Play” permite que você aceite pagamentos digitais de forma rápida, segura e sem complicações.</p>
+                                <div className="relative z-10 mt-6 space-y-2 text-center">
+                                    <h2 className="text-lg font-medium text-white transition">Solução Plug & Play</h2>
+                                    <p className="text-center text-white/70 mt-2">Nossa solução “Plug & Play” permite que você aceite pagamentos digitais de forma rápida, segura e sem complicações.</p>
+                                </div>
                             </CardContent>
                         </Card>
                         <Card className={cn(cardClassName, "sm:col-span-3 lg:col-span-2 glass-card")}>
