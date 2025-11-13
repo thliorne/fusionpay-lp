@@ -11,7 +11,7 @@ export function Features() {
                 <div className="relative">
                     <div className="relative z-10 grid grid-cols-6 gap-3">
                         <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
-                            <CardContent className="relative m-auto size-fit pt-6 text-white">
+                            <CardContent className="relative flex flex-col items-center justify-center p-6 text-white">
                                 <div className="relative flex h-24 w-56 items-center justify-center">
                                      <Plug className="size-16 text-primary" strokeWidth={1.5} />
                                 </div>
