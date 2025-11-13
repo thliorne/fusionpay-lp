@@ -57,8 +57,7 @@ export function Features() {
                                  </div>
                                   <div className="rounded-tl-lg relative -mb-6 -mr-6 mt-6 flex items-center justify-center border-l border-t border-white/10 p-6 py-6 sm:ml-6">
                                       <div className="relative flex h-24 w-24 items-center justify-center">
-                                          <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/40 animate-spin" style={{ animationDuration: '6s' }}></div>
-                                          <div className="absolute inset-2 rounded-full bg-primary/10"></div>
+                                          <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/40"></div>
                                           <Zap className="relative z-10 h-8 w-8 text-primary" strokeWidth={1.5} />
                                       </div>
                                   </div>
