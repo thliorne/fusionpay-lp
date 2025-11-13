@@ -32,8 +32,8 @@ export function Features() {
                             </CardContent>
                         </Card>
                         <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
-                             <CardContent className="grid h-full pt-6 text-white">
-                                <div className="relative z-10 flex flex-col justify-between space-y-6">
+                             <CardContent className="grid h-full grid-cols-2 gap-4 pt-6 text-white">
+                                <div className="relative z-10 flex flex-col justify-start space-y-6">
                                     <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                         <Zap className="m-auto size-6 text-primary" strokeWidth={1.5} />
                                     </div>
@@ -41,6 +41,9 @@ export function Features() {
                                         <h2 className="text-lg font-medium text-white transition">Saque Instantâneo D+0</h2>
                                         <p className="text-white/70">Receba o valor das suas vendas via PIX no mesmo dia. Mais agilidade para seu fluxo de caixa.</p>
                                     </div>
+                                </div>
+                                <div className="flex items-center justify-center">
+                                     <RefreshCw className="size-16 text-primary/70 animate-spin" style={{ animationDuration: '5s' }} />
                                 </div>
                             </CardContent>
                         </Card>
@@ -55,8 +58,8 @@ export function Features() {
                                          <p className="text-white/70">Integra facilmente com os melhores gateways e plataformas de e-commerce.</p>
                                      </div>
                                  </div>
-                                 <div className="flex items-center justify-center">
-                                     <Image src="https://i.imgur.com/odMHCZ9.png" alt="Ecossistema de Integrações" width={300} height={300} className="object-contain [mask-image:radial-gradient(ellipse_at_center,white_50%,transparent_100%)]" />
+                                 <div className="flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,white_50%,transparent_100%)]">
+                                     <Image src="https://i.imgur.com/odMHCZ9.png" alt="Ecossistema de Integrações" width={300} height={300} className="object-contain" />
                                  </div>
                              </CardContent>
                          </Card>
