@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { Shield, Users, Gem, Zap, GitBranch, KeyRound, RefreshCw, Plug } from 'lucide-react'
+import { Shield, Users, Gem, Zap, GitBranch, KeyRound, RefreshCw, Plug, Puzzle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
@@ -58,7 +58,7 @@ export function Features() {
                                   <div className="rounded-tl-lg relative -mb-6 -mr-6 mt-6 flex items-center justify-center border-l border-t border-white/10 p-6 py-6 sm:ml-6">
                                       <div className="relative flex h-24 w-24 items-center justify-center">
                                           <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/40"></div>
-                                          <Zap className="relative z-10 h-8 w-8 text-primary" strokeWidth={1.5} />
+                                          <Puzzle className="relative z-10 h-8 w-8 text-primary" strokeWidth={1.5} />
                                       </div>
                                   </div>
                              </CardContent>
