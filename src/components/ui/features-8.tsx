@@ -53,9 +53,6 @@ export function Features() {
                                          <p className="text-white/70">Integra facilmente com os melhores gateways e plataformas de e-commerce.</p>
                                      </div>
                                  </div>
-                                 <div className="flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,white_50%,transparent_100%)]">
-                                     <Image src="https://i.imgur.com/odMHCZ9.png" alt="Ecossistema de Integrações" width={300} height={300} className="object-contain" />
-                                 </div>
                              </CardContent>
                          </Card>
                          <Card className={cn(cardClassName, "lg:col-span-3 glass-card")}>
