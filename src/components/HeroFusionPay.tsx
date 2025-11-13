@@ -178,7 +178,7 @@ export default function HeroFusionPay() {
 
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
+    <section className="relative min-h-screen flex items-center pt-20">
       
       {/* Estilos CSS para as animações orbitais */}
       <style>{`
@@ -334,3 +334,5 @@ export default function HeroFusionPay() {
     </section>
   );
 }
+
+    
