@@ -68,7 +68,7 @@ export function Features() {
                                     </div>
                                     <div className="space-y-2">
                                         <h2 className="text-lg font-medium text-white transition">API de PIX</h2>
-                                        <p className="text-white/70">Documentação completa, SDKs e ambiente de sandbox para uma integração rápida e segura.</p>
+                                        <p className="text-white/70">Integre o PIX de forma simples e segura em seu sistema e aproveite a liquidação instantânea.</p>
                                     </div>
                                 </div>
                                 <div className="rounded-tl-lg relative -mb-6 -mr-6 mt-6 h-fit border-l border-t border-white/10 p-6 py-6 sm:ml-6">
