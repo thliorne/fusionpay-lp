@@ -33,14 +33,12 @@ export function Features() {
                         </Card>
                         <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
                              <CardContent className="p-6 text-white">
-                                <div className="relative z-10 flex flex-col justify-start space-y-6">
-                                    <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
-                                        <Zap className="m-auto size-6 text-primary" strokeWidth={1.5} />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <h2 className="text-lg font-medium text-white transition">Saque Instantâneo D+0</h2>
-                                        <p className="text-white/70">Receba o valor das suas vendas via PIX no mesmo dia. Mais agilidade para seu fluxo de caixa.</p>
-                                    </div>
+                                <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                                    <Zap className="m-auto size-12 text-primary" strokeWidth={1.5} />
+                                </div>
+                                <div className="relative z-10 mt-6 space-y-2 text-center">
+                                    <h2 className="text-lg font-medium text-white transition">Saque Instantâneo D+0</h2>
+                                    <p className="text-white/70">Receba o valor das suas vendas via PIX no mesmo dia. Mais agilidade para seu fluxo de caixa.</p>
                                 </div>
                             </CardContent>
                         </Card>
