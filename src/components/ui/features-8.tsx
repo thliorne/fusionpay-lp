@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
 export function Features() {
-    const cardClassName = "relative col-span-full flex overflow-hidden bg-black/50 backdrop-blur-md border border-white/10 transition-all duration-300 hover:border-primary/30 hover:bg-black/40 hover:shadow-2xl hover:shadow-primary/10"
+    const cardClassName = "relative col-span-full flex overflow-hidden bg-black/50 backdrop-blur-md border border-white/10 transition-all duration-300 hover:border-primary/50 hover:bg-black/40 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1"
 
     return (
         <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
