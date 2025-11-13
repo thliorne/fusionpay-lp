@@ -32,7 +32,7 @@ export function Features() {
                             </CardContent>
                         </Card>
                         <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
-                             <CardContent className="grid h-full grid-cols-2 gap-4 pt-6 text-white">
+                             <CardContent className="p-6 text-white">
                                 <div className="relative z-10 flex flex-col justify-start space-y-6">
                                     <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                         <Zap className="m-auto size-6 text-primary" strokeWidth={1.5} />
@@ -41,9 +41,6 @@ export function Features() {
                                         <h2 className="text-lg font-medium text-white transition">Saque Instantâneo D+0</h2>
                                         <p className="text-white/70">Receba o valor das suas vendas via PIX no mesmo dia. Mais agilidade para seu fluxo de caixa.</p>
                                     </div>
-                                </div>
-                                <div className="flex items-center justify-center">
-                                     <Zap className="size-16 text-primary/70" strokeWidth={1.5} />
                                 </div>
                             </CardContent>
                         </Card>
