@@ -47,7 +47,7 @@ export function Features() {
                              <CardContent className="grid h-full pt-6 sm:grid-cols-2 text-white">
                                  <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
                                      <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
-                                         <GitBranch className="m-auto size-6" strokeWidth={1.5} />
+                                         <GitBranch className="m-auto size-6 text-primary" strokeWidth={1.5} />
                                      </div>
                                      <div className="space-y-2">
                                          <h2 className="text-lg font-medium transition">Ecossistema Completo</h2>
@@ -82,7 +82,7 @@ export function Features() {
                             <CardContent className="grid h-full pt-6 sm:grid-cols-2 text-white">
                                 <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
                                     <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
-                                        <KeyRound className="m-auto size-6" strokeWidth={1.5} />
+                                        <KeyRound className="m-auto size-6 text-primary" strokeWidth={1.5} />
                                     </div>
                                     <div className="space-y-2">
                                         <h2 className="text-lg font-medium text-white transition">API para Devs</h2>
