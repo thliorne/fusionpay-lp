@@ -34,7 +34,7 @@ export function Features() {
                             </CardContent>
                         </Card>
                         <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
-                             <CardContent className="relative flex flex-col items-center justify-center p-6 text-white">
+                             <CardContent className="relative flex flex-col items-center justify-center p-6 text-white text-center">
                                 <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                     <Zap className="m-auto size-12 text-primary" strokeWidth={1.5} />
                                 </div>
@@ -55,10 +55,15 @@ export function Features() {
                                          <p className="text-white/70">Integra facilmente com os melhores gateways e plataformas de e-commerce.</p>
                                      </div>
                                  </div>
-                                  <div className="relative -mb-6 -mr-6 mt-6 flex items-center justify-center">
-                                    <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
-                                        <Plug className="m-auto size-12 text-primary" strokeWidth={1.5} />
-                                    </div>
+                                  <div className="rounded-tl-lg relative -mb-6 -mr-6 mt-6 flex items-center justify-center border-l border-t border-white/10 p-6 py-6 sm:ml-6">
+                                    <svg className="w-full text-primary" viewBox="0 0 386 123" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="386" height="123" rx="10" fill="transparent" />
+                                         <path
+                                             d="M3 121.077C3 121.077 15.3041 93.6691 36.0195 87.756C56.7349 81.8429 66.6632 80.9723 66.6632 80.9723C66.6632 80.9723 80.0327 80.9723 91.4656 80.9723C102.898 80.9723 100.415 64.2824 108.556 64.2824C116.696 64.2824 117.693 92.1332 125.226 92.1332C132.759 92.1332 142.07 78.5115 153.591 80.9723C165.113 83.433 186.092 92.1332 193 92.1332C199.908 92.1332 205.274 64.2824 213.017 64.2824C220.76 64.2824 237.832 93.8946 243.39 92.1332C248.948 90.3718 257.923 60.5 265.284 60.5C271.145 60.5 283.204 87.7182 285.772 87.756C293.823 87.8746 299.2 73.0802 304.411 73.0802C311.283 73.0802 321.425 65.9506 333.552 64.2824C345.68 62.6141 346.91 82.4553 362.27 80.9723C377.629 79.4892 383 106.605 383 106.605"
+                                             stroke="currentColor"
+                                             strokeWidth="3"
+                                         />
+                                    </svg>
                                 </div>
                              </CardContent>
                          </Card>
