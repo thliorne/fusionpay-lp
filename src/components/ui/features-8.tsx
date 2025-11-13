@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
 export function Features() {
-    const cardClassName = "relative col-span-full flex overflow-hidden bg-black/50 backdrop-blur-md border border-white/10"
+    const cardClassName = "relative col-span-full flex overflow-hidden bg-black/50 backdrop-blur-md border border-white/10 transition-all duration-300 hover:border-primary/30 hover:bg-black/40 hover:shadow-2xl hover:shadow-primary/10"
 
     return (
         <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
@@ -33,7 +33,7 @@ export function Features() {
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
+                        <Card className={cn(cardClassName, "sm:col-span-3 lg:col-span-2 glass-card")}>
                              <CardContent className="relative flex flex-col items-center justify-center p-6 text-white text-center">
                                 <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                     <Zap className="m-auto size-12 text-primary" strokeWidth={1.5} />
@@ -45,7 +45,7 @@ export function Features() {
                             </CardContent>
                         </Card>
                          <Card className={cn(cardClassName, "lg:col-span-3 glass-card")}>
-                             <CardContent className="grid h-full grid-cols-2 pt-6 text-white">
+                             <CardContent className="grid h-full grid-cols-2 items-center pt-6 text-white">
                                  <div className="relative z-10 flex flex-col justify-start space-y-6">
                                      <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                          <GitBranch className="m-auto size-6 text-primary" strokeWidth={1.5} />
