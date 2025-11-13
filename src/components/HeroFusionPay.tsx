@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useEffect, useState } from "react";
 import { DollarSign, Shield, Zap, Globe, TrendingUp, CreditCard, Sparkles } from "lucide-react";
@@ -319,7 +320,7 @@ export default function HeroFusionPay() {
         </div>
 
         {/* Sistema Orbital 3D */}
-        <div className="relative h-96 w-96 lg:h-[32rem] lg:w-[32rem] perspective-1000 mx-auto">
+        <div className="relative h-96 w-96 lg:h-[32rem] lg:w-[32rem] perspective-1000 mx-auto [transform-style:preserve-3d]">
             <OrbSystem />
             <AnimatePresence>
                 {notifications.length > 0 && (
@@ -334,5 +335,7 @@ export default function HeroFusionPay() {
     </section>
   );
 }
+
+    
 
     
