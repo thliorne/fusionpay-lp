@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { Shield, Users, Gem, Zap, GitBranch, KeyRound } from 'lucide-react'
+import { Shield, Users, Gem, Zap, GitBranch, KeyRound, RefreshCw } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export function Features() {
@@ -10,16 +10,16 @@ export function Features() {
             <div className="mx-auto max-w-3xl lg:max-w-5xl px-6">
                 <div className="relative">
                     <div className="relative z-10 grid grid-cols-6 gap-3">
-                        <Card className={cn(cardClassName, "lg:col-span-2")}>
+                        <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
                             <CardContent className="relative m-auto size-fit pt-6 text-white">
                                 <div className="relative flex h-24 w-56 items-center justify-center">
-                                     <Gem className="size-16 text-primary" strokeWidth={1.5} />
+                                     <RefreshCw className="size-16 text-primary" strokeWidth={1.5} />
                                 </div>
-                                <h2 className="mt-6 text-center text-3xl font-semibold">Checkout Flexível</h2>
-                                <p className="text-center text-white/70 mt-2">Crie uma experiência de pagamento única com nosso checkout transparente e customizável.</p>
+                                <h2 className="mt-6 text-center text-3xl font-semibold">Recuperação de Vendas</h2>
+                                <p className="text-center text-white/70 mt-2">Recupere carrinhos abandonados e pagamentos recusados com nossas ferramentas automáticas.</p>
                             </CardContent>
                         </Card>
-                        <Card className={cn(cardClassName, "sm:col-span-3 lg:col-span-2")}>
+                        <Card className={cn(cardClassName, "sm:col-span-3 lg:col-span-2 glass-card")}>
                             <CardContent className="pt-6 text-white">
                                 <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                     <Shield className="m-auto size-12 text-primary" strokeWidth={1.5} />
@@ -30,7 +30,7 @@ export function Features() {
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className={cn(cardClassName, "lg:col-span-2")}>
+                        <Card className={cn(cardClassName, "lg:col-span-2 glass-card")}>
                              <CardContent className="grid h-full pt-6 text-white">
                                 <div className="relative z-10 flex flex-col justify-between space-y-6">
                                     <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
@@ -43,7 +43,7 @@ export function Features() {
                                 </div>
                             </CardContent>
                         </Card>
-                         <Card className={cn(cardClassName, "lg:col-span-3")}>
+                         <Card className={cn(cardClassName, "lg:col-span-3 glass-card")}>
                              <CardContent className="grid h-full pt-6 sm:grid-cols-2 text-white">
                                  <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
                                      <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
@@ -78,7 +78,7 @@ export function Features() {
                                  </div>
                              </CardContent>
                          </Card>
-                         <Card className={cn(cardClassName, "lg:col-span-3")}>
+                         <Card className={cn(cardClassName, "lg:col-span-3 glass-card")}>
                             <CardContent className="grid h-full pt-6 sm:grid-cols-2 text-white">
                                 <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
                                     <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
