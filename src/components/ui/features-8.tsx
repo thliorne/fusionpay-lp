@@ -43,12 +43,12 @@ export function Features() {
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-center">
-                                     <RefreshCw className="size-16 text-primary/70 animate-spin" style={{ animationDuration: '5s' }} />
+                                     <Zap className="size-16 text-primary/70" strokeWidth={1.5} />
                                 </div>
                             </CardContent>
                         </Card>
                          <Card className={cn(cardClassName, "lg:col-span-3 glass-card")}>
-                             <CardContent className="grid h-full pt-6 sm:grid-cols-2 text-white">
+                             <CardContent className="grid h-full grid-cols-2 pt-6 text-white">
                                  <div className="relative z-10 flex flex-col justify-start space-y-6">
                                      <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                          <GitBranch className="m-auto size-6 text-primary" strokeWidth={1.5} />
