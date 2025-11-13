@@ -53,6 +53,11 @@ export function Features() {
                                          <p className="text-white/70">Integra facilmente com os melhores gateways e plataformas de e-commerce.</p>
                                      </div>
                                  </div>
+                                  <div className="relative -mb-6 -mr-6 mt-6 flex items-center justify-center">
+                                    <div className="relative mx-auto flex aspect-square size-32 items-center justify-center rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                                        <Plug className="m-auto size-12 text-primary" strokeWidth={1.5} />
+                                    </div>
+                                </div>
                              </CardContent>
                          </Card>
                          <Card className={cn(cardClassName, "lg:col-span-3 glass-card")}>
