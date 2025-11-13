@@ -148,15 +148,13 @@ export function CostComparison() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative bg-black/80 backdrop-blur-lg rounded-2xl border border-transparent p-6 md:p-10 shadow-2xl shadow-black/20
-                     before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:border before:border-primary/20 before:bg-gradient-to-br before:from-primary/10 before:to-transparent before:[mask:linear-gradient(black,black)_content-box,linear-gradient(black,black)] before:[mask-composite:exclude]"
+          className="relative bg-black/80 backdrop-blur-lg rounded-2xl border border-white/10 p-6 md:p-10 shadow-2xl shadow-black/20"
         >
           <div className="text-center mb-8">
-            <label className="text-sm text-white mb-2 block">Seu faturamento mensal estimado</label>
+            <label className="text-sm text-white/70 mb-2 block">Seu faturamento mensal estimado</label>
             <div className="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-tighter">
               {formatCurrency(revenue)}
             </div>
-            <span className="text-xs text-white">por mês</span>
           </div>
           
           <Slider
@@ -170,46 +168,46 @@ export function CostComparison() {
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {/* Gateway Tradicional */}
-            <div className="bg-black/50 border border-border rounded-xl p-6">
+            <div className="bg-black/50 border border-white/10 rounded-xl p-6 transition-all duration-300 hover:border-white/20 hover:bg-black/40">
               <h3 className="font-semibold text-white">Gateway Tradicional</h3>
-              <p className="text-sm text-white mb-4">Taxa média: {traditionalRate.toFixed(1)}%</p>
+              <p className="text-sm text-white/60 mb-4">Taxa média: {traditionalRate.toFixed(1)}%</p>
               <div className="text-3xl md:text-4xl font-bold text-white tabular-nums">
                 <AnimatedCounter value={custoTrad} />
               </div>
-              <p className="text-xs text-white mt-1">em taxas mensais</p>
+              <p className="text-xs text-white/60 mt-1">em taxas mensais</p>
             </div>
 
             {/* Fusion Pay */}
-            <div className="bg-black/50 border border-primary/50 rounded-xl p-6 relative overflow-hidden ring-2 ring-primary/20">
-               <div className="absolute top-0 right-0 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-bl-lg">
+            <div className="bg-black/50 border border-primary/50 rounded-xl p-6 relative overflow-hidden transition-all duration-300 ring-2 ring-primary/20 hover:shadow-xl hover:shadow-primary/10">
+               <div className="absolute top-0 right-0 px-3 py-1 bg-primary text-black text-xs font-bold rounded-bl-lg">
                 ECONOMIA
               </div>
               <h3 className="font-semibold text-white">Fusion Pay</h3>
-              <p className="text-sm text-white mb-4">Taxa negociável: {fusionRate.toFixed(1)}%</p>
+              <p className="text-sm text-white/60 mb-4">Taxa negociável: {fusionRate.toFixed(1)}%</p>
               <div className="text-3xl md:text-4xl font-bold text-primary tabular-nums">
                  <AnimatedCounter value={custoFusion} />
               </div>
-              <p className="text-xs text-white mt-1">em taxas mensais</p>
+              <p className="text-xs text-white/60 mt-1">em taxas mensais</p>
             </div>
           </div>
           
-          <div className="bg-gradient-to-r from-green-500/10 to-green-500/0 border border-green-500/20 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="bg-gradient-to-r from-green-600/20 to-green-500/0 border border-green-500/30 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <p className="text-sm text-green-300">Sua economia mensal</p>
+              <p className="text-sm text-green-300/80">Sua economia mensal</p>
               <div className="text-3xl font-bold text-white tabular-nums">
                 <AnimatedCounter value={economiaMensal} />
               </div>
             </div>
-             <div className="h-12 w-px bg-green-500/20 hidden md:block"></div>
+             <div className="h-px w-20 md:h-12 md:w-px bg-green-500/30"></div>
             <div className="text-center md:text-right">
               <div className="text-4xl font-bold text-green-400 tabular-nums">
                 {reducaoPct.toFixed(1)}%
               </div>
-              <p className="text-sm text-green-300">de redução</p>
+              <p className="text-sm text-green-300/80">de redução</p>
             </div>
           </div>
           
-          <p className="text-center text-xs text-white mt-6">
+          <p className="text-center text-xs text-white/70 mt-6">
             Economia anual projetada: <span className="font-semibold text-white">{formatCurrency(economiaAnual)}</span>
           </p>
         </motion.div>
